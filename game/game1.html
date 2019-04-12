@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>game1</title>
+    <style>
+        body{
+            background: lightgray;
+        }
+
+        #main{
+            width: 510px;
+            height: 400px;
+            margin: 0 auto;
+            border: 1px solid darkgray;
+            border-radius: 5px;
+        }
+
+        #main #map{
+            width: 500px;
+            height: 300px;
+            margin: 5px 5px;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #main #bar{
+            width: 100%;
+            height: 90px;
+            background: #bbdfdb;
+            box-sizing: border-box;
+            padding: 30px 0px;
+        }
+        #main #bar #btn{
+            width: 100px;
+            height: 30px;
+            display: block;
+            margin: 0 auto;
+            /*color: #99ff41;*/
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+    <div id="main">
+        <div id="map"></div>
+        <div id="bar">
+            <button id="btn">开始游戏</button>
+        </div>
+    </div>
+
+    <script>
+        var _map = document.getElementById("map");
+        var _btn = document.getElementById("btn");
+        var _snake;
+        var _food;
+        var _timer;
+        var _speed = 200;
+        var _mapWidth;
+        var _mapHeight;
+
+        //开始搞事
+        main();
+
+        //入口函数
+        function main(){
+            _snake = new Snake();
+            _snake.show();
+            _food = new Food();
+            _food.show();
+
+            //按下方向键修改蛇方向
+            document.onkeydown = function(e){
+                var ev = e || window.event;
+                _snake.setDirection(ev.keyCode);
+            }
+
+            //点击按钮开始
+            _btn.onclick = function(){
+                _timer = setInterval("_snake.run()",_speed);
+            }
+        }
+
+        //构造蛇
+        function Snake(){
+            this.width = 10;//节点宽度
+            this.height = 10;//节点高度
+            this.headColor = "#FFF334";//头部颜色
+            this.color = "#99ff41";//身体颜色
+            this.direction = "right";//初始运动方向
+            _mapWidth = Math.floor(_map.offsetWidth/this.width);
+            _mapHeight = Math.floor(_map.offsetHeight/this.height);
+            //蛇身坐标集合
+            this.body = [
+                {x:2,y:0},
+                {x:1,y:0},
+                {x:0,y:0}
+            ]
+
+            //显示
+            this.show = function(){
+                //构造蛇身并添加到地图
+                for(var i=0; i<this.body.length; i++){
+                    var s = document.createElement("div");
+                    this.body[i].div = s;
+                    s.style.width = this.width + "px";
+                    s.style.height= this.height+ "px";
+                    if(i==0){
+                        s.style.background = this.headColor;
+                    }else{
+                        s.style.background = this.color;
+                    }
+                    s.style.position = "absolute";
+//                    s.style.boxSizing = "border-box";
+//                    s.style.border = "1px solid white";
+                    s.style.left = this.body[i].x * this.width + "px";
+                    s.style.top = this.body[i].y * this.height + "px";
+                    _map.appendChild(s);
+                }
+            }
+
+            //移除
+            this.removeAll = function(){
+                for(var i=0; i<this.body.length; i++){
+                    if(this.body[i].div != null){
+                        _map.removeChild(this.body[i].div);
+                    }
+                }
+            }
+
+            //改变方向
+            this.setDirection = function(keycode){
+                switch(keycode){
+                    case 37:
+                        if(this.direction != "right"){
+                            this.direction = "left";
+                        }
+                        break;
+                    case 38:
+                        if(this.direction != "down"){
+                            this.direction = "up";
+                        }
+                        break;
+                    case 39:
+                        if(this.direction != "left"){
+                            this.direction = "right";
+                        }
+                        break;
+                    case 40:
+                        if(this.direction != "up"){
+                            this.direction = "down";
+                        }
+                        break;
+                }
+            }
+
+            //移动
+            this.run = function(){
+                //先把除开蛇头的部位 每后一个单元修改到前一个单元的位置
+                for(var i=this.body.length-1; i>0; i--){
+                    this.body[i].x = this.body[i-1].x;
+                    this.body[i].y = this.body[i-1].y;
+                }
+                //再根据运动方向修改蛇头的位置
+                //必须先修改除开蛇头的部位，否则头下第二个部位无法获取到老的蛇头位置
+                switch(this.direction){
+                    case "left":
+                        this.body[0].x--;
+                        break;
+                    case "right":
+                        this.body[0].x++;
+                        break;
+                    case "up":
+                        this.body[0].y--;
+                        break;
+                    case "down":
+                        this.body[0].y++;
+                        break;
+                }
+
+                //蛇头出界则game over
+                if(this.body[0].x<0 || this.body[0].x>_mapWidth-1 || this.body[0].y<0 || this.body[0].y>_mapHeight-1){
+                    console.log("超过边界！！！");
+                    clearInterval(_timer);
+                    alert("GAME OVER!");
+                    //删除旧的
+                    this.removeAll();
+                    //初始化蛇身
+                    this.body = [
+                        {x:2,y:0},
+                        {x:1,y:0},
+                        {x:0,y:0}
+                    ];
+                    this.direction = "right";
+                    this.show();
+                    return;
+                }
+
+                //蛇头碰到蛇身则game over
+                //由于前四个节点无法与蛇头相撞，所以从第5个开始判断
+                for(var i=4; i<this.body.length; i++ ){
+                    if(this.body[i].x == this.body[0].x && this.body[i].y == this.body[0].y){
+                        console.log("吃到自己！！！")
+                        clearInterval(_timer);
+                        alert("GAME OVER!");
+                        //删除旧的
+                        this.removeAll();
+                        //初始化蛇身
+                        this.body = [
+                            {x:2,y:0},
+                            {x:1,y:0},
+                            {x:0,y:0}
+                        ];
+                        this.direction = "right";
+                        this.show();
+                        return;
+                    }
+                }
+
+                //吃到食物则加一节--蛇头与食物重叠
+                if(this.body[0].x == _food.x && this.body[0].y == _food.y){
+                    //蛇身末尾新增一个节点，此轮不显示新加入的节点，所以xy都设置为null或者一个超过地图边界的值
+                    this.body.push({x:_mapWidth+100,y:_mapHeight+100});
+                    //清除食物，生成新的食物
+                    console.log("移除食物！！！");
+                    _map.removeChild(_food.div);
+                    _food.show();
+                }
+
+                //清除老的蛇身
+                for(var i=0; i<this.body.length; i++){
+                    if(this.body[i].div != null){
+                        _map.removeChild(this.body[i].div);
+                    }
+                }
+                //显示新的蛇身
+                this.show();
+            }
+        }
+
+        //构造食物
+        function Food(){
+            this.width = 10;
+            this.height = 10;
+            this.color = "red";
+
+
+            this.show = function(){
+                var f = document.createElement("div");
+                this.div = f;
+                f.style.width = this.width + "px";
+                f.style.height = this.height + "px";
+                f.style.background = this.color;
+                f.style.position = "absolute";
+                this.x = Math.floor(Math.random()*_mapWidth);
+                this.y = Math.floor(Math.random()*_mapHeight);
+                f.style.left = this.x*this.width + "px";
+                f.style.top = this.y*this.height + "px";
+                _map.appendChild(f);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>
