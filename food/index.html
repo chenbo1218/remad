@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>美女点餐-用户登录</title>
+
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            font-family: "Microsoft Yahei", "Lantinghei SC", Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+
+        .btn{
+            background-color: lightpink;
+            color: #fff;
+            border: none;
+        }
+        .btn:hover,.btn:active,.btn:after,.btn:focus{
+            background-color: hotpink;
+            color: #fff;
+            border: none;
+        }
+        .container-fluid{
+            width: 50%;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        #login{
+            width: 278px;
+            margin: 0 auto;
+            margin-top: 100px;
+            position: relative;
+        }
+        #login h3{
+            width: 278px;
+            text-align: center;
+        }
+        #login .input-group{
+            width: 278px;
+            top: 10px;
+        }
+        #login .input-group span{
+            width: 70px;
+        }
+        #login #btn-login{
+            width: 200px;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-left: 39px;
+        }
+        #login #warning{
+            color: #c9302c;
+            width: 278px;
+            margin-top: 10px;
+            visibility: hidden;
+        }
+
+        #version{
+            position: absolute;
+            top: 450px;
+            right: 10px;
+            float: right;
+        }
+        #version #faq{
+            color: hotpink;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="login">
+        <h3>女神点餐系统</h3>
+        <img src="images/logo.jpg" alt=""/>
+
+        <div class="input-group">
+            <span class="input-group-addon">用户名</span>
+            <input id="username" name="username" type="text" class="form-control" placeholder="username" maxlength="18" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon">密码</span>
+            <input id="password" name="password" type="password" class="form-control" placeholder="password" maxlength="18" aria-label="basic-addon2">
+        </div>
+
+        <button id="btn-login" type="submit" class="btn" autocomplete="off">登录</button>
+
+        <div id="warning" class="alert alert-warning" role="alert"></div>
+
+        <div id="version">
+            <p>version:1.0  <a id="faq" href="#log" data-toggle="modal">FAQ</a></p>
+            <p>author:chenbojay</p>
+        </div>
+
+        <div id="log" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content message_align">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">欢迎使用女神点餐，接下来你将了解到：</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>*点餐为实名制，为了避免自定义用户名的混乱，系统不开放自助注册，由管理员创建及分配账号。</p>
+                        <p>*可修改自己已点的菜品，方式为再点一次。</p>
+                        <p>*管理员拥有用户和店铺的生杀予夺权，请不要得罪管理员。</p>
+                        <p>*本系统由java/IO编写，数据皆存盘于服务器硬盘内，请内部人员不要在服务器上乱删东西。</p>
+                        <p>*重大喜讯！！version2.0将迎来重磅更新，届时将加入大众点评系统和财务数据报表。敬请期待。</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">好的</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        //登录
+        var serverRoot = "http://192.168.1.250:8080/food";//http://localhost:8080/food
+        var $warning = $("#warning");
+        $("#btn-login").click(function(){
+            var userName = $("#username").val().trim();
+            var password = $("#password").val().trim();
+            if(userName==""){
+                $warning.css({"visibility":"visible","display":"block"});
+                $warning.text("请输入用户名");
+                $warning.fadeOut(2000);
+                return;
+            }
+            if(password==""){
+                $warning.css({"visibility":"visible","display":"block"});
+                $warning.text("请输入密码");
+                $warning.fadeOut(2000);
+                return;
+            }
+
+            var url = serverRoot+"/LoginServlet";
+            var data = {"userName":userName,"password":password};
+            $.post(url,data,function(result){
+                console.log("response:",result);
+                if(result=="error"){
+                    $warning.css({"visibility":"visible","display":"block"});
+                    $warning.text("用户名或密码错误");
+                    $warning.fadeOut(2000);
+                    return;
+                }
+                sessionStorage.setItem("user",result);
+                window.location.href = "order.html";
+            });
+        });
+
+
+    });
+</script>
+
+</body>
+</html>

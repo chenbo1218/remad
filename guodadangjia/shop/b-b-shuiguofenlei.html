@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>水果分类</title>
+
+    <link type="text/css" rel="stylesheet" href="../css/common.css" />
+    <link type="text/css" rel="stylesheet" href="../css/fakeLoader.css" />
+    <style type="text/css">
+        body{
+            background-color: #ececec;
+            overflow-x:hidden;
+            font-size: 14px;
+            /*padding-bottom: 60px;*/
+        }
+
+        /*头部导航栏*/
+        .nav{
+            width: 100%;
+            height: 40px;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 999;
+            background-color: #ffe200;
+        }
+        /*分类*/
+        .kindbar{
+            width: 20%;
+            height: 40px;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            box-sizing: border-box;
+            /*border: 1px solid lightgray;*/
+            border-radius: 3px;
+        }
+        .kindbar .choose{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            display: block;
+            text-decoration: none;
+            color: #000;
+        }
+        .kindbar .sub-menu {
+            display: none;
+            padding-left: 0;
+            list-style: none;
+        }
+        .kindbar .sub-menu li {
+            width: 100%;
+            border-bottom: 1px solid #fff;
+            text-align: center;
+            background: #ffe200;
+        }
+        .kindbar .sub-menu li a {
+            text-decoration: none;
+            color: #000;
+        }
+        .kindbar .sub-menu li:active {
+            background: #fabe00;
+        }
+
+        /*搜索栏*/
+        .searchbar{
+            width: 80%;
+            height: 100%;
+            float: left;
+            /*height: 6%;*/
+            box-sizing: border-box;
+            padding: 5px 5px;
+        }
+        .searchbar .searchbar-text{
+            width: 90%;
+            height: 30px;
+            font-size: 14px;
+            border-style: none;
+            border-radius: 5px 0 0 5px;
+            text-align: left;
+            text-indent: 1em;
+            float: left;
+            display: block;
+        }
+        .searchbar a.searchbar-btn{
+            width: 10%;
+            height: 30px;
+            border-radius: 0 5px 5px 0;
+            background-color: #fff;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            display: block;
+        }
+        .searchbar a.searchbar-btn:active{
+            background-color: #fabe00;
+        }
+        .searchbar a.searchbar-btn img{
+            vertical-align: middle;
+            padding: 5px;
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+
+        /*内容栏*/
+        .container{
+            width: 100%;
+            height: auto;
+            background: #fff;
+            position: relative;
+            top: 40px;
+            padding-bottom: 60px;
+        }
+        /*排序栏*/
+        .sortbar{
+            width: 100%;
+            height: 30px;
+            padding: 5px 0px;
+        }
+        .sortbar .menu{
+            width: 25%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            box-sizing: border-box;
+            border-right: 1px solid lightgray;
+        }
+        .sortbar .menu:last-child{
+            border-right: none;
+        }
+        .sortbar .menu.on{
+            color: #f08200;
+        }
+        .sortbar .menu:active{
+            color: #fabe00;
+        }
+
+        /*列表*/
+        .item{
+            margin-bottom: 8px;
+            background-color: #fff;
+        }
+        .item img{
+            width: 100%;
+            height: 99px;
+        }
+        .item h3{
+            font-size: 14px;
+            font-weight: normal;
+        }
+        .item p{
+            font-size: 12px;
+        }
+        .item .item-sheet{
+            width: 180px;
+            height: 30px;
+            margin-top: 10px;
+            padding-bottom: 10px;
+        }
+        .item-sheet img{
+            width: 30px;
+            height: 30px;
+            left: 2px;
+            float: left;
+            position: relative;
+            z-index: 10;
+            top: -2px;
+        }
+        .item-sheet span{
+            display: block;
+            margin-left: -15px;
+            padding-left: 15px;
+            width: 90px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 12px;
+            background-color: #7c7c7c;
+            color: #fff;
+            float: left;
+        }
+        .item-sheet .comm-btn-middle{
+            width: 45px;
+            height: 25px;
+            line-height: 25px;
+            float: left;
+        }
+        .item-sheet .comm-btn-middle button{
+            font-size: 12px;
+            border-radius: 0 10px 10px 0;
+        }
+
+
+        /*底部导航*/
+        .nav-bottom {
+            background-color: #f2f2f2;
+            position: fixed;
+            width: 100%;
+            height: 60px;
+            bottom: 0;
+            left: 0;
+            z-index: 999;
+        }
+        .nav-bottom ul {
+            height: 9%;
+        }
+        .nav-bottom ul li {
+            width: 25%;
+            height: 9%;
+            list-style-type: none;
+            float: left;
+        }
+        .nav-bottom li.on a{
+            color: #fabe00;
+        }
+        .nav-bottom li a:active{
+            color: #fabe00;
+        }
+        .nav-bottom li a {
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+        .nav-bottom ul li a img {
+            width: 30px;
+            height: 30px;
+            padding: 10px 5px 0;
+            margin: 0 auto;
+            display: block;
+        }
+        .nav-bottom ul li a span{
+            display: block;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            margin: 0 auto;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+    <!--头部导航-->
+    <div class="nav">
+        <div class="kindbar">
+            <a class="choose" href="#">分类</a>
+            <ul class="sub-menu">
+                <li><a href="#">全部水果</a></li>
+                <li><a href="#">今日上新</a></li>
+                <li><a href="#">进口鲜果</a></li>
+                <li><a href="#">国产鲜果</a></li>
+                <li><a href="#">水果礼盒</a></li>
+                <li><a href="#">新品首发</a></li>
+                <li><a href="#">当季水果</a></li>
+            </ul>
+        </div>
+        <div class="searchbar">
+            <input class="searchbar-text" type="text" placeholder="搜索订单号/买家"/>
+            <a class="searchbar-btn"><img src="../images/common/ico_search.png"/></a>
+        </div>
+    </div>
+
+    <!--内容-->
+    <div class="container">
+        <!--排序栏-->
+        <div class="sortbar">
+            <div id="moren" class="menu on">
+                <p>默认</p>
+            </div>
+            <div id="xiaoliang" class="menu">
+                <p>销量</p>
+            </div>
+            <div id="jiage" class="menu">
+                <p>价格</p>
+            </div>
+            <div id="shangxin" class="menu">
+                <p>上新</p>
+            </div>
+        </div>
+        <!--列表-->
+        <div class="items">
+            <div class="item">
+                <img src="../images/fruits/f1_item.jpg" alt=""/>
+                <h3>【长沙专享】墨西哥进口牛油果10个90.8元</h3>
+                <p>进口柠檬，美容养颜，皮薄肉嫩。个头大，有光泽。晶莹剔透。价格实惠。先抢先得</p>
+                <div class="item-sheet">
+                    <img src="../images/common/logo_small.png" alt=""/>
+                    <span>2人团 ￥90.88</span>
+                    <div class="check comm-btn-middle"><button>去看看</button></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="../images/fruits/f1_item.jpg" alt=""/>
+                <h3>【长沙专享】墨西哥进口牛油果10个90.8元</h3>
+                <p>进口柠檬，美容养颜，皮薄肉嫩。个头大，有光泽。晶莹剔透。价格实惠。先抢先得</p>
+                <div class="item-sheet">
+                    <img src="../images/common/logo_small.png" alt=""/>
+                    <span>2人团 ￥90.88</span>
+                    <div class="check comm-btn-middle"><button>去看看</button></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="../images/fruits/f1_item.jpg" alt=""/>
+                <h3>【长沙专享】墨西哥进口牛油果10个90.8元</h3>
+                <p>进口柠檬，美容养颜，皮薄肉嫩。个头大，有光泽。晶莹剔透。价格实惠。先抢先得</p>
+                <div class="item-sheet">
+                    <img src="../images/common/logo_small.png" alt=""/>
+                    <span>2人团 ￥90.88</span>
+                    <div class="check comm-btn-middle"><button>去看看</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--底部导航栏-->
+    <div class="nav-bottom">
+        <ul>
+            <li id="home"><a href="b-a-wodeguoyuan.html"><img src="../images/shop/seller/d_wdgy.png"><span>我的果园</span></a></li>
+            <li id="list" class="on"><a href=""><img src="../images/shop/seller/d_sgfl.png"><span>水果分类</span></a></li>
+            <li id="order"><a href="b-c-gouwuche.html"><img src="../images/shop/seller/d_gwl.png"><span>购物篮</span></a></li>
+            <li id="manage"><a href="b-d-gerenzhongxin.html"><img src="../images/shop/seller/d_grzx.png"><span>个人中心</span></a></li>
+        </ul>
+    </div>
+
+    <div class="fakeloader"></div>
+
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/fakeLoader.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".fakeloader").fakeLoader({
+            timeToHide:1200,
+            bgColor:"#fabe00",
+            spinner:"spinner1"
+        });
+
+        $(".nav-bottom li.on").click(function(e){
+            e.preventDefault();
+        });
+
+        //分类
+        var isShow = false;
+        $(".choose").click(function(){
+            isShow = !isShow;
+            if(isShow){
+                $(this).siblings('.sub-menu').css('display', 'block');
+            }else{
+                $(this).siblings('.sub-menu').css('display', 'none');
+            }
+
+        });
+        $(".sub-menu li").click(function(){
+            console.log("click");
+            $(".kindbar").children(".choose").text($(this).find("a").text());
+            isShow = false;
+            $(".kindbar .sub-menu").css('display', 'none');
+        });
+
+
+        //排序
+        $(".sortbar .menu").click(function(){
+            $(this).addClass("on").siblings("div").removeClass("on");
+        });
+
+        //查看详情
+        $(".check").click(function(){
+            window.location.href = "b-b-shangpinxiangqing.html";
+        });
+
+
+
+    });
+</script>
+</body>
+</html>

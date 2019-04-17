@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <title>Di盟商城</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <style type="text/css">
+        /*我的订单*/
+        body{
+            /*background-color: #f2f2f2;*/
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        /*发货状态栏*/
+        .states{
+            height: 30px;
+            padding: 5px 25px 5px 25px;
+            border-bottom: 1px solid lightgray;
+        }
+        .states .cont{
+            margin: 0 auto;
+        }
+        .states .state{
+            width: 33%;
+            float: left;
+            height: 30px;
+            display: block;
+            text-align: center;
+            line-height: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #000;
+            margin: 0 auto;
+            border-right: 1px solid lightgray;
+        }
+        .states .state:last-child{
+            border-right: none;
+        }
+        .states .state:active{
+            color: #eb632e;
+        }
+        .states .state.current{
+            color: #eb632e;
+        }
+
+        .item{
+            width: 100%;
+            height: 65px;
+            padding: 10px 10px;
+            border-top: 1px solid lightgray;
+        }
+        .item:first-child{
+            border-top: none;
+        }
+        .item .pic{
+            width: 85px;
+            height: 65px;
+            float: left;
+        }
+        .item .info{
+            width: 260px;
+            float: left;
+            margin-left: 10px;
+            line-height: 30px;
+        }
+        .item .info .des{
+            font-size: 12px;
+            color: #6a6a6a;
+        }
+        .item .info .des span{
+            float: left;
+        }
+        .item .info .des span:last-child{
+            float: right;
+        }
+        .item .info .des span:first-child{
+            margin-right: 20px;
+        }
+        .item .info .des .comm-btn-middle{
+            width: 60px;
+            height: 30px;
+        }
+        .item .info .des .comm-btn-middle button{
+            width: 60px;
+            height: 30px;
+            background: #eb632e;
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="images/ico_back.png" /></a></span>
+        <h2>我的订单</h2>
+    </div>
+
+    <!--发货状态标签-->
+    <div class="states">
+        <div class="cont">
+            <div class="state current">全部</div>
+            <div class="state">待发货</div>
+            <div class="state">待收货</div>
+        </div>
+    </div>
+
+    <div class="items">
+        <div class="item">
+            <img class="pic" src="images/shop_02.jpg" alt=""/>
+            <div class="info">
+                <p>汉丽轩</p>
+                <p class="des">
+                    <span>总价：44.80元</span>
+                    <span>数量：1</span>
+                    <span class="comm-btn-middle"><button>评价</button></span>
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img class="pic" src="images/shop_02.jpg" alt=""/>
+            <div class="info">
+                <p>汉丽轩</p>
+                <p class="des">
+                    <span>总价：44.80元</span>
+                    <span>数量：1</span>
+                    <span class="comm-btn-middle"><button>评价</button></span>
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img class="pic" src="images/shop_02.jpg" alt=""/>
+            <div class="info">
+                <p>汉丽轩</p>
+                <p class="des">
+                    <span>总价：44.80元</span>
+                    <span>数量：1</span>
+                    <span class="comm-btn-middle"><button>评价</button></span>
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <img class="pic" src="images/shop_02.jpg" alt=""/>
+            <div class="info">
+                <p>汉丽轩</p>
+                <p class="des">
+                    <span>总价：44.80元</span>
+                    <span>数量：1</span>
+                    <span class="comm-btn-middle"><button>评价</button></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-back").back();
+
+        //状态筛选
+        var $chooses = $(".states .state");
+        $chooses.click(function(){
+            $(this).addClass("current").siblings("div").removeClass("current");
+        });
+
+
+
+
+
+
+
+
+    });
+</script>
+</body>
+</html>

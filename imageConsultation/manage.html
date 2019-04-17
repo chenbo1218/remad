@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>云切片</title>
+
+    <link rel="stylesheet" href="css/static/bootstrap.min.css"/>
+
+    <script src="js/static/jquery-3.3.1.min.js"></script>
+    <script src="js/static/bootstrap.min.js"></script>
+    <script src="js/tools.js"></script>
+</head>
+<body>
+
+    <h1>管理页面</h1>
+    <div class="container">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="iptUrl" style="text-align: right">请求的URL</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="iptUrl" placeholder="必填：请求url">
+            </div>
+        </div>
+        <br/><br/>
+
+        <form class="form-horizontal" action="javascript:send();">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="iptId">设备id</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" id="iptId" placeholder="设备id">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="sltBrand">品牌</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="sltBrand">
+                        <option selected>华硕</option>
+                        <option>联想</option>
+                        <option>华为</option>
+                        <option>中兴</option>
+                        <option>宏碁</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="sltModel">型号</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="sltModel">
+                        <option selected>X1</option>
+                        <option>A2</option>
+                        <option>S3</option>
+                        <option>F4</option>
+                        <option>P5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="sltPos">当前位置</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="sltPos">
+                        <option selected>开福区</option>
+                        <option>芙蓉区</option>
+                        <option>天心区</option>
+                        <option>雨花区</option>
+                        <option>岳麓区</option>
+                        <option>望城区</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="sltRat">物镜倍率</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="sltRat">
+                        <option selected>x10</option>
+                        <option>x20</option>
+                        <option>x40</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="sltPix">图像分辨率</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="sltPix">
+                        <option selected>1366*768</option>
+                        <option>1920*1080</option>
+                        <option>3980*2048</option>
+                        <option>5990*3980</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="form-control" style="width: 30%;margin: 0 auto" type="submit" class="btn">SEND</button>
+            </div>
+        </form>
+    </div>
+
+    <!--模态框--先隐藏-->
+    <div class="modal fade" id="alertModal">
+        <div class="modal-dialog">
+            <div class="modal-content message_align">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <a id="confirm-sure" class="btn btn-success" data-dismiss="modal">确定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-10">
+            <div>11</div>
+            <div>21</div>
+            <div>31</div>
+            <div>41</div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-2"></div>
+    <div class="col-lg-2"></div>
+
+
+
+    <script>
+        function send(){
+
+            var url = $("#iptUrl").val();
+            if(!url){
+                $.smAlert("先填写地址才能发送！");
+                return;
+            }
+            var data = {"EquimentId":$("#iptId").val(),
+                "Brand":$("#sltBrand").val(),
+                "Model":$("#sltModel").val(),
+                "CurrentPosition":$("#sltPos").val(),
+                "ObjectiveRatio":$("#sltRat").val(),
+                "ImageResolutionRatio":$("#sltPix").val(),
+                "addtime":new Date().getTime()};
+
+            console.log(data);
+            $.smAjax(url,data,function(){
+                $.smAlert("操作成功！");
+            },function(){
+                $.smAlert("发生错误！");
+            });
+        }
+
+    </script>
+</body>
+</html>

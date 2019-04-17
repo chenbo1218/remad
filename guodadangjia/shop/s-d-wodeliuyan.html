@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>我的留言</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style type="text/css" >
+        /*80+150*n 40+75*n*/
+
+        body {
+            /*background-color: #f2f2f2;*/
+            /*height: 100%;*/
+        }
+        .main .box2-container .box2 {
+            /*height: 75px;*/
+            /*margin: 8px 0 ;*/
+            padding: 7px 10px;
+            line-height: 20px;
+            border-bottom: 1px solid #c7c7c7;
+            font-size: 12px;
+            position: relative;
+        }
+
+        .main .box2-container .reply {
+            /*padding: 7px 40px 7px 10px;*/
+            padding-right: 40px;
+        }
+        .box2 .msg-time {
+            position: absolute;
+            top: 7px;
+            right: 10px;
+        }
+
+        .box2 .msg-img {
+            position: absolute;
+            bottom: 3px;
+            right: 10px;
+        }
+
+        /*圆形图标  30*30 */
+        div.msg-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            background-color: white;
+        }
+        div.msg-img img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .box2 p span:first-child {
+            width: 60px;
+            display: inline-block;
+            /*float: left;*/
+            height: 100%;
+        }
+        .box2 p.strong {
+            color: #fabe00;
+        }
+        .box2 p.strong span:last-child {
+            /*float: left;*/
+            /*margin-left: 60px;*/
+        }
+
+        .main .main-bottom {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #c7c7c7;
+        }
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+        <h2>我的留言板</h2>
+    </div>
+
+    <div class="main">
+            <div class="box2-container">
+                <!--待回复-->
+                <div class="box2 reply">
+                    <p><span>客&#12288;&#12288;户：</span><span>西瓜红的红</span><span class="msg-time">1分钟前</span></p>
+                    <p><span>咨询内容：</span><span>你好，请问在你们家购买水果包邮吗？请问在你们家购买水果包邮吗？</span></p>
+                    <div class="msg-img"><a href="s-d-wodeliuyanhuifu.html"><img src="../images/shop/seller/d_msg_02.png"/></a></div>
+                </div>
+                <!--已回复-->
+               <div class="box2">
+                    <p><span>客&#12288;&#12288;户：</span><span>西瓜红的红</span><span class="msg-time">1分钟前</span></p>
+                    <p><span>咨询内容：</span><span>你好，请问在你们家购买水果包邮吗？</span></p>
+                    <p class="strong"><span>小店回复：</span><span>您好，长沙市内购买满100元包邮。祝您购物愉快。</span></p>
+                </div>
+               <div class="box2">
+                    <p><span>客&#12288;&#12288;户：</span><span>西瓜红的红</span><span class="msg-time">1分钟前</span></p>
+                    <p><span>咨询内容：</span><span>你好，请问在你们家购买水果包邮吗？</span></p>
+                    <p class="strong"><span>小店回复：</span><span>您好，长沙市内购买满100元包邮。祝您购物愉快。</span></p>
+                </div>
+
+
+
+            </div>
+
+            <p class="main-bottom">没有更多...</p>
+    </div>
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-ico-back a").back();
+    });
+</script>
+</body>
+</html>

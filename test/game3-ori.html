@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p.tips {margin-top: 20px; text-align: center;}
+        table#gameUI {margin: 30px auto;}
+        td {width: 20px; height: 20px; border: 1px solid red;}
+        td.wall {background-color: red;}
+    </style>
+</head>
+<body>
+
+    <p class="tips">按回车开始游戏</p>
+    <table id="gameUI"></table>
+
+    <script>
+    // 参数设置
+    var rows = 22, cells = 14;  // 界面的高度和宽度
+    // 获取元素
+    var tab = document.getElementById('gameUI');
+    var tips = document.getElementsByClassName('tips')[0];
+    // 设置变量
+    var control;  // 当前控制的方块
+    var score = 0;  // 分数
+    var scoreConf = [100, 200, 300, 350];  // 一次小几行，分数不同
+    init();
+
+    function init() {
+        // 为了页面时的初始化
+        createTab();
+        bindKeyEnter();
+        // gameStart()
+    }
+
+    function createTab() {
+        // 绘制游戏界面
+        for (var r=rows; r--;){
+            var row = tab.insertRow();
+            for (var c=cells; c--;){
+                var cell = row.insertCell();
+                if (r===0 || r===rows-1 || c===0 || c===cells-1){
+                    cell.classList.add('wall');
+                }
+            }
+        }
+    }
+
+    function bindKeyEnter() {
+        // 按下回车处理的事件
+        document.onkeydown = function (ev) {
+            if (ev.keyCode===13){
+                tips.innerHTML ='游戏开始';
+                document.onkeydown = null;
+                gameStart();
+            }
+        }
+    }
+
+    function gameStart() {
+        // 开始游戏
+        bindKeysForGame();
+        tips.innerHTML = '按 Z 或 X 旋转方块';
+        control = createSqu();
+        control.position = [1, 4];  // 添加blocks[0]的位置属性
+        map(control);
+        setInterval("move('down')", 500)
+    }
+
+    function createSqu() {
+        // 创建一个方块
+        var types = [
+            {'name': "方块", 'color': 'saddlebrown', 'blocks': [[0, 0], [0, 1], [1, 0], [1, 1]],
+                'styleIndex': 0, 'styles': [
+                [[0, 0], [0, 1], [1, 0], [1, 1]]
+            ]},
+            {'name': "7形", 'color': 'green', 'blocks': [[0, 0], [0, 1], [1, 1], [2, 1]],
+                'styleIndex': 0, 'styles': [
+                [[0, 0], [0, 1], [1, 1], [2, 1]],
+                [[1, 0], [1, 1], [1, 2], [0, 2]],
+                [[0, 0], [1, 0], [2, 0], [2, 1]],
+                [[0, 0], [1, 0], [0, 1], [0, 2]]
+            ]},
+            {'name': "反7", 'color': 'green', 'blocks': [[0, 0], [0, 1], [1, 0], [2, 0]],
+                'styleIndex': 0, 'styles': [
+                [[0, 0], [0, 1], [1, 0], [2, 0]],
+                [[0, 0], [0, 1], [0, 2], [1, 2]],
+                [[0, 1], [1, 1], [2, 0], [2, 1]],
+                [[0, 0], [1, 0], [1, 1], [1, 2]]
+            ]},
+            {'name': "长条", 'color': 'darkorange', 'blocks': [[0, 0], [0, 1], [0, 2], [0, 3]],
+                'styleIndex': 0, 'styles': [
+                [[0, 0], [0, 1], [0, 2], [0, 3]],
+                [[0, 0], [1, 0], [2, 0], [3, 0]]
+            ]},
+            {'name': "丁字", 'color': 'blue', 'blocks': [[0, 0], [0, 1], [1, 1], [0, 2]],
+                'styleIndex': 0, 'styles': [
+                [[0, 0], [0, 1], [1, 1], [0, 2]],
+                [[1, 0], [0, 1], [1, 1], [2, 1]],
+                [[1, 0], [1, 1], [0, 1], [1, 2]],
+                [[0, 0], [1, 0], [1, 1], [2, 0]]
+            ]},
+            {'name': "Z字", 'color': 'gold', 'blocks': [[0, 0], [0, 1], [1, 1], [1, 2]],
+                'styleIndex': 0, 'styles': [
+                [[0, 0], [0, 1], [1, 1], [1, 2]],
+                [[0, 1], [1, 0], [1, 1], [2, 0]]
+            ]},
+            {'name': "反Z", 'color': 'gold', 'blocks': [[1, 0], [1, 1], [0, 1], [0, 2]],
+                'styleIndex': 0, 'styles': [
+                [[1, 0], [1, 1], [0, 1], [0, 2]],
+                [[0, 0], [1, 0], [1, 1], [2, 1]]
+            ]}
+        ];
+        var index = Math.floor(Math.random()*types.length+1);
+        return types[index-1]
+    }
+
+    function map(square) {
+        // 把方块画在表格里
+        var rubber = arguments[1] ? arguments[1] : false;
+        for (var i=0; i<square.blocks.length; i++) {
+            var cell = tab.rows[square.blocks[i][0]+square.position[0]].cells[square.blocks[i][1]+square.position[1]];
+            if (rubber){
+                cell.style.backgroundColor = '';
+                cell.classList.remove('control')
+            } else {
+                cell.style.backgroundColor = square.color;
+                cell.classList.add('control')
+            }
+        }
+    }
+
+    function fixed(square){
+        // 固定方块
+        for (var i=0; i<square.blocks.length; i++) {
+            var cell = tab.rows[square.blocks[i][0]+square.position[0]].cells[square.blocks[i][1]+square.position[1]];
+            cell.classList.remove('control');
+            cell.classList.add('fixed')
+        }
+    }
+
+    function bindKeysForGame() {
+        // 游戏时候需要绑定的按键
+        document.onkeydown = function (ev) {
+            switch (ev.keyCode) {
+                case 37:  // 向左
+                    move('left');
+                    break;
+                case 38:  // 向上
+                    // move('up');
+                    change();
+                    break;
+                case 39:  // 向右
+                    move('right');
+                    break;
+                case 40:  // 向下
+                    move('down');
+                    break;
+                case 90:  // 字母Z
+                    change(true);
+                    break;
+                case 88:  // 字母X
+                    change();
+                    break;
+                // default:
+                //     tips.innerHTML = ev.keyCode;
+            }
+        }
+    }
+
+    function change() {
+        // 改变形状
+        var contrarotate = arguments[0] ? arguments[0] : false;
+        if (contrarotate) {
+            control.styleIndex -= 1;
+            if (control.styleIndex < 0) {
+                control.styleIndex = control.styles.length-1;
+            }
+        } else {
+            control.styleIndex += 1;
+            if (control.styleIndex > control.styles.length-1){
+                control.styleIndex = 0;
+            }
+        }
+        var target = [[0,0],[0,0],[0,0],[0,0]];
+        for (var i=0; i<control.styles[control.styleIndex].length; i++){
+            target[i][0] = control.styles[control.styleIndex][i][0]+control.position[0];
+            target[i][1] = control.styles[control.styleIndex][i][1]+control.position[1];
+        }
+        if (canMove(target)){
+            map(control, true);
+            for (var j=0; j<control.blocks.length; j++){
+                control.blocks[j][0] = control.styles[control.styleIndex][j][0];
+                control.blocks[j][1] = control.styles[control.styleIndex][j][1];
+            }
+            map(control)
+        }
+    }
+
+    function move(mode) {
+        var row, cell;
+        switch (mode){
+            case 'left':
+                row = 0;
+                cell = -1;
+                break;
+            case 'right':
+                row = 0;
+                cell = 1;
+                break;
+            case 'up':
+                row = -1;
+                cell = 0;
+                break;
+            case 'down':
+                row = 1;
+                cell = 0;
+                break;
+        }
+        var target = [[0,0],[0,0],[0,0],[0,0]];
+        for (var i=0; i<control.blocks.length; i++){
+            target[i][0] = control.blocks[i][0]+control.position[0]+row;
+            target[i][1] = control.blocks[i][1]+control.position[1]+cell;
+        }
+        if (canMove(target)){
+            map(control, true);
+            control.position[0] += row;
+            control.position[1] += cell;
+            map(control)
+        } else {
+            if (mode==='down') {
+                //  向下移动，并且判定为不可移动，则固定
+                fixed(control);  // 固定住方块
+                checkAndClean(control);  // 检查消行
+                control = createSqu();
+                control.position = [1, 4];  // 添加blocks[0]的位置属性
+                map(control);
+            }
+        }
+    }
+
+    function checkAndClean(square) {
+        // 检查并消除
+        var checked = [];
+        var cleaned = [];
+        var row;
+        for (var i=0; i<square.blocks.length; i++){
+            row = square.blocks[i][0] + square.position[0];
+            if (checked.indexOf(row) === -1){
+                checked.push(row);
+                var needClean = true;
+                for (var j=1; j<cells-1; j++ ) {
+                    var cell = tab.rows[row].cells[j];
+                    if(cell.className.search(/\b(fixed)\b/) === -1){
+                        needClean = false;
+                        break;
+                    }
+                }
+                if (needClean) {
+                    // 消除一行
+                    cleaned.push(row);
+                    for (var k=1; k<cells-1; k++) {
+                        cell = tab.rows[row].cells[k];
+                        cell.classList.remove('fixed');
+                        cell.style.backgroundColor = '';
+                    }
+                }
+            }
+        }
+        cleaned.length && addScore(cleaned.length) && goDown(cleaned);  // 结算分数，然后下沉
+    }
+
+    function addScore(n) {
+        n = n<=scoreConf.length ? n : scoreConf[scoreConf.length-1];
+        score += scoreConf[n-1];
+        tips.innerHTML = "分数：" + score;
+        return true
+    }
+
+    function goDown(list) {
+        // 消行后的沉降
+        var count = 0;
+        for (var i=list.length; i--;){
+            for (var r=list[i]-1; r--;){
+                tab.rows[r+2+count].innerHTML = tab.rows[r+1+count].innerHTML
+            }
+            count += 1;
+        }
+    }
+
+    function canMove(target) {
+        // 是否可以移动
+        for (var j=0; j<target.length; j++){
+            var cell = tab.rows[target[j][0]].cells[target[j][1]];
+            if(cell.className.search(/\b(wall|fixed)\b/) > -1){
+                return false
+            }
+        }
+        return true
+    }
+
+
+
+</script>
+</body>
+</html>

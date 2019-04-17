@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="远程会诊" content="数字切片"/>
+    <title>数字云切片</title>
+    <link rel="stylesheet" href="css/static/bootstrap.min.css"/>
+    <link rel="stylesheet" href="icon/font-awesome-4.7.0/css/font-awesome.min.css"/>
+
+    <link rel="stylesheet" href="css/basic.css"/>
+    <link rel="stylesheet" href="css/login.css"/>
+
+    <script type="text/javascript" src="js/static/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/static/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <!--<div class="container-fluid">-->
+        <form id="form1" runat="server">
+            <!--<div class="header">
+                <div class="con">
+                    <h1 class="logo">
+                        <img src="img/logo.png" style="width: 50%; float: left; margin-top: 20px" />
+                    </h1>
+                </div>
+            </div>-->
+            <div class="wrap">
+                <div class="banner-show" id="js_ban_content">
+                    <div class="cell bns-01">
+                        <div class="con"></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="register-box">
+                        <div class="reg-slogan">
+                            <span class="glyphicon glyphicon-cloud" style="top: 6px; color: #9dd6fc"></span>用户登录
+                        </div>
+                        <div class="reg-form" id="js-form-mobile">
+                            <div class="cell">
+                                <input type="text" class="text" placeholder="用户名" id="username">
+                            </div>
+                            <div class="cell">
+                                <input type="password" class="text" placeholder="密码" id="pwd">
+                            </div>
+                            <!-- 						<div class="cell"> -->
+                            <!-- 							<input type="text" class="text" id="captchastr" placeholder="验证码" -->
+                            <!-- 								style="width: 180px;"> <a -->
+                            <!-- 								href="javascript: refreshCode();"><span -->
+                            <!-- 								style="margin-bottom: 5em; margin-top: 7px; float: right;">&nbsp;&nbsp;&nbsp;刷新</span></a> -->
+                            <!-- 							<img src="../CloudSlide/api/captcha/img" class="img-responsive" -->
+                            <!-- 								id="captcha" alt="验证码图片" -->
+                            <!-- 								style="width: 90px; height: 35px; float: right"> -->
+                            <!-- 						</div> -->
+
+                            <!--<div
+                                style="font-size: 14px; margin-right: 100px; float: left; margin-top: -3px; margin-bottom: 10px">
+                                <label> <input id="autologin" type="checkbox">
+                                    下次自动登录
+                                </label>
+                            </div>-->
+                            <div class="bottom">
+                                <button type="button" id="loginButton" class="button btn-green" style="width: 100%" onclick="login()">登录</button>
+                                <button type="button" class="button btn-green" style="width: 100%" onclick="Register()">注册</button>
+                            </div>
+                        </div>
+                        <div class="reg-slogan" style="margin-right: 40px; float: right; margin-top: 15px">
+                            <span style="font-size: 16px; font-weight: 400">V 1.0.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="dialogQRCode" class="hide" style="padding: 0px; margin: 0px">
+                <div class="modal-body overflow-visible">
+                    <div class="widget-body" style="height: 100%;">
+                        <div class="profile-user-info profile-user-info-striped" style="height: 100%;">
+                            <div class="profile-info-row">
+                                <img id="img_QRCode" src="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer center col-lg-12">
+                <div class="container" style="top:0px">
+                    <p>版权所有 © 2013-2016 湖南瞬渺信息技术有限公司 All Rights Reserved.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;湘ICP备11052806号-1</p>
+                </div>
+            </div>
+        </form>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+    <!-- </div> -->
+
+    <script type="text/javascript">
+        $(function(){
+
+            $("#loginButton").click(function(){
+                window.location.href = "index.html";
+            })
+            
+            // $(document)
+
+
+
+
+
+
+
+        });
+
+
+    </script>
+
+
+
+</body>
+</html>

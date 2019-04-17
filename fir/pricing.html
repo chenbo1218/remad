@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>fir.im - 免费应用内测托管平台|iOS应用Beta测试分发|Android应用内测分发</title>
+    <meta name="keywords" content="fir,fir.im,app分发,免费托管,内测分发,iOS,Android,iPad,iPhone,App下载,免费安装,adhoc,InHouse,fir cli,beta测试,ipa,apk,安卓,苹果应用,二维码下载,UDID,iOS内测,Android内测,beta test,app store,testflight,firim">
+    <meta name="description" content="fir.im 为开发者提供测试应用极速发布，应用崩溃实时分析、用户反馈收集等一系列开发测试效率工具服务，帮助开发者将更多精力放在产品的开发与应用的优化上。">
+    <meta property="qc:admins" content="0650725312615">
+
+    <link rel="stylesheet" href="assets/stylesheets/icons.css">
+    <link rel="stylesheet" href="assets/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+    <script type="text/javascript">
+        var currentUser = {
+            "id": "59fb2f08959d695d0d000448",
+            "uuid": "59fb2e365642123b9f0aad56",
+            "name": "3369852946",
+            "email": "3369852946@qq.com",
+            "is_confirmed": true,
+            "gravatar": "https://avatar-file.flow.ci/avatar/57d02bc8a097b70cdb29bcb1c251c2d3.png?r=PG",
+            "is_developer": true,
+            "is_tester": false,
+            "is_phone_confirmed": true,
+            "taobao_user_id": null,
+            "taobao_user_name": null,
+            "qq_number": null,
+            "verify_state": "",
+            "verify_refuse_reason": null,
+            "phone_number": "18570300218",
+            "company": null,
+            "job": null,
+            "upload_setting": "qiniu",
+            "has_paid": true,
+            "created_at": 1509633800,
+            "allowed_perms": [],
+            "orgs": [{
+                "id": "59fb2f08548b7a1688813717",
+                "name": "user_private_59fb2f08548b7a1688813716",
+                "title": "私人组织账户",
+                "gravatar": null,
+                "category": "free",
+                "org_status": "paid",
+                "category_expired_at": 1825166600,
+                "org_constraint": {
+                    "_id": "57d7cb867e4ff074978fe1ac",
+                    "daily_download": 100,
+                    "package_size": 300,
+                    "show_release_count": 10,
+                    "saved_days_count": 90,
+                    "org_max_members_count": 10,
+                    "year_price": 0,
+                    "month_price": 0,
+                    "name": "free",
+                    "category_expired_at": 1825166600
+                },
+                "members": [],
+                "invoice_title": null,
+                "express_contact_name": null,
+                "express_contact_phone": null,
+                "express_address": null,
+                "taxpayer_number": null,
+                "user": {
+                    "id": "59fb2f08548b7a1688813716",
+                    "uuid": "59fb2e365642123b9f0aad56",
+                    "email": "3369852946@qq.com",
+                    "default_org_id": "59fb2f08548b7a1688813717"
+                },
+                "all_data_package_cnt": 71000,
+                "used_data_package_cnt": 68952,
+                "org_packet": {
+                    "id": "57d7cb867e4ff074978fe1ac",
+                    "name": "free",
+                    "daily_download": 100,
+                    "package_size": 300,
+                    "show_release_count": 10,
+                    "saved_days_count": 90,
+                    "org_max_members_count": 10,
+                    "year_price": 0,
+                    "month_price": 0
+                }
+            }],
+            "is_verified": true,
+            "new_user_gift_status": "id_card_first",
+            "access_token": "2f04b21b28f4d85db84882f67c5569c124f3ff813e",
+            "saved_at": 1553477250859
+        }
+        var endpoint = 'https://api.fir.im'.replace('http:', location.protocol);
+        var locale = 'zh';
+    </script>
+</head>
+<body class="page-Pricing">
+    <div class="apps-dropdown">
+        <div class="wrapper"></div>
+    </div>
+    <div class="dropdown-cover"></div>
+    <nav class="navbar navbar-transparent fade-out " role="navigation">
+        <div class="navbar-header"><a class="navbar-brand" href="/"><i class="icon-logo"></i> </a></div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse" ng-controller="NavbarController">
+            <div class="dropdown">
+                <div><i class="icon-brace-left"></i>
+                    <ul class="navbar-bracket">
+                        <li><a href="index.html">首页</a> <i class="icon-comma"></i></li>
+                        <li><a href="/apps">应用管理</a><i class="icon-comma"></i></li>
+                        <li><a href="pricing.html">价格</a> <i class="icon-comma"></i></li>
+                        <li><a href="docs.html">文档</a> <i class="icon-comma"></i></li>
+                        <li><a href="tools.html">工具</a><i class="icon-comma"></i></li>
+                        <li><a href="support.html">帮助中心</a><i class="icon-comma"></i></li>
+                    </ul>
+                    <i class="icon-brace-right"></i></div>
+            </div>
+        </div>
+    </nav>
+    <div class="menu-toggle fade-out"><i class="icon-menu"></i></div>
+    <menu>
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/docs">文档</a></li>
+            <li><a href="/tools">工具</a></li>
+            <li><a href="/support">帮助中心</a></li>
+            <li><a href="/oauth/signin">登录</a></li>
+        </ul>
+    </menu>
+
+    <script>
+        function firEvent(cate,act,label,url){
+            ga('send','event',cate,act,label,{'hitCallback':
+                    function(){window.location.href= url}
+            })
+            return false
+        }
+    </script>
+
+
+    <div class="invisible" id="root-packages">
+        <div class="banner banner-packages">
+            <h1>
+                <div class="brackets"><i class="icon-brace-left"></i> <span>Pricing</span> <i
+                        class="icon-brace-right"></i></div>
+                <small>价格</small>
+            </h1>
+            <div class="pattern-bg"></div>
+        </div>
+        <div class="section packages-content">
+            <h3>
+                <div>选择下载次数包</div>
+                <small>实名认证用户有&nbsp;100&nbsp;&nbsp;次/日的免费下载限额，下载量超出限制的用户可购买下载次数包提升下载次数限制总量</small>
+            </h3>
+            <div class="package-cards-wrap">
+                <div class="package-cards" id="package_content"></div>
+            </div>
+            <small>企业客户需要包年方案，私有定制方案，请联系&nbsp;<a onclick="contact()" href="mailto:sales@fir.im?subject=%E5%92%A8%E8%AF%A2%20fir.im%20%E5%A4%A7%E5%AE%A2%E6%88%B7%E6%96%B9%E6%A1%88">sales@fir.im</a>
+            </small>
+        </div>
+        <div class="section packages-cert">
+            <div class="cert-header"><i class="icon icon-users"></i></div>
+            <div class="cret-row-wrap">
+                <div class="cert-row">
+                    <div class="half text-right">
+                        <div class="cert-item">非实名用户</div>
+                        <ul class="list-unstyled cert-list">
+                            <li>下载量 10 次/天</li>
+                            <li>安装包保存 48 小时</li>
+                        </ul>
+                    </div>
+                    <div class="half text-left">
+                        <div class="cert-item">实名认证用户</div>
+                        <ul class="list-unstyled cert-list">
+                            <li>下载量 100 次/天</li>
+                            <li>安装包保存 90 天</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section packages-faq">
+            <div class="packages-faq-wrap text-left">
+                <div class="packages-faq-header">FAQ</div>
+                <div class="packages-faq-content">
+                    <ol class="packages-faq-list">
+                        <li>
+                            <div class="faq-title">为什么要限制下载次数？</div>
+                            <ol class="faq-list-items">
+                                <li>1、根据我们的数据分析，当前每日的下载限制，已经可以满足 99% 的内测用户</li>
+                                <li>2、降低未被发现的违规应用造成的影响范围</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <div class="faq-title">为什么要限制应用包的保存时长？</div>
+                            <ol class="faq-list-items">
+                                <li>1、应用内测是有周期的，一般应用的内测周期为 1 个月 (可以通过更新，延长保存时间)</li>
+                                <li>2、降低未被发现的违规应用造成的影响范围</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <div class="faq-title">需要更多的下载次数为什么要付费？</div>
+                            <ol class="faq-list-items">
+                                <li>fir.im 的平台定位不是应用商店，如果要进行大范围应用公测，希望可以支付我们成本费用</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <div class="faq-title">经过实名认证后，90 天有效期会有到期提醒吗？</div>
+                            <ol class="faq-list-items">
+                                <li>会有，我们会通过在线消息或者邮件提醒。开发者可在网站应用管理页面点击“激活”，激活后应用可下载时间延期 90 天。有应用版本更新的话，会根据更新日期自动延期 90
+                                    天。
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <div class="faq-title">超过每日下载量限制后，应用就不能下载了对吗？</div>
+                            <ol class="faq-list-items">
+                                <li>是的，超过限制后将不能下载，请根据实际测试需求提前充值购买次数包。</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <div class="faq-title">如何查看应用下载次数？</div>
+                            <ol class="faq-list-items">
+                                <li>
+                                    在应用管理页面的右上角有账号剩余下载次数显示。如果要针对某次测试分发统计（包含针对某个二维码的下载统计），可使用我们应用编辑页面的高级统计功能，生成统计链接。付费开发者，有费用扣除发生后，我们会每日发送邮件告知前日下载统计。
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <div class="faq-title">如果应用有出现被竞争对手恶意刷量的情况怎么处理？</div>
+                            <ol class="faq-list-items">
+                                <li>如果发现下载次数存在异常，可发送邮件给 help[at]fir.im,
+                                    我们会排查原因，确认存在恶意刷量，我们会根据具体情况恢复下载次数。建议最好设置访客密码，或仅允许团队成员下载，避免这种情况的出现。
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <div class="faq-title">购买下载次数包应该充值到哪个账户？</div>
+                            <ol class="faq-list-items">
+                                <li>fir.im
+                                    上的下载次数统一从应用的管理员账户扣除，充值时请注意在管理员账户购买下载次数包，请勿在测试成员的账户下购买，否则，购买的下载次数包只能针对购买账户为应用管理员的应用使用。
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <div class="faq-title">购买的次数包使用期限是多久？</div>
+                            <ol class="faq-list-items">
+                                <li>购买的次数是账号下所有应用的累计下载次数，用完即止，无过期时间。</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-mask hide"></div>
+    <div class="dialog buy-confirm hide" id="undevelop_confirm">
+        <header class="text-center">确认购买</header>
+        <div class="content">fir.im 下载次数包主要面向开发者，测试用户无需购买。如因限制无法下载，请联系开发者。</div>
+        <div class="actions text-center">
+            <button class="btn btn-default" onclick="closeConfirm()">放弃购买</button>
+            <button class="btn btn-yellow" onclick="pay(this, true)">我是开发者，继续购买</button>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-nav">
+                <table>
+                    <tr>
+                        <td>
+                            <ul class="list-inline">
+                                <li class="copyright">©&nbsp;<a href="//fir.im">fir.im&nbsp;2019</a></li>
+                                <li><a href="/about">关于我们</a></li>
+                                <li><a href="//blog.fir.im">博客</a></li>
+                                <li><a href="/partners">合作伙伴</a></li>
+                                <li><a href="/termsofuse">用户协议</a></li>
+                                <li><a href="/privacy">隐私政策</a></li>
+                                <li><a href="/pricing">价格</a></li>
+                            </ul>
+                            <div>
+                                <ul class="list-inline list-unstyled navbar-footer">
+                                    <li><a target="_blank"
+                                           href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37030302000287"
+                                           style="height: 30px; display: inline-block"><img src="images/beianbgs.png" style="margin-right: 4px">鲁公网安备
+                                        37030302000287号</a></li>
+                                    <li><a>晋ICP备15006832号-1</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="locale"><a href="?locale=en">English</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="lib/markup.js"></script>
+    <script src="assets/javascripts/main.js"></script>
+    <script src="assets/javascripts/analytics.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){
+            i['GoogleAnalyticsObject']=r;
+            i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},
+                    i[r].l=1*new Date();
+            a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+            a.async=1;a.src=g;
+            m.parentNode.insertBefore(a,m)
+        })(window,document,'script','assets/javascripts/analytics.js','ga');
+        ga('create', 'UA-43616652-1', 'auto');
+    </script>
+    <script type="text/javascript">window.ga = window.ga || function(){}</script>
+    <script type="text/javascript">ga('set', '&uid', "59fb2e365642123b9f0aad56");</script>
+    <script type="text/javascript">
+        !function(a,b,c,d){
+            var e=b.createElement("script");
+            e.type="text/javascript",
+                    e.crossOrigin="anonymous",
+                    e.src=c,
+                    m=b.getElementsByTagName("script")[0],
+                    d&&(e.async=!0),
+                    m.parentNode.insertBefore(e,m),
+                    a.bughd=function(){
+                        (a.bughd.q=a.bughd.q||[]).push(arguments)
+                    }
+        }(window,document,"assets/javascripts/bughd.min.js",!1);
+        bughd("create",{key:"eebd236c8c6e9f815ff9822102c2ecd7", sendConsoleError: false})
+        bughd.onerror = function(){
+            ga("send","event","bughd","emitter","errorCount");
+        }
+    </script>
+
+    <script type="text/javascript">
+        window.__MIXPANEL_TOKEN__ = '4fb7314d7432f6c41d795199438b703d'
+        if (window.mixpanel) {
+            window.mixpanel.init(window.__MIXPANEL_TOKEN__);
+            try{
+                var user = localStorage.getItem('rio_web.currentUser')
+                if (user) {
+                    user = JSON.parse(user)
+                    mixpanel.identify(user.uuid)
+                }
+            } catch(e) {}
+        }
+    </script>
+    <script src="assets/javascripts/pricing.js"></script>
+    <script type="text/javascript">ga("send","pageview",{page:'pricing'})</script>
+
+</body>
+</html>

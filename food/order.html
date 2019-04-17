@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>美女订餐-开始点餐</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            font-family: "Microsoft Yahei", "Lantinghei SC", Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+        body{
+            /*visibility: hidden;*/
+        }
+
+        .btn{
+            background-color: lightpink;
+            color: #fff;
+            border: none;
+            outline: none;
+        }
+        .btn:hover,.btn:active,.btn:after,.btn:focus{
+            background-color: hotpink;
+            color: #fff;
+            border: none;
+        }
+        .container-fluid{
+            width: 50%;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /*顶部信息*/
+        #info{
+            width: 100%;
+            padding: 0 0;
+            background-color: lightpink;
+            color: #fff;
+            padding-right: 10px;
+        }
+        #info span,#info a{
+            color: #fff;
+        }
+        #info a:hover{
+            color: hotpink;
+        }
+        #info #namecont{
+            height: 50px;
+            line-height: 50px;
+        }
+
+        /*菜单列表*/
+        .table thead{
+            background-color: lightgray;
+        }
+        #shop #shop-name{
+            font-size: 16px;
+            font-weight: bold;
+        }
+        #shop #shop-tel{
+            color: darkgray;
+        }
+        #food{
+            width: 100%;
+            margin-top: 20px;
+        }
+        #food thead tr th{
+            font-size: 14px;
+        }
+        #food tbody tr:hover{
+            background: #ffcddb;
+            cursor: pointer;
+        }
+        #food tbody tr.on{
+            background: lightpink;
+            color: #fff;
+        }
+        #food tbody tr td{
+            /*text-align:center;*/
+            line-height:20px;
+        }
+        #btn-order,#btn-suggest,#btn-refresh{
+            width: 100px;
+        }
+        #warning{
+            color: #c9302c;
+            margin: 0 0;
+            padding: 5px 8px;
+            visibility: hidden;
+        }
+
+        /*订单列表*/
+        #btn-refresh{
+            margin-top: 30px;
+        }
+        #order{
+            width: 100%;
+            margin-top: 20px;
+        }
+        #order thead tr th{
+            font-size: 14px;
+        }
+        #order tbody tr td{
+            /*text-align:center;*/
+            line-height:20px;
+        }
+
+        /*星级评价*/
+        .satisfy {
+            height: 40px;
+            line-height: 40px;
+            margin-top: 30px;
+        }
+        .satisfy span:first-child {
+            display: inline-block;
+            line-height: 24px;
+            padding-top: 12px;
+            float: left;
+        }
+        .satisfy .icoarea {
+            display: block;
+            height:24px;
+            padding: 13px;
+            float: left;
+        }
+        .satisfy .icoarea .icobox {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            float: left;
+            background-image: url("images/stars.jpg");
+            background-position: 0 0;
+        }
+        .satisfy .icoarea  span.clickselected {
+            background-position: 0 -24px;
+        }
+
+        .satisfy .icoarea  span.hoverselected {
+            background-position: 0 -24px;
+        }
+        .satisfy .icoarea  span.hoverunselected {
+            background-position: 0 0px;
+        }
+
+        /*留言*/
+        .textbox {
+            margin-top: 5px;
+        }
+        .textbox p {
+            height: 20px;
+            line-height: 20px;
+        }
+        .textbox textarea {
+            box-sizing: border-box;
+            height: 100px;
+            width: 90%;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+    <!--顶部信息-->
+    <div class="container-fluid">
+        <nav id="info" class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <span class="navbar-brand">女神点餐</span>
+            </div>
+            <div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="namecont">欢迎回来：<span id="username"></span></li>
+                    <li class="uppass"><a id="btn-uppass" href="#">修改密码</a></li>
+                    <li class="exit"><a id="btn-exit" href="#">退出</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!--内容-->
+    <div class="container-fluid">
+        <!--菜单-->
+        <div class="row">
+            <div class="col-md-12">
+                <!--选择店铺-->
+                <div id="shop">
+                    <!--<button type="button" class="btn btn-default dropdown-toggle btn-sm btn-danger" data-toggle="dropdown">
+                        <span id="curshop"></span><span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        &lt;!&ndash;///待插入数据&ndash;&gt;
+                    </ul>-->
+                    <span id="shop-name"></span>&nbsp;&nbsp;&nbsp;<small id="shop-tel"></small>
+                </div>
+                <!--菜单表格-->
+                <table id="food" class="table">
+                    <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>价格</th>
+                        <th>口味</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--待插入数据-->
+                    </tbody>
+                </table>
+                <button id="btn-order" type="button" class="btn btn-danger" autocomplete="off">点餐</button>
+                <span id="warning" class="alert alert-warning" role="alert"></span>
+            </div>
+        </div>
+
+        <!--已点菜单-->
+        <div class="row">
+            <div class="col-md-12">
+                <button id="btn-refresh" type="button" class="btn btn-danger" autocomplete="off">刷新已点餐</button>
+                <table id="order" class="table">
+                    <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>店铺</th>
+                        <th>点餐人</th>
+                        <th>菜名</th>
+                        <th>价格</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--待插入数据-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--反馈-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="satisfy" >
+                    <span>满意度:</span>
+                    <span class="icoarea">
+                        <span class="icobox"></span>
+                        <span class="icobox"></span>
+                        <span class="icobox"></span>
+                        <span class="icobox"></span>
+                        <span class="icobox"></span>
+                    </span>
+                </div>
+                <div class="textbox">
+                    <p>有话要说？（限定150个字）</p>
+                    <textarea maxlength="150"></textarea>
+                </div>
+                <button id="btn-suggest" type="button" class="btn" autocomplete="off" disabled>点评</button>
+                <small>（点评功能暂未开放，敬请期待）</small>
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var serverRoot = "http://192.168.1.250:8080/food";//http://localhost:8080/food
+        //防跨地址访问
+        var _user = sessionStorage.getItem("user");
+        if(_user==null || _user==""){
+            alert("想匿名吃霸王餐？老老实实登录吧，若没有账号请向管理员申请！");
+            window.location.href = "index.html";
+            return;
+        }
+        $("body").css("visibility","visible");
+        $("#username").text(_user);
+        //管理员拥有额外选项
+        if(_user=="admin"){
+            $(".uppass").before("<li class='manange'><a id='btn-manage' href='#'>管理</a></li>")
+        }
+
+        //退出
+        $("#btn-exit").click(function(){
+            console.log("exit");
+            var url = serverRoot+"/LogoutServlet";
+            $.post(url,{userName:_user},function(result){
+                if($.trim(result)=="ok"){
+                    $("#username").text("");
+                    sessionStorage.clear();
+                    window.location.href = "index.html";
+                }
+            });
+        });
+
+        //修改密码
+        $("#btn-uppass").click(function(){
+            window.location.href = "uppass.html";
+        });
+
+        //管理
+        $("#btn-manage").click(function(){
+            window.location.href = "manage.html";
+        });
+
+
+        //初始化店铺
+        checkShop();
+        var $shopName = $("#shop #shop-name");
+        var $shopTel = $("#shop #shop-tel");
+        var $foodList = $("#food tbody");
+        var $warning = $("#warning");
+        var _curShop;
+        var _curFoods;
+        var _curFood=0;
+        function checkShop(){
+            $.ajax({
+                url: serverRoot+"/CheckUsingShopServlet",
+                dataType: "json",
+                async: true,
+                data: null,
+                type: "POST",
+                success: function(result) {
+                    //请求成功时处理
+                    console.log("response:",result);
+                    initShop(result);
+                },
+                error: function() {
+                    //请求出错处理
+                    $foodList.empty();
+                    var txt = "<tr><td colspan='3' style='text-align: center'>(╯□╰) 发生错误，获取店铺数据失败</td></tr>";
+                    $foodList.append(txt);
+                }
+            });
+        }
+        function initShop(shop){
+            if(shop==null)return;
+            _curShop = shop.shopName;
+            $shopName.text(shop.shopName);
+            $shopTel.text("电话："+shop.tel);
+            addFoods(shop.foods);
+        }
+        function addFoods(foods){
+            if(foods.length<=0)return;
+            //名字+价格+口味
+            $foodList.empty();
+            for(var i=0;i<foods.length;i++){
+                var food = foods[i];
+                var txt = "<tr>" +
+                        "<td>"+food.foodName+"</td>" +
+                        "<td>"+food.price+"元</td>" +
+                        "<td>重口味</td>" +
+                        "</tr>";
+                $foodList.append(txt);
+            }
+            _curFoods = foods;
+            //选中菜单
+            $("#food tbody tr").click(function(){
+                $(this).addClass("on").siblings("tr").removeClass("on");
+                _curFood = _curFoods[$(this).index()];
+                $("#btn-order").removeAttr("disabled");
+            });
+        }
+
+
+        //点餐提交
+        $("#btn-order").click(function(){
+            if(_curFood == 0){
+                $warning.stop().css({"visibility":"visible","display":"inline-block"});
+                $warning.text("您还未选择菜品");
+                $warning.fadeOut(2000);
+                return;
+            }
+            $.ajax({
+                url: serverRoot+"/OrderServlet",
+                dataType: "json",
+                async: true,
+                data: {"shopName":_curShop,"userName":_user,"foodName":_curFood.foodName,"price":_curFood.price},
+                type: "POST",
+                success: function(result) {
+                    //请求成功时处理
+                    console.log("response:",result);
+                    $warning.stop().css({"visibility":"visible","display":"inline-block"});
+                    $warning.text("点餐成功");
+                    $warning.fadeOut(2000);
+                    addOrders(result);
+                },
+                error: function() {
+                    //请求出错处理
+                    $warning.stop().css({"visibility":"visible","display":"inline-block"});
+                    $warning.text("发生错误，点餐失败");
+                    $warning.fadeOut(2000);
+                }
+            });
+        });
+
+
+        //初始化订单
+        checkOrder();
+        var $orderList = $("#order tbody");
+        $("#btn-refresh").click(function(){
+            checkOrder();
+        });
+        function checkOrder(){
+            $.ajax({
+                url: serverRoot+"/CheckOrdersServlet",
+                dataType: "json",
+                async: true,
+                data: null,
+                type: "POST",
+                success: function(result) {
+                    //请求成功时处理
+                    console.log("response:",result);
+                    /*$warning.stop().css({"visibility":"visible","display":"inline-block"});
+                    $warning.text("刷新成功");
+                    $warning.fadeOut(2000);*/
+                    addOrders(result);
+                },
+                error: function() {
+                    //请求出错处理
+                    $orderList.empty();
+                    var txt = "<tr><td colspan='5' style='text-align: center'>(╯□╰) 出错啦！获取订单数据失败</td></tr>";
+                    $orderList.append(txt);
+                }
+            });
+        }
+        function addOrders(orders){
+            $orderList.empty();
+            if(orders.length<=0){
+                var txt = "<tr><td colspan='5' style='text-align: center'>(^o^) 今天还没有人点餐，您是第一个点餐的人</td></tr>";
+                $orderList.append(txt);
+                return;
+            }
+            for(var i=0;i<orders.length;i++){
+                var order = orders[i];
+                var txt = "<tr>" +
+                        "<td>"+order.date+"</td>" +
+                        "<td>"+order.shopName+"</td>" +
+                        "<td>"+order.userName+"</td>" +
+                        "<td>"+order.foodName+"</td>" +
+                        "<td>"+order.price+"元</td>" +
+                        "</tr>";
+                $orderList.append(txt);
+            }
+        }
+
+
+
+
+
+        //星级打分js实现
+        $(".icoarea span").on("mouseover", function(){
+            $(this).prevAll().addClass("hoverselected");
+            $(this).nextAll().addClass("hoverunselected");
+            $(this).addClass("hoverselected");
+        });
+        $(".icoarea span").on("mouseout", function(){
+            $(this).prevAll().removeClass("hoverselected");
+            $(this).nextAll().removeClass("hoverunselected");
+            $(this).removeClass("hoverselected");
+        });
+        $(".icoarea span").on("click", function(){
+            $(this).parent().find("span").removeClass("clickselected");
+            $(this).prevAll().addClass("clickselected");
+            $(this).addClass("clickselected");
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

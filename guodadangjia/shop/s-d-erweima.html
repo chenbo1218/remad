@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>果园管理-二维码</title>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style type="text/css" >
+        /*210+170+80+225*2+120+100   105+85+40+110*2+60+50*/
+
+        body {
+            background-color: #ffe200;
+            /*height: 100%;*/
+            font-size: 14px;
+        }
+
+        .erweima{
+            width: 220px;
+            height: 215px;
+            margin: 0 auto;
+            margin-top: 25px;
+            position: relative;
+        }
+        .erweima .bg{
+            width: 220px;
+            height: 215px;
+        }
+        .erweima .ma{
+            width: 117px;
+            height: 117px;
+            position: absolute;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            top: 50px;
+        }
+
+        .info{
+            width: 280px;
+            height: 180px;
+            margin: 0 auto;
+            margin-top: 25px;
+            box-sizing: border-box;
+            background-color: #fff;
+            border: 2px solid #f67917;
+            border-radius: 20px;
+        }
+        .info .txt{
+            width: 240px;
+            height: 150px;
+            margin: 0 auto;
+            margin-top: 15px;
+        }
+
+        .foot{
+            width: 300px;
+            height: 20px;
+            position: fixed;
+            margin: 0 auto;
+            bottom: 25px;
+            left: 0px;
+            right: 0px;
+        }
+        .foot img{
+            width: 20px;
+            height: 20px;
+            float: left;
+        }
+        .foot span{
+            height: 20px;
+            line-height: 20px;
+            display: inline-block;
+            float: left;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+        <h2>二维码</h2>
+    </div>
+
+    <div class="erweima">
+        <img class="bg" src="../images/shop/seller/d_erweima_bg.png" alt=""/>
+        <img class="ma" src="../images/shop/seller/d_erweima.jpg" alt=""/>
+    </div>
+
+    <div class="info">
+        <div class="txt">
+            <p>店铺名称：<span>西瓜红的红</span></p>
+            <p>开业时间：<span>2016年8月30日</span></p>
+            <p>店铺等级：<span>金牌卖家</span></p>
+            <p>店铺编号：<span>201608301212</span></p>
+            <p>店铺宣言：<span>本店出品，必属精品。本店出品，必属精品。本店出品，必属精品。本店出品，必属精品。本店出品，必属精品。</span></p>
+        </div>
+    </div>
+
+    <div class="foot">
+        <img src="../images/shop/seller/d_erweima_foot.png" alt=""/>
+        <span>点击右上角图标，发给你的朋友们推广小店</span>
+    </div>
+
+
+
+    <script src="../js/jquery-2.2.1.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".comm-ico-back a").back();
+
+
+        });
+    </script>
+</body>
+</html>

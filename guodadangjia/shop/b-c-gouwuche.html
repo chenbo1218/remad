@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>购物车</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/fakeLoader.css"/>
+    <style type="text/css" >
+        body {
+            font-size: 12px;
+        }
+
+        .address{
+            height: 50px;
+            line-height: 17px;
+            padding: 5px 10px;
+            border-bottom: 1px solid lightgray;
+        }
+        .address .p1{
+            float: left;
+        }
+        .address .p2{
+            float: left;
+            margin-left: 20px;
+        }
+        .address .p3{
+            float: right;
+            line-height: 50px;
+        }
+        .address .p3 a{
+            text-decoration: none;
+        }
+
+        .items{
+
+        }
+        .item{
+            /*width: 100%;*/
+            height: 75px;
+            padding: 5px 10px;
+            border-bottom: 1px solid lightgray;
+        }
+        .item .image{
+            width: 87px;
+            height: 75px;
+            float: left;
+        }
+        .item .info{
+            width: 135px;
+            height: 75px;
+            margin-left: 15px;
+            line-height: 25px;
+            float: left;
+        }
+        .item .info .product-price{
+            color: #fabe00;
+        }
+        .item .oprate{
+            float: right;
+        }
+        .item .oprate .delete button{
+            width: 60px;
+            height: 22px;
+            color: #000;
+            font-size: 12px;
+            background-color: #fff;
+            border: 0.5px solid #e4e4e4;
+            border-radius: 12px;
+        }
+        .item .oprate .delete button:active{
+            color: #fff;
+            background-color: #a7a7a7;
+        }
+        .item .oprate .product-countbar{
+            width: 100px;
+            height: 20px;
+        }
+        .comm-countbar .comm-countbar-text{
+            color: #fabe00;
+            background-color: #fff;
+            border-style: none;
+            border: 1px solid #a7a7a7;
+        }
+        .comm-countbar button{
+            background-color: #e4e4e4;
+            border:1px solid #a7a7a7;
+        }
+        .comm-countbar button:active{
+            background-color: #a7a7a7;
+        }
+
+        .total{
+            height: 30px;
+            line-height: 30px;
+            padding: 5px 10px;
+        }
+        .total p{
+            font-size: 16px;
+            float: right;
+        }
+        .total span{
+            color: #fabe00;
+        }
+
+        .pay .p1{
+            height: 25px;
+            line-height: 25px;
+            padding: 0px 10px;
+            background-color: #e4e4e4;
+        }
+        .pay .p2{
+            height: 35px;
+            padding: 5px 10px;
+            border-bottom: 5px solid #e4e4e4;
+        }
+        .pay .p2 div{
+            float: left;
+            font-size: 14px;
+            line-height: 35px;
+        }
+        .pay .p2 div:last-child{
+            margin-left: 100px;
+        }
+        .pay .p2 img{
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+        .pay .p2 span.radio-circle {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 1px solid #fabe00;
+            background-color: #fff;
+            border-radius: 6px;
+            vertical-align: middle;
+        }
+        .pay .p2 span.radio-circle.on{
+            background-color: #fabe00;
+        }
+
+        .pay .p3{
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-bottom: 5px solid lightgray;
+        }
+        .pay .p3 .red{
+            float: right;
+        }
+        .pay .p3 img{
+            width: 80px;
+            height: 22px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .pay .p3 a{
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .btn-pay{
+            height: 45px;
+            position: fixed;
+            bottom: 0px;
+            left: 25%;
+        }
+        .btn-pay button{
+            border-radius: 20px;
+        }
+
+        /*底部导航*/
+        .nav-bottom {
+            background-color: #f2f2f2;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            z-index: 999;
+        }
+        .nav-bottom ul {
+            height: 60px;
+        }
+        .nav-bottom ul li {
+            width: 25%;
+            height: 60px;
+            list-style-type: none;
+            float: left;
+            /*background-color: blue;*/
+        }
+        .nav-bottom li.on a{
+            color: #fabe00;
+        }
+        .nav-bottom li a:active{
+            color: #fabe00;
+        }
+        .nav-bottom li a {
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+        .nav-bottom ul li a img {
+            width: 30px;
+            height: 30px;
+            padding: 10px 5px 0;
+            margin: 0 auto;
+            display: block;
+        }
+        .nav-bottom ul li a span{
+            display: block;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            margin: 0 auto;
+            font-size: 12px;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+        <h2>购物篮</h2>
+    </div>
+
+    <!--配送地址-->
+    <div class="address">
+        <div class="p1">
+            <p><span>收&nbsp;&nbsp;货&nbsp;&nbsp;人</span>
+            <p><span>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</span>
+            <p><span>收货地址</span>
+        </div>
+        <div class="p2">
+            <span>西瓜红的红</span></p>
+            <span>13888888888</span></p>
+            <span>长沙市芙蓉区</span></p>
+        </div>
+        <div class="p3">
+            <a href="">修改&gt;</a>
+        </div>
+    </div>
+
+    <!--购物列表-->
+    <div class="items">
+        <div class="item">
+            <img class="image" src="../images/fruits/f1.jpg" alt=""/>
+            <div class="info">
+                <p class="product-name">新西兰阳光柠檬（5个）</p>
+                <p class="product-mode">规格：5个/盒</p>
+                <p class="product-price" alt="25">￥25.00</p>
+            </div>
+            <div class="oprate">
+                <div class="delete comm-btn-middle"><button>删除</button></div>
+                <div class="product-countbar comm-countbar">
+                    <button class="comm-countbar-btnleft">-</button>
+                    <input type="text" class="comm-countbar-text" maxlength="3" value="1"/>
+                    <button class="comm-countbar-btnright">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img class="image" src="../images/fruits/f2.jpg" alt=""/>
+            <div class="info">
+                <p class="product-name">新西兰阳光柠檬（5个）</p>
+                <p class="product-mode">规格：5个/盒</p>
+                <p class="product-price" alt="25">￥25.00</p>
+            </div>
+            <div class="oprate">
+                <div class="delete comm-btn-middle"><button>删除</button></div>
+                <div class="product-countbar comm-countbar">
+                    <button class="comm-countbar-btnleft">-</button>
+                    <input type="text" class="comm-countbar-text" maxlength="3" value="1"/>
+                    <button class="comm-countbar-btnright">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="total">
+        <p>合计：<span>￥75.00</span></p>
+    </div>
+
+    <div class="pay">
+        <div class="p1">请选择支付方式</div>
+        <div class="p2">
+            <div name="0"><span class="radio-circle on"></span><img src="../images/shop/buyer/b_ico_wexin.png" alt=""/>微信支付</div>
+            <div name="1"><span class="radio-circle"></span><img src="../images/shop/buyer/b_ico_zhifubao.png" alt=""/>支付宝支付</div>
+        </div>
+        <div class="p3">
+            <span>红包</span>
+            <span class="red"><img src="../images/shop/buyer/b_ico_hongbao.jpg" alt=""/><a href="">&gt;</a></span>
+        </div>
+    </div>
+
+    <div class="btn-pay comm-btn-middle"><button>立刻支付</button></div>
+
+    <!--底部导航栏-->
+    <div class="nav-bottom">
+        <ul>
+            <li id="home"><a href="b-a-wodeguoyuan.html"><img src="../images/shop/seller/d_wdgy.png"><span>我的果园</span></a></li>
+            <li id="list"><a href="b-b-shuiguofenlei.html"><img src="../images/shop/seller/d_sgfl.png"><span>水果分类</span></a></li>
+            <li id="order"  class="on"><a href=""><img src="../images/shop/seller/d_gwl.png"><span>购物篮</span></a></li>
+            <li id="manage"><a href="b-d-gerenzhongxin.html"><img src="../images/shop/seller/d_grzx.png"><span>个人中心</span></a></li>
+        </ul>
+    </div>
+
+    <div class="fakeloader"></div>
+
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/fakeLoader.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".fakeloader").fakeLoader({
+            timeToHide:1200,
+            bgColor:"#fabe00",
+            spinner:"spinner1"
+        });
+
+        $(".nav-bottom li.on").click(function(e){
+            e.preventDefault();
+        });
+
+        $(".comm-ico-back a").back();
+
+        //计数器
+        $(".product-countbar").each(function(){
+            countBind(this);
+        });
+
+        function countBind(ele){
+            var txt = $(ele).find(".comm-countbar-text");
+            var lbtn = $(ele).find(".comm-countbar-btnleft");
+            var rbtn = $(ele).find(".comm-countbar-btnright");
+            var singlePrice = $(ele).parent().siblings(".info").find(".product-price");
+            var price = parseInt(singlePrice.attr("alt"));
+
+            //框体输入
+            txt.keyup(function(){
+                if($(this).val()=="" || parseInt($(this).val())<1){
+                    $(this).val("1");
+                    singlePrice.text("￥"+price);
+                }
+                singlePrice.text("￥"+price*parseInt($(this).val()));
+                setTotalPrice();
+            });
+
+            //左右按钮
+            lbtn.click(function(){
+                var num_dec = parseInt(txt.val())-1;
+                if(num_dec<1){
+                    //购买数量必须大于或等于1
+//                    alert("not lt 1");
+                }else{
+                    txt.val(num_dec);
+                    singlePrice.text("￥"+price*num_dec);
+                    setTotalPrice();
+                }
+            });
+            rbtn.click(function(){
+                var num_add = parseInt(txt.val())+1;
+                if(txt.val()==""){
+                    num_add = 1;
+                }
+                txt.val(num_add);
+                singlePrice.text("￥"+price*num_add);
+                setTotalPrice();
+            });
+        }
+
+        function setTotalPrice(){
+            var $prices = $(".items").find(".product-price");
+            var $totalPrice = $(".total span");
+            var total = 0;
+            $prices.each(function(){
+                total+=parseInt($(this).text().substr(1));
+            });
+            $totalPrice.text("￥"+total+".00");
+        }
+
+        //支付方式
+        var $chooses = $(".pay .p2 div");
+        var $radios = $(".pay .p2 .radio-circle");
+        $chooses.click(function(){
+            if($(this).attr("name")=="0"){
+                $radios.eq(0).addClass("on");
+                $radios.eq(1).removeClass("on");
+            }else{
+                $radios.eq(0).removeClass("on");
+                $radios.eq(1).addClass("on");
+            }
+        });
+
+
+
+//        $(".btn-pay").click(function(e){
+
+//        });
+    });
+</script>
+</body>
+</html>

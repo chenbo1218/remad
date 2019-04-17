@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <title>Di盟商城</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <style type="text/css">
+        /*店铺-我的评价*/
+        body{
+            /*background-color: #f2f2f2;*/
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        /*发货状态栏*/
+        .states{
+            height: 30px;
+            padding: 15px 0;
+            border-bottom: 1px solid lightgray;
+        }
+        .states .cont{
+            margin: 0 auto;
+        }
+        .states .state{
+            width: 24%;
+            float: left;
+            height: 30px;
+            display: block;
+            text-align: center;
+            line-height: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #000;
+            margin: 0 auto;
+            border-right: 1px solid lightgray;
+        }
+        .states .state:last-child{
+            border-right: none;
+        }
+        .states .state:active{
+            color: #eb632e;
+        }
+        .states .state.current{
+            color: #eb632e;
+        }
+
+        .item{
+            width: 100%;
+            height: 120px;
+            box-sizing: border-box;
+            padding: 10px 25px;
+            border-bottom: 1px solid lightgray;
+        }
+        .item .p1{
+            width: 100%;
+            height: 30px;
+            color: darkgray;
+            line-height: 30px;
+        }
+        .item .p2{
+            width: 100%;
+            height: 70px;
+        }
+        .item .p2 .pic{
+            width: 65px;
+            height: 65px;
+            float: left;
+        }
+        .item .p2 .txt{
+            width: 250px;
+            height: 65px;
+            line-height: 16px;
+            float: left;
+            margin-left: 8px;
+        }
+        .item .p2 .comm-star{
+            display: inline-block;
+        }
+
+        .sheet{
+            width: 100%;
+            text-align: center;
+            line-height: 40px;
+            color: #6a6a6a;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="images/ico_back.png" /></a></span>
+        <h2>我的评价</h2>
+    </div>
+
+    <!--发货状态标签-->
+    <div class="states">
+        <div class="cont">
+            <div class="state current">全部评价</div>
+            <div class="state">好评</div>
+            <div class="state">中评</div>
+            <div class="state">差评</div>
+        </div>
+    </div>
+
+    <div class="items">
+        <div class="item">
+            <p class="p1">消费者：左文雷</p>
+            <div class="p2">
+                <img class="pic" src="images/img_user_01.jpg" alt="">
+                <div class="txt">
+                    <div class="comm-star" alt="5">
+                        <ul>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                        </ul>
+                    </div>
+                    <p>消费心得：<span>很不错，实惠又地道。值得回购。</span></p>
+                    <p>评价时间：<span>2014-04-28</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <p class="p1">消费者：左文雷</p>
+            <div class="p2">
+                <img class="pic" src="images/img_user_01.jpg" alt="">
+                <div class="txt">
+                    <div class="comm-star" alt="5">
+                        <ul>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                        </ul>
+                    </div>
+                    <p>消费心得：<span>很不错，实惠又地道。值得回购。</span></p>
+                    <p>评价时间：<span>2014-04-28</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <p class="p1">消费者：左文雷</p>
+            <div class="p2">
+                <img class="pic" src="images/img_user_01.jpg" alt="">
+                <div class="txt">
+                    <div class="comm-star" alt="5">
+                        <ul>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                        </ul>
+                    </div>
+                    <p>消费心得：<span>很不错，实惠又地道。值得回购。</span></p>
+                    <p>评价时间：<span>2014-04-28</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <p class="p1">消费者：左文雷</p>
+            <div class="p2">
+                <img class="pic" src="images/img_user_01.jpg" alt="">
+                <div class="txt">
+                    <div class="comm-star" alt="5">
+                        <ul>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                            <li class="comm-star-single"><img src="" alt=""/></li>
+                        </ul>
+                    </div>
+                    <p>消费心得：<span>很不错，实惠又地道。值得回购。</span></p>
+                    <p>评价时间：<span>2014-04-28</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="sheet">没有更多...</p>
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-back").back();
+
+        //状态筛选
+        var $chooses = $(".states .state");
+        $chooses.click(function(){
+            $(this).addClass("current").siblings("div").removeClass("current");
+        });
+
+        //星星
+        $(".comm-star").each(function(){
+            $(this).starshow($(this).attr("alt"));
+        });
+
+
+    });
+</script>
+</body>
+</html>

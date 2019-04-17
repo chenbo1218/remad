@@ -1,0 +1,193 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    font-family: "Microsoft Yahei", "Lantinghei SC", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background: #f1f1f1;
+}
+
+a, a:after{
+    text-decoration: none;
+    color: #666;
+    transition: color .1s ease;
+}
+a:hover, a.hover {
+    text-decoration: none;
+    color: orange;
+    transition: color .1s ease;
+}
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    box-sizing: border-box;
+}
+@media (min-width: 768px) {
+    .container {
+        width: 768px;
+    }
+}
+/*@media (max-width: 414px) {
+    .container {
+        width: 414px;
+    }
+}
+@media (max-width: 375px) {
+    .container {
+        width: 375px;
+    }
+}
+@media (max-width: 360px) {
+    .container {
+        width: 360px;
+    }
+}
+@media (max-width: 320px) {
+    .container {
+        width: 320px;
+    }
+}*/
+
+
+
+
+.my-top{
+    /*width: 100%;*/
+    height: auto;
+    padding: 0;
+}
+.my-body{
+    /*width: 100%;*/
+    margin: 0 auto;
+	margin-top: 20px;
+}
+.my-foot{
+    width: 100%;
+    padding: 10px 0px;
+}
+
+/*标题栏*/
+.my-topic img{
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    text-align: center;
+    /*padding: 20px 20px;
+    background: #0299d0 url("../images/download/topic.png") no-repeat 20px 10px;
+    background-size: 70% auto;*/
+}
+
+/*游戏头*/
+.my-game-title{
+    height: 70px;
+    box-sizing: border-box;
+    border-bottom: 1px solid lightgray;
+    font-size: 20px;
+    line-height: 69px;
+}
+.my-game-title p{
+    float: left;
+    margin: 0;
+    text-indent: 1em;
+}
+.my-game-title a.erweima{
+    float: right;
+    display: block;
+    text-align: center;
+    width: 69px;
+    height: 69px;
+}
+
+
+/*内容*/
+.my-game{
+    width: 100%;
+    height: 220px;
+    padding: 10px 10px;
+    /*overflow: hidden;*/
+}
+.my-game-info{
+    width: 100%;
+    height: 100px;
+}
+.my-game-info .my-game-ico{
+    float: left;
+    height: 100px;
+}
+.my-game-info .my-game-txt{
+    font-size: 14px;
+    color: #666666;
+    height: 100px;
+    line-height: 30px;
+    margin-left: 10px;
+    float: left;
+}
+.my-game-info .my-game-txt p{
+    margin: 0px;
+}
+.my-game-info .my-game-txt p:first-child{
+    font-size: 16px;
+    color: #000;
+}
+.my-game-download{
+    width: 100%;
+    height: 100px;
+    padding: 10px 0px;
+}
+.my-game-download a{
+    display: block;
+    height: 40px;
+}
+.my-game-download a img{
+    width: 150px;
+    height: auto;
+}
+
+
+/*尾部*/
+.my-foot{
+    width: 100%;
+    border-top: 5px solid orange;
+    color: #666;
+    margin-top: 50px;
+}
+.my-foot .center{
+    text-align: center;
+    margin: 0;
+}
+
+
+
+
+/**下载提示**/
+.wxtip{
+    background: rgba(0,0,0,0.8);
+    text-align: center;
+    position: fixed;
+    left:0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+    display: none;
+}
+.wxtip-icon{
+    width: 52px;
+    height: 67px;
+    background: url(../images/download/weixin-tip.png) no-repeat;
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.wxtip-txt{
+    margin-top: 107px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+

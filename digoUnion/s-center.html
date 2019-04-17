@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <title>Di盟</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <!--店铺-个人中心-->
+    <style type="text/css">
+        body{
+            background-color: #03c0b0;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        /*导航*/
+        .nav{
+            width: 100%;
+            height: 50px;
+            box-sizing: border-box;
+            background: #363636;
+            padding: 0px 20px;
+        }
+        .nav a{
+            width: 50%;
+            height: 100%;
+            box-sizing: border-box;
+            display: block;
+            float: left;
+            color: lightgray;
+            text-decoration: none;
+            line-height: 50px;
+            text-align: center;
+        }
+        .nav a.current{
+            color: #fff;
+            border-bottom: 6px solid #03c0b0;
+        }
+
+        /*信息*/
+        .info{
+            height: 80px;
+            box-sizing: border-box;
+            padding: 10px 10px;
+        }
+        .info .logo{
+            width: 50px;
+            height: 50px;
+            display: block;
+            float: left;
+            margin-top: 5px;
+        }
+        .info .txt{
+            float: left;
+            line-height: 20px;
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+        .info .txt p:last-child span{
+            font-size: 12px;
+        }
+        .info .yanzhengma{
+            width: 60px;
+            height: 60px;
+            display: block;
+            float: right;
+        }
+
+        /*菜单*/
+        .menus{
+            height: 180px;
+            padding: 10px 10px;
+        }
+        .menus .menu{
+            height: 55px;
+            margin-top: 5px;
+            padding: 0px 10px;
+            line-height: 55px;
+            text-align: center;
+            color: #fff;
+            background: rgba(2,2,2,.5);
+        }
+        .menus .menu p:first-child{
+            float: left;
+            margin: 0;
+        }
+        .menus .menu p:last-child{
+            color: #dddddd;
+            float: right;
+            margin: 0;
+        }
+
+        /*近期活动*/
+        .actives{
+            width: 100%;
+            height: 200px;
+            box-sizing: border-box;
+            padding: 10px 10px;
+            color: #fff;
+        }
+        .actives p{
+            color: black;
+            height: 30px;
+            line-height: 30px;
+        }
+        .actives .mhead{
+            width: 100%;
+            height: 25px;
+            background: rgba(2,2,2,.5);
+        }
+        .actives .mhead span{
+            width: 23.8%;
+            text-align: center;
+            border-right: 1px solid lightgray;
+            display: inline-block;
+        }
+        .actives .mhead span:last-child{
+            border-right: none;
+        }
+        .actives .active{
+            height: 25px;
+            line-height: 25px;
+            border-top: 1px solid #fff;
+            background: rgba(2,2,2,.5);
+        }
+        .actives .active span{
+            width: 23.8%;
+            height: 100%;
+            text-align: center;
+            display: inline-block;
+        }
+
+        #yanzhengma{
+            width: 300px;
+            height: 250px;
+            /*height: 100%;*/
+            /*display: table;*/
+            text-align: center;
+            margin: 0 auto;
+        }
+        #yanzhengma .modal-dialog{
+            display: table-cell;
+            vertical-align: middle;
+        }
+        #yanzhengma .modal-footer{
+            text-align: center;
+        }
+        #yanzhengma .modal-footer button{
+            border: none;
+            color: #fff;
+            background: darkgray;
+        }
+        #yanzhengma #confirm-sure{
+            border: none;
+            color: #000;
+            background: #ffe100;
+        }
+        #yanzhengma #confirm-sure:active{
+            background: #ffb60b;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!--导航-->
+    <div class="nav">
+        <a href="" class="current">我</a>
+        <a href="s-product.html">发现</a>
+    </div>
+
+    <!--info-->
+    <div class="info">
+        <img class="logo" src="images/ico_logo.png" alt=""/>
+        <div class="txt">
+            <p>天麓洗浴</p>
+            <p><span>流水：￥</span>15,126</p>
+        </div>
+        <img class="yanzhengma" src="images/ico_hui.png" alt="">
+    </div>
+
+    <!--菜单-->
+    <div class="menus">
+        <div id="qianbao" class="menu">
+            <p><img src="" alt="">我的钱包</p>
+            <p>即时提现 &gt;</p>
+        </div>
+        <div id="dingdan" class="menu">
+            <p><img src="" alt="">我的订单(309)</p>
+            <p>查看全部 &gt;</p>
+        </div>
+        <div id="pinglun" class="menu">
+            <p><img src="" alt="">我的评价(90%)</p>
+            <p>查看全部 &gt;</p>
+        </div>
+    </div>
+
+    <!--近期活动-->
+    <div class="actives">
+        <p>最新订单<img src="" alt=""></p>
+        <div class="mhead">
+            <span>消费者</span>
+            <span>消费金额</span>
+            <span>支付时间</span>
+            <span>套餐内容</span>
+        </div>
+        <div class="active">
+            <span>左文雷</span>
+            <span>1200.00元</span>
+            <span>04-13 18:00</span>
+            <span>套餐一</span>
+        </div>
+        <div class="active">
+            <span>左文雷</span>
+            <span>1200.00元</span>
+            <span>04-13 18:00</span>
+            <span>套餐一</span>
+        </div>
+        <div class="active">
+            <span>左文雷</span>
+            <span>1200.00元</span>
+            <span>04-13 18:00</span>
+            <span>套餐一</span>
+        </div>
+        <div class="active">
+            <span>左文雷</span>
+            <span>1200.00元</span>
+            <span>04-13 18:00</span>
+            <span>套餐一</span>
+        </div>
+    </div>
+
+    <!-- 验证码弹框 -->
+    <div class="modal fade" id="yanzhengma">
+        <div class="modal-dialog">
+            <div class="modal-content message_align">
+                <div class="modal-header">
+                    <h4 class="modal-title">请输入消费码</h4>
+                </div>
+                <div class="modal-body">
+                    <input id="ipt-yanzhengma" type="text" maxlength="12"/>
+                </div>
+                <div class="modal-footer">
+                    <a id="confirm-sure" class="btn btn-success" data-dismiss="modal">确认</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">退出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        //我的钱包
+        $("#qianbao").click(function(){
+            window.location.href = "s-center-wodeqianbao.html";
+        });
+        //我的订单
+        $("#dingdan").click(function(){
+            window.location.href = "s-center-wodedingdan.html";
+        });
+        //我的评论
+        $("#pinglun").click(function(){
+            window.location.href = "s-center-wodepingjia.html";
+        });
+
+        $(".info .yanzhengma").click(function(){
+            $("#yanzhengma").modal();
+            $("#yanzhengma #confirm-sure").on("click",xxx);
+
+            $("#yanzhengma").on("hide.bs.modal	hide",function(){
+                $("#yanzhengma #confirm-sure").off("click",xxx);
+            });
+        });
+
+        function xxx(){
+            console.log("验证成功");
+        }
+
+
+
+
+
+    });
+</script>
+</body>
+</html>

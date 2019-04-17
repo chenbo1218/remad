@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>申请成为大当家</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert.css"/>
+    <style type="text/css" >
+        body {
+            background-color: #ffe100;
+        }
+
+        /*该版面的文字为14和16*/
+        .main {
+            position: relative;
+        }
+
+        /*背景图*/
+        .main .bg-img {
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+        }
+        .main .bg-img img {
+            width: 100%;
+            display: block;
+        }
+
+        /*填写资料*/
+        #register {
+            padding: 20% 6%;
+            font-size: 14px;
+        }
+        #register .inputbox {
+            height: 25px;
+            padding: 8px 0;
+            line-height: 25px;
+        }
+        #register .inputbox input {
+            width: 180px;
+            height: 25px;
+            border-radius: 7px;
+            border: 1px solid #eee;
+            font-size: 14px;
+            float: right;
+        }
+        #register .inputbox input#salary{
+            width: 143px;
+        }
+        #register .inputbox input#address{
+            width: 155px;
+        }
+        #register .inputbox input#tel{
+            width: 95px;
+        }
+        #register .inputbox input#veri-code{
+            width: 135px;
+        }
+        #register .inputbox input#password{
+            width: 170px;
+        }
+        #register .inputbox input#password2{
+            width: 155px;
+        }
+        #register .inputbox #tel {
+            width: 100px;
+            /*float: none;*/
+            /*clear: both;*/
+            /*text-align:right;*/
+        }
+        #register .inputbox #get-code {
+            width: 65px;
+            color: white;
+            height: 27px;
+            font-size: 1px;
+            background-color: grey;
+        }
+
+        /*提交按钮*/
+        #register #submit{
+            width: 130px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <div class="main">
+        <!--<span class="comm-back-img"><a href=""><i class="fa fa-chevron-left"></i></a></span>-->
+        <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+        <!--背景图-->
+        <div class="bg-img">
+            <img src="../images/wholesale/bg_01.jpg" />
+        </div>
+
+        <!--表格填写-->
+        <form id="register" class="">
+            <div class="inputbox"><label for="name" >请输入昵称：</label><input type="text" id="name" name="name" maxlength="20" /></div>
+            <div class="inputbox"><label for="age" >请输入年龄：</label><input type="text" id="age" name="age" maxlength="5"/></div>
+            <div class="inputbox"><label for="salary" >请输入您的月收入：</label><input type="text" id="salary" name="salary" maxlength="14" /></div>
+            <div class="inputbox"><label for="address" >请输入您的地址：</label><input type="text" id="address" name="address" /></div>
+            <div class="inputbox">
+                <label for="tel" >请输入手机号码：</label>
+                <input type="button" id="get-code"  value="获取验证码"/>
+                <input type="text" id="tel" name="tel" maxlength="11" />
+
+            </div>
+            <div class="inputbox"><label for="veri-code" >请输入短信验证码：</label><input type="text" id="veri-code" name="veri-code" maxlength="10" /></div>
+            <div class="inputbox"><label for="password" >请输入密码：</label><input type="password" id="password" name="password" maxlength="20" /></div>
+            <div class="inputbox"><label for="password2" >请再次输入密码：</label><input type="password" id="password2" name="password2" maxlength="20" /></div>
+
+            <div id="submit" class="comm-btn-middle">
+                <button>提交申请</button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <script src="../js/jquery-2.2.1.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/sweetalert.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".comm-ico-back a").back();
+
+            var inputbox = $(".inputbox");
+            /*var box_width = parseInt(inputbox.css("width"));
+            inputbox.each(function () {
+                if ($(this).find("label").attr("for") != "tel") {
+                    input_width = box_width - 5 - parseInt($(this).find("label").css("width"));  //alert(input_width);
+                    $(this).find("input").css("width", input_width.toString() + 'px');
+                }
+            });*/
+            $("#submit").click(function(){
+                swal({
+                    title: "提交成功",
+                    text: "提示：感谢您的热情参与，您的资料已经提交到果大当家的服务中心，即将进行审核、请耐心等候我们的审核结果。",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "逛逛商城",
+                    cancelButtonText: "返回首页",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                    },
+                    function(isConfirm){
+                        if (isConfirm) {
+                            window.location.href = "f-index.html";
+                        }
+                        else {
+                            window.location.href = "b-apply.html";
+                        }
+                    });
+//                e.preventDefault();
+            });
+        });
+    </script>
+
+</body>
+</html>

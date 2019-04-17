@@ -1,0 +1,20 @@
+.caption{
+    margin-top: 10px;
+}
+.caption-p-first{
+    color: #fff;
+    /* font-weight: 600; */
+}
+.caption-p-first>span{
+    margin:3px 5px;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+.caption-p-first>span>a{
+    color: #fff;
+}
+.caption-p-last>a{
+    margin:0px 5px;
+}
+
+

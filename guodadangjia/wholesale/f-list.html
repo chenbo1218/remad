@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>商品分类</title>
+
+    <link type="text/css" rel="stylesheet" href="../css/common.css" />
+    <style type="text/css">
+        body{
+            background-color: #ececec;
+			overflow-x:hidden;
+        }
+
+        /*导航*/
+        .nav{
+            width: 100%;
+            height: 5%;
+            margin: 0 auto;
+            position: fixed;
+            z-index: 1000;
+        }
+        .nav a{
+            width: 50%;
+            float: left;
+            display: block;
+            font-size: 16px;
+            text-align: center;
+            line-height: 35px;
+            background-color: #fff;
+            color: #000;
+            text-decoration: none;
+        }
+        .nav a.current{
+            background-color: #fabe00;
+            color: #fff;
+        }
+
+        /*左侧导航栏*/
+        .nav-left{
+            width: 25%;
+            height: 95%;
+            float: left;
+            position: fixed;
+            z-index: 1000;
+            top: 6%;
+        }
+        .nav-left ul{
+            height: 100%;
+        }
+        .nav-left ul li{
+            width: 100%;
+            height: 14.2%;
+            text-align: center;
+        }
+        .nav-left ul li a{
+            height: 100%;
+            line-height: 80px;
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            background-color: #fabe00;
+        }
+        .nav-left ul li a.double{
+            background-color: #ffe100;
+        }
+        .nav-left ul li a:active{
+            color: #fabe00;
+            background-color: #ececec;
+        }
+        .nav-left ul li.current a{
+            background-color: #ececec;
+            color: #fabe00;
+        }
+
+        /*右侧内容栏*/
+        .container{
+            width: 75%;
+            float: right;
+        }
+
+        /*搜索栏*/
+        .searchbar{
+            width: 60%;
+            height: 25px;
+            background-color: #ececec;
+            text-align: center;
+            line-height: 25px;
+            padding: 0 7.5%;
+            padding-top: 20.5px;
+            padding-bottom: 20.5px;
+            position: fixed;
+            z-index: 1000;
+            top: 35px;
+            /*left: 25%;*/
+        }
+        .searchbar .searchbar-text{
+            display: block;
+            width: 85%;
+            height: 25px;
+            font-size: 14px;
+            border-style: none;
+            border-radius: 5px 0 0 5px;
+            float: left;
+        }
+        .searchbar .searchbar-btn{
+            width: 15%;
+            height: 15%;
+            line-height: 25px;
+            border-radius: 0 5px 5px 0;
+            float: left;
+        }
+        .searchbar a.searchbar-btn{
+            width: 25px;
+            height: 25px;
+            background-color: #fff;
+            display: block;
+        }
+        .searchbar a.searchbar-btn:active{
+            background-color: #fabe00;
+        }
+        .searchbar a.searchbar-btn img{
+            padding: 2.5px;
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+        
+        .items{
+            position: relative;
+            top: 100px;
+        }
+
+        /*列表*/
+        .item{
+            margin-bottom: 8px;
+            background-color: #fff;
+        }
+        .item img{
+            width: 100%;
+            height: 99px;
+        }
+        .item h3{
+            font-size: 14px;
+            font-weight: normal;
+        }
+        .item p{
+            font-size: 12px;
+        }
+        .item .item-sheet{
+            width: 180px;
+            height: 30px;
+            margin-top: 10px;
+            padding-bottom: 10px;
+        }
+        .item-sheet img{
+            width: 30px;
+            height: 30px;
+            left: 2px;
+            float: left;
+            position: relative;
+            z-index: 10;
+            top: -2px;
+        }
+        .item-sheet span{
+            display: block;
+            margin-left: -15px;
+            padding-left: 15px;
+            width: 90px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 12px;
+            background-color: #7c7c7c;
+            color: #fff;
+            float: left;
+        }
+        .item-sheet .comm-btn-middle{
+            width: 45px;
+            height: 25px;
+            line-height: 25px;
+            float: left;
+        }
+        .item-sheet .comm-btn-middle button{
+            font-size: 12px;
+            border-radius: 0 10px 10px 0;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!--导航栏-->
+    <div class="nav">
+        <div class="nav-l1">
+            <a href="f-index.html">商城首页</a>
+        </div>
+        <div class="nav-l2">
+            <a class="current" href="#">商城分类</a>
+        </div>
+    </div>
+
+    <!--左侧导航栏-->
+    <div class="nav-left">
+        <ul>
+            <li class="current"><a href="#">全部水果</a></li>
+            <li><a href="#">今日上新</a></li>
+            <li><a href="#">进口鲜果</a></li>
+            <li><a href="#">国产鲜果</a></li>
+            <li><a href="#">水果礼盒</a></li>
+            <li><a href="#">新品首发</a></li>
+            <li><a href="#">当季水果</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <!--搜索栏-->
+        <div class="searchbar">
+            <input class="searchbar-text" type="text" placeholder="果大当家，掌握鲜机"/>
+            <a class="searchbar-btn"><img src="../images/common/ico_search.png"/></a>
+        </div>
+
+        <!--列表-->
+        <div class="items">
+            <div class="item">
+                <img src="../images/fruits/f1_item.jpg" alt=""/>
+                <h3>【长沙专享】墨西哥进口牛油果10个90.8元</h3>
+                <p>进口柠檬，美容养颜，皮薄肉嫩。个头大，有光泽。晶莹剔透。价格实惠。先抢先得</p>
+                <div class="item-sheet">
+                    <img src="../images/common/logo_small.png" alt=""/>
+                    <span>2人团 ￥90.88</span>
+                    <div class="check comm-btn-middle"><button>去看看</button></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="../images/fruits/f1_item.jpg" alt=""/>
+                <h3>【长沙专享】墨西哥进口牛油果10个90.8元</h3>
+                <p>进口柠檬，美容养颜，皮薄肉嫩。个头大，有光泽。晶莹剔透。价格实惠。先抢先得</p>
+                <div class="item-sheet">
+                    <img src="../images/common/logo_small.png" alt=""/>
+                    <span>2人团 ￥90.88</span>
+                    <div class="check comm-btn-middle"><button>去看看</button></div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="../images/fruits/f1_item.jpg" alt=""/>
+                <h3>【长沙专享】墨西哥进口牛油果10个90.8元</h3>
+                <p>进口柠檬，美容养颜，皮薄肉嫩。个头大，有光泽。晶莹剔透。价格实惠。先抢先得</p>
+                <div class="item-sheet">
+                    <img src="../images/common/logo_small.png" alt=""/>
+                    <span>2人团 ￥90.88</span>
+                    <div class="check comm-btn-middle"><button>去看看</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../js/jquery-2.2.1.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".current").click(function(e){
+                e.preventDefault();
+            });
+
+            //导航栏底色区分
+            var navs = $(".nav-left").find("a");
+            for(var i=0;i<navs.length;i++){
+                if(i%2==1){
+                    $(navs[i]).addClass("double");
+                }
+            }
+
+            var navlist = $(".nav-right").find("li");
+            var content = $("#content");
+            if(navlist.length<=0){
+                return;
+            }
+            for(var i=0;i<navlist.length;i++){
+                navlist[i].onclick = function(){
+                    for(var j=0;j<navlist.length;j++){
+                        navlist[j].className = "";
+                    }
+                    this.className = "current";
+                };
+            }
+
+            //查看详情
+            $(".check").click(function(){
+                window.location.href = "f-detail.html";
+            });
+
+        });
+    </script>
+
+
+</body>
+</html>

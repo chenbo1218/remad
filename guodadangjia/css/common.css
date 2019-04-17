@@ -1,0 +1,228 @@
+
+/*====================通用样式===================*/
+/*2016-03-22*/
+
+@font-face{
+    font-family: myfont;
+    src: url("../font/fangzheng-lantinghei.ttf");
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei",myfont,sans-serif,Arial,Helvetica;
+}
+
+html,body {
+    height: 100%;
+}
+
+
+
+/*====================自定义组件=======================*/
+/*大按钮-黄*/
+.comm-btn-big{
+    width: 100%;
+    height: 40px;
+}
+.comm-btn-big button{
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 100%;
+    text-align: center;
+    border: 0;
+    color: #fff;
+    background-color: #fabe00;
+}
+.comm-btn-big button:active{
+    background-color: #f08200;
+    color: #fabe00;
+}
+
+/*中按钮-黄*/
+.comm-btn-middle{
+    width: 50%;
+    height: 30px;
+}
+.comm-btn-middle button {
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    line-height: 100%;
+    text-align: center;
+    border: 0;
+    color: #fff;
+    background-color: #fabe00;
+    border-radius: 10px;
+}
+.comm-btn-middle button:active{
+    background-color: #f08200;
+    color: #fabe00;
+}
+
+/*圆形图标  40*40 */
+.comm-ico-circle{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: orange;
+}
+.comm-ico-circle img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/*返回按钮*/
+.comm-ico-back{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+.comm-ico-back a{
+    display: block;
+    width: 30px;
+    height: 30px;
+    /*padding: 5px;*/
+    margin: 5px;
+    text-align: center;
+    background-color: #fabe00;
+    color: #fff;
+    border-radius: 15px;
+    /*font-size: 16px;*/
+}
+.comm-ico-back a:active{
+    background-color: orange;
+    /*border-radius: 15px;*/
+}
+.comm-ico-back a img {
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+}
+
+/*图形文字图标-上下结构 25*30*/
+.comm-ico-updown{
+    width: 40px;
+    height: 40px;
+}
+.comm-ico-updown img{
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+    display: block;
+}
+.comm-ico-updown span{
+    width: 40px;
+    height: 20px;
+    font-family: "Microsoft Yahei";
+    font-size: 10px;
+    line-height: 20px;
+    text-align: center;
+    display: block;
+}
+
+/*顶部标题栏*/
+.comm-top-title {
+    height: 40px;
+    line-height:40px;
+    background-color: #fabe00;
+}
+.comm-top-title h2 {
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    font-weight: normal;
+}
+
+
+
+
+/*====================自定义控件=======================*/
+/*轮循banner控件*/
+.comm-banner{
+    /*border: 1px solid red;*/
+    height: 210px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.comm-banner .comm-banner-img{
+    /*border: 1px solid red;*/
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+.comm-banner .comm-banner-img img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.comm-banner .comm-banner-tag{
+    /*border: 1px solid red;*/
+    width: 60%;
+    position: absolute;
+    top: 202px;
+    left: 30%;
+    text-align: center;
+}
+.comm-banner .comm-banner-tag ul{
+    width: 100%;
+    height: 3px;
+}
+.comm-banner .comm-banner-tag ul li{
+    width: 42px;
+    height: 3px;
+    margin-right: 3px;
+    background-color: #fff;
+    float: left;
+    list-style: none;
+    border-radius: 1px;
+}
+.comm-banner .comm-banner-tag ul li.current{
+    background-color: #fabe00;
+}
+
+/*计数器控件*/
+.comm-countbar{
+    /*border: 1px solid red;*/
+    width: 86px;
+    height: 27px;
+    text-align: center;
+}
+.comm-countbar .comm-countbar-text{
+    width: 40px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    color: #fff;
+    border-bottom-style: none;
+    background-color: #fabe00;
+    float: left;
+}
+.comm-countbar button{
+    width: 21px;
+    height: 27px;
+    border:1px solid #fabe00;
+    background-color: #fff;
+    font-weight: bold;
+    float: left;
+}
+.comm-countbar .comm-countbar-btnleft{
+    border-radius: 5px 0 0 5px;
+}
+.comm-countbar .comm-countbar-btnright{
+    border-radius: 0 5px 5px 0;
+}
+
+
+
+

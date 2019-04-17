@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>果园管理</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style type="text/css" >
+        html {
+            height:100%;
+        }
+        body {
+            background-color: #f2f2f2;
+            height: 100%;
+        }
+
+        #banner {
+            position: relative;
+        }
+        #banner .width100 {
+            width: 100%;
+            display: block;
+        }
+        #banner .banner-left {
+            position: absolute;
+            left: 15px;
+            bottom: 0;
+
+        }
+
+
+        .banner-left img {
+            width: 80px;
+            height: 80px;
+            border-radius: 40px;
+        }
+
+        #banner .banner-right {
+            right: 0;
+            top: 10px;
+            font-size: 12px;
+            height: 18px;
+            line-height: 18px;
+            padding-left: 5px;
+            border-radius: 9px 0 0 9px;
+            position: absolute;
+            background-color: #fabe00;
+            color: #f2f2f2;
+        }
+        #banner .banner-bottom {
+            height: 35px;
+            font-size: 14px;
+            color: white;
+            line-height: 35px;
+            background-color: #fabe00;
+        }
+        .banner-bottom span.bottom-title {
+            margin-left: 95px;
+        }
+        .banner-bottom span.bottom-msg-img a {
+            display: block;
+            width: 25px;
+            padding: 0 5px;
+            height: 35px;
+            /*margin: 7px 0 8px;*/
+            float: right;
+            position: relative;
+            /*vertical-align: middle;*/
+        }
+        .banner-bottom span.bottom-msg-img a img {
+
+            width: 25px;
+            height: 20px;
+            margin: 7px 0 8px;
+            /*vertical-align: middle;*/
+        }
+        .banner-bottom span.bottom-msg-img a span {
+            position: absolute;
+            text-align: center;
+            display: block;
+            right: -3px;
+            top: 4px;
+            width: 15px;
+            height: 10px;
+            font-size: 8px;
+            font-family:  Helvetica,Arial;
+            border-radius: 5px;
+            background-color: #e53925;
+            line-height: 10px;
+            color: white;
+
+        }
+        .banner-bottom span.bottom-msg-let {
+            float: right;
+            width: 40px;
+            text-align: center;
+        }
+        .main {
+            height: 55%;
+        }
+        .main .box2-container {
+            /*width: 278px;*/
+            /*height: 278px;*/
+            width: 90%;
+            height: 90%;
+            min-height: 278px;
+            margin: auto 5%;
+            /*padding: 5px;*/
+            /*display: flex;*/
+            /*flex-wrap: wrap;*/
+        }
+        .main .box2-container .box2 {
+            /*width: 90px;*/
+            /*height: 90px;*/
+            width: 33%;
+            height: 33%;
+            box-sizing: border-box;
+            border: 1px solid #f2f2f2;
+            float: left;
+            background-color: white;
+        }
+
+
+        /*圆形图标  45*45 */
+        .comm-ico-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 22px;
+            background-color: white;
+        }
+        .comm-ico-circle img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .box2 .comm-ico-circle a {
+            display: block;
+        }
+        .box2 .comm-ico-circle {
+            margin: 10% auto 0px;
+        }
+        .box2 p {
+            font-size: 14px;
+            text-align: center;
+            height: 17px;
+            line-height: 17px;
+        }
+        .box2 p:last-child {
+            font-size: 10px;
+        }
+        .box2 p .strong {
+            color: #fabe00;
+        }
+
+        /*底部导航*/
+        .nav-bottom {
+            background-color: #f2f2f2;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+        .nav-bottom ul {
+            height: 60px;
+        }
+        .nav-bottom ul li {
+            width: 25%;
+            height: 60px;
+            list-style-type: none;
+            float: left;
+            /*background-color: blue;*/
+        }
+        .nav-bottom li.on a{
+            color: #fabe00;
+        }
+        .nav-bottom li a:active{
+            color: #fabe00;
+        }
+        .nav-bottom li a {
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+        .nav-bottom ul li a img {
+            width: 30px;
+            height: 30px;
+            padding: 10px 5px 0;
+            margin: 0 auto;
+            display: block;
+        }
+        .nav-bottom ul li a span{
+            display: block;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            margin: 0 auto;
+            font-size: 12px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--banner-->
+    <div id="banner" class="box1">
+        <img class="width100" src="../images/shop/seller/d_banner_01.jpg" />
+        <div class="banner-bottom">
+            <span class="bottom-title">西瓜红的红 的果园</span>
+            <span class="bottom-msg-let">留言</span>
+            <span class="bottom-msg-img"><a href="s-d-wodeliuyan.html"><img src="../images/shop/seller/d_msg_01.png"><span class="sub-num">12</span></a></span>
+        </div>
+        <div class="banner-left"><img src="../images/shop/seller/d_weilogo.jpg"></div>
+        <div class="banner-right">升级正式大当家</div>
+    </div>
+
+    <div class="main">
+            <div class="box2-container">
+                <div class="box2">
+                    <div class="comm-ico-circle"><a href=""><img src="../images/shop/seller/d_gygl_01.png"/></a></div>
+                    <p>水果订单</p>
+                    <p><span class="strong">500</span>个</p>
+                </div>
+                <div class="box2">
+                    <div class="comm-ico-circle"><a href="s-d-wodeshouyi.html"><img src="../images/shop/seller/d_gygl_02.png" /></a></div>
+                    <p>我的收益</p>
+                    <p><span class="strong">256.00</span>元</p>
+                </div>
+                <div class="box2">
+                    <div class="comm-ico-circle"><a href="s-d-wodeshouyimingxi.html"><img src="../images/shop/seller/d_gygl_03.png"/></a></div>
+                    <p>收益明细</p>
+                    <p>收益明细</p>
+                </div>
+                <div class="box2">
+                    <div class="comm-ico-circle"><a href="s-d-ziyingchanpin.html"><img src="../images/shop/seller/d_gygl_04.png"/></a></div>
+                    <p>自营产品</p>
+                    <p>已有<span class="strong">5</span>种产品</p>
+                </div>
+                <div class="box2">
+                    <div class="comm-ico-circle"><a href="s-d-erweima.html"><img src="../images/shop/seller/d_gygl_05.png"/></a></div>
+                    <p>二维码</p>
+                    <p>推广二维码</p>
+                </div>
+                <div class="box2">
+                    <div class="comm-ico-circle"><a href="s-d-guoyuanzhuangxiu.html"><img src="../images/shop/seller/d_gygl_06.png"/></a></div>
+                    <p>果园装修</p>
+                    <p>装修你的果园</p>
+                </div>
+                <div class="box2">
+                    <div class="comm-ico-circle"><a href="s-d-shuiguoshangjia.html"><img src="../images/shop/seller/d_gygl_07.png"/></a></div>
+                    <p>水果上架</p>
+                    <p>已有<span class="strong">25</span>种水果</p>
+                </div>
+                <div class="box2">
+                    <div class="comm-ico-circle"><a href="s-d-wodeguofen.html"><img src="../images/shop/seller/d_gygl_08.png"/></a></div>
+                    <p>果粉管理</p>
+                    <p>我有<span class="strong">25</span>位果粉</p>
+                </div>
+                <div class="box2">
+                    <div class="comm-ico-circle"><a href="s-d-yijianfankui.html"><img src="../images/shop/seller/d_gygl_09.png"/></a></div>
+                    <p>意见反馈</p>
+                    <p>联系平台</p>
+                </div>
+            </div>
+    </div>
+
+
+    <div class="nav-bottom">
+        <ul>
+            <li id="home"><a href="s-a-wodeguoyuan.html"><img src="../images/shop/seller/d_wdgy.png"><span>我的果园</span></a></li>
+            <li id="list"><a href="s-b-shuiguofenlei.html"><img src="../images/shop/seller/d_sgfl.png"><span>水果分类</span></a></li>
+            <li id="order"><a href="s-c-dingdanguanli.html"><img src="../images/shop/seller/d_ddgl.png"><span>订单管理</span></a></li>
+            <li class="on" id="guoyuan"><a href="s-d-manage.html"><img src="../images/shop/seller/d_gygl.png"><span>果园管理</span></a></li>
+        </ul>
+    </div>
+
+    <!--<script src="../js/jquery-2.2.1.min.js"></script>-->
+    <!--<script>-->
+        <!--$(document).ready(function(){-->
+            <!--$("#submit").click(function(){-->
+               <!--window.location.href = "b-protocol.html";-->
+            <!--});-->
+        <!--});-->
+    <!--</script>-->
+</body>
+</html>

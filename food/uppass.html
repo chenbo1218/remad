@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>美女点餐-修改密码</title>
+
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            font-family: "Microsoft Yahei", "Lantinghei SC", Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+        body{
+            visibility: hidden;
+        }
+
+        .btn{
+            background-color: lightpink;
+            color: #fff;
+            border: none;
+        }
+        .btn:hover,.btn:active,.btn:after,.btn:focus{
+            background-color: hotpink;
+            color: #fff;
+            border: none;
+        }
+        .container-fluid{
+            width: 50%;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /*顶部信息*/
+        #info{
+            width: 100%;
+            padding: 0 0;
+            background-color: lightpink;
+            color: #fff;
+            padding-right: 10px;
+        }
+        #info span,#info a{
+            color: #fff;
+        }
+        #info a:hover{
+            color: hotpink;
+        }
+        #info #namecont{
+            height: 50px;
+            line-height: 50px;
+        }
+
+        /*修改表单*/
+        #update{
+            width: 278px;
+            margin: 0 auto;
+        }
+        #update h3{
+            width: 278px;
+            text-align: center;
+        }
+        #update .input-group{
+            width: 278px;
+            /*top: 10px;*/
+        }
+        #update .input-group span{
+            width: 70px;
+        }
+        #update #btn-update{
+            width: 200px;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-left: 39px;
+        }
+        .alert-warning{
+            background: none;
+            border: none;
+            width: 200px;
+            height: 45px;
+            line-height: 45px;
+            color: #c9302c;
+            padding: 0 5px;
+            margin-top: 10px;
+            visibility: hidden;
+        }
+
+        .tip{
+            color: gray;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!--顶部信息-->
+    <div class="container-fluid">
+        <nav id="info" class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <span class="navbar-brand">女神点餐</span>
+            </div>
+            <div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="namecont">欢迎回来：<span id="username"></span></li>
+                    <li><a id="btn-back" href="#">回到点餐</a></li>
+                    <li><a id="btn-exit" href="#">退出</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container-fluid">
+        <div id="update">
+            <h3>修改密码</h3>
+            <div id="cont">
+                <h6 class="tip">密码最多18位</h6>
+
+                <div class="input-group">
+                    <span class="input-group-addon">输入新密码</span>
+                    <input id="password1" name="password" type="password" class="form-control" maxlength="18" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group">
+                    <span class="input-group-addon">请再次输入</span>
+                    <input id="password2" name="password" type="password" class="form-control" maxlength="18" aria-label="basic-addon2">
+                </div>
+
+                <button id="btn-update" type="submit" class="btn btn-danger" autocomplete="off">确认修改</button>
+
+                <div id="warning" class="alert alert-warning" role="alert"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        //防跨地址访问
+        var _user = sessionStorage.getItem("user");
+        if(_user==null || _user==""){
+            alert("想匿名吃霸王餐？老老实实登录吧，若没有账号请向管理员申请！");
+            window.location.href = "index.html";
+            return;
+        }
+        $("body").css("visibility","visible");
+        $("#username").text(_user);
+
+        //退出
+        $("#btn-exit").click(function(){
+            var url = "http://192.168.1.250:8080/food/LogoutServlet";
+            $.post(url,{userName:_user},function(result){
+                if($.trim(result)=="ok"){
+                    $("#username").text("");
+                    sessionStorage.clear();
+                    window.location.href = "index.html";
+                }
+            });
+        });
+
+        //回到点餐
+        $("#btn-back").click(function(){
+            window.location.href = "order.html";
+        });
+
+
+        //修改密码
+        var $warning = $("#warning");
+        var $cont = $("#cont");
+        $("#btn-update").click(function(){
+            var password1 = $("#password1").val().trim();
+            var password2 = $("#password2").val().trim();
+            if(password1==""){
+                $warning.css({"visibility":"visible","display":"block"});
+                $warning.text("请输入密码");
+                $warning.fadeOut(2000);
+                $("#password1").focus();
+                return;
+            }
+            if(password2==""){
+                $warning.css({"visibility":"visible","display":"block"});
+                $warning.text("请输入二次密码");
+                $warning.fadeOut(2000);
+                $("#password2").focus();
+                return;
+            }
+            if(password1!=password2){
+                $warning.css({"visibility":"visible","display":"block"});
+                $warning.text("两次输入的密码不一致，请再次输入");
+                $warning.fadeOut(2000);
+                $("#password2").val("").focus();
+                return;
+            }
+            var url = "http://localhost:8080/food/UppassServlet";
+            var data = {"userName":_user,"password":password1};
+            $.post(url,data,function(result){
+                console.log("response:",result);
+                if(result.indexOf("error")!=-1){
+                    $warning.css({"visibility":"visible","display":"block"});
+                    $warning.text("发生错误，修改失败");
+                    $warning.fadeOut(2000);
+                    return;
+                }
+                $cont.empty();
+                $cont.append("<h4 style='text-align: center'>您的密码修改成功！</h4>")
+//                alert("修改成功！");
+//                window.location.href = "order.html";
+            });
+        })
+
+    });
+</script>
+</body>
+</html>

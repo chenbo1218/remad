@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>订单管理</title>
+
+    <link type="text/css" rel="stylesheet" href="../css/common.css" />
+    <style type="text/css">
+        body{
+            background-color: #ffe200;
+            /*overflow: hidden;*/
+            font-size: 14px;
+        }
+        span.lab{
+            color: darkgray;
+        }
+
+        /*搜索栏*/
+        .searchbar{
+            /*border: 1px solid red;*/
+            width: 80%;
+            height: 30px;
+            padding: 5px 10% 5px 10%;
+            margin: 15px 0;
+            background-color: #ffe200;
+            z-index: 1000;
+        }
+        .searchbar .searchbar-text{
+            width: 85%;
+            height: 30px;
+            font-size: 14px;
+            border-style: none;
+            border-radius: 10px 0 0 10px;
+            text-align: center;
+            float: left;
+            display: block;
+        }
+        .searchbar a.searchbar-btn{
+            width: 30px;
+            height: 30px;
+            border-radius: 0 10px 10px 0;
+            background-color: #fff;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            display: block;
+        }
+        .searchbar a.searchbar-btn:active{
+            background-color: #fabe00;
+        }
+        .searchbar a.searchbar-btn img{
+            vertical-align: middle;
+            padding: 5px;
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+
+        .main{
+            /*border: 1px solid red;*/
+            width: 94%;
+            height: 390px;
+            margin: 12px 3%;
+            /*background: url("../images/shop/seller/c_bg_01.png") no-repeat;
+            background-size: cover;*/
+            position: relative;
+        }
+        .main .bg{
+            width: 100%;
+            height: 385px;
+            position: absolute;
+        }
+        .main .items{
+            position: relative;
+        }
+        .items .tabs{
+            padding: 20px 4%;
+        }
+        .items .tabs select{
+            font-size: 16px;
+            color: #fabe00;
+            appearance:none;
+            -moz-appearance:none;
+            -webkit-appearance:none;
+        }
+
+        /*订单栏*/
+        .item{
+            width: 96%;
+            height: 120px;
+            margin: 0 2%;
+            border-top: 1px solid darkgray;
+        }
+        .item .d{
+            width: 96%;
+            height: 110px;
+            margin: 5px 2%;
+        }
+        .item .d .d1{
+            width: 100%;
+            height: 30px;
+            padding: 10px auto;
+        }
+        .item .d .d1 .status{
+            margin-right: 20px;
+            float: right;
+        }
+        .item .d .d2{
+            width: 100%;
+            height: 80px;
+            position: relative;
+        }
+        .item .d .d2 .image{
+            width: 72px;
+            height: 72px;
+            float: left;
+        }
+        .item .d .d2 .info{
+            margin-left: 10px;
+            float: left;
+        }
+        .item .d .d2 .info .check{
+            width: 75px;
+            position: absolute;
+            top: 57%;
+            left: 70%;
+        }
+
+        .items .sheet{
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /*底部导航*/
+        .nav-bottom {
+            background-color: #f2f2f2;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+        .nav-bottom ul {
+            height: 60px;
+        }
+        .nav-bottom ul li {
+            width: 25%;
+            height: 60px;
+            list-style-type: none;
+            float: left;
+            /*background-color: blue;*/
+        }
+        .nav-bottom li.on a{
+            color: #fabe00;
+        }
+        .nav-bottom li a:active{
+            color: #fabe00;
+        }
+        .nav-bottom li a {
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+        .nav-bottom ul li a img {
+            width: 30px;
+            height: 30px;
+            padding: 10px 5px 0;
+            margin: 0 auto;
+            display: block;
+        }
+        .nav-bottom ul li a span{
+            display: block;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            margin: 0 auto;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!--搜索栏-->
+    <div class="searchbar">
+        <input class="searchbar-text" type="text" placeholder="搜索订单号/买家"/>
+        <a class="searchbar-btn"><img src="../images/common/ico_search.png"/></a>
+    </div>
+
+    <div class="main">
+        <!--背景图-->
+        <img class="bg" src="../images/shop/seller/c_bg_01.png" alt=""/>
+
+        <!--订单列表-->
+        <div class="items">
+            <div  class="tabs">
+                <select>
+                    <option value ="1">未付款</option>
+                    <option value ="2">待处理</option>
+                    <option value="3" selected>待发货</option>
+                    <option value="4">已发货</option>
+                    <option value="5">退款单</option>
+                    <option value="6">已关闭</option>
+                    <option value="7">已完成</option>
+                </select>
+            </div>
+
+            <div class="item">
+                <div class="d">
+                    <div class="d1">
+                        <span class="lab">买家：</span><span class="user-name">明朗</span><span> &gt;</span>
+                        <span class="lab status">待发货</span>
+                    </div>
+                    <div class="d2">
+                        <img class="image" src="../images/shop/img_user1.jpg" alt=""/>
+                        <div class="info">
+                            <p><span>订单号：</span><span class="order-id">12121212</span></p>
+                            <p><span class="order-des">进口猕猴桃*1/海南菠萝*2...</span></p>
+                            <p><span>售价：</span><span class="order-price">￥120</span></p>
+                            <p><span>收入：</span><span class="order-get">￥20</span></p>
+                            <div class="check comm-btn-middle"><button>订单详情</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="d">
+                    <div class="d1">
+                        <span class="lab">买家：</span><span class="user-name">明朗</span><span> &gt;</span>
+                        <span class="lab status">待发货</span>
+                    </div>
+                    <div class="d2">
+                        <img class="image" src="../images/shop/img_user2.jpg" alt=""/>
+                        <div class="info">
+                            <p><span>订单号：</span><span class="order-id">12121213</span></p>
+                            <p><span class="order-des">进口猕猴桃*1/海南菠萝*2...</span></p>
+                            <p><span>售价：</span><span class="order-price">￥120</span></p>
+                            <p><span>收入：</span><span class="order-get">￥20</span></p>
+                            <div class="check comm-btn-middle"><button>订单详情</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="sheet">没有更多...</p>
+        </div>
+    </div>
+
+    <!--底部导航栏-->
+    <div class="nav-bottom">
+        <ul>
+            <li id="home"><a href="s-a-wodeguoyuan.html"><img src="../images/shop/seller/d_wdgy.png"><span>我的果园</span></a></li>
+            <li id="list"><a href="s-b-shuiguofenlei.html"><img src="../images/shop/seller/d_sgfl.png"><span>水果分类</span></a></li>
+            <li class="on" id="order"><a href="s-c-dingdanguanli.html"><img src="../images/shop/seller/d_ddgl.png"><span>订单管理</span></a></li>
+            <li id="guoyuan"><a href="s-d-manage.html"><img src="../images/shop/seller/d_gygl.png"><span>果园管理</span></a></li>
+        </ul>
+    </div>
+
+
+
+    <script src="../js/jquery-2.2.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".check").click(function(){
+                window.location.href = "s-c-dingdanxiangqing.html";
+
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>

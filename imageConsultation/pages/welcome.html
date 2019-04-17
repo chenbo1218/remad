@@ -1,0 +1,191 @@
+
+<body>
+    <div class="slide">
+        <div class="slide-bg slide-bg1"></div>
+        <div class="slide-bg slide-bg2"></div>
+        <div class="slide-bg slide-bg3"></div>
+        <ul>
+            <li class="slide-but active">
+                <p class="but_title">RAPID RESPONSE</p>
+                <p class="but_p1">
+                    <span class='sp1_1'>快速反应</span>
+                    <span class='sp2_2'>迅速高效的受理业务 以第一时间为客户服务</span>
+                </p>
+            </li>
+            <li class="slide-but">
+                <p class="but_title">HIGH STANDARDS</p>
+                <p class="but_p2">
+                    <span class='sp1_1'>超高标准</span>
+                    <span class='sp2_2'>追求超越标准的信念 以满足客户的服务要求</span>
+                </p>
+            </li>
+            <li class="slide-but">
+                <p class="but_title">DEDICATED SERVICE</p>
+                <p class="but_p3">
+                    <span class='sp1_1'>热忱服务</span>
+                    <span class='sp2_2'>用对待生命的态度 来对待客户服务工作</span>
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="We">
+        <h2>我们为您提供</h2>
+        <h6>What we offer</h6>
+        <ul>
+            <li>
+                <a href=""><span class='sp1'></span></a>
+                <p class="text_p1">数字病理扫描设备</p>
+                <p class="text_p2">
+                    将病理切片转化为全景数字切片，并对数字化的图像数据进行保存、阅片、智能辅助分析以及远程诊断的一套综合信息系统。
+                </p>
+                <span class='but'><a href="product.php?cid=21">MORE INFO</a></span>
+            </li>
+            <li>
+                <a href=""><span class='sp2'></span></a>
+                <p class="text_p1">广泛的技术合作</p>
+                <p class="text_p2">本公司专业技术团队将结合自身在病理、数字化方面的专业优势，为广大客户提供硬件、软件的联合研发。你的设想，我们为您实现。</p>
+                <span class='but'><a href="join.php?cid=43">MORE INFO</a></span>
+            </li>
+            <li>
+                <a href=""><span class='sp3'></span></a>
+                <p class="text_p1">网络化病理远程会诊</p>
+                <p class="text_p2">利用网络实现不同地区专家共同会诊，以达到切片同步显示、切片标注同步显示，支持语音、视频等多种方式的即时交流，为缩小地区医疗水平差异带来福音。</p>
+                <span class='but'><a href="productshow.php?cid=38&id=40">MORE INFO</a></span>
+            </li>
+            <li>
+                <a href=""><span class='sp4'></span></a>
+                <p class="text_p1">深层次业务流程规划</p>
+                <p class="text_p2">由点及面的为您构建医疗卫生数字化方面的全套流程规划建设，如：病理科管理流程、看病预约管理流程、住院管理流程等。</p>
+                <span class='but'><a href="join.php?cid=44">MORE INFO</a></span>
+            </li>
+        </ul>
+    </div>
+
+    <!--<h1>欢迎来到医学影像世界！</h1>-->
+    <div class="nav">
+        <form id="fmSearch" action="">
+            <select name="sel1" id="sel1">
+                <option value="选项1">选项1</option>
+                <option value="选项2">选项2</option>
+                <option value="选项3">选项3</option>
+                <option value="选项4">选项4</option>
+                <option value="选项5">选项5</option>
+            </select>
+            <select name="sel2" id="sel2">
+                <option value="选项1">选项1</option>
+                <option value="选项2">选项2</option>
+                <option value="选项3">选项3</option>
+                <option value="选项4">选项4</option>
+                <option value="选项5">选项5</option>
+            </select>
+            <select name="sel3" id="sel3">
+                <option value="选项1">选项1</option>
+                <option value="选项2">选项2</option>
+                <option value="选项3">选项3</option>
+                <option value="选项4">选项4</option>
+                <option value="选项5">选项5</option>
+            </select>
+
+            <a class="btn btn-default" href="">搜索</a>
+
+        </form>
+        <div class="">
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+//        DD_belatedPNG.fix('div,  img,  input , a,span,p,h1');
+
+        $(function(){
+
+            var _zindex = 2;
+            var _now = 0;
+            var _index = 0;
+            //自动翻页
+            var _timer = setInterval(autoplay,8000);
+
+            //菜单切换效果
+            var $pics = $(".slide-bg");
+            $pics.eq(0).css('z-index','1');
+            var $buts = $(".slide-but");
+            $buts.click(function(e){
+                e.preventDefault();
+                $(this).addClass("active").siblings().removeClass("active");
+                if(_index === $(this).index()){
+                    return;
+                }
+                //停止计时器
+                clearInterval(_timer);
+                _index = $(this).index();
+                slide();
+            });
+
+
+            function slide(){
+                if (_index > _now) {
+//                    console.log(">>right");
+                    $pics.eq(_index).css({'left':'100%', 'z-index':_zindex++});
+                    $pics.eq(_now).stop().animate({'left':'-100%'},1000, 'easeOutQuart');
+                }else if(_index < _now){
+//                    console.log("<<left");
+                    $pics.eq(_index).css('left','-100%');
+                    $pics.eq(_now).stop().animate({'left':'100%'},1000,'easeOutQuart');
+                }
+                $pics.eq(_index).stop().animate(
+                    {'left':'0'},
+                    1000,
+                    'easeOutQuart',
+                    function(){
+                        //计时器开启
+                        _timer = setInterval(autoplay,8000);
+                    }
+                )
+                _now=_index;
+                $buts.eq(_now).addClass("active").siblings().removeClass("active");
+            }
+
+            function autoplay() {
+                _index++;
+                if (_index >= $pics.length) {
+                    _index = 0;
+                }
+//                console.log(_index);
+                if (_index > _now) {
+//                    console.log(">>right");
+                    $pics.eq(_index).css({'z-index': _zindex++, 'left': '100%'});
+                    $pics.eq(_now).stop().animate({'left': '-100%'}, 1000, 'easeOutQuart');
+                }else if (_index < _now) {
+//                    console.log("<<left");
+                    $pics.eq(_index).css('left', '100%');
+                    $pics.eq(_now).stop().animate({'left': '-100%'}, 1000, 'easeOutQuart');
+                }
+                $pics.eq(_index).stop().animate(
+                    {'left': '0'},
+                    1000,
+                    'easeOutQuart',
+                    function () {
+                        if (_index == $pics.length - 1) {
+                            $('.slide-bg:lt(' + ($pics.length - 1) + ')').css('left', '-100%');
+                            _index = -1;
+                        }
+                        if (_index == $pics.length - 2) {
+                            $pics.eq($pics.length - 1).css('left', '100%');
+                        }
+                    }
+                );
+                _now = _index;
+                $buts.eq(_now).addClass("active").siblings().removeClass("active");
+            }
+
+
+
+        });
+
+
+
+
+    </script>
+
+</body>

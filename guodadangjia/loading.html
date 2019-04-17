@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>玩命加载中...</title>
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #f6dd00;
+            overflow: hidden;
+        }
+
+        /*logo*/
+        .logo{
+            /*border: 1px solid red;*/
+            margin: 0 auto;
+            margin-top: 180px;
+            text-align: center;
+        }
+        .logo img{
+            width: 102.5px;
+            height: 102.5px;
+        }
+
+        /*progressbar*/
+        .progressbar {
+            /*border: 1px solid blue;*/
+            width: 226px;
+            margin:0 auto;
+            margin-top: 200px;
+            position: relative;
+        }
+        .bar-unfill {
+            width: 226px;
+            height:7.5px;
+            background:#fff;
+            display: block;
+            border-radius:8px;
+         }
+        .bar-fill {
+            width: 0px;
+            height:7.5px;
+            display: block;
+            background:#f08200;
+            border-radius:8px;
+            -webkit-transition:width .8s ease;
+            -moz-transition:width .8s ease;
+            transition:width .8s ease;
+            -webkit-animation:progressbar 7s infinite;
+            animation:progressbar 7s infinite;
+        }
+        .bar-track {
+            width: 30px;
+            height: 30px;
+            top: -12.5px;
+            left: -12.5px;
+            position:absolute;
+        }
+
+
+        /*@-webkit-keyframes progressbar {
+            from {
+                width:0
+            }
+            to {
+                width:100%
+            }
+        }
+        @keyframes progressbar {
+            from {
+                width:0
+            }
+            to {
+                width:100%
+            }
+        }*/
+
+    </style>
+</head>
+<body>
+
+<!--logo-->
+<div class="logo">
+    <img src="images/common/logo_big.png" />
+</div>
+
+<!--进度条-->
+<div class="progressbar">
+    <span class="bar-unfill">
+        <span class="bar-fill"></span>
+    </span>
+    <img class="bar-track" src="images/common/logo_small.png" />
+</div>
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var i = 0;
+        var dif = 226/100;
+        var track = $(".bar-track");
+        var fill = $(".bar-fill");
+        var timer = setInterval(function(){
+            var str = track.css("left");
+            var oldX = parseFloat(str.substring(0,str.length-2));
+//            console.log(oldX);//
+            track.css("left", oldX + dif + "px");
+            fill.css("width", i*dif + "px");
+            i++;
+            if (i > 100) {
+                clearInterval(timer);
+            }
+        }, 100);
+    });
+
+</script>
+
+</body>
+</html>

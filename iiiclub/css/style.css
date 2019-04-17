@@ -1,0 +1,380 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Lantinghei SC","Microsoft Yahei",Arial,Helvetica,sans-serif;
+    overflow-x: hidden;
+}
+h1{
+    font-size: 30px;
+}
+
+/*==================导航======================*/
+#nav{
+    z-index: 1000;
+    width: 100%;
+    height: 75px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    position: fixed;
+    border-bottom: 1px solid #000;
+    /*overflow: hidden;*/
+}
+
+/*导航logo*/
+#nav #nav-logo{
+    width: 5.8%;
+    height: 75px;
+    margin:0 auto;
+    line-height: 75px;
+    text-align: center;
+    float: left;
+}
+#nav #nav-logo img{
+    width: 37px;
+    height: 37px;
+    vertical-align: middle;
+    /*display: block;*/
+}
+
+/*导航标签*/
+#nav #nav-list{
+    width: 88.4%;
+    float: left;
+    position: relative;
+}
+#nav #nav-list ul li{
+    border: 0px;
+    width: 20%;
+    float: left;
+    list-style: none;
+    line-height: 75px;
+    text-align: center;
+}
+#nav #nav-list ul li a{
+    background-color: #ffffff;
+    color: #000;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+}
+#nav #nav-list ul li a:hover{
+    background-color: #888888;
+    color: #ffffff;
+}
+#nav #nav-list ul li.current a{
+    background-color: #000;
+    color: #ffffff;
+}
+
+/*导航尾部*/
+#nav #nav-sheet{
+    width: 5.6%;
+    height: 75px;
+    margin:0 auto;
+    line-height: 75px;
+    text-align: center;
+    float: left;
+}
+#nav #nav-sheet img{
+    width: 37px;
+    height: 37px;
+    vertical-align: middle;
+    /*display: block;*/
+}
+#nav-logo img {
+    border: 0;
+}
+#nav-sheet img {
+    border: 0;
+}
+
+/*=====================内容====================*/
+#content{
+    z-index: -1;
+    width: 100%;
+    /*height: auto;*/
+    margin: 0 0;
+    overflow: hidden;
+    overflow-x: hidden;
+}
+
+/*part头部*/
+#content .title{
+    height: 700px;
+    /*padding: 250px 0px 350px 0px;*/
+    background-color: #000;
+    text-align: center;
+    line-height: 700px;
+}
+#content .title p{
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+}
+#content #home-part1 img{
+    /*display: inline;*/
+    vertical-align: middle;
+    width: 320px;
+    height: 320px;
+}
+
+
+/*part主体*/
+#content .part{
+    position: relative;
+    width: 100%;
+}
+#content .part img.width100 {
+    width: 100%;
+    display: block;
+}
+/*part标题*/
+.part .part-title {
+    width: 500px;
+    height: 150px;
+    margin-left: 3%;
+    margin-top: 4%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.part .part-title img {
+    margin-left: 10%;
+    padding: 25px 0;
+    float: left;
+    vertical-align: middle;
+    height: 100px;
+    width: 100px;
+}
+.part .part-title h1 {
+    float: left;
+    line-height: 39px;
+    margin: 35px auto 35px 10px;
+}
+.part .part-title h1 span:first-child {
+    letter-spacing: 5px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid black;
+    display:block;
+    font-size: 32px;
+    font-weight: normal;
+}
+.part .part-title h1 span:last-child {
+    color: gray;
+    font-size: 22px;
+    font-weight: normal;
+}
+/*part描述1*/
+.part .part-description1 {
+    /*border: 1px solid red;*/
+    padding-top: 3.5%;
+    width: 59%;
+    height: 18%;
+    top: 25.3%;
+    left: 11.7%;
+    position: absolute;
+    font-size: 16px;
+    text-align: justify;
+    display: table-cell;
+}
+.part .part-description1 p:last-child{
+    font-size: 14px;
+    /*vertical-align: middle;*/
+}
+/*part描述2*/
+.part .part-description2 {
+    /*border: 1px solid red;*/
+    width: 100%;
+    left: 0;
+    top: 25.3%;
+    position: absolute;
+    font-size: 16px;
+    text-align: center;
+}
+.part .part-description2 p:first-child{
+    font-size: 28px;
+    /*vertical-align: middle;*/
+}
+.part .part-description2 p:last-child{
+    letter-spacing: 2px;
+}
+
+
+
+/*team特殊样式*/
+#content .team {
+    height: 800px;
+    text-align: center;
+}
+#content .team .team-img {
+    /*border: 1px solid blue;*/
+    float: left;
+    left: 12%;
+    position: absolute;
+}
+#content .team .team-img img {
+    margin: 150px 0;
+    display: block;
+}
+#content .team .team-description {
+    /*border: 1px solid red;*/
+    width: 40%;
+    height: 500px;
+    padding: 300px 30% 0;
+    float: left;
+}
+#content .team .team-description h2 span{
+    font-weight: normal;
+    display: block;
+}
+#content .team .team-description h2{
+    margin-bottom: 40px;
+}
+
+#content .odd {
+    background-color: #DADADA;
+}
+#content .odd .team-img {
+    float: right;
+    left: 76%;
+}
+
+#content #team-part2 div{
+    position: static;
+}
+
+
+
+/*works特殊样式*/
+#content .works {
+    padding-top: 50px;
+    text-align: center;
+}
+#content .works .works-ico {
+    width: 80px;
+    height: 80px;
+    vertical-align: middle;
+}
+#content .works h3 {
+    margin: 20px 0 20px;
+    text-align: center;
+}
+#content .works p {
+    width: 50%;
+    padding: 0 25%;
+    text-align: center;
+    font-size: 14px;
+}
+#content #more {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 22px;
+}
+
+
+
+#content #works-part2 div{
+    position: static;
+}
+#content #works-part2 div:last-child{
+    padding: 0 23%;
+    width: 54%;
+    font-size: 16px;
+    text-align: center;
+    clear: both;
+}
+#content #works-part2 .yw{
+    font-size: 14px;
+}
+
+#content #contact-part2 div{
+    position: static;
+}
+
+
+/*contact特殊样式*/
+#content #contact-part3 #tb{
+    width: 70%;
+    height: 450px;
+    margin: 0 auto;
+    border-top: 5px solid #000;
+}
+#contact-part3 form{
+    clear: both;
+}
+#contact-part3 #tb-first{
+    border-bottom:1px solid gray;
+    height:70px;
+}
+#contact-part3 #tb-second{
+    border-bottom:1px solid gray;
+    height:70px;
+    clear: both;
+}
+#contact-part3 #tb-third{
+    border-bottom:1px solid gray;
+    height: 200px;
+}
+#contact-part3 #tb-first div{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+#contact-part3 input{
+    width:100%;
+    height:100%;
+    padding-left:5px;
+    border: none;
+    font-size: 14px;
+    text-align:left;
+}
+#contact-part3 #tb-third textarea{
+    padding-left:5px;
+    width:100%;
+    height:100%;
+    border: none;
+    font-size: 14px;
+    text-align:left;
+}
+#contact-part3 #btn-send{
+    margin-top: 10px;
+    float:right;
+    width: 98px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid gray;
+    font-size: 14px;
+}
+
+
+
+
+/*====================尾部=====================*/
+#foot{
+    width: 100%;
+    height: 200px;
+    background-color: #000;
+    padding-top: 64px;
+}
+#foot .foot-line{
+    text-align: center;
+    margin: 14px 0px 14px 0px;
+}
+#foot p{
+    font-size: 13px;
+    color: #888888;
+}
+#foot p span{
+    font-size: 14px;
+    color: #fff;
+}

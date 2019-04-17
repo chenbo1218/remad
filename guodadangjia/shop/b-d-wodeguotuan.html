@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>个人中心-我的果团</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style type="text/css" >
+        body {
+            font-size: 14px;
+        }
+
+        .item{
+            width: 100%;
+            height: 126px;
+        }
+        .item .p1{
+            height: 66px;
+            line-height: 22px;
+            padding: 10px 15px;
+        }
+        .item .p1 .pic{
+            float: left;
+        }
+        .item .p1 img{
+            width: 87px;
+            height: 66px;
+        }
+        .item .p1 .info{
+            float: left;
+            margin-left: 10px;
+        }
+        .item .p2{
+            height: 40px;
+            line-height: 40px;
+            padding: 0 15px;
+            border-top: 1px solid lightgray;
+            border-bottom: 1px solid lightgray;
+        }
+        .item .p2 div:first-child{
+            color: #fabe00;
+            float: left;
+        }
+        .item .p2 div:last-child{
+            float: right;
+            width: 90px;
+            margin-top: 5px;
+        }
+        .item .p2 div:last-child button{
+            border: 1px solid black;
+            border-radius: 20px;
+            font-size: 14px;
+            background-color: #fff;
+            color: #000;
+        }
+
+        .nomore{
+            width: 100px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+        <h2>我的果团</h2>
+    </div>
+
+    <!--列表-->
+    <div class="items">
+        <div class="item">
+            <div class="p1">
+                <div class="pic"><img src="../images/fruits/f1.jpg" alt=""/></div>
+                <div class="info">
+                    <p>新西兰阳光柠檬（5个）</p>
+                    <p>规格：5个/盒</p>
+                    <p>￥25.00</p>
+                </div>
+            </div>
+            <div class="p2">
+                <div>拼团进行时</div>
+                <div class="check comm-btn-middle"><button>查看团详情</button></div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="p1">
+                <div class="pic"><img src="../images/fruits/f1.jpg" alt=""/></div>
+                <div class="info">
+                    <p>新西兰阳光柠檬（5个）</p>
+                    <p>规格：5个/盒</p>
+                    <p>￥25.00</p>
+                </div>
+            </div>
+            <div class="p2">
+                <div>拼团进行时</div>
+                <div class="check comm-btn-middle"><button>查看团详情</button></div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="p1">
+                <div class="pic"><img src="../images/fruits/f1.jpg" alt=""/></div>
+                <div class="info">
+                    <p>新西兰阳光柠檬（5个）</p>
+                    <p>规格：5个/盒</p>
+                    <p>￥25.00</p>
+                </div>
+            </div>
+            <div class="p2">
+                <div>拼团进行时</div>
+                <div class="check comm-btn-middle"><button>查看团详情</button></div>
+            </div>
+        </div>
+    </div>
+
+    <p class="nomore">没有更多...</p>
+
+
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        //返回
+        $(".comm-ico-back a").back();
+
+        //状态筛选
+
+
+
+    });
+</script>
+</body>
+</html>

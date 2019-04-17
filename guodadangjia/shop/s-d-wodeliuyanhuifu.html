@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>留言回复</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style type="text/css" >
+        /*80+150*n 40+75*n*/
+
+        body {
+            background-color: #f2f2f2;
+            /*height: 100%;*/
+        }
+
+        .main textarea {
+            width: 90%;
+            padding: 0 5%;
+            border: none;
+            font-size: 14px;
+            height: 110px;
+            background-color: white;
+            line-height: 22px;
+        }
+
+        .comm-btn-middle{
+            width: 90%;
+            padding: 0 5%;
+            height: 40px;
+            margin: 40px 0 10px;
+        }
+        .comm-btn-middle button {
+            background-color:#04be02;
+            border-radius: 5px;
+        }
+        .comm-btn-middle button:active{
+            background-color: green;
+            color: white;
+        }
+        form div.xuanzhe {
+            padding: 5%;
+            font-size: 12px;
+            line-height: 18px;
+            text-align: justify;
+        }
+
+        .xuanzhe-box {
+            padding: 0px 0px 15px 30px;;
+            position: relative;
+        }
+        .xuanzhe-box span {
+            position: absolute;
+            top: 4px;
+            left: 0px;
+        }
+        input[type="radio"]+label {
+            /*display: block;*/
+            /*padding-left: 20px;*/
+        }
+        .xuanzhe span.radio-circle {
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            border: 1px solid #fabe00;
+            border-radius: 6px;
+        }
+
+        input[type="radio"]:checked+span.radio-circle {
+            background-color: #fabe00;
+        }
+        input[type="radio"] {
+            position: absolute;
+            left: -10000px;
+            top: 0px;
+            /*visibility:hidden;width:0;height:0;margin:0;padding:0;*/
+        }
+
+    </style>
+</head>
+<body>
+<!--title-->
+<div class="comm-top-title">
+    <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+    <h2>我的留言板</h2>
+</div>
+
+<div class="main">
+    <form id="reply">
+        <textarea id="text" name="text">您好，小店商品满100一律包邮，祝您购物愉快！</textarea>
+
+        <div id="submit" class="comm-btn-middle">
+            <button>提交</button>
+        </div>
+        <div class="xuanzhe">
+            <div class="xuanzhe-box">
+                <input id="reply_01"  type="radio" name="reply"/><span class="radio-circle"></span><label for="reply_01">您好，小店商品满100一律包邮，祝您购物愉快！</label><br />
+            </div>
+            <div class="xuanzhe-box">
+                <input id="reply_02"  type="radio" name="reply"/><span class="radio-circle"></span>
+                <label for="reply_02">您好，小店商品满100一律包邮，祝您购物愉快！您好，小店商品满100一律包邮，祝您购物愉快！2</label><br />
+            </div>
+            <div class="xuanzhe-box">
+                <input id="reply_03"  type="radio" name="reply"/><span class="radio-circle"></span>
+                <label for="reply_03">您好，小店商品满100一律包邮，祝您购物愉快！3</label><br />
+            </div>
+            <div class="xuanzhe-box">
+                <input id="reply_04"  type="radio" name="reply"/><span class="radio-circle"></span>
+                <label for="reply_04">您好，小店商品满100一律包邮，祝您购物愉快！4</label><br />
+            </div>
+        </div>
+        <!--<svg width="100%" height="100%" version="1.1"-->
+             <!--xmlns="http://www.w3.org/2000/svg">-->
+
+            <!--<circle cx="100" cy="50" r="40" stroke="black"-->
+                    <!--stroke-width="2" fill="red"/>-->
+
+        <!--</svg>-->
+
+
+    </form>
+
+
+</div>
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-ico-back a").back();
+
+        $("form input,label").click(function(){
+            var text = $('form input[type="radio"]:checked').next().next().text();
+            $("form textarea").val(text);
+        });
+//        $("#submit").click(function(e){
+//            e.preventDefault();
+//            window.location.href = "b-protocol.html";
+//        });
+    });
+</script>
+</body>
+</html>

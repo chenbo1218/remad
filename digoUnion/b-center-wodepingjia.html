@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <title>Di盟商城</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <style type="text/css">
+        /*我的评价*/
+        body{
+            /*background-color: #f2f2f2;*/
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .item{
+            width: 100%;
+            /*height: 145px;*/
+        }
+        .item .name{
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid lightgray;
+        }
+        .item .name img{
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        .item .des{
+            height: 105px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            padding: 5px 10px;
+            line-height: 30px;
+            border-bottom: 1px solid lightgray;
+        }
+        .item .des .des-txt{
+            margin-top: 10px;
+        }
+        .item .des .des-readed{
+            font-size: 14px;
+            color: darkgray;
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="images/ico_back.png" /></a></span>
+        <h2>我的评价</h2>
+    </div>
+
+    <div class="items">
+        <div class="item">
+            <div class="name">
+                <img src="images/ico_shop.png" alt=""/>
+                <span>食谋天下</span>
+            </div>
+            <div class="des">
+                <div class="comm-star" alt="5">
+                    <ul>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                    </ul>
+                </div>
+                <p class="des-txt">学校边上的，店面装修还不错，口味也可以。</p>
+                <p class="des-readed">2016-04-28 共5人读过</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="name">
+                <img src="images/ico_shop.png" alt=""/>
+                <span>温莎量贩KTV</span>
+            </div>
+            <div class="des">
+                <div class="comm-star" alt="4">
+                    <ul>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                    </ul>
+                </div>
+                <p class="des-txt">音响效果好，店面装修还不错，价格适中。</p>
+                <p class="des-readed">2016-04-28 共5人读过</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="name">
+                <img src="images/ico_shop.png" alt=""/>
+                <span>食谋天下</span>
+            </div>
+            <div class="des">
+                <div class="comm-star" alt="3">
+                    <ul>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                        <li class="comm-star-single"><img src="" alt=""/></li>
+                    </ul>
+                </div>
+                <p class="des-txt">学校边上的，店面装修还不错，口味也可以。</p>
+                <p class="des-readed">2016-04-28 共5人读过</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-back").back();
+
+        $(".comm-star").each(function(){
+            $(this).starshow($(this).attr("alt"));
+        });
+
+
+
+
+
+
+
+    });
+</script>
+</body>
+</html>

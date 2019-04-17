@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <div id="app">
+        <!--<p>{{message}}</p>
+        <input type="text" v-model="message"/>-->
+
+        <ul>
+            <li v-for="todo in todos">
+                {{todo.text}}
+            </li>
+        </ul>
+    </div>
+
+    <script src="js/static/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                message: "hello vue",
+                todos: [
+                    {text:'something1'},
+                    {text:'something2'},
+                    {text:'something3'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

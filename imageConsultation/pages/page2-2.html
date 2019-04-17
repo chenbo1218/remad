@@ -1,0 +1,81 @@
+
+<body>
+    <div>这里是页面2-2的内容</div>
+
+    <div id="cont">
+        <div id="d1" v-show="display">{{msg}}</div>
+        <input type="text" id="ipt" v-model="msg"/>
+    </div>
+
+    <div id="cont1">
+        <input type="text" placeholder="请输入" v-model="text"/>
+        <p>{{text}}</p>
+    </div>
+
+    <div id="app">
+        <div v-for="item in message">
+            {{item.name}}
+            {{item.age}}
+            <div v-for="it in item.study">
+                {{it.yuwen}}
+                {{it.shuxue}}
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var vue = new Vue({
+            el: "#cont",
+            data : {
+                display: true,
+                msg:"aaa"
+            },
+            components: {
+
+            }
+        });
+
+        var vue1 = new Vue({
+            el: "#cont1",
+            data:{
+                text: ""
+            },
+            components:{
+
+            }
+        });
+
+        var vue3 = new Vue({
+            el: "#app",
+            data:[
+                {
+                    message: "张三",
+                    age: 24,
+                    study:[
+                        {
+                            yuwen:95,
+                            shuxue:100
+                        }
+                    ]
+                },
+                {
+                    message: "李四",
+                    age: 23,
+                    study:[
+                        {
+                            yuwen:99,
+                            shuxue:88
+                        }
+                    ]
+                }
+
+            ]
+
+        })
+
+
+
+
+    </script>
+</body>

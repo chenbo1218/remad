@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>fir.im - 免费应用内测托管平台|iOS应用Beta测试分发|Android应用内测分发</title>
+    <meta name="keywords" content="fir,fir.im,app分发,免费托管,内测分发,iOS,Android,iPad,iPhone,App下载,免费安装,adhoc,InHouse,fir cli,beta测试,ipa,apk,安卓,苹果应用,二维码下载,UDID,iOS内测,Android内测,beta test,app store,testflight,firim">
+    <meta name="description" content="fir.im 为开发者提供测试应用极速发布，应用崩溃实时分析、用户反馈收集等一系列开发测试效率工具服务，帮助开发者将更多精力放在产品的开发与应用的优化上。">
+    <meta property="qc:admins" content="0650725312615">
+
+    <link rel="stylesheet" href="assets/stylesheets/icons.css">
+    <link rel="stylesheet" href="assets/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+
+    <script type="text/javascript">
+        var currentUser = {
+            "id": "59fb2f08959d695d0d000448",
+            "uuid": "59fb2e365642123b9f0aad56",
+            "name": "3369852946",
+            "email": "3369852946@qq.com",
+            "is_confirmed": true,
+            "gravatar": "https://avatar-file.flow.ci/avatar/57d02bc8a097b70cdb29bcb1c251c2d3.png?r=PG",
+            "is_developer": true,
+            "is_tester": false,
+            "is_phone_confirmed": true,
+            "taobao_user_id": null,
+            "taobao_user_name": null,
+            "qq_number": null,
+            "verify_state": "",
+            "verify_refuse_reason": null,
+            "phone_number": "18570300218",
+            "company": null,
+            "job": null,
+            "upload_setting": "qiniu",
+            "has_paid": true,
+            "created_at": 1509633800,
+            "allowed_perms": [],
+            "orgs": [{
+                "id": "59fb2f08548b7a1688813717",
+                "name": "user_private_59fb2f08548b7a1688813716",
+                "title": "私人组织账户",
+                "gravatar": null,
+                "category": "free",
+                "org_status": "paid",
+                "category_expired_at": 1825166600,
+                "org_constraint": {
+                    "_id": "57d7cb867e4ff074978fe1ac",
+                    "daily_download": 100,
+                    "package_size": 300,
+                    "show_release_count": 10,
+                    "saved_days_count": 90,
+                    "org_max_members_count": 10,
+                    "year_price": 0,
+                    "month_price": 0,
+                    "name": "free",
+                    "category_expired_at": 1825166600
+                },
+                "members": [],
+                "invoice_title": null,
+                "express_contact_name": null,
+                "express_contact_phone": null,
+                "express_address": null,
+                "taxpayer_number": null,
+                "user": {
+                    "id": "59fb2f08548b7a1688813716",
+                    "uuid": "59fb2e365642123b9f0aad56",
+                    "email": "3369852946@qq.com",
+                    "default_org_id": "59fb2f08548b7a1688813717"
+                },
+                "all_data_package_cnt": 71000,
+                "used_data_package_cnt": 68952,
+                "org_packet": {
+                    "id": "57d7cb867e4ff074978fe1ac",
+                    "name": "free",
+                    "daily_download": 100,
+                    "package_size": 300,
+                    "show_release_count": 10,
+                    "saved_days_count": 90,
+                    "org_max_members_count": 10,
+                    "year_price": 0,
+                    "month_price": 0
+                }
+            }],
+            "is_verified": true,
+            "new_user_gift_status": "id_card_first",
+            "access_token": "2f04b21b28f4d85db84882f67c5569c124f3ff813e",
+            "saved_at": 1553484014312
+        }
+        var endpoint = 'https://api.fir.im'.replace('http:', location.protocol);
+        var locale = 'zh';
+    </script>
+</head>
+<body class="page-support">
+    <div class="apps-dropdown">
+        <div class="wrapper"></div>
+    </div>
+    <div class="dropdown-cover"></div>
+    <nav class="navbar navbar-transparent fade-out " role="navigation">
+        <div class="navbar-header"><a class="navbar-brand" href="/"><i class="icon-logo"></i> </a></div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse" ng-controller="NavbarController">
+            <div class="dropdown">
+                <div><i class="icon-brace-left"></i>
+                    <ul class="navbar-bracket">
+                        <li><a href="index.html">首页</a> <i class="icon-comma"></i></li>
+                        <li><a href="/apps">应用管理</a><i class="icon-comma"></i></li>
+                        <li><a href="pricing.html">价格</a> <i class="icon-comma"></i></li>
+                        <li><a href="docs.html">文档</a> <i class="icon-comma"></i></li>
+                        <li><a href="tools.html">工具</a><i class="icon-comma"></i></li>
+                        <li><a href="support.html">帮助中心</a><i class="icon-comma"></i></li>
+                    </ul>
+                    <i class="icon-brace-right"></i></div>
+            </div>
+        </div>
+    </nav>
+    <div class="menu-toggle fade-out"><i class="icon-menu"></i></div>
+    <menu>
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/docs">文档</a></li>
+            <li><a href="/tools">工具</a></li>
+            <li><a href="/support">帮助中心</a></li>
+            <li><a href="/oauth/signin">登录</a></li>
+        </ul>
+    </menu>
+    <script>
+        function firEvent(cate,act,label,url){
+            ga('send','event',cate,act,label,{'hitCallback':function(){
+                window.location.href= url
+            }})
+            return false
+        }
+    </script>
+
+    <div class="banner banner-support">
+        <h1>
+            <div class="brackets"><i class="icon-brace-left"></i> <span>Support</span> <i class="icon-brace-right"></i>
+            </div>
+            <small>帮助中心</small>
+        </h1>
+        <div class="pattern-bg"></div>
+    </div>
+    <div class="support-content">
+        <div class="docs-content support-directory">
+            <aside class="pull-left"></aside>
+            <article>
+                <div class="inner current">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12"><h1 id="-">发布应用</h1>
+                                <ul>
+                                    <li><a href="/support/articles/app_publish/how-to-build-adhoc-ipa">如何制作一个上传到 fir.im
+                                        的 ipa 包 —— AdHoc 篇</a></li>
+                                    <li><a href="/support/articles/app_publish/publish">如何发布一个 APP？</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-xs-12"><h1 id="-">应用管理</h1>
+                                <ul>
+                                    <li><a href="/support/articles/app_manage/app_access">如何控制访问权限？</a></li>
+                                    <li><a href="/support/articles/app_manage/app_combo">如何进行应用合并？</a></li>
+                                    <li><a href="/support/articles/app_manage/download">如何控制显示在下载页的内容？</a></li>
+                                    <li><a href="/support/articles/app_manage/how_to_use_statistics">如何使用高级统计？</a></li>
+                                    <li><a href="/support/articles/app_manage/redirect_to_store">如何让访问 fir.im
+                                        短连接的用户直接跳转到应用商店？</a></li>
+                                    <li><a href="/support/articles/app_manage/user_udid">如何检测用户的 UDID 是否添加成功？</a></li>
+                                    <li><a href="/support/articles/app_manage/how_to_use_mqc">如何使用使用兼容性测试</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12"><h1 id="webhook-">WebHook 设置</h1>
+                                <ul>
+                                    <li><a href="/support/articles/webhook/bearychat">如何设置 BearyChat 的 WebHook？</a></li>
+                                    <li><a href="/support/articles/webhook/custom">如何设置自定义 WebHook?</a></li>
+                                    <li><a href="/support/articles/webhook/lesschat">如何设置纷云的 WebHook？</a></li>
+                                    <li><a href="/support/articles/webhook/pubu">如何设置瀑布 IM 的 WebHook？</a></li>
+                                    <li><a href="/support/articles/webhook/slack">如何设置 Slack 的 WebHook？</a></li>
+                                    <li><a href="/support/articles/webhook/talk">如何设置简聊的 WebHook？</a></li>
+                                    <li><a href="/support/articles/webhook/dingding">如何设置钉钉的 WebHook？</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-xs-12"><h1 id="-">常见问题</h1>
+                                <ul>
+                                    <li><a href="/support/articles/faq/app_403">为什么访问应用短连接会出现 403、404 的现象？</a></li>
+                                    <li><a href="/support/articles/faq/ios9_certificate">iOS9 设备设置信任证书？</a></li>
+                                    <li><a href="/support/articles/faq/ios_certificate">iOS 的证书都有什么区别？</a></li>
+                                    <li><a href="/support/articles/faq/uninstall">如何定位应用无法安装的问题？</a></li>
+                                    <li><a href="/support/articles/faq/user_udid">如何快速获取用户 UDID ？</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner alternate"></div>
+            </article>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-nav">
+                <table>
+                    <tr>
+                        <td>
+                            <ul class="list-inline">
+                                <li class="copyright">©&nbsp;<a href="//fir.im">fir.im&nbsp;2019</a></li>
+                                <li><a href="/about">关于我们</a></li>
+                                <li><a href="//blog.fir.im">博客</a></li>
+                                <li><a href="/partners">合作伙伴</a></li>
+                                <li><a href="/termsofuse">用户协议</a></li>
+                                <li><a href="/privacy">隐私政策</a></li>
+                                <li><a href="/pricing">价格</a></li>
+                            </ul>
+                            <div>
+                                <ul class="list-inline list-unstyled navbar-footer">
+                                    <li><a target="_blank"
+                                           href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37030302000287"
+                                           style="height: 30px; display: inline-block"><img src="images/beianbgs.png" style="margin-right: 4px">鲁公网安备
+                                        37030302000287号</a></li>
+                                    <li><a>晋ICP备15006832号-1</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="locale"><a href="?locale=en">English</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="lib/markup.js"></script>
+    <script src="assets/javascripts/main.js"></script>
+    <script src="assets/javascripts/analytics.js"></script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){
+            i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//dn-firweb.qbox.me/analytics.js','ga');
+        ga('create', 'UA-43616652-1', 'auto');
+    </script>
+
+    <script type="text/javascript">
+        window.ga = window.ga || function(){}
+    </script>
+
+    <script type="text/javascript">
+        ga('set', '&uid', "59fb2e365642123b9f0aad56");
+    </script>
+
+    <script type="text/javascript">
+        !function(a,b,c,d){var e=b.createElement("script");
+            e.type="text/javascript",e.crossOrigin="anonymous",e.src=c,m=b.getElementsByTagName("script")[0],d&&(e.async=!0),m.parentNode.insertBefore(e,m),a.bughd=function(){(a.bughd.q=a.bughd.q||[]).push(arguments)}}(window,document,"//dn-bughd-web.qbox.me/bughd.min.js",!1);
+        bughd("create",{key:"eebd236c8c6e9f815ff9822102c2ecd7", sendConsoleError: false})
+        bughd.onerror = function(){
+            ga("send","event","bughd","emitter","errorCount");
+        }
+    </script>
+
+    <script type="text/javascript">
+        window.__MIXPANEL_TOKEN__ = '4fb7314d7432f6c41d795199438b703d'
+        if (window.mixpanel) {
+            window.mixpanel.init(window.__MIXPANEL_TOKEN__);
+            try{
+                var user = localStorage.getItem('rio_web.currentUser')
+                if (user) {
+                    user = JSON.parse(user)
+                    mixpanel.identify(user.uuid)
+                }
+            } catch(e) {}
+        }
+    </script>
+
+    <script type="text/javascript">
+        var loading= false;
+        var article= $('.docs-content article');
+        var nav= $('.docs-content aside');
+        var height = 0;
+
+        // NOTE: 初始化激活列表的高度
+        nav.find('li.active').parent().children().each(function(){
+            height += $(this).innerHeight();
+        }).parent().height(height).parent().addClass('show')
+
+        // NOTE: 绑定目录标题的单击事件
+        nav.delegate('div.aside-container > .aside-list > h4', 'click', function(){
+            var $aside = $(this).parent();
+            height = 0;
+            $aside.siblings('.show').removeClass('show').find('ul').height(height);
+            $aside.find('ul').children().each(function(){
+                height += $(this).innerHeight();
+            }).parent().height(height);
+            $aside.addClass('show');
+        });
+
+        // NOTE: 绑定文档标题的单击事件
+        nav.delegate('div.aside-container ul > li > a', 'click', function(){
+            if(loading) return false;
+            var self = $(this);
+            var url = self.attr("href");
+            ga("send", "pageview", { page : url });
+            loading = true;
+            article.addClass('loading');
+
+            $.get(url, function(docHtml){
+                window.history.pushState(null, null, url);
+                var currentArticle= article.find('.current');
+                var articleBody = $($(docHtml).find('.current')).html()
+                currentArticle.removeClass('current');
+                nav.find('li.active').removeClass('active');
+                self.parent().addClass('active');
+
+                setTimeout(function(){
+                    var alternateArticle= article.find('.alternate');
+                    alternateArticle.removeClass('alternate').addClass('current');
+                    alternateArticle.html(articleBody);
+                    article.removeClass('loading');
+                    setTimeout(function(){
+                        currentArticle.addClass('alternate').html('');
+                        loading = false;
+                    }, 200);
+                }, 100);
+
+            });
+            return false;
+        });
+    </script>
+
+
+</body>
+</html>

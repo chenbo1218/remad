@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>商品详情</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+
+    <style type="text/css">
+        body{
+            font-size: 12px;
+        }
+
+        /*商品banner*/
+        .detail-banner{
+            width: 100%;
+            height: 210px;
+            margin: 0 auto;
+        }
+
+        /*商品介绍*/
+        .detail-des{
+            width: 94%;
+            height: 85px;
+            margin: 0 auto;
+            padding: 3% 3%;
+            /*border-bottom: 1px solid lightgrey;*/
+        }
+        .detail-des .detail-des1{
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+        }
+        .detail-des .detail-des1 h4{
+            font-size: 14px;
+            float: left;
+        }
+        .detail-des .detail-des1 span{
+            color: grey;
+            float: right;
+        }
+        .detail-des .detail-des2{
+            height: 60px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        .detail-des .detail-des2 p{
+            color: grey;
+            font-size: 3px;
+            line-height: 15px;
+        }
+
+        /*商品价格*/
+        .detail-price{
+            width: 94%;
+            height: 40px;
+            margin: 0 auto;
+            padding: 0 3%;
+            border-bottom: 1px solid lightgrey;
+        }
+        .detail-price span{
+            line-height: 23px;
+            width: 30%;
+            color: #000;
+            text-align: center;
+            border: 1px solid #fabe00;
+            border-radius: 5px;
+        }
+        .detail-price span em{
+            font-size: 14px;
+            font-style: normal;
+            color: #fabe00;
+        }
+        .detail-price span.on{
+            background-color: #fabe00;
+            color: #fff;
+        }
+        .detail-price span.on em{
+            color: #fff;
+        }
+        .detail-price .price1{
+            float: left;
+        }
+        .detail-price .price2{
+            float: right;
+        }
+
+        .title{
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 40px;
+        }
+
+        /*商品规格*/
+        .detail-model{
+            width: 94%;
+            height: 40px;
+            margin: 0 auto;
+            padding: 0 3%;
+            border-bottom: 1px solid lightgrey;
+        }
+        .detail-model span{
+            line-height: 40px;
+            font-size: 14px;
+        }
+        .detail-model span:last-child{
+            width: 45px;
+            float: right;
+            line-height: 24px;
+            text-align: center;
+            padding: 0 10px;
+            margin-top: 7px;
+            color: #fabe00;
+            border: 1px solid #fabe00;
+            border-radius: 3px;
+        }
+
+        /*配送地址*/
+        .detail-address{
+            width: 94%;
+            height: 40px;
+            margin: 0 auto;
+            padding: 0 3%;
+            border-bottom: 1px solid lightgrey;
+        }
+        .detail-address .address{
+            float: right;
+            font-size: 12px;
+            line-height: 20px;
+            text-align: right;
+        }
+        .detail-address .address img{
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+        .detail-address .address span{
+            top: -5px;
+        }
+        .detail-address .address p{
+            text-align: right;
+        }
+
+
+        /*商品热卖度*/
+        .detail-hot{
+            width: 94%;
+            height: 40px;
+            margin: 0 auto;
+            padding: 0 3%;
+            border-bottom: 1px solid lightgrey;
+        }
+
+
+        /*上架按钮*/
+        .btns{
+            width: 100%;
+            position: fixed;
+            bottom: 0px;
+        }
+        #btn-go-basket{
+            float: left;
+            margin-left: 15px;
+        }
+        #btn-go-basket a{
+            display: block;
+        }
+        #btn-go-basket a img{
+            width: 40px;
+            height: 40px;
+        }
+        #btn-add-basket{
+            width: 40%;
+            height: 40px;
+            float: right;
+        }
+        #btn-add-basket button{
+            border-radius: 0px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+    <!--商品图片-->
+    <div class="detail-banner comm-banner">
+        <div class="comm-banner-img">
+            <img src="../images/fruits/f1_detail1.jpg" alt="香得要死"/>
+            <img src="../images/fruits/f1_detail2.jpg" alt="香得要死"/>
+            <img src="../images/fruits/f1_detail3.jpg" alt="香得要死"/>
+        </div>
+        <div class="comm-banner-tag">
+            <ul>
+                <li class="current"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--商品描述-->
+    <div class="detail-des">
+        <div class="detail-des1">
+            <h4>一级精品海南木瓜</h4>
+            <span>库存120件</span>
+        </div>
+        <div class="detail-des2">
+            <p>产地智利！果实呈蓝紫色近黑色，表面有果粉包围，果实细腻，种子极小，超甜双扣，且具有香突诱人的果香，美容养颜绝品。</p>
+        </div>
+    </div>
+
+    <!--商品价格-->
+    <div class="detail-price">
+        <span class="price1 on"><em>58.00/</em>单独购买</span>
+        <span class="price2"><em>55.00/</em>拼团购买</span>
+    </div>
+
+    <!--商品规格-->
+    <div class="detail-model">
+        <span class="title">规格</span>
+        <span class="count">6个装</span>
+    </div>
+
+    <!--配送地址-->
+    <div class="detail-address">
+        <span class="title">配送地址</span>
+        <div class="address">
+            <img src="../images/shop/buyer/b_ico_address.png" alt=""/>
+            <span id="address-txt">湖南省长沙市开福区</span>
+            <p>预计03月08日09:00-18:00</p>
+        </div>
+    </div>
+
+    <!--热卖度-->
+    <div class="detail-hot">
+        <span class="title">商品热卖度</span>
+        <span>
+            <div class="star"></div>
+        </span>
+    </div>
+
+    <!--上架按钮-->
+    <div class="btns">
+        <div id="btn-go-basket">
+            <a><img src="../images/shop/buyer/b_ico_basket.png" alt=""/></a>
+        </div>
+        <div id="btn-add-basket" class="comm-btn-middle">
+            <button>加入购物篮</button>
+        </div>
+    </div>
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/sweetalert.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-ico-back a").back();
+
+        //图片轮播
+        $(".detail-banner").banner();
+
+        //切换价格模式
+        $(".detail-price span").click(function(){
+            $(this).addClass("on").siblings().removeClass("on");
+        });
+
+        //加入购物车
+        $("#btn-add-basket").click(function(){
+            sweetAlert({title: "加入购物车成功"});
+        });
+
+        //去购物车
+        $("#btn-go-basket").click(function(){
+            window.location.href = "b-c-gouwuche.html";
+        });
+
+    });
+</script>
+
+</body>
+</html>

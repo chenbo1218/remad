@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <title>Di盟商城</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <style type="text/css">
+        /*抵用券*/
+        body{
+            /*background-color: #f2f2f2;*/
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .cards{
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px 10px;
+        }
+        .card{
+            width: 100%;
+            height: 80px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            box-shadow: 2px 2px 2px #888888;
+        }
+        .card .price{
+            width: 30%;
+            height: 80px;
+            color: #fff;
+            background: #eb632e;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 80px;
+            float: left;
+        }
+        .card .info{
+            width: 70%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 5px 5px;
+            font-size: 12px;
+            float: left;
+            line-height: 18px;
+        }
+        .card .info p:first-child{
+            margin-top: 18px;
+        }
+        .card .info p:last-child{
+            text-align: right;
+        }
+
+        .card.outdate .price{
+            background: lightgray;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="images/ico_back.png" /></a></span>
+        <h2>抵用券</h2>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <div class="price">￥10</div>
+            <div class="info">
+                <p>全场通用（除个别商品外）满59.00元可用</p>
+                <p>【新客特惠】订单满59元立减10元</p>
+                <p>有效期至2016-04-12</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="price">￥10</div>
+            <div class="info">
+                <p>全场通用（除个别商品外）满59.00元可用</p>
+                <p>【新客特惠】订单满59元立减10元</p>
+                <p>有效期至2016-04-12</p>
+            </div>
+        </div>
+        <div class="card outdate">
+            <div class="price">￥10</div>
+            <div class="info">
+                <p>全场通用（除个别商品外）满59.00元可用</p>
+                <p>【新客特惠】订单满59元立减10元</p>
+                <p>有效期至2016-04-12</p>
+            </div>
+        </div>
+    </div>
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-back").back();
+
+
+
+
+
+
+
+
+    });
+</script>
+</body>
+</html>

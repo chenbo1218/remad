@@ -1,0 +1,226 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    font-family: Arial, Helvetica, sans-serif,"Microsoft Yahei", "Lantinghei SC";
+    font-size: 12px;
+    background: #f1f1f1;
+}
+.container{
+    width: 1021px;
+    padding: 0;
+}
+
+a, a:link, a:visited{
+    text-decoration: none;
+    color: #666;
+    transition: color .1s ease;
+}
+a:hover, a:active, a.hover {
+    text-decoration: none;
+    color: orange;
+    transition: color .1s ease;
+}
+
+.btn, .btn:visited{
+    background-color: orange;
+    color: #fff;
+    border: none;
+}
+.btn:hover, .btn:active, .btn:focus{
+    background-color: #ff9407;
+    color: #fff;
+    border: none;
+}
+
+.btn-a{
+    display: block;
+    text-decoration: none;
+    font-size: 15px;
+    width: 80px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    float: left;
+}
+.btn-a {
+    color: #666;
+    cursor: pointer;
+    border-radius: 0;
+}
+.btn-a, .btn-a:hover, .btn-a:focus, .btn-a:active{
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
+
+
+/*///////////*/
+.my-login-info{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #919191;
+}
+.my-no-login{
+    float: right;
+}
+
+/*//////////*/
+.my-navbar{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    /*border: 1px solid #fabe00;*/
+}
+.my-navbar .my-navbar-header{
+    width: 12%;
+    height: 70px;
+    float: left;
+}
+.my-navbar .my-navbar-header .my-logo{
+    display: block;
+    margin-top: -5px;
+}
+.my-navbar .my-navbar-body{
+    width: 88%;
+    height: 70px;
+    line-height: 70px;
+    float: left;
+}
+.my-navbar .my-navbar-body .my-labs{
+    list-style: none;
+    display: block;
+    height: 70px;
+    margin: 0px;
+}
+.my-navbar .my-navbar-body .my-labs li{
+    height: 100%;
+    float: left;
+}
+.my-navbar .my-navbar-body .my-labs li a{
+    height: 36px;
+    margin-top: 17px;
+}
+.my-navbar .my-navbar-body .my-search{
+    height: 70px;
+    line-height: 70px;
+}
+.my-navbar .my-navbar-body .my-search input{
+    height: 34px;
+    margin-top: 18px;
+}
+.my-navbar .my-navbar-body .my-search button{
+    height: 34px;
+    margin-top: 18px;
+    margin-left: 3px;
+}
+
+
+/*////////////////*/
+.my-text-center{
+    color: #919191;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.my-card-list{
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+}
+.my-card{
+    width: 25%;
+    float: left;
+    /*width: 241px;*/
+    height: 415px;
+}
+.my-card img{
+    width: 237px;
+    height: auto;
+}
+
+/*///////////////*/
+.my-allgame{
+    width: 100%;
+    height: 200px;
+    background: #fff;
+}
+.my-allgame .content-table{
+    box-sizing: border-box;
+    border-left: 2px solid #f2f2f2;
+}
+.my-allgame .content-table .title {
+    border-left: 4px solid #f60;
+    padding-left: 36px;
+    line-height: 16px;
+}
+
+/*////////////////*/
+.my-foot{
+    width: 100%;
+    border-top: 5px solid orange;
+    background: #444444;
+    color: #fff;
+    padding: 20px 0px;
+}
+.my-foot-links{
+    width: 100%;
+    height: 150px;
+}
+/*.footer-logo{
+    width: 20%;
+    height: 140px;
+    text-align: center;
+}*/
+.footer-links{
+    width: 25%;
+}
+.footer-links ul{
+    list-style: none;
+}
+.footer-links .title {
+    line-height: 30px;
+    border-bottom: 1px solid #666;
+    padding-left: 12px;
+}
+.footer-links ul.content {
+    padding: 10px 30px 0 12px;
+}
+
+.my-friend-links .layout .friend-link-content {
+    position: relative;
+    /*margin: 0 40px;*/
+    border-top: 1px solid #666;
+    padding: 10px 30px 10px 144px;
+    _zoom: 1;
+}
+
+.my-info-links{
+    text-align: center;
+}
+
+
+.pipe{
+    color: #666;
+}
+
+/*/////////////////*/
+.my-modal{
+    color: #000;
+}
+
+@media (max-width: 1021px) {
+    .my-foot {
+        width: 1021px;
+    }
+}

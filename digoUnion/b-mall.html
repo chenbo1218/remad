@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <title>Di盟商城</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <style type="text/css">
+        /*商城首页*/
+        body{
+            /*background-color: #f2f2f2;*/
+            font-size: 14px;
+            /*overflow: hidden;*/
+            /*padding-bottom: 50px;*/
+        }
+
+        /*商品banner*/
+        .comm-banner{
+            width: 100%;
+            height: 140px;
+            margin: 0 auto;
+        }
+
+        /*菜单*/
+        .title{
+            width: 100%;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+        }
+        .title span{
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .topics{
+            width: 96%;
+            height: 90px;
+            padding: 2% 2%;
+            border-bottom: 1px solid lightgray;
+        }
+        .topic{
+            width: 30%;
+            height: auto;
+            position: relative;
+            margin-right: 5%;
+            margin-top: 4px;
+            float: left;
+        }
+        .topic:last-child{
+            margin-right: 0px;
+        }
+        .topic img{
+            width: 100%;
+            height: 100%;
+        }
+        .topic p{
+            width: 100%;
+            line-height: 20px;
+            text-align: center;
+            font-size: 14px;
+            position: absolute;
+            bottom: 2px;
+            background: rgba(0,0,0,.4);
+            color: #fff;
+        }
+
+        .menus{
+            /*width: 100%;*/
+            height: 50px;
+            border-bottom: 1px solid lightgray;
+        }
+        .menu{
+            width: 24.6%;
+            /*height: 18px;*/
+            margin-top: 7px;
+            text-align: center;
+            float: left;
+            color: gray;
+            border-right: 1px solid lightgray;
+        }
+        .menu p:first-child{
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .menu.on{
+            color: #000;
+            border-bottom: 3px solid #ff431a;
+        }
+        .menu:active{
+            color: #ff431a;
+        }
+
+        /*今日大图*/
+        .big{
+            height: 160px;
+            padding: 10px 5px;
+            border-bottom: 1px solid lightgray;
+            position: relative;
+        }
+        .big img{
+            width: 100%;
+            height: 100%;
+        }
+        .big .info{
+            width: 97%;
+            line-height: 20px;
+            font-size: 14px;
+            text-indent: 5px;
+            position: absolute;
+            bottom: 10px;
+            background: rgba(0,0,0,.4);
+            color: #fff;
+        }
+        .big .info p:first-child{
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+
+        /*导航*/
+        .nav{
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            z-index: 999;
+            overflow: hidden;
+            background: #fff;
+        }
+        .nav .nav-p{
+            width: 33.3%;
+            height: 50px;
+            box-sizing: border-box;
+            line-height: 50px;
+            text-align: center;
+            float: left;
+            display: block;
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            border-right: 1px solid lightgray;
+        }
+        .nav .nav-p:last-child{
+            border-right: none;
+        }
+        .nav .nav-p:active{
+            background: lightgray;
+        }
+        .nav .nav-p img{
+            width: 24px;
+            height: 21px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--banner-->
+    <div class="comm-banner">
+        <div class="comm-banner-img">
+            <img src="images/banner_01.jpg"/>
+            <img src="images/banner_02.jpg"/>
+            <img src="images/banner_03.jpg"/>
+            <img src="images/banner_04.jpg"/>
+        </div>
+        <div class="comm-banner-tag">
+            <ul>
+                <li class="current"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--盟主推荐-->
+    <p class="title">—————<span>  盟主推荐  </span>—————</p>
+    <div class="topics">
+        <div class="topic">
+            <img src="images/topic_01.jpg" alt=""/>
+            <p>搞大路烧烤</p>
+        </div>
+        <div class="topic">
+            <img src="images/topic_02.jpg" alt=""/>
+            <p>可可清吧</p>
+        </div>
+        <div class="topic">
+            <img src="images/topic_03.jpg" alt=""/>
+            <p>畅游橘子洲</p>
+        </div>
+    </div>
+
+    <!--导航菜单-->
+    <div class="menus">
+        <div class="menu on">
+            <p>最好呷</p>
+            <p>.美食</p>
+        </div>
+        <div class="menu">
+            <p>最嬲塞</p>
+            <p>.娱乐</p>
+        </div>
+        <div class="menu">
+            <p>最洋气</p>
+            <p>.特产</p>
+        </div>
+        <div class="menu">
+            <p>最韵味</p>
+            <p>.景点</p>
+        </div>
+    </div>
+
+    <!--今日大图-->
+    <div class="big">
+        <img src="images/topic_01.jpg" alt=""/>
+        <div class="info">
+            <p>风靡长沙的湘菜馆！给你最地道的美味</p>
+            <p>5220次浏览  120人收藏</p>
+        </div>
+    </div>
+
+    <!--底部导航-->
+    <div class="nav">
+        <a class="nav-p" href=""><img src="images/ico_nav_01_yes.png" alt=""/><span>商城</span></a>
+        <a class="nav-p" href="b-gonglue.html"><img src="images/ico_nav_03_no.png" alt=""/><span>攻略</span></a>
+        <a class="nav-p" href="b-center.html"><img src="images/ico_nav_02_no.png" alt=""/><span>我的</span></a>
+    </div>
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-banner").banner();
+
+        $(".menus .menu").click(function(){
+            $(this).addClass("on").siblings("div").removeClass("on");
+        });
+
+
+
+
+
+    });
+</script>
+</body>
+</html>

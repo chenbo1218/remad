@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <title>Di盟商城</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <!--个人中心-->
+    <style type="text/css">
+        body{
+            /*background-color: #f2f2f2;*/
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        /*信息*/
+        .info{
+            padding: 10px 10px;
+            height: 180px;
+            background: #393a3f;
+            border-bottom: 1px solid #fff;
+        }
+        .info .laba{
+            width: 100%;
+            height: 25px;
+        }
+        .info .laba img{
+            width: 25px;
+            height: 25px;
+            float: right;
+        }
+        .info .logo{
+            color: #fff;
+            text-align: center;
+        }
+        .info .logo img{
+            width: 70px;
+            height: 70px;
+            display: block;
+            margin:  0 auto;
+            margin-top: 20px;
+        }
+        .info .logo p{
+            text-indent: 5px;
+        }
+        .info .logo p:active{
+            color: lightgray;
+        }
+
+        /*菜单*/
+        .menus{
+            height: 42px;
+            background-color: #393a3f;
+        }
+        .menus .menu{
+            width: 33%;
+            margin-top: 7px;
+            text-align: center;
+            float: left;
+            color: #fff;
+            border-right: 1px solid lightgray;
+        }
+        .menus .menu:last-child{
+            border-right: none;
+        }
+
+        /*推荐*/
+        .suggest{
+            height: 45px;
+            background: #eb632e;
+            padding: 10px 20px;
+        }
+        .suggest p{
+            width: 170px;
+            color: #fff;
+            float: left;
+        }
+        .suggest a{
+            width: 75px;
+            height: 30px;
+            display: block;
+            float: right;
+            color: #000;
+            line-height: 30px;
+            text-align: center;
+            background-color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 7.5px;
+        }
+
+        /*图形菜单*/
+        .icons{
+            width: 100%;
+            height: 225px;
+        }
+        .icons .p1,.icons .p2{
+            width: 100%;
+            height: 112.5px;
+        }
+        .icons .ico{
+            width: 50%;
+            height: 100%;
+            box-sizing: border-box;
+            float: left;
+            text-align: center;
+        }
+        .icons .ico.type1{
+            border-right: 1px solid lightgray;
+            border-bottom: 1px solid lightgray;
+        }
+        .icons .ico.type2{
+            border-bottom: 1px solid lightgray;
+        }
+        .icons .ico:active{
+            background-color: lightgray;
+        }
+        .icons .ico img{
+            width: 40px;
+            height: 40px;
+            margin-top: 35px;
+        }
+        .icons #dingdan{
+            position: relative;
+        }
+        .icons #dingdan .count{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 30px;
+            right: 60px;
+            background: #eb632e;
+            color: #fff;
+            border-radius: 20px;
+        }
+
+        /*导航*/
+        .nav{
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            z-index: 999;
+            overflow: hidden;
+            background: #fff;
+        }
+        .nav .nav-p{
+            width: 33.3%;
+            height: 50px;
+            box-sizing: border-box;
+            line-height: 50px;
+            text-align: center;
+            float: left;
+            display: block;
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            border-right: 1px solid lightgray;
+        }
+        .nav .nav-p:last-child{
+            border-right: none;
+        }
+        .nav .nav-p:active{
+            background: lightgray;
+        }
+        .nav .nav-p img{
+            width: 24px;
+            height: 21px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--info-->
+    <div class="info">
+        <div id="laba" class="laba">
+            <img src="images/ico_laba.png" alt=""/>
+        </div>
+        <div class="logo">
+            <img src="images/ico_logo.png" alt=""/>
+            <p id="qianbao">西瓜红的红 &gt;</p>
+        </div>
+    </div>
+
+    <!--菜单-->
+    <div class="menus">
+        <div id="diquan" class="menu">
+            <img src="" alt=""/>
+            <span>Di券</span>
+        </div>
+        <div id="pingjia" class="menu">
+            <img src="" alt=""/>
+            <span>评价</span>
+        </div>
+        <div id="shoucang" class="menu">
+            <img src="" alt=""/>
+            <span>收藏</span>
+        </div>
+    </div>
+
+    <!--推荐-->
+    <div class="suggest">
+        <p>成功推荐好友享受Di盟折扣消费可获得高额抽成</p>
+        <a href="b-center-chengweidiyou.html">立即加入</a>
+    </div>
+
+    <!--图标菜单-->
+    <div class="icons">
+        <div class="p1">
+            <div id="dingdan" class="ico type1">
+                <img src="images/ico_01.png" alt=""/>
+                <p>我的订单</p>
+                <p class="count">4</p>
+            </div>
+            <div id="tuijian" class="ico type2">
+                <img src="images/ico_02.png" alt=""/>
+                <p>推荐赚钱</p>
+            </div>
+        </div>
+        <div class="p2">
+            <div id="jifen" class="ico type1">
+                <img src="images/ico_03.png" alt=""/>
+                <p>积分商城</p>
+            </div>
+            <div></div>
+            <div id="lianxi" class="ico type2">
+                <img src="images/ico_04.png" alt=""/>
+                <p>联系我们</p>
+            </div>
+        </div>
+    </div>
+
+    <!--底部导航-->
+    <div class="nav">
+        <a class="nav-p" href="b-mall.html"><img src="images/ico_nav_01_no.png" alt=""/><span>商城</span></a>
+        <a class="nav-p" href="b-gonglue.html"><img src="images/ico_nav_03_no.png" alt=""/><span>攻略</span></a>
+        <a class="nav-p" href=""><img src="images/ico_nav_02_yes.png" alt=""/><span>我的</span></a>
+    </div>
+    <div class="comm-countbar">
+
+    </div>
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-banner").banner();
+
+        //消息
+        $("#laba").click(function(){
+            window.location.href = "b-center-wodexiaoxi.html";
+        });
+        //钱包
+        $("#qianbao").click(function(){
+            window.location.href = "b-center-wodeqianbao.html";
+        });
+
+        //D券
+        $("#diquan").click(function(){
+           window.location.href = "b-center-diyongquan.html";
+        });
+        //评价
+        $("#pingjia").click(function(){
+            window.location.href = "b-center-wodepingjia.html";
+        });
+        //收藏
+        $("#shoucang").click(function(){
+            window.location.href = "b-center-wodeshoucang.html";
+        });
+
+        //我的订单
+        $("#dingdan").click(function(){
+            window.location.href = "b-center-wodedingdan.html";
+        });
+        //推荐赚钱
+
+        //积分商城
+        $("#jifen").click(function(){
+            window.location.href = "b-center-jifenshangcheng.html";
+        });
+        //联系我们
+        $("#lianxi").click(function(){
+            window.location.href = "b-center-lianxipingtai.html";
+        });
+
+
+
+
+
+    });
+</script>
+</body>
+</html>

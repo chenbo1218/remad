@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>给卖家留言</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style type="text/css" >
+
+        body {
+            background-color: #f2f2f2;
+        }
+
+        .main textarea {
+            width: 90%;
+            padding: 0 2%;
+            border: none;
+            font-size: 14px;
+            height: 110px;
+            background-color: white;
+            line-height: 22px;
+        }
+
+        .comm-btn-middle{
+            width: 90%;
+            padding: 0 5%;
+            height: 40px;
+            margin: 40px 0 10px;
+        }
+        .comm-btn-middle button {
+            background-color:#04be02;
+            border-radius: 5px;
+        }
+        .comm-btn-middle button:active{
+            background-color: green;
+            color: white;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+        <h2>我的留言板</h2>
+    </div>
+
+    <div class="main">
+        <form id="reply">
+            <textarea id="text" name="text" placeholder="您好，本店会在第一时间回复您的留言，祝您购物愉快！"></textarea>
+
+            <div id="submit" class="comm-btn-middle">
+                <button>提交</button>
+            </div>
+        </form>
+    </div>
+
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-ico-back a").back();
+
+        $("form input,label").click(function(){
+            var text = $('form input[type="radio"]:checked').next().next().text();
+            $("form textarea").val(text);
+        });
+
+        $("#submit").click(function(e){
+            e.preventDefault();
+        });
+
+
+    });
+</script>
+</body>
+</html>

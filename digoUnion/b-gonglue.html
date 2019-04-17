@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <title>Di盟商城</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <style type="text/css">
+        /*商城首页*/
+        body{
+            /*background-color: #f2f2f2;*/
+            font-size: 14px;
+            /*overflow: hidden;*/
+            padding-bottom: 50px;
+        }
+
+        .items{
+            clear:both;
+        }
+        .item{
+            width: 100%;
+            /*height: 173px;*/
+        }
+        .item .p1{
+            width: 100%;
+            /*height: 123px;*/
+            position: relative;
+        }
+        .item .p1 img{
+            width: 100%;
+            height: auto;
+        }
+        .item .p1 p{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+            text-align: center;
+            position: absolute;
+            bottom: 5px;
+            background: rgba(0,0,0,.4);
+        }
+        .item .p2{
+            width: 100%;
+            height: 50px;
+            box-sizing: border-box;
+            padding: 10px 15px;
+            font-size: 13px;
+        }
+        .item .p2 .type{
+            width: 68px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            border: 1px solid lightgray;
+            border-radius: 15px;
+            float: left;
+        }
+        .item .p2 .author{
+            height: 30px;
+            line-height: 15px;
+            float: left;
+            margin-left: 15px;
+        }
+        .item .p2 .zan{
+            width: 30px;
+            height: 30px;
+            float: right;
+        }
+        .item .p2 .zan a{
+            display: block;
+            text-align: center;
+            margin-top: -5px;
+        }
+        .item .p2 .zan img{
+            width: 20px;
+            height: 20px;
+        }
+        .item .p2 .zan p{
+            text-align: center;
+            margin-top: -5px;
+        }
+
+        /*导航*/
+        .nav{
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            z-index: 999;
+            overflow: hidden;
+            background: #fff;
+        }
+        .nav .nav-p{
+            width: 33.3%;
+            height: 50px;
+            box-sizing: border-box;
+            line-height: 50px;
+            text-align: center;
+            float: left;
+            display: block;
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            border-right: 1px solid lightgray;
+        }
+        .nav .nav-p:last-child{
+            border-right: none;
+        }
+        .nav .nav-p:active{
+            background: lightgray;
+        }
+        .nav .nav-p img{
+            width: 24px;
+            height: 21px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .nav-place{
+            width: 100%;
+            height: 50px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--攻略列表-->
+    <div class="items">
+        <div class="item">
+            <div class="p1">
+                <img src="images/gonglue/topic_01.jpg" alt=""/>
+                <p>风靡长沙的湘菜馆！给你最地道的美味</p>
+            </div>
+            <div class="p2">
+                <div class="type">特色美食</div>
+                <div class="author">
+                    <p>发布者：Miller</p>
+                    <p>06-01 14:31</p>
+                </div>
+                <div class="zan">
+                    <a href=""><img src="images/ico_zan.png" alt=""></a>
+                    <p>502</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="p1">
+                <img src="images/gonglue/topic_02.jpg" alt=""/>
+                <p>长沙漂亮妹陀最爱去的5家清吧，有眼福咯</p>
+            </div>
+            <div class="p2">
+                <div class="type">休闲娱乐</div>
+                <div class="author">
+                    <p>发布者：Miller</p>
+                    <p>06-01 14:31</p>
+                </div>
+                <div class="zan">
+                    <a href=""><img src="images/ico_zan.png" alt=""></a>
+                    <p>502</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="p1">
+                <img src="images/gonglue/topic_04.jpg" alt=""/>
+                <p>六一强烈推荐：爸爸去哪儿亲子体验营</p>
+            </div>
+            <div class="p2">
+                <div class="type">休闲娱乐</div>
+                <div class="author">
+                    <p>发布者：Miller</p>
+                    <p>06-01 14:31</p>
+                </div>
+                <div class="zan">
+                    <a href=""><img src="images/ico_zan.png" alt=""></a>
+                    <p>502</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="p1">
+                <img src="images/gonglue/topic_04.jpg" alt=""/>
+                <p>六一强烈推荐：爸爸去哪儿亲子体验营</p>
+            </div>
+            <div class="p2">
+                <div class="type">休闲娱乐</div>
+                <div class="author">
+                    <p>发布者：Miller</p>
+                    <p>06-01 14:31</p>
+                </div>
+                <div class="zan">
+                    <a href=""><img src="images/ico_zan.png" alt=""></a>
+                    <p>502</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--底部导航-->
+    <div class="nav">
+        <a class="nav-p" href="b-mall.html"><img src="images/ico_nav_01_no.png" alt=""/><span>商城</span></a>
+        <a class="nav-p" href=""><img src="images/ico_nav_03_yes.png" alt=""/><span>攻略</span></a>
+        <a class="nav-p" href="b-center.html"><img src="images/ico_nav_02_no.png" alt=""/><span>我的</span></a>
+    </div>
+    <div class="nav-place"></div>
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".item").click(function(){
+            window.location.href = "b-gonglue-detail-01.html";
+
+        });
+
+
+
+
+
+    });
+</script>
+</body>
+</html>

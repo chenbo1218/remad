@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>申请成为大当家</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style type="text/css" >
+        body {
+            background-color: #f2f2f2;
+        }
+        /*该版面的文字为16和12*/
+        h2,h3{
+            font-size: 16px;
+        }
+
+        /*banner*/
+        #banner img {
+            width: 100%;
+            display: block;
+        }
+
+        /*描述*/
+        #description .box2 .comm-ico-circle  {
+            margin: 10px 10px 10px 0;
+            float: left;
+        }
+        #description h2 {
+            height: 25px;
+            line-height: 25px;
+            font-weight: normal;
+            margin: 0 10px;
+        }
+        #description .box2 {
+            clear: both;
+            height: 60px;
+            line-height: 30px;
+            padding: 10px 10px 9px;
+            border-bottom: 1px solid #e2e2e2;
+            font-size: 12px;
+        }
+        #description .box2:last-child {
+            line-height: 20px;
+        }
+        #description .box2-container {
+            margin: 0 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        /*试用大当家按钮*/
+        #submit{
+            width: 200px;
+            margin: 25px auto;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!--banner-->
+    <div id="banner" class="box1">
+        <img src="../images/wholesale/banner_01.jpg" />
+    </div>
+
+    <div class="main">
+        <div id="description" class="box1">
+            <h2>大当家特权</h2>
+            <div class="box2-container">
+                <div class="box2">
+                    <div class="comm-ico-circle"><img src="../images/common/ico_erweima.png"/></div>
+                    <h3>独立微店</h3>
+                    <p>拥有自己的微店及推广二维码</p>
+                </div>
+                <div class="box2">
+                    <div class="comm-ico-circle"> <img src="../images/common/ico_renminbi.png"/></div>
+                    <h3>销售拿收益</h3>
+                    <p>微店卖出商品。您可以获得差价收益</p>
+                </div>
+                <div class="box2">
+                    <p>大当家的商品销售统一由厂家直接发货。平台直接收款，并提供产品的售后服务，收益由厂家统一发放，发放的。</p>
+                </div>
+            </div>
+        </div>
+        <div id="submit" class="comm-btn-middle" >
+            <button>成为试用大当家</button>
+        </div>
+    </div>
+
+    <script src="../js/jquery-2.2.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#submit").click(function(){
+               window.location.href = "b-protocol.html";
+            });
+        });
+    </script>
+</body>
+</html>

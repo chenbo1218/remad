@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>云切片</title>
+
+    <link rel="stylesheet" href="css/static/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+<!--开头动画-->
+<div id="loadingCover" class="loading-cover">
+    <span class="circle prepare">
+        <img src="img/loading-Home.gif" alt="">
+    </span>
+</div>
+<script type="text/javascript">var startTime = new Date()</script>
+
+
+<div class="super-container">
+    <div class="section section-2">
+        <div class="features">
+            <div class="cols cols1">
+                <div class="back"></div>
+                <a class="front fr1" name="scan.html">
+                    <div class="group expanded">
+                        <div class="content-wrapper">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="icon"><i class="icon-launch"></i></div>
+                                        <div class="title">切片扫描</div>
+                                        <div class="text">扫描切片进行云存储。</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="cols cols2">
+                <div class="back"></div>
+                <a class="front fr2" name="index.html">
+                    <div class="group expanded">
+                        <div class="content-wrapper">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="icon"><i class="icon-combo"></i></div>
+                                        <div class="title">切片分析</div>
+                                        <div class="text">打开云切片数字图像，进行标注。</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="cols cols3">
+                <div class="back"></div>
+                <a class="front fr3" name="manage.html">
+                    <div class="group expanded">
+                        <div class="content-wrapper">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="icon"><i class="icon-console"></i></div>
+                                        <div class="title">管理工具</div>
+                                        <div class="text">设置与管理</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/static/jquery-3.3.1.min.js"></script>
+<script>
+    /*动画完成*/
+    $(function () {
+        var ani, nav, cont, wrapp, sec1, sec2, fun1, fun2, date, delay, l, u;
+        ani = $("#loadingCover .circle"),
+        cont = $(".super-container"),
+        wrapp = $(".plane-wrapper"),
+        sec1 = $(".section-1"),
+        sec2 = $(".section-2"),
+        fun1 = function () {
+            var a, b;
+            return sec2.addClass("resizing"),
+                    setTimeout(function () {
+                        return sec2.removeClass("resizing");
+                    }, 200),
+                    b = window.innerWidth,
+                    a = Math.floor(b / 3),
+                    $(".features .cols:even").css({width: a}),
+                    $(".features .cols:odd").css({width: b - 2 * a})
+        },
+        u = !1,
+        fun2 = function () {
+            var a, b;
+            if (!u)return u = !0,
+                fun1(),
+                a = Math.max(window.innerWidth, window.innerHeight),
+                b = ani.find("img"),
+                b.remove(),
+                ani.animate({
+                width: 1.4 * a,
+                height: 1.4 * a,
+                marginLeft: 1.4 * -a / 2,
+                marginTop: 1.4 * -a / 2
+            }, 500), setTimeout(function () {
+                return ani.parent().fadeOut()
+            }, 600), setTimeout(function () {
+                return sec2.addClass("animate-in")
+//                return nav.removeClass("fade-out")
+            }, 500)
+        },
+        date = new Date,
+        delay = startTime - date,
+        delay += 1500,
+        delay = delay < 0 ? 100 : delay,
+        setTimeout(function () {
+            return l++, fun2()
+        }, delay)
+
+    }());
+
+</script>
+
+
+<script>
+    $(function(){
+        $(".cols .front").click(function(){
+            var self = $(this);
+            self.parent().addClass("clicked").siblings().removeClass("clicked");
+            console.log(self.attr("name"));
+            self.parent().on('animationend webkitAnimationEnd',function(e){
+                window.location.href = self.attr("name");
+            });
+        });
+
+
+    });
+</script>
+
+
+
+
+
+</body>
+</html>

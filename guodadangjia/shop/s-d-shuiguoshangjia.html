@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>果园管理-水果上架</title>
+
+    <link type="text/css" rel="stylesheet" href="../css/sweetalert.css" />
+    <link type="text/css" rel="stylesheet" href="../css/common.css" />
+    <style type="text/css">
+        body{
+
+        }
+
+        /*列表*/
+        .item{
+            margin-bottom: 8px;
+            background-color: #fff;
+        }
+        .item img{
+            width: 100%;
+            height: 99px;
+        }
+        .item h3{
+            font-size: 14px;
+            font-weight: normal;
+        }
+        .item p{
+            font-size: 12px;
+            margin: 0 5px;
+        }
+        .item .item-sheet{
+            width: 100%;
+            height: 30px;
+            box-sizing: border-box;
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+        .item-sheet .edit{
+            float: left;
+        }
+        .item-sheet .edit img{
+            width: 30px;
+            height: 30px;
+            left: 2px;
+            float: left;
+            position: relative;
+            top: -2px;
+        }
+        .item-sheet .edit span{
+            display: block;
+            margin-left: -15px;
+            padding-left: 15px;
+            width: 90px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 12px;
+            background-color: #7c7c7c;
+            color: #fff;
+            float: left;
+        }
+        .item-sheet .edit .comm-btn-middle{
+            width: 45px;
+            height: 25px;
+            line-height: 25px;
+            float: left;
+        }
+        .item-sheet .edit .comm-btn-middle button{
+            font-size: 12px;
+            border-radius: 0 10px 10px 0;
+        }
+        .item-sheet .pushdown{
+            width: 70px;
+            height: 25px;
+            float: right;
+        }
+        .item-sheet .pushdown button{
+            font-size: 14px;
+        }
+
+
+    </style>
+<body>
+<div class="comm-top-title">
+    <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+    <h2>水果上架</h2>
+</div>
+
+    <!--列表-->
+    <div class="items">
+        <div class="item">
+            <img src="../images/fruits/f1_item.jpg" alt=""/>
+            <h3>【长沙专享】墨西哥进口牛油果10个90.8元</h3>
+            <p>进口柠檬，美容养颜，皮薄肉嫩。个头大，有光泽。晶莹剔透。价格实惠。先抢先得</p>
+            <div class="item-sheet">
+                <div class="edit">
+                    <img src="../images/common/logo_small.png" alt=""/>
+                    <span>2人团 ￥90.88</span>
+                    <div class="check comm-btn-middle"><button>编辑</button></div>
+                </div>
+                <div class="pushdown comm-btn-middle"><button>下架商品</button></div>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="../images/fruits/f1_item.jpg" alt=""/>
+            <h3>【长沙专享】墨西哥进口牛油果10个90.8元</h3>
+            <p>进口柠檬，美容养颜，皮薄肉嫩。个头大，有光泽。晶莹剔透。价格实惠。先抢先得</p>
+            <div class="item-sheet">
+                <div class="edit">
+                    <img src="../images/common/logo_small.png" alt=""/>
+                    <span>2人团 ￥90.88</span>
+                    <div class="check comm-btn-middle"><button>编辑</button></div>
+                </div>
+                <div class="pushdown comm-btn-middle"><button>下架商品</button></div>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="../images/fruits/f1_item.jpg" alt=""/>
+            <h3>【长沙专享】墨西哥进口牛油果10个90.8元</h3>
+            <p>进口柠檬，美容养颜，皮薄肉嫩。个头大，有光泽。晶莹剔透。价格实惠。先抢先得</p>
+            <div class="item-sheet">
+                <div class="edit">
+                    <img src="../images/common/logo_small.png" alt=""/>
+                    <span>2人团 ￥90.88</span>
+                    <div class="check comm-btn-middle"><button>编辑</button></div>
+                </div>
+                <div class="pushdown comm-btn-middle"><button>下架商品</button></div>
+            </div>
+        </div>
+    </div>
+
+    <!--上架按钮-->
+    <div class="go-wholesale comm-btn-big"><button>去批发商城</button></div>
+
+
+
+
+    <script src="../js/jquery-2.2.1.min.js"></script>
+    <script src="../js/sweetalert.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".comm-ico-back a").back();
+
+            $(".go-wholesale").click(function(){
+               window.location.href = "wholesale/f-index.html";
+            });
+
+            //下架
+            $(".pushdown").click(function(){
+                sweetAlert({
+                            title: "确定要下架该商品吗？",
+                            imageUrl: "../images/common/logo_small.png",
+                            text: "如有任何疑问，请咨询客服13888888888，果大当家竭诚为您服务",
+                            confirmButtonText: "确认",
+                            cancelButtonText:"取消",
+                            showCancelButton:true,
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm){
+                            if(isConfirm){
+                                //                            alert("我的果园");
+                            }else{
+                                //                            alert("留在商城");
+                            }
+                        }
+                )
+            });
+        });
+
+    </script>
+
+</body>
+</head>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <title>Di盟商城</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <style type="text/css">
+        /*的哥-我的钱包*/
+        body{
+            /*background-color: #f2f2f2;*/
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        /*信息*/
+        .info{
+            width: 100%;
+            height: 200px;
+            box-sizing: border-box;
+            padding: 10px 10px;
+            border-bottom: 1px solid lightgray;
+        }
+        .info .check{
+            width: 70px;
+            height: 20px;
+            float: right;
+            text-align: right;
+        }
+        .info .check:active{
+            background: lightgray;
+        }
+        .info .logo{
+            width: 60px;
+            height: 60px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+        .info .logo img{
+            width: 60px;
+            height: 60px;
+        }
+        .info .txt{
+            width: 100%;
+            height: 80px;
+            line-height: 20px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .info .txt .comm-btn-middle-yellow{
+            width: 100px;
+            height: 25px;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        .info .txt .comm-btn-middle-yellow button{
+            font-size: 14px;
+        }
+
+        /*info2*/
+        .info2{
+            width: 100%;
+            height: 60px;
+            line-height: 20px;
+            box-sizing: border-box;
+            padding: 10px 10px;
+            border-bottom: 1px solid lightgray;
+        }
+        .info2 p{
+            float: left;
+        }
+        .info2 p:first-child{
+            width: 8%;
+        }
+        .info2 p:last-child{
+            width: 92%;
+        }
+
+        /*列表*/
+        .details{
+            width: 100%;
+            height: 200px;
+            box-sizing: border-box;
+            padding: 10px 10px;
+            color: #fff;
+        }
+        .details p{
+            color: black;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+        .details .mhead{
+            width: 100%;
+            height: 25px;
+            background: rgba(2,2,2,.5);
+        }
+        .details .mhead span{
+            width: 32%;
+            text-align: center;
+            border-right: 1px solid lightgray;
+            display: inline-block;
+        }
+        .details .mhead span:last-child{
+            border-right: none;
+        }
+        .details .detail{
+            height: 30px;
+            line-height: 30px;
+            border-top: 1px solid #fff;
+            background: rgba(2,2,2,.5);
+        }
+        .details .detail span{
+            width: 32%;
+            height: 100%;
+            text-align: center;
+            display: inline-block;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="images/ico_back.png" /></a></span>
+        <h2>我的钱包</h2>
+    </div>
+
+    <div class="info">
+        <div class="check"><p>查看规则&gt;</p></div>
+        <div class="logo">
+            <img src="images/ico_logo_01.png" alt="">
+        </div>
+        <div class="txt">
+            <p>账户余额</p>
+            <p><strong>￥1200.00</strong></p>
+            <div class="comm-btn-middle-yellow"><button>申请提现</button></div>
+        </div>
+    </div>
+
+    <div class="info2">
+        <p>注：</p>
+        <p>买家确认消费后，您即可获得对应提成收益。在您申请提现并审核后汇入您的个人账户。</p>
+    </div>
+
+    <div class="details">
+        <p>收益明细</p>
+        <div class="mhead">
+            <span>消费者</span>
+            <span>消费地点</span>
+            <span>奖励</span>
+        </div>
+        <div class="detail">
+            <span>左文雷</span>
+            <span>碧涛阁洗浴</span>
+            <span>+200元</span>
+        </div>
+        <div class="detail">
+            <span>左文雷</span>
+            <span>碧涛阁洗浴</span>
+            <span>+200元</span>
+        </div>
+        <div class="detail">
+            <span>左文雷</span>
+            <span>碧涛阁洗浴</span>
+            <span>+200元</span>
+        </div>
+        <div class="detail">
+            <span>左文雷</span>
+            <span>碧涛阁洗浴</span>
+            <span>+200元</span>
+        </div>
+        <div class="detail">
+            <span>左文雷</span>
+            <span>碧涛阁洗浴</span>
+            <span>+200元</span>
+        </div>
+    </div>
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-back").back();
+
+
+
+
+
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>商品首页</title>
+
+    <link type="text/css" rel="stylesheet" href="../css/common.css" />
+    <style type="text/css">
+        body{
+            font-size: 12px;
+            background-color: #ececec;
+        }
+
+        /*该页面字体为14和12*/
+        /*导航*/
+        .nav{
+            width: 100%;
+            height: 35px;
+            margin: 0 auto;
+        }
+        .nav a{
+            width: 50%;
+            float: left;
+            display: block;
+            font-size: 16px;
+            text-align: center;
+            line-height: 35px;
+            background-color: #fff;
+            color: #000;
+            text-decoration: none;
+        }
+        .nav a.current{
+            background-color: #fabe00;
+            color: #fff;
+        }
+
+        /*banner*/
+        .banner{
+            width: 100%;
+            height: 135px;
+        }
+        .banner .comm-banner-tag{
+            top: 125px;
+        }
+
+        /*列表项*/
+        .item{
+            width: 95%;
+            height: 105px;
+            margin: 0 auto;
+            margin-top: 2.5%;
+            background-color: #fff;
+        }
+        .item img{
+            width: 151.5px;
+            height: 105px;
+            float: left;
+            margin-left: -10px;
+        }
+        .item .item-des{
+            /*border: 1px solid red;*/
+            width: 45%;
+            height: 105px;
+            float: right;
+            text-align: left;
+        }
+        .item .item-des h4{
+            font-size: 14px;
+            height: 15px;
+            text-align: left;
+            font-weight: normal;
+            /*word-wrap: break-word;*/
+            letter-spacing: 2px;
+        }
+        .item .item-des h4:first-child{
+            margin-top: 5px;
+        }
+        .item .item-des p{
+            font-size: 12px;
+            height: 15px;
+            color: #fabe00;
+            /*word-wrap: break-word;*/
+        }
+        .item .item-des p:first-child{
+            margin-top: 5px;
+        }
+
+        .item .check{
+            width: 63px;
+            margin: 0 auto;
+            margin-top: 5px;
+        }
+        .item .check button{
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!--导航栏-->
+    <div class="nav">
+        <div class="nav-l1">
+            <a class="current" href="#">商城首页</a>
+        </div>
+        <div class="nav-l2">
+            <a href="f-list.html">商城分类</a>
+        </div>
+    </div>
+
+    <!--banner-->
+    <div class="banner comm-banner">
+        <div class="comm-banner-img">
+            <img src="../images/fruits/f_suggest1.jpg"/>
+            <img src="../images/fruits/f_suggest1.jpg"/>
+            <img src="../images/fruits/f_suggest1.jpg"/>
+        </div>
+        <div class="comm-banner-tag">
+            <ul>
+                <li class="current"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--列表-->
+    <div class="item">
+        <img src="../images/fruits/f1.jpg" alt=""/>
+        <div class="item-des">
+            <h4>Lili Cassaba</h4>
+            <h4>一颗害羞的香瓜</h4>
+            <p>批发价：58￥/盒</p>
+            <p>建议零售价：68￥/盒</p>
+            <div class="check comm-btn-middle"><button>查看详情</button></div>
+        </div>
+    </div>
+
+    <div class="item">
+        <img src="../images/fruits/f2.jpg" alt=""/>
+        <div class="item-des">
+            <h4>John Blueberry</h4>
+            <h4>一颗有智慧的蓝莓</h4>
+            <p>批发价：58￥/盒</p>
+            <p>建议零售价：68￥/盒</p>
+            <div class="check comm-btn-middle"><button>查看详情</button></div>
+        </div>
+    </div>
+
+    <div class="item">
+        <img src="../images/fruits/f1.jpg" alt=""/>
+        <div class="item-des">
+            <h4>Lili Cassaba</h4>
+            <h4>一颗害羞的香瓜</h4>
+            <p>批发价：58￥/盒</p>
+            <p>建议零售价：68￥/盒</p>
+            <div class="check comm-btn-middle"><button>查看详情</button></div>
+        </div>
+    </div>
+
+    <div class="item">
+        <img src="../images/fruits/f2.jpg" alt=""/>
+        <div class="item-des">
+            <h4>John Blueberry</h4>
+            <h4>一颗有智慧的蓝莓</h4>
+            <p>批发价：58￥/盒</p>
+            <p>建议零售价：68￥/盒</p>
+            <div class="check comm-btn-middle"><button>查看详情</button></div>
+        </div>
+    </div>
+
+
+
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        //图片轮播
+        $(".banner").banner();
+
+        //查看详情
+        $(".check").click(function(){
+            window.location.href = "f-detail.html";
+        });
+
+        $(".current").click(function(e){
+            e.preventDefault();
+        });
+
+
+    });
+</script>
+
+
+</body>
+</html>

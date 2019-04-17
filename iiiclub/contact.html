@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>contact</title>
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon" />
+
+    <link type="text/css" rel="stylesheet" href="css/animate.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="css/nprogress.css" />
+    <link type="text/css" rel="stylesheet" href="css/sweetalert.css" />
+
+</head>
+<body>
+
+<!--导航-->
+<div id="nav" class="contents fade out">
+    <div id="nav-logo">
+        <a href="index.html"><img src="images/base/logo.png"/></a>
+    </div>
+    <div id="nav-list">
+        <ul>
+            <li id="home"><a href="index.html">HOME</a></li>
+            <li id="service"><a href="service.html">SERVICE</a></li>
+            <li id="team"><a href="team.html">TEAM</a></li>
+            <li id="works"><a href="works.html">WORKS</a></li>
+            <li class="current" id="contact"><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </div>
+    <div id="nav-sheet">
+        <a href="#"><img src="images/base/sheet.png"/></a>
+    </div>
+</div>
+
+
+<!--内容-->
+<div id="content">
+    <div id="contact-part1" class="part title">
+        <p>CONTACT</p>
+    </div>
+
+    <div id="contact-part2" class="part">
+        <div class = "part-title">
+            <img src="./images/contact/logobook.png">
+            <h1>
+                <span class="underline">联系我们</span><span>Contact us</span>
+            </h1>
+        </div>
+    </div>
+
+    <div id="contact-part3" class="part">
+        <form id="contact-fm">
+            <div id="tb">
+                <div id="tb-first">
+                    <div>
+                        <input type="text" maxlength="30" placeholder="姓名" />
+                    </div>
+                    <div>
+                        <input type="text" maxlength="40" placeholder="邮箱地址" />
+                    </div>
+                </div>
+                <div id="tb-second">
+                    <input type="text" maxlength="100" placeholder="标题" />
+                </div>
+                <div id="tb-third">
+                    <textarea placeholder="正文" maxlength="2000"></textarea>
+                </div>
+                <button id="btn-send" value="发送">发送</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+<!--尾巴-->
+<div id="foot" class="wow fadeInUp" data-wow-iteration="1" data-wow-duration="0.5s">
+    <div class="foot-line">
+        <p>EMAIL: <span>MILLER@IIICLUB.CN</span></p>
+    </div>
+    <div class="foot-line">
+        <p>TEL: <span>0731-89901909</span></p>
+    </div>
+    <div class="foot-line">
+        <p>ADDRESS: <span>湖南省长沙市开福区湘江中路208号欧陆经典B座909室</span></p>
+    </div>
+</div>
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/nprogress.js"></script>
+<script src="js/sweetalert.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<script>
+    $(function(){
+        NProgress.start();
+        $(document).ready(function(){
+            NProgress.done();
+        });
+    });
+</script>
+</body>
+</html>

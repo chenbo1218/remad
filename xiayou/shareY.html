@@ -1,0 +1,418 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>分享中心</title>
+	<style type="text/css">
+		body{
+			margin: 0px 0px;
+			overflow: hidden;
+			color: white;
+		}
+		p{
+			margin: 0px 0px;
+		}
+		.fl{
+			float: left;
+		}
+		.center{
+			text-align: center;
+		}
+		.bold{
+			font-weight: bold;
+		}
+		.fs14{
+			font-size: 14px;
+		}
+		.fs12{
+			font-size: 12px;
+		}
+		.hide {
+			display: none;
+		}
+
+		/*游戏标题*/
+		.part1{
+			height: 60px;
+			padding: 10px;
+			background-color: #446f8f;
+		}
+		.part1 .gameIcon{
+			width: 60px;
+			height: 60px;
+		}
+		.part1 .gameTitle{
+			margin-left: 10px;
+			height: 60px;
+		}
+		.part1 .gameTitle .p1{
+			font-size: 20px;
+			line-height: 30px;
+		}
+		.part1 .gameTitle .p2{
+			font-size: 16px;
+			line-height: 30px;
+		}
+
+		/*房间号*/
+		.part2{
+			width: 100%;
+			/*height: 220px;*/
+			position: relative;
+		}
+		.part2 .gameBg{
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+		.part2 .roomId{
+			width: 50%;
+			height: 40px;
+			color: black;
+			font-size: 16px;
+			font-weight: bold;
+			line-height: 40px;
+			text-align: center;
+			background: url(share/img/tiao.png) no-repeat;
+			background-size: 100%;
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+		}
+
+		/*房间信息*/
+		.part3{
+
+		}
+		.part3 .px{
+			height: 35px;
+			line-height: 35px;
+			background-color: #446f8f;
+			font-size: 16px;
+			letter-spacing: 2px;
+		}
+		.part3 .px p{
+			width: 33%;
+			text-align: center;
+		}
+		.part3 .py{
+			padding: 0px 10px;
+			height: 35px;
+			line-height: 35px;
+			background-color: #4b7a9d;
+			font-size: 14px;
+		}
+		.part3 .py p{
+			width: 33%;
+			text-align: center;
+		}
+		.part3 .py:last-child{
+			height: auto;
+		}
+
+		/*进入游戏*/
+		.part4{
+			margin-top: 10px;
+			margin-bottom: 20px;
+		}
+		.part4 a{
+			display: block;
+			margin: 0 auto;
+			width: 200px;
+			height: 55px;
+		}
+		.part4 img{
+			display: block;
+			width: 200px;
+			height: 55px;
+		}
+
+
+		#weixin-tip {
+			display: none;
+			position: fixed;
+			left: 0;
+			top: 0;
+			background: rgba(0, 0, 0, 0.8);
+			filter: alpha(opacity=60);
+			width: 100%;
+			height: 100%;
+			z-index: 100;
+		}
+
+		#weixin-tip p {
+			text-align: center;
+			margin: 0;
+			height: 100%;
+			position: relative;
+		}
+
+		#weixin-tip p img {
+			width: 100%;
+			height: 100%;
+		}
+
+	</style>
+	<script type="text/javascript" src="share/js/jquery.min.js"></script>
+	<script type="text/javascript" src="share/js/config.js"></script>
+	<script>
+		var room = getQueryString1("roomid");
+		var app = getQueryString1("appid");
+		//获取页面附带参数
+		function getQueryString1(key){
+			var url = window.location.search;
+			var reg = new RegExp("(^|&)"+ key +"=([^&]*)(&|$)");
+			var result = url.substr(1).match(reg);
+			return result ? decodeURIComponent(result[2]) : null;
+		}
+		if(typeof(room)=="undefined"||room==null){
+			var downloadUrl = appConfig[app].android_url;
+			window.location.href = downloadUrl;
+		}
+	</script>
+</head>
+
+<body>
+	<!--游戏标题-->
+	<div class="part1">
+		<img id="game-icon" class="gameIcon fl" src="" alt="" style=""/>
+		<div class="gameTitle fl">
+			<p id="app-name" class="p1"></p>
+			<p id="game-name" class="p2"></p>
+		</div>
+	</div>
+
+	<!-- 房间号-->
+	<div class="part2">
+		<img class="gameBg" src="share/img/sharebg.png" alt=""/>
+		<div id="room-id" class="roomId">房间号：</div>
+	</div>
+
+	<!-- 房间信息-->
+	<div class="part3">
+		<div class="px center bold">当前玩家</div>
+		<div id="game-players" class="py"></div>
+
+		<div class="px bold">
+			<p class="fl">房间状态</p>
+			<p class="fl">局数</p>
+			<p class="fl">人数</p>
+		</div>
+		<div class="py">
+			<p id="room-status" class="fl">等待中</p>
+			<p id="room-parties" class="fl"></p>
+			<p id="room-players" class="fl"></p>
+		</div>
+
+		<div class="px center bold">游戏规则预览</div>
+		<div id="game-rules" class="py"></div>
+	</div>
+
+	<!--进入游戏-->
+	<div class="part4">
+		<a id="btnEnter" href="#" target="_blank"><img id="enterImg"/></a>
+	</div>
+
+	<!-- 微信提示-->
+	<div id="weixin-tip">
+		<p>
+			<img src="share/img/live_weixin.png" alt="微信扫描打开APP下载链接提示代码优化">
+		</p>
+	</div>
+
+
+	<script>
+		$(document).ready(function(){
+			//页面初始化
+			//应用id
+			var appid = parseInt(getQueryString("appid"));
+			//应用名
+			var appName = appConfig[appid].title;
+			//游戏名
+			var gameName = getQueryString("gameName");
+
+			//房间号
+			var roomid = getQueryString("roomid");
+
+			//当前玩家
+			var gamePlayers = getQueryString("gamePlayers");
+
+			//房间状态
+			var roomStatus = getQueryString("roomStatus");
+			//房间局数
+			var roomParties = getQueryString("roomParties");
+			//玩家人数
+			var roomPlayers = getQueryString("roomPlayers");
+
+			//规则概述
+			var gameRules = getQueryString("gameRules");
+
+			$("#game-icon").attr("src","images/newdownload/"+appConfig[appid].icon);
+			$("#app-name").text(appName);
+			$("#game-name").text(gameName);
+			$("#room-id").text("房间号："+roomid);
+			$("#game-players").text(gamePlayers);
+			$("#room-status").text(roomStatus);
+			$("#room-parties").text(roomParties);
+			$("#room-players").text(roomPlayers);
+			$("#game-rules").text(gameRules);
+
+			var platform;
+			var isChangeBrowers = false;
+			var msg;
+			var config;
+			/**获取平台信息**/
+			function getPlatform(){
+				var config = {};
+				config.ua = navigator.userAgent.toLowerCase();
+				config.isios = false;
+				config.isweixin = false;
+				config.isqq = false;
+				config.isOs8 = false;
+				config.ischrome = false;
+				config.isUsedIframe = false;
+				if (/iphone|ipad|ipod/.test(config.ua)) {
+					config.isios = true;
+				}
+				if (config.ua.match(/MicroMessenger/i) == "micromessenger") {
+					config.isweixin = true;
+				}
+				if (/qq\//.test(config.ua)) {
+					config.isqq = true;
+				}
+				if (/os 8/.test(config.ua)) {
+					config.isOs8 = true;
+				}
+				if (/chrome/.test(config.ua)) {
+					config.ischrome = true;
+				}
+				//华为荣耀
+				if(/h60-l01/.test(config.ua)){
+					config.isUsedIframe = true;
+				}
+				return config;
+			}
+
+			function openUniversalLinks(){
+				if(platform.isios){
+					window.open(config.universal_Links, "_blank");
+				}else{
+					window.location.href = config.scheme_Adroid;
+				}
+				window.location.href = config.download_IOS;
+			}
+
+			function checkLink(){
+				if(platform.isweixin || platform.isqq){
+					//if(!platform.isios || platform.isOs8){
+						isChangeBrowers = true;
+					//}
+				}
+			}
+
+			//入口
+			msg = getQueryString("msg");
+			//如果没有分享出房间信息，则判断为非房间分享，直接链接到下载页
+			/*if(typeof(roomid)=="undefined"||roomid==null){
+				var downloadUrl = appConfig[appid].android_url;
+				window.location.href = downloadUrl;
+				return;
+			}*/
+			config = {
+				universal_Links: 'https://jump.17xiayou.com/'+appConfig[appid].link_name+'?roomid='+roomid,
+				scheme_IOS: appConfig[appid].link_name+"://applink?roomid="+roomid,
+				scheme_Adroid: appConfig[appid].link_name+"://applink?roomid="+roomid+"&r="+getTimeStamp(),
+				download_IOS: appConfig[appid].ios_url,
+				download_Adroid: appConfig[appid].android_url,
+				autoDownload: true,
+				timeout: 3000,
+			};
+			platform = getPlatform();
+			//检测是否在微信或QQ浏览器中,加入浏览器打开的提示
+			checkLink();
+			if(isChangeBrowers){
+				$("#enterImg").attr("src","share/img/enter.png");
+				var winHeight = typeof window.innerHeight != "undefined" ? window.innerHeight : document.documentElement.clientHeight;
+				//兼容IOS，不需要的可以去掉
+				var tip = document.getElementById("weixin-tip");
+				tip.style.height = winHeight + "px";
+				//兼容IOS弹窗整屏
+				tip.style.display = "block";
+				/*if($("#hint").length<=0){
+					$(document.body).append("<div id='hint'></div>");
+					$("#hint").height($(document).height());
+					return;
+				}*/
+			}else{
+				if(platform.isios && !platform.isOs8){ // ios 非ios 8
+					$("#enterImg").attr("src","share/img/enter.png");
+					//点击（进入/下载按钮）
+					var btn = document.getElementById("btnEnter");
+					btn.href = config.universal_Links;
+					btn.onclick=function(){
+						window.location.href = config.download_IOS;
+					};
+				}else{//安卓  或  ios8
+					//显示下载
+//					alert("下载");
+					var btn = document.getElementById("btnEnter");
+					$("#enterImg").attr("src","share/img/download.png");
+					btn.href = config.download_Adroid;
+					if(platform.ischrome || platform.isios){
+						if(!platform.isUsedIframe){
+							if(platform.isios && !config.isweixin){ // ios 不在微信浏览器中
+//								alert("ios8");
+								window.location.href = config.scheme_IOS;
+							}else{
+//								alert("isandroid");
+								window.location.href = config.scheme_Adroid;
+							}
+						}else{
+//							alert("isandroid");
+							var iframe = document.createElement("iframe");
+							iframe.src = config.scheme_Adroid;
+							iframe.style.display = "none";
+							document.body.appendChild(iframe);
+							setTimeout(function(){
+								document.body.removeChild(iframe);
+							},2000);
+						}
+					}else{
+						//alert("isandroid");
+						var iframe = document.createElement("iframe");
+						iframe.src = config.scheme_Adroid;
+						iframe.style.display = "none";
+						document.body.appendChild(iframe);
+						setTimeout(function(){
+							document.body.removeChild(iframe);
+						},2000);
+					}
+				}
+			}
+		});
+
+		//获取页面附带参数
+		/*function getQueryString(name){
+		 var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		 var r = window.location.search.substr(1).match(reg);
+		 if(r!=null)return  unescape(r[2]); return null;
+		 }*/
+
+		//获取页面附带参数
+		function getQueryString(key){
+			var url = window.location.search;
+			var reg = new RegExp("(^|&)"+ key +"=([^&]*)(&|$)");
+			var result = url.substr(1).match(reg);
+			return result ? decodeURIComponent(result[2]) : null;
+		}
+
+		//获取时间戳
+		function getTimeStamp(){
+			var timestamp = Date.parse(new Date());
+			timestamp = timestamp / 1000;
+			return timestamp;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <title>Di盟商城</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <style type="text/css">
+        /*我的钱包*/
+        body{
+            /*background-color: #f2f2f2;*/
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .info{
+            height: 260px;
+            text-align: center;
+        }
+        .info img{
+            width: 75px;
+            height: 75px;
+            margin-top: 65px;
+        }
+        .info p:last-child{
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .comm-btn-middle{
+            margin: 10px auto;
+            width: 200px;
+            height: 35px;
+        }
+        .comm-btn-middle button{
+            width: 200px;
+            height: 35px;
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="images/ico_back.png" /></a></span>
+        <h2>我的钱包</h2>
+    </div>
+
+    <div class="info">
+        <img src="images/logo_small.png" alt=""/>
+        <p>我的余额</p>
+        <p>￥120.00</p>
+    </div>
+
+    <div id="btn-charge" class="comm-btn-middle"><button>充值</button></div>
+    <div id="btn-check" class="comm-btn-middle"><button>查看明细</button></div>
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-back").back();
+
+        //充值
+        $("#btn-charge").click(function(){
+            console.log("点击充值");
+        });
+
+        //查看明细
+        $("#btn-charge").click(function(){
+            console.log("查看明细");
+        });
+
+
+
+
+
+
+
+    });
+</script>
+</body>
+</html>

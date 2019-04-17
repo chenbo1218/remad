@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>订单详情</title>
+
+    <link type="text/css" rel="stylesheet" href="../css/common.css" />
+    <style type="text/css">
+        body{
+            background-color: #ffe200;
+            /*overflow: hidden;*/
+            font-size: 13px;
+        }
+
+        .title{
+            width: 100%;
+            height: 40px;
+            color: #fff;
+            background-color: #fabe00;
+            line-height: 40px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .des{
+            /*border: 1px solid red;*/
+            width: 96%;
+            height: 400px;
+            margin: 0 2%;
+            position: relative;
+        }
+        .des .bg{
+            width: 100%;
+            height: 400px;
+            position: absolute;
+        }
+        .des .info{
+            width: 90%;
+            height: 370px;
+            margin: 15px 5%;
+            position: relative;
+        }
+        .des .info1{
+            width: 100%;
+            height: 100px;
+            padding-top: 13px;
+            line-height: 20px;
+            overflow: hidden;
+        }
+        .des .info1 .lab{
+            font-size: 16px;
+            color: #fabe00;
+            font-weight: bold;
+        }
+        .des .info2{
+            /*border: 1px solid green;*/
+            margin-top: 17px;
+            margin-left: 10px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .des .info3{
+            /*border: 1px solid yellow;*/
+            width: 100%;
+            margin-top: 40px;
+            line-height: 25px;
+            overflow: hidden;
+        }
+        .des .info3 span{
+            display: block;
+            float: right;
+        }
+        .back-btn{
+            margin: 15px auto;
+        }
+        .sheet{
+            font-size: 12px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+
+    <!--标题-->
+    <div class="title">我的订单</div>
+
+    <!--订单详情-->
+    <div class="des">
+        <!--背景图-->
+        <img class="bg" src="../images/shop/seller/c_bg_02.png" alt=""/>
+        <!--信息-->
+        <div class="info">
+            <div class="info1">
+                <p class="lab">买家信息</p>
+                <p>订单编号：<span>1546644543545236</span></p>
+                <p>收货人：<span>西瓜红的红</span></p>
+                <p>电话：<span>13888888888</span></p>
+                <p>地址：<span>湖南省长沙市开福区欧陆经典B座909</span></p>
+            </div>
+
+            <div class="info2">
+                <p class="lab">商品信息</p>
+            </div>
+
+            <div class="info3">
+                <p>商品名称<span>【直降5元】新西兰阳光柠檬（5个）</span></p>
+                         <p>&nbsp;<span>【直降5元】新西兰阳光桃子（5个）</span></p>
+                <p>数量<span>2</span></p>
+                <p>商品金额<span>￥50.00</span></p>
+                <p>运费<span>￥5.00</span></p>
+                <p>支付金额<span>￥55.00</span></p>
+                <p>创建时间：<span>2016-03-22 16:16:50</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-btn comm-btn-middle"><button>返回订单</button></div>
+    <p class="sheet">请在24小时内完成支付，超时订单将自动取消</p>
+
+
+    <script src="../js/jquery-2.2.1.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".comm-ico-back a").back();
+
+            $(".back-btn").click(function(){
+               window.location.href = "s-c-dingdanguanli.html";
+            });
+        });
+
+    </script>
+
+
+</body>
+</html>

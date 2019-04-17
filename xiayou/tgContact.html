@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="staticTG/img/logo.ico" type="image/x-icon">
+	<title>湖南虾游网络科技</title>
+	<link rel="stylesheet" type="text/css" href="staticTG/lib/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="staticTG/lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="staticTG/lib/ionicon/css/ionicons.min.css">
+
+	<!-- Google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,400i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">
+
+	<!-- Owl Carousel Assets -->
+	<link rel="stylesheet" href="staticTG/lib/css/owl.carousel.css">
+	<link rel="stylesheet" href="staticTG/lib/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="staticTG/lib/css/owl.theme.default.min.css">
+
+	<!-- Custom  Design staticTG -->
+	<link rel="stylesheet" type="text/css" href="staticTG/css/main.css">
+	<style>
+		.my-container{
+			padding: 0 0;
+		}
+	</style>
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?d359321893b7f9c35f3c94f504a82cfc";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+</head>
+
+<body>
+<div class="container my-container">
+<!-- 导航-->
+<header id="header">
+	<div class="header-main">
+		<nav class="header-main-nav">
+			<a href="tg.html" target="_self">首页</a>
+			<a href="tgAbout.html" target="_self">关于我们</a>
+			<a href="tgProduct.html" target="_self">产品展示</a>
+			<a href="#" target="_self" class="on">联系方式</a>
+		</nav>
+	</div>
+</header>
+
+<!--banner-->
+<section id="head" class="head">
+	<img class="img-responsive" src="staticTG/img/1.png" alt=""/>
+</section>
+
+
+<!--模块：联系我们 -->
+<section id="sec2" class="section sec2">
+	<div class="container">
+		<h4 class="center black">联系我们</h4>
+		<h5 class="center black">Contact us</h5>
+		<div class="explore">
+			<h5 class="left bold">客服微信号</h5>
+			<div>
+				<p style="float: left;" id="cpwx">13272404888</p>
+				<button style="float: left;margin-left: 10px;" id="btnCpwx" onclick="javascript:copywx();">复制</button>
+			</div>
+			<br/>
+			<h5 class="left bold">客服电话</h5>
+			<div>
+				<p style="float: left;" id="cptel" onclick="javascript:copytel();">13272404888</p>
+			</div>
+			<br/>
+			<h5 class="left bold">公司地址</h5>
+			<p>湖南省长沙市岳麓区岳麓西大道588号芯城科技园1栋2004</p>
+			<br/>
+			<h5 class="left bold">服务时间</h5>
+			<p>上午09:00-下午09:00 周一至周六</p>
+			<br/>
+			<!--百度地图容器-->
+			<div style="width:100%;height:400px;border:#ccc solid 1px;" id="dituContent"></div>
+		</div>
+	</div>
+</section>
+
+<!--百度地图start-->
+<style type="text/css">
+	html,body{margin:0;padding:0;}
+	.iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
+	.iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+<script type="text/javascript">
+	//创建和初始化地图函数：
+	function initMap(){
+		createMap();//创建地图
+		setMapEvent();//设置地图事件
+		addMapControl();//向地图添加控件
+		addMarker();//向地图中添加marker
+	}
+
+	//创建地图函数：
+	function createMap(){
+		var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+		var point = new BMap.Point(112.88109,28.23454);//定义一个中心点坐标
+		map.centerAndZoom(point,17);//设定地图的中心点和坐标并将地图显示在地图容器中
+		window.map = map;//将map变量存储在全局
+	}
+
+	//地图事件设置函数：
+	function setMapEvent(){
+		map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+		map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+		map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+		map.enableKeyboard();//启用键盘上下左右键移动地图
+	}
+
+	//地图控件添加函数：
+	function addMapControl(){
+		//向地图中添加缩放控件
+		var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+		map.addControl(ctrl_nav);
+		//向地图中添加缩略图控件
+		var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});
+		map.addControl(ctrl_ove);
+		//向地图中添加比例尺控件
+		var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+		map.addControl(ctrl_sca);
+	}
+
+	//标注点数组
+	var markerArr = [{title:"湖南虾游网络科技",content:"公司地址：湖南省长沙市岳麓区岳麓西大道588号芯城科技园1栋2004<br/>服务时间：上午9:00-下午9:00&nbsp;周一至周六",point:"112.881395|28.234476",isOpen:1,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+	];
+	//创建marker
+	function addMarker(){
+		for(var i=0;i<markerArr.length;i++){
+			var json = markerArr[i];
+			var p0 = json.point.split("|")[0];
+			var p1 = json.point.split("|")[1];
+			var point = new BMap.Point(p0,p1);
+			var iconImg = createIcon(json.icon);
+			var marker = new BMap.Marker(point,{icon:iconImg});
+			var iw = createInfoWindow(i);
+			var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+			marker.setLabel(label);
+			map.addOverlay(marker);
+			label.setStyle({
+				borderColor:"#808080",
+				color:"#333",
+				cursor:"pointer"
+			});
+
+			(function(){
+				var index = i;
+				var _iw = createInfoWindow(i);
+				var _marker = marker;
+				_marker.addEventListener("click",function(){
+					this.openInfoWindow(_iw);
+				});
+				_iw.addEventListener("open",function(){
+					_marker.getLabel().hide();
+				})
+				_iw.addEventListener("close",function(){
+					_marker.getLabel().show();
+				})
+				label.addEventListener("click",function(){
+					_marker.openInfoWindow(_iw);
+				})
+				if(!!json.isOpen){
+					label.hide();
+					_marker.openInfoWindow(_iw);
+				}
+			})()
+		}
+	}
+	//创建InfoWindow
+	function createInfoWindow(i){
+		var json = markerArr[i];
+		var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+		return iw;
+	}
+	//创建一个Icon
+	function createIcon(json){
+		var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+		return icon;
+	}
+
+	initMap();//创建和初始化地图
+</script>
+<!--百度地图end-->
+
+
+<!-- 尾巴 -->
+<section id="sec7" class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="layout text-center">
+				<p class="" style="margin-bottom:20px !important;font-size: 12px">
+					<span>湘网文[2016]3297-060号 </span><span class="pipe">|</span>
+					<span>湘ICP备16010318号 </span><span class="pipe">|</span>
+					<span>文网游备字[2017]M-CBG 601 </span><span class="pipe"></span><br/>
+					<span>网络游戏版号：ISBN 987-7-7979-8916-9 ISBN 987-7-7p79-8976-3 ISBN 987-7-7979-8917-6 </span><span class="pipe"></span><br/>
+					<span>湖南省长沙市高新区岳麓西大道588号芯城科技园1栋2004  </span><br/>
+					<div style="width:220px;height:20px;margin:0 auto;">
+						<a class="fl" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43019002000450"
+					   style="display:block;text-decoration:none;height:20px;line-height:20px;">
+							<img src="staticTG/img/beian.png" style="float:left;"/>
+							<p style="float:left;height:20px;font-size: 12px;line-height:20px;margin: 0px 0px 0px 5px;color: #333;">湘公网安备 43019002000450号</p>
+						</a>
+					<!--<a class="fl" href="#popupWechat" data-toggle="modal" style="color: #333;text-decoration: none; display: inline-block">点击关注微信公众号</a>-->
+					</div>
+				</p>
+				<p class="center" style="font-size: 12px;">Copyright &copy; 2016-2018 Xiayou Network All rights reserved.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<aside class="contact-sidebar">
+	<a class="contact-sidebar-phone" href="tel:13272404888" onclick="javascript:contact();">联系电话<span class="fs16">13272404888</span> <span>（微信同号）</span></a>
+	<!--<a class="contact-sidebar-qq"  href="http://wpa.qq.com/msgrd?v=3&uin=3092702179&site=qq&menu=yes" target="_blank">QQ咨询</a>-->
+	<a class="contact-sidebar-wx"  href="javascript:void(0);"><img src="staticTG/img/erweima1.png"/>微信扫一扫</a>
+</aside>
+<!-- 百度推广检测-->
+<script>
+	var browser;
+	browserRedirect();
+	function browserRedirect() {
+		var sUserAgent = navigator.userAgent.toLowerCase();
+		var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+		var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+		var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+		var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+		var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+		var bIsAndroid = sUserAgent.match(/android/i) == "android";
+		var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+		var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+		if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+			browser = 1;
+		} else {
+			browser = 2;
+		}
+		console.log(browser);
+	}
+
+	function contact(){
+		console.log("clicktel");
+		if(browser==1){
+			_hmt.push(['_trackEvent', '拨打电话', '移动端','联系页']);
+		}else{
+			_hmt.push(['_trackEvent', '拨打电话', 'pc端','联系页']);
+		}
+	}
+
+	//复制功能
+	function copywx(){
+		var str = document.getElementById("cpwx").innerHTML;
+		var oInput = document.createElement('input');
+		oInput.value = str;
+		document.body.appendChild(oInput);
+		oInput.select(); // 选择对象
+		document.execCommand("Copy"); // 执行浏览器复制命令
+		oInput.className = 'oInput';
+		oInput.style.display='none';
+		alert('复制成功');
+
+		if(browser==1){
+			_hmt.push(['_trackEvent', '复制微信号', '移动端','联系页']);
+		}else{
+			_hmt.push(['_trackEvent', '复制微信号', 'pc端','联系页']);
+		}
+	}
+	function copytel(){
+		if(browser==1){
+			_hmt.push(['_trackEvent', '拨打电话1', '移动端','联系页']);
+		}else{
+			_hmt.push(['_trackEvent', '拨打电话1', 'pc端','联系页']);
+		}
+	}
+
+
+
+</script>
+
+</div>
+<!-- Javascript files -->
+
+<script type="text/javascript" src="staticTG/lib/js/jquery-3.1.1.min.js" ></script>
+<script src="staticTG/lib/js/bootstrap.min.js"></script>
+<script src="staticTG/lib/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="staticTG/js/main.js" ></script>
+
+
+
+
+</body>
+</html>

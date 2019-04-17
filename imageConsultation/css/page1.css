@@ -1,0 +1,35 @@
+/*
+*切片酷炫浏览样式
+*create by chenbo on 2019.03.19
+*/
+
+.gallery {
+    width: 100%;
+    /*height: 600px;*/
+    background: #FFF;
+    /*border: 1px solid #CCC;*/
+}
+.clear {
+    clear: both;
+    line-height: 1px;
+    font-size: 1px;
+}
+.gallery_output{
+    float: left;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+}
+.gallery_output .openseadragon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    /*border: 1px solid red;*/
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #686868;
+}
+.gallery_output .openseadragon img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}

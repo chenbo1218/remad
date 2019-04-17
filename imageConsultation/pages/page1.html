@@ -1,0 +1,260 @@
+<!-- 切片展示页面，还有就是标绘 -->
+
+<body >
+    <link rel="stylesheet" href="css/page1.css"/>
+
+    <div id="toolbarDiv" class="toolbar">
+        <span style='float:left;margin:10px 20px 0 0'>
+            <a id="zoom-in" href="#zoom-in">
+                <button>
+                    <i class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+                </button>
+            </a>
+            <a id="zoom-out" href="#zoom-out">
+                <button>
+                    <i class="fa fa-search-minus fa-2x" aria-hidden="true"></i>
+                </button>
+            </a>
+            <a id="home" href="#home">
+                <button>
+                    <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                </button>
+
+            </a>
+            <a id="full-page" href="#full-page">
+                <button>
+                    <i class="fa fa-arrows-alt fa-2x" aria-hidden="true"></i>
+                </button>
+            </a>
+        </span>
+        <span style='float:left;margin:10px 0 0 10px'>
+            &nbsp;
+            <a id="previous" href="#previous-page">
+                <button>
+                    <i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i>
+                </button>
+            </a>
+            <a id="next" href="#next-page">
+                <button>
+                    <i class="fa fa-arrow-down fa-2x" aria-hidden="true"></i>
+                </button>
+            </a>
+            &nbsp;
+            <span id='currentpage'> 1 of 5 </span>
+        </span>
+        <span style='float: left;margin: 10px 0 0 10px'> 
+            <a id='drawPen'>
+                <button class='btn btn-info'>
+                    <i class='fa fa-pencil fa-2x' aria-hidden="true"></i>
+                </button>
+            </a>
+            <a id='removeAll'>
+                <button class='btn btn-info'>
+                    <i class='fa fa-trash fa-2x' aria-hidden="true"></i>
+                </button>
+            </a>
+            <a id='changeImage'>
+                <button class='btn btn-info'>
+                    <i class='fa fa-arrow-right fa-2x' aria-hidden="true"></i>
+                </button>
+            </a>
+        </span>
+    </div>
+
+
+    <!-- 图片切换效果 -->
+    <div class="gallery">
+        <div class="gallery_output">
+            <div class="openseadragon" id="openseadragon1"></div>
+            <div class="openseadragon" id="openseadragon2"></div>
+            <div class="openseadragon" id="openseadragon3"></div>
+            <div class="openseadragon" id="openseadragon4"></div>
+            <div class="openseadragon" id="openseadragon5"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+
+
+    <script src="./js/pathJson.js"></script>
+    <script type="text/javascript" src="./js/static/openseadragon.js"></script>
+    <script type="text/javascript" src="./js/static/fabric.min.js"></script>
+	<script type="text/javascript" src="./js/static/openseadragon-fabricjs-overlay.js"></script>
+    <!--<script type="text/javascript" src="./js/initOpenseadragon.js"></script>-->
+
+    <script type="text/javascript">
+        $(function(){
+            App = {
+                init: function () {
+                    var self = this;
+                    this.viewer = OpenSeadragon({
+                        id: "openseadragon1",
+                        prefixUrl: './img/images/',
+                        toolbar: "toolbarDiv",
+                        visibilityRatio: 1,
+                        constrainDuringPan: true,
+                        defaultZoomLevel: '1',
+                        minZoomLevel: '1',
+                        maxZoomLevel: '70',
+                        panHorizontal: true, //水品移动限制，默认为true
+                        showNavigator: true,
+                        sequenceMode: true,
+                        zoomInButton: "zoom-in",
+                        zoomOutButton: "zoom-out",
+                        homeButton: "home",
+                        fullPageButton: "full-page",
+                        nextButton: "next", //下一张图片
+                        previousButton: "previous",//上一张
+
+                        gestureSettingsMouse: {
+                            clickToZoom: false,
+                            dblClickToZoom: true,
+                        }
+                    })
+                    this.viewer.addHandler("page", function (data) {
+                        document.getElementById("currentpage").innerHTML = (data.page + 1) + " of 5";
+                    });
+                }
+            }
+            var myOverlay;
+            (function () {
+                App.init();
+                var options = {
+                    scale: 1000
+                };
+                myOverlay = App.viewer.fabricjsOverlay(options);
+            })();
+
+            var canvas = myOverlay.fabricCanvas();
+            var path = new fabric.Path(json);
+            path.set({
+                fill: 'rgba(0,0,0,0)',
+                stroke: 'green'
+            })
+            canvas.add(path);
+            canvas.on("mouse:wheel", function (options) {
+                var arr = myOverlay.fabricCanvas().getObjects();
+                for (var i in arr) {
+                    arr[i].strokeWidth = 5 / myOverlay.fabricCanvas().viewportTransform[0];
+                }
+                drawWidth = 5 / myOverlay.fabricCanvas().viewportTransform[0];
+                canvas.freeDrawingBrush.width = drawWidth;
+            });
+            canvas.on({
+                'object:moving': onChange,
+                'object:scaling': onChange,
+                'object:rotating': onChange,
+            });
+            //拖动标绘的特效
+            function onChange(options) {
+                options.target.setCoords(); //坐标
+                canvas.forEachObject(function (obj) {
+                    if (obj === options.target) return;
+                    obj.setOpacity(options.target.intersectsWithObject(obj) ? 0.5 : 1);
+                });
+            }
+
+            canvas.on('object:selected', function (options) {
+                console.log(options.target.path);
+                console.log(canvas.toJSON(options.target.path));
+                console.log(canvas.toSVG(options.target.path));
+                var data = [];
+                for (var i = 0; i < options.target.path.length; i++) {
+                    data.push(options.target.path[i]);
+                }
+                var data1 = {};
+                data1.path = data;
+                $.ajax({
+                    type: 'post',
+                    url: 'http://localhost:3000/label',
+                    data: data1,
+                    success: function (data) {
+
+                    },
+                    error: function () {
+                        console.log('error');
+                    }
+                })
+            });
+
+            $('#drawPen').click(function () {
+                drawWidth = 5 / myOverlay.fabricCanvas().viewportTransform[0];
+                canvas.freeDrawingBrush.color = 'red';
+                App.viewer.setMouseNavEnabled(false);
+                App.viewer.outerTracker.setTracking(false);
+                canvas.isDrawingMode = true;
+                canvas.freeDrawingBrush.width = drawWidth;
+                canvas.on("mouse:up", function (options) {
+                    App.viewer.setMouseNavEnabled(true);
+                    App.viewer.outerTracker.setTracking(true);
+                    canvas.isDrawingMode = false;
+                });
+
+            });
+
+            $('#removeAll').click(function () {
+                canvas.clear();
+            });
+
+            $('#changeImage').click(function () {
+                //动态切换添加视图层
+                var tileSource = {};
+                tileSource.Image = {};
+                tileSource.Image.xmlns = "http://schemas.microsoft.com/deepzoom/2009";
+                tileSource.Image.Url = "http://192.168.1.225:8888/zipfiles/test_10x_files/";
+                tileSource.Image.TileSize = "254";
+                tileSource.Image.Overlap = "1";
+                tileSource.Image.Format = "jpeg";
+                tileSource.Image.Size = {};
+                tileSource.Image.Size.Height = "51199";
+                tileSource.Image.Size.Width = "62747";
+                //删除图层 openseadragon
+                App.viewer.world.removeAll();
+                //添加新的图层
+                App.viewer.addTiledImage({
+                    tileSource: tileSource
+                })
+                //删除所有标注的图形
+                myOverlay.fabricCanvas().clear();
+            });
+
+
+
+
+            //展示效果
+            var $imgs = $(".gallery_output .openseadragon");
+            $imgs.not(":first").hide();
+
+            //切换
+            var _index = 0;
+            $("#next").click(function() {
+                if(_index >= $imgs.length-1){
+                    return;
+                }
+                _index++;
+                $("#currentpage").text((_index+1)+" of "+$imgs.length);
+                console.log(_index);
+                if($($imgs[_index]).is(":hidden")){
+                    $($imgs[_index]).slideDown().siblings().slideUp();
+                }
+            });
+
+            $("#previous").click(function() {
+                if(_index <= 0){
+                    return;
+                }
+                _index--;
+                $("#currentpage").text((_index+1)+" of "+$imgs.length);
+                console.log(_index);
+                if($($imgs[_index]).is(":hidden")){
+                    $($imgs[_index]).slideDown().siblings().slideUp();
+                }
+            });
+
+
+
+        })
+
+    </script>
+    
+</body>

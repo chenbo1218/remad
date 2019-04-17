@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>我的收益</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style type="text/css" >
+        /*210+170+80+225*2+120+100   105+85+40+110*2+60+50*/
+
+        body {
+            background-color: #f2f2f2;
+            /*height: 100%;*/
+        }
+
+        .main .box2-top {
+            height: 125px;
+            background-color: #969696;
+            color: white;
+        }
+        .main .box2-middle {
+            height: 200px;
+        }
+        .main .box2-bottom {
+            height: 110px;
+        }
+
+        .strong {
+            color: #fabe00;
+            /*font-size: 18px;*/
+        }
+        .box2-top p:first-child {
+            height: 55px;
+            padding: 0 5%;
+            line-height: 30px;
+        }
+        .box2-top p#p-second {
+            padding: 0 5%;
+            height: 29px;
+            line-height: 29px;
+            color: white;
+            border-bottom: 1px solid #dcdcdc;
+        }
+        p#p-second span:last-child {
+            float: right;
+            font-size: 14px;
+        }
+        .box2-top p:last-child {
+            padding: 0 5%;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+        }
+
+        .box2-middle {
+            padding: 0 5%;
+            width: 90%;
+            margin: 15px auto 4px;
+            border-bottom: 1px solid #cfcfcf;
+        }
+        .box3 {
+            width: 49%;
+            float: left;
+            padding: 0px 0 10px;
+            border-right: 1px solid #cfcfcf;
+        }
+
+        .box3-right{
+            padding-left: 9%;
+            border: none;
+            width: 40%;
+        }
+        .box2-middle .box3 span {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .box3 span:last-child {
+            font-size: 12px;
+            color: #9a9a9a;
+        }
+
+        .box2-bottom .comm-btn-middle {
+            margin: 15px auto;
+            width: 90px;
+        }
+        .comm-btn-middle button {
+            border-radius: 5px;
+        }
+        .box2-bottom p {
+            font-size: 12px;
+            padding: 0 5%;
+        }
+
+
+    </style>
+</head>
+<body>
+<!--banner-->
+<div class="comm-top-title">
+    <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+    <h2>我的收益</h2>
+</div>
+
+<div class="main">
+
+            <div class="box2-top">
+                <p >可提现收益（元）</p>
+                <p id="p-second"><span class="strong">300.00</span><span>查看明细 > </span></p>
+                <p >成功提现收益：<span>1200.00</span></p>
+
+            </div>
+
+
+            <div class="box2-middle">
+                <div class="box3">
+                    <span>累计收益</span>
+                    <span class="strong">1500.00</span>
+                    <span>所有收益</span>
+                </div>
+                <div class="box3 box3-right">
+                    <span>已申请提现</span>
+                    <span  class="strong">1200.00</span>
+                    <span>已申请收益</span>
+                </div>
+                <div class="box3">
+                    <span>待打款收益</span>
+                    <span class="strong">300.00</span>
+                    <span>审核通过的收益</span>
+                </div>
+            </div>
+
+            <div class="box2-bottom">
+                <div id="submit" class="comm-btn-middle">
+                    <button>申请提现</button>
+                </div>
+
+                <p>注：买家确认收货后，即可获得利润收益。所有支付金额由平台统一收取
+                    ，每月1号结算汇至您的个人账户。（文字可以修改）</p>
+            </div>
+
+
+
+
+</div>
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-ico-back a").back();
+
+
+//        $("#submit").click(function(e){
+//            e.preventDefault();
+//            window.location.href = "b-protocol.html";
+//        });
+    });
+</script>
+</body>
+</html>

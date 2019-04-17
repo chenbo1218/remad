@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>fir.im - 免费应用内测托管平台|iOS应用Beta测试分发|Android应用内测分发</title>
+    <meta name="keywords" content="fir,fir.im,app分发,免费托管,内测分发,iOS,Android,iPad,iPhone,App下载,免费安装,adhoc,InHouse,fir cli,beta测试,ipa,apk,安卓,苹果应用,二维码下载,UDID,iOS内测,Android内测,beta test,app store,testflight,firim">
+    <meta name="description" content="fir.im 为开发者提供测试应用极速发布，应用崩溃实时分析、用户反馈收集等一系列开发测试效率工具服务，帮助开发者将更多精力放在产品的开发与应用的优化上。">
+    <meta property="qc:admins" content="0650725312615">
+
+    <link rel="stylesheet" href="assets/stylesheets/icons.css">
+    <link rel="stylesheet" href="assets/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+
+    <script type="text/javascript">
+        var currentUser = {
+            "id": "59fb2f08959d695d0d000448",
+            "uuid": "59fb2e365642123b9f0aad56",
+            "name": "3369852946",
+            "email": "3369852946@qq.com",
+            "is_confirmed": true,
+            "gravatar": "https://avatar-file.flow.ci/avatar/57d02bc8a097b70cdb29bcb1c251c2d3.png?r=PG",
+            "is_developer": true,
+            "is_tester": false,
+            "is_phone_confirmed": true,
+            "taobao_user_id": null,
+            "taobao_user_name": null,
+            "qq_number": null,
+            "verify_state": "",
+            "verify_refuse_reason": null,
+            "phone_number": "18570300218",
+            "company": null,
+            "job": null,
+            "upload_setting": "qiniu",
+            "has_paid": true,
+            "created_at": 1509633800,
+            "allowed_perms": [],
+            "orgs": [{
+                "id": "59fb2f08548b7a1688813717",
+                "name": "user_private_59fb2f08548b7a1688813716",
+                "title": "私人组织账户",
+                "gravatar": null,
+                "category": "free",
+                "org_status": "paid",
+                "category_expired_at": 1825166600,
+                "org_constraint": {
+                    "_id": "57d7cb867e4ff074978fe1ac",
+                    "daily_download": 100,
+                    "package_size": 300,
+                    "show_release_count": 10,
+                    "saved_days_count": 90,
+                    "org_max_members_count": 10,
+                    "year_price": 0,
+                    "month_price": 0,
+                    "name": "free",
+                    "category_expired_at": 1825166600
+                },
+                "members": [],
+                "invoice_title": null,
+                "express_contact_name": null,
+                "express_contact_phone": null,
+                "express_address": null,
+                "taxpayer_number": null,
+                "user": {
+                    "id": "59fb2f08548b7a1688813716",
+                    "uuid": "59fb2e365642123b9f0aad56",
+                    "email": "3369852946@qq.com",
+                    "default_org_id": "59fb2f08548b7a1688813717"
+                },
+                "all_data_package_cnt": 71000,
+                "used_data_package_cnt": 68952,
+                "org_packet": {
+                    "id": "57d7cb867e4ff074978fe1ac",
+                    "name": "free",
+                    "daily_download": 100,
+                    "package_size": 300,
+                    "show_release_count": 10,
+                    "saved_days_count": 90,
+                    "org_max_members_count": 10,
+                    "year_price": 0,
+                    "month_price": 0
+                }
+            }],
+            "is_verified": true,
+            "new_user_gift_status": "id_card_first",
+            "access_token": "2f04b21b28f4d85db84882f67c5569c124f3ff813e",
+            "saved_at": 1553484014312
+        }
+        var endpoint = 'https://api.fir.im'.replace('http:', location.protocol);
+        var locale = 'zh';
+    </script>
+</head>
+<body class="page-tools">
+    <div class="apps-dropdown">
+        <div class="wrapper"></div>
+    </div>
+    <div class="dropdown-cover"></div>
+    <nav class="navbar navbar-transparent fade-out " role="navigation">
+        <div class="navbar-header"><a class="navbar-brand" href="/"><i class="icon-logo"></i> </a></div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse" ng-controller="NavbarController">
+            <div class="dropdown">
+                <div><i class="icon-brace-left"></i>
+                    <ul class="navbar-bracket">
+                        <li><a href="index.html">首页</a> <i class="icon-comma"></i></li>
+                        <li><a href="/apps">应用管理</a><i class="icon-comma"></i></li>
+                        <li><a href="pricing.html">价格</a> <i class="icon-comma"></i></li>
+                        <li><a href="docs.html">文档</a> <i class="icon-comma"></i></li>
+                        <li><a href="tools.html">工具</a><i class="icon-comma"></i></li>
+                        <li><a href="support.html">帮助中心</a><i class="icon-comma"></i></li>
+                    </ul>
+                    <i class="icon-brace-right"></i></div>
+            </div>
+        </div>
+    </nav>
+    <div class="menu-toggle fade-out"><i class="icon-menu"></i></div>
+    <menu>
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/docs">文档</a></li>
+            <li><a href="/tools">工具</a></li>
+            <li><a href="/support">帮助中心</a></li>
+            <li><a href="/oauth/signin">登录</a></li>
+        </ul>
+    </menu>
+    <script>
+        function firEvent(cate,act,label,url){
+            ga('send','event',cate,act,label,{'hitCallback':function(){
+                window.location.href= url
+            }})
+            return false
+        }
+    </script>
+
+    <div class="banner banner-tools">
+        <h1>
+            <div class="brackets"><i class="icon-brace-left"></i> <span>Utility Tools</span> <i
+                    class="icon-brace-right"></i></div>
+            <small>实用工具</small>
+        </h1>
+        <div class="pattern-bg"></div>
+    </div>
+    <div class="tools-content">
+        <ul>
+            <li><a href="/udid" target="_blank">
+                <div class="icon"><i class="icon-udid"></i></div>
+                <span class="name">UDID 获取工具</span> <span class="desc">用 iOS 设备的 Safari 浏览器打开 fir.im/udid，就可以获取 iOS 设备的 UDID 了</span></a>
+            </li>
+            <li><a href="/tools/log_guru" target="_blank">
+                <div class="icon"><i class="icon-filter"></i></div>
+                <span class="name">Log Guru</span> <span class="desc">更简单的读取手机日志，快速定位手机无法安装的原因</span></a></li>
+            <li><a href="https://github.com/FIRHQ/fir-cli/blob/master/README.md" target="_blank">
+                <div class="icon"><i class="icon-console"></i></div>
+                <span class="name">命令行客户端</span> <span class="desc">通过 fir-cli 命令行的指令查看、上传、编译应用</span></a></li>
+            <li><a href="http://bughd.com/doc/ios-version-update" target="_blank">
+                <div class="icon"><i class="icon-update"></i></div>
+                <span class="name">应用检测更新</span> <span class="desc">灵活的实现应用的检测更新功能</span></a></li>
+            <li><a href="/tools/netts" target="_blank">
+                <div class="icon"><i class="icon-test-speed"></i></div>
+                <span class="name">网速检测</span> <span class="desc">测试你的网络在 fir.im 的上传和下载速度</span></a></li>
+            <li><a href="http://blog.fir.im/turbo-qiniu/" target="_blank">
+                <div class="icon"><i class="icon-optimize-upload"></i></div>
+                <span class="name">极速上传</span> <span class="desc">一行命令 优化上传速度</span></a></li>
+            <li><a href="https://github.com/FIRHQ/fir_intellig_plugin" target="_blank">
+                <div class="icon"><i class="icon-studio"></i></div>
+                <span class="name">Android Studio 插件</span> <span
+                    class="desc">在 Android Studio 内直接上传应用，获取应用短连接</span></a></li>
+            <li><a href="https://github.com/FIRHQ/fir_eclipse_plugin" target="_blank">
+                <div class="icon"><i class="icon-eclipse"></i></div>
+                <span class="name">Eclipse 插件</span> <span class="desc">在 Eclipse 内直接上传应用，获取应用短连接</span></a></li>
+            <li>
+                <a href="http://blog.fir.im/jenkins/" target="_blank">
+                    <div class="icon"><i class="icon-jenkins"></i></div>
+                    <span class="name">Jenkins 插件</span>
+                    <span class="desc">Jenkins 构建后，可自动上传 .ipa/.apk 文件和符号表到 fir.im 和 BugHD</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="wallpapers-content"><h2>壁纸</h2>
+        <ul class="brand">
+            <li><a href="http://firweb.fir.im/rebirth.zip"><img src="images/wallpapers/rebirth.jpg" alt=""></a></li>
+            <li><a href="http://firweb.fir.im/rio.zip"><img src="images/wallpapers/rio.jpg" alt=""></a></li>
+            <li><a href="http://firweb.fir.im/melaka.zip"><img src="images/wallpapers/melaka.jpg" alt=""></a></li>
+        </ul>
+        <ul class="coder">
+            <li>
+                <a href="http://firweb.fir.im/coder-blue.zip"><img src="images/wallpapers/coder-blue.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="http://firweb.fir.im/coder-purple.zip"><img src="images/wallpapers/coder-purple.jpg" alt=""></a></li>
+            <li>
+                <a href="http://firweb.fir.im/coder-red.zip"><img src="images/wallpapers/coder-red.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="http://firweb.fir.im/coder-yellow.zip"><img src="images/wallpapers/coder-yellow.jpg" alt=""></a>
+            </li>
+        </ul>
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-nav">
+                <table>
+                    <tr>
+                        <td>
+                            <ul class="list-inline">
+                                <li class="copyright">©&nbsp;<a href="//fir.im">fir.im&nbsp;2019</a></li>
+                                <li><a href="/about">关于我们</a></li>
+                                <li><a href="//blog.fir.im">博客</a></li>
+                                <li><a href="/partners">合作伙伴</a></li>
+                                <li><a href="/termsofuse">用户协议</a></li>
+                                <li><a href="/privacy">隐私政策</a></li>
+                                <li><a href="/pricing">价格</a></li>
+                            </ul>
+                            <div>
+                                <ul class="list-inline list-unstyled navbar-footer">
+                                    <li><a target="_blank"
+                                           href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37030302000287"
+                                           style="height: 30px; display: inline-block"><img src="images/beianbgs.png"
+                                                                                            style="margin-right: 4px">鲁公网安备
+                                        37030302000287号</a></li>
+                                    <li><a>晋ICP备15006832号-1</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="locale"><a href="?locale=en">English</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="lib/markup.js"></script>
+    <script src="assets/javascripts/main.js"></script>
+    <script src="assets/javascripts/analytics.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){
+            i['GoogleAnalyticsObject']=r;
+            i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//dn-firweb.qbox.me/analytics.js','ga');
+        ga('create', 'UA-43616652-1', 'auto');
+    </script>
+    <script type="text/javascript">
+        window.ga = window.ga || function(){}
+    </script>
+    <script type="text/javascript">
+        ga('set', '&uid', "59fb2e365642123b9f0aad56");
+    </script>
+    <script type="text/javascript">
+        !function(a,b,c,d){
+            var e=b.createElement("script");
+            e.type="text/javascript",e.crossOrigin="anonymous",e.src=c,m=b.getElementsByTagName("script")[0],d&&(e.async=!0),m.parentNode.insertBefore(e,m),a.bughd=function(){(a.bughd.q=a.bughd.q||[]).push(arguments)}}(window,document,"//dn-bughd-web.qbox.me/bughd.min.js",!1);
+            bughd("create",{key:"eebd236c8c6e9f815ff9822102c2ecd7", sendConsoleError: false})
+            bughd.onerror = function(){
+                ga("send","event","bughd","emitter","errorCount");
+            }
+    </script>
+    <script type="text/javascript">
+        window.__MIXPANEL_TOKEN__ = '4fb7314d7432f6c41d795199438b703d'
+        if (window.mixpanel) {
+            window.mixpanel.init(window.__MIXPANEL_TOKEN__);
+            try{
+                var user = localStorage.getItem('rio_web.currentUser')
+                if (user) {
+                    user = JSON.parse(user)
+                    mixpanel.identify(user.uuid)
+                }
+            } catch(e) {}
+        }
+    </script>
+    <script type="text/javascript">
+        ga("send","pageview",{page:'/tools'})
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>个人中心-我的订单</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style type="text/css" >
+        body {
+            font-size: 12px;
+        }
+
+        /*发货状态栏*/
+        .states{
+            height: 30px;
+            padding: 5px 25px 5px 25px;
+            border-bottom: 8px solid lightgray;
+        }
+        .states .cont{
+            margin: 0 auto;
+        }
+        .states .state{
+            width: 33%;
+            float: left;
+            height: 30px;
+            display: block;
+            text-align: center;
+            line-height: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #000;
+            margin: 0 auto;
+        }
+        .states .state:active{
+            color: #fabe00;
+        }
+        .states .state.current{
+            color: #fabe00;
+        }
+
+        /*订单列表*/
+        .items{
+
+        }
+        .item .title{
+            height: 27px;
+            line-height: 27px;
+            padding: 0 16px;
+        }
+        .item .title span:last-child{
+            float: right;
+        }
+        .item .list{
+            padding: 0 16px;
+        }
+        .item .list .good{
+            height: 50px;
+        }
+        .item .good .p1{
+            float: left;
+        }
+        .item .good .p1 img{
+            width: 57px;
+            height: 44px;
+        }
+        .item .good .p2{
+            width: 270px;
+            height: 44px;
+            line-height: 22px;
+            margin-left: 10px;
+            font-size: 14px;
+            float: left;
+        }
+        .item .good .p2 p:last-child span{
+            float: right;
+            color: #fabe00;
+        }
+        .item .sheet{
+            height: 37px;
+            line-height: 37px;
+            padding: 0 16px;
+            border-top: 1px solid lightgray;
+            border-bottom: 1px solid lightgray;
+        }
+        .item .sheet div{
+            float: left;
+        }
+        .item .sheet div:last-child{
+            width: 73px;
+            line-height: 22px;
+            margin-top: 4px;
+            display: inline-block;
+            float: right;
+        }
+        .item .sheet div:last-child button{
+            width: 80px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+        <h2>我的订单</h2>
+    </div>
+
+    <!--发货状态标签-->
+    <div class="states">
+        <div class="cont">
+            <div class="state current">全部</div>
+            <div class="state">待发货</div>
+            <div class="state">待收货</div>
+        </div>
+    </div>
+
+    <!--订单列表-->
+    <div class="items">
+        <div class="item">
+            <div class="title">
+                <span>西瓜红的红的小店</span>
+                <span>已发货</span>
+            </div>
+            <div class="list">
+                <div class="good">
+                    <div class="p1"><img src="../images/fruits/f1.jpg" alt=""/></div>
+                    <div class="p2">
+                        <p>【直降5元】新西兰阳光柠檬（5个）</p>
+                        <p>数量：2<span>￥25.00</span></p>
+                    </div>
+                </div>
+                <div class="good">
+                    <div class="p1"><img src="../images/fruits/f1.jpg" alt=""/></div>
+                    <div class="p2">
+                        <p>【直降5元】新西兰阳光柠檬（5个）</p>
+                        <p>数量：2<span>￥25.00</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="sheet">
+                <div>共计<strong>￥100</strong>，免运费</div>
+                <div class="check comm-btn-middle"><button>确认收货</button></div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="title">
+                <span>西瓜红的红的小店</span>
+                <span>待发货</span>
+            </div>
+            <div class="list">
+                <div class="good">
+                    <div class="p1"><img src="../images/fruits/f1.jpg" alt=""/></div>
+                    <div class="p2">
+                        <p>【直降5元】新西兰阳光柠檬（5个）</p>
+                        <p>数量：2<span>￥25.00</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="sheet">
+                <div>共计<strong>￥100</strong>，免运费</div>
+                <div class="check comm-btn-middle"><button>确认收货</button></div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="title">
+                <span>西瓜红的红的小店</span>
+                <span>申请退款中</span>
+            </div>
+            <div class="list">
+                <div class="good">
+                    <div class="p1"><img src="../images/fruits/f1.jpg" alt=""/></div>
+                    <div class="p2">
+                        <p>【直降5元】新西兰阳光柠檬（5个）</p>
+                        <p>数量：2<span>￥25.00</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="sheet">
+                <div>共计<strong>￥100</strong>，免运费</div>
+                <div class="check comm-btn-middle"><button>处理中</button></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        //返回
+        $(".comm-ico-back a").back();
+
+        //状态筛选
+        var $chooses = $(".states .state");
+        $chooses.click(function(){
+            $(this).addClass("current").siblings("div").removeClass("current");
+        });
+
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>自营产品</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style type="text/css" >
+        /*210+170+80+225*2+120+100   105+85+40+110*2+60+50*/
+
+        body {
+            /*background-color: #f2f2f2;*/
+            /*height: 100%;*/
+            font-size: 14px;
+        }
+
+        .main .box2-top {
+            height: 125px;
+            background-color: #969696;
+            color: white;
+        }
+        /*订单栏*/
+        .item{
+            /*border: 1px solid red;*/
+            width: 100%;
+            /*height: 80px;*/
+            /*padding: 10px 0;*/
+            border-width: 0px 0 1px 0 ;
+            border-color: darkgray;
+            border-style: solid;
+        }
+
+
+        .item  .d2{
+            width: 90%;
+            height: 80px;
+            padding: 10px 5%;
+            position: relative;
+        }
+        .item  .d2 .image{
+            width: 72px;
+            height: 72px;
+            padding: 4px;
+            /*position: */
+            float: left;
+        }
+        .item  .d2 .info{
+            /*left: 30%;*/
+            /*top: 0;*/
+            margin-left: 5px;
+            width: 70%;
+            height: 80px;
+            position: relative;
+            float: left;
+        }
+
+        .info p.product-price {
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+        }
+
+        .item .d2 .info .check{
+            width: 60px;
+            height: 25px;
+            position: absolute;
+            bottom: 4px;
+            right: 0px;
+        }
+        .check button {
+            /*background-color: #fef8e9;*/
+            /*border: 1px solid #fabe00;*/
+            /*color: #fabe00;*/
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .plus {
+            display: block;
+            text-decoration: none;
+            position: absolute;
+            right: 5%;
+            bottom: 20px;
+            text-align: center;
+            width: 50px;
+            height: 40px;
+            padding: 3px 0 7px;
+            line-height: 40px;
+            color: white;
+            font-size: 40px;
+            border-radius: 25px;
+            background-color: #fabe00;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+        <h2>自营产品</h2>
+    </div>
+
+    <div class="main">
+        <!--<div class="main-nav">-->
+            <!--<ul>-->
+                <!--<li class="current"><a href="#"><span>全部</span></a></li>-->
+                <!--<li><a href="#"><span>待审核</span></a></li>-->
+                <!--<li><a href="#"><span>待打款</span></a></li>-->
+                <!--<li><a href="#"><span>已打款</span></a></li>-->
+                <!--<li id="lastli"><a href="#"><span>无效</span></a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+
+        <div class="item">
+            <div class="d2">
+                <img class="image" src="../images/shop/img_user1.jpg" alt=""/>
+                <div class="info">
+                    <p class="product-des">新西兰原装进口 纯净天然蜂蜜500g</p>
+                    <p class="product-price">￥200.00/件</p>
+                    <div class="check comm-btn-middle"><button>编辑</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="d2">
+                <img class="image" src="../images/shop/img_user1.jpg" alt=""/>
+                <div class="info">
+                    <p class="product-des">新西兰原装进口 纯净天然蜂蜜500g</p>
+                    <p class="product-price">￥200.00/件</p>
+                    <div class="check comm-btn-middle"><button>编辑</button></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <a class="plus" href="">+</a>
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-ico-back a").back();
+
+
+//        $("#submit").click(function(e){
+//            e.preventDefault();
+//            window.location.href = "b-protocol.html";
+//        });
+    });
+</script>
+</body>
+</html>

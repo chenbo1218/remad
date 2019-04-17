@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>fir.im - 免费应用内测托管平台|iOS应用Beta测试分发|Android应用内测分发</title>
+    <meta name="keywords" content="fir,fir.im,app分发,免费托管,内测分发,iOS,Android,iPad,iPhone,App下载,免费安装,adhoc,InHouse,fir cli,beta测试,ipa,apk,安卓,苹果应用,二维码下载,UDID,iOS内测,Android内测,beta test,app store,testflight,firim">
+    <meta name="description" content="fir.im 为开发者提供测试应用极速发布，应用崩溃实时分析、用户反馈收集等一系列开发测试效率工具服务，帮助开发者将更多精力放在产品的开发与应用的优化上。">
+    <meta property="qc:admins" content="0650725312615">
+
+    <link rel="stylesheet" href="assets/stylesheets/icons.css">
+    <link rel="stylesheet" href="assets/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+
+    <script type="text/javascript">
+        var currentUser = {
+            "id": "59fb2f08959d695d0d000448",
+            "uuid": "59fb2e365642123b9f0aad56",
+            "name": "3369852946",
+            "email": "3369852946@qq.com",
+            "is_confirmed": true,
+            "gravatar": "https://avatar-file.flow.ci/avatar/57d02bc8a097b70cdb29bcb1c251c2d3.png?r=PG",
+            "is_developer": true,
+            "is_tester": false,
+            "is_phone_confirmed": true,
+            "taobao_user_id": null,
+            "taobao_user_name": null,
+            "qq_number": null,
+            "verify_state": "",
+            "verify_refuse_reason": null,
+            "phone_number": "18570300218",
+            "company": null,
+            "job": null,
+            "upload_setting": "qiniu",
+            "has_paid": true,
+            "created_at": 1509633800,
+            "allowed_perms": [],
+            "orgs": [{
+                "id": "59fb2f08548b7a1688813717",
+                "name": "user_private_59fb2f08548b7a1688813716",
+                "title": "私人组织账户",
+                "gravatar": null,
+                "category": "free",
+                "org_status": "paid",
+                "category_expired_at": 1825166600,
+                "org_constraint": {
+                    "_id": "57d7cb867e4ff074978fe1ac",
+                    "daily_download": 100,
+                    "package_size": 300,
+                    "show_release_count": 10,
+                    "saved_days_count": 90,
+                    "org_max_members_count": 10,
+                    "year_price": 0,
+                    "month_price": 0,
+                    "name": "free",
+                    "category_expired_at": 1825166600
+                },
+                "members": [],
+                "invoice_title": null,
+                "express_contact_name": null,
+                "express_contact_phone": null,
+                "express_address": null,
+                "taxpayer_number": null,
+                "user": {
+                    "id": "59fb2f08548b7a1688813716",
+                    "uuid": "59fb2e365642123b9f0aad56",
+                    "email": "3369852946@qq.com",
+                    "default_org_id": "59fb2f08548b7a1688813717"
+                },
+                "all_data_package_cnt": 71000,
+                "used_data_package_cnt": 68952,
+                "org_packet": {
+                    "id": "57d7cb867e4ff074978fe1ac",
+                    "name": "free",
+                    "daily_download": 100,
+                    "package_size": 300,
+                    "show_release_count": 10,
+                    "saved_days_count": 90,
+                    "org_max_members_count": 10,
+                    "year_price": 0,
+                    "month_price": 0
+                }
+            }],
+            "is_verified": true,
+            "new_user_gift_status": "id_card_first",
+            "access_token": "2f04b21b28f4d85db84882f67c5569c124f3ff813e",
+            "saved_at": 1553477250859
+        }
+        var endpoint = 'https://api.fir.im'.replace('http:', location.protocol);
+        var locale = 'zh';
+    </script>
+</head>
+<body class="page-docs">
+    <div class="apps-dropdown">
+        <div class="wrapper"></div>
+    </div>
+    <div class="dropdown-cover"></div>
+    <nav class="navbar navbar-transparent fade-out " role="navigation">
+        <div class="navbar-header"><a class="navbar-brand" href="/"><i class="icon-logo"></i> </a></div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse" ng-controller="NavbarController">
+            <div class="dropdown">
+                <div><i class="icon-brace-left"></i>
+                    <ul class="navbar-bracket">
+                        <li><a href="index.html">首页</a> <i class="icon-comma"></i></li>
+                        <li><a href="/apps">应用管理</a><i class="icon-comma"></i></li>
+                        <li><a href="pricing.html">价格</a> <i class="icon-comma"></i></li>
+                        <li><a href="docs.html">文档</a> <i class="icon-comma"></i></li>
+                        <li><a href="tools.html">工具</a><i class="icon-comma"></i></li>
+                        <li><a href="support.html">帮助中心</a><i class="icon-comma"></i></li>
+                    </ul>
+                    <i class="icon-brace-right"></i></div>
+            </div>
+        </div>
+    </nav>
+    <div class="menu-toggle fade-out"><i class="icon-menu"></i></div>
+    <menu>
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/docs">文档</a></li>
+            <li><a href="/tools">工具</a></li>
+            <li><a href="/support">帮助中心</a></li>
+            <li><a href="/oauth/signin">登录</a></li>
+        </ul>
+    </menu>
+    <script>
+        function firEvent(cate,act,label,url){
+            ga('send','event',cate,act,label,{'hitCallback':function(){
+                window.location.href= url
+            }})
+            return false
+        }
+    </script>
+
+    <div class="banner banner-documents">
+        <div class="pages">
+            <svg width="100%" height="400">
+                <polygon id="green" points="0,0 1000,0 1000,370 0,320" fill="#1AA79A"/>
+                <polygon id="orange" points="0,0 1000,0 1000,320 0,370" fill="#F87335"/>
+                <polygon id="yellow" points="0,0 1000,0 1000,320 0,320" fill="#F8CD0B"/>
+                <polygon id="black" points="0,0 1000,0 1000,260 0,320" fill="#313639"/>
+            </svg>
+        </div>
+        <h1>
+            <div class="brackets"><i class="icon-brace-left"></i> <span>Documents</span> <i
+                    class="icon-brace-right"></i></div>
+            <small>API 文档</small>
+        </h1>
+    </div>
+    <div class="docs-content">
+        <aside class="pull-left">
+            <ul>
+                <li class="active"><a href="/docs/description">API 简介</a></li>
+                <li class=""><a href="/docs/version_detection">版本查询</a></li>
+                <li class=""><a href="/docs/publish">发布应用</a></li>
+                <li class=""><a href="/docs/apps">查看应用列表</a></li>
+                <li class=""><a href="/docs/apps_show">查看应用详细信息</a></li>
+                <li class=""><a href="/docs/apps_edit">修改应用信息</a></li>
+                <li class=""><a href="/docs/install">安装应用</a></li>
+                <li class=""><a href="/docs/webhook">自定义 Webhook</a></li>
+            </ul>
+        </aside>
+        <article>
+            <div class="inner current"><h1 id="api-">API 简介</h1>
+
+                <p>fir.im API 接口全新升级，可以应用在你需要集成的环境当中，灵活地使用 API 可实现检测更新，持续集成更新应用等功能。</p>
+
+                <p><strong>注意事项：</strong></p>
+                <ul>
+                    <li><strong>旧版 (v2) API 已经停止使用，请大家尽快更新 API</strong></li>
+                    <li><strong>如果你仍然在使用旧版的用户 Token ，请统一替换成新版 <a href="//fir.im/apps/apitoken">API Token</a>
+                        选项查看</strong></li>
+                </ul>
+                <h2 id="-">参数说明</h2>
+                <ul>
+                    <li><code>id</code> 应用id，可在&quot;应用管理&quot;-&gt;&quot;基本信息&quot;查看</li>
+                    <li><code>short</code> 应用短链接，上传应用时会随机生成，用户可修改</li>
+                    <li><code>api_token</code> 用于识别用户身份, <code>api_token</code> 可以在<a href="//fir.im/apps/apitoken">API
+                        Token</a>中生成和刷新
+                    </li>
+                    <li><code>release_id</code> Release 表示一个版本的唯一 id</li>
+                </ul>
+            </div>
+            <div class="inner alternate"></div>
+        </article>
+    </div>
+
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-nav">
+                <table>
+                    <tr>
+                        <td>
+                            <ul class="list-inline">
+                                <li class="copyright">©&nbsp;<a href="//fir.im">fir.im&nbsp;2019</a></li>
+                                <li><a href="/about">关于我们</a></li>
+                                <li><a href="//blog.fir.im">博客</a></li>
+                                <li><a href="/partners">合作伙伴</a></li>
+                                <li><a href="/termsofuse">用户协议</a></li>
+                                <li><a href="/privacy">隐私政策</a></li>
+                                <li><a href="/pricing">价格</a></li>
+                            </ul>
+                            <div>
+                                <ul class="list-inline list-unstyled navbar-footer">
+                                    <li><a target="_blank"
+                                           href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37030302000287"
+                                           style="height: 30px; display: inline-block"><img src="images/beianbgs.png" style="margin-right: 4px">鲁公网安备
+                                        37030302000287号</a></li>
+                                    <li><a>晋ICP备15006832号-1</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="locale"><a href="?locale=en">English</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="lib/markup.js"></script>
+    <script src="assets/javascripts/main.js"></script>
+    <script src="assets/javascripts/analytics.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//dn-firweb.qbox.me/analytics.js', 'ga');
+        ga('create', 'UA-43616652-1', 'auto');
+    </script>
+    <script type="text/javascript">
+        window.ga = window.ga || function () {}
+    </script>
+    <script type="text/javascript">
+        ga('set', '&uid', "59fb2e365642123b9f0aad56");
+    </script>
+    <script type="text/javascript">
+        !function (a, b, c, d) {
+            var e = b.createElement("script");
+            e.type = "text/javascript", e.crossOrigin = "anonymous", e.src = c, m = b.getElementsByTagName("script")[0], d && (e.async = !0), m.parentNode.insertBefore(e, m), a.bughd = function () {
+                (a.bughd.q = a.bughd.q || []).push(arguments)
+            }
+        }(window, document, "//dn-bughd-web.qbox.me/bughd.min.js", !1);
+        bughd("create", {key: "eebd236c8c6e9f815ff9822102c2ecd7", sendConsoleError: false})
+        bughd.onerror = function () {
+            ga("send", "event", "bughd", "emitter", "errorCount");
+        }
+    </script>
+    <script type="text/javascript">
+        window.__MIXPANEL_TOKEN__ = '4fb7314d7432f6c41d795199438b703d'
+        if (window.mixpanel) {
+            window.mixpanel.init(window.__MIXPANEL_TOKEN__);
+            try {
+                var user = localStorage.getItem('rio_web.currentUser')
+                if (user) {
+                    user = JSON.parse(user)
+                    mixpanel.identify(user.uuid)
+                }
+            } catch (e) {
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        var black = document.getElementById('black')
+        var yellow = document.getElementById('yellow')
+        var orange = document.getElementById('orange')
+        var green = document.getElementById('green')
+        var pages = $('.pages')
+        ga("send", "pageview", {page: window.location.pathname})
+        function resizePage() {
+            ww = window.innerWidth
+            black.points.getItem(1).x = ww;
+            black.points.getItem(2).x = ww;
+            yellow.points.getItem(1).x = ww;
+            yellow.points.getItem(2).x = ww;
+            orange.points.getItem(1).x = ww;
+            orange.points.getItem(2).x = ww;
+            green.points.getItem(1).x = ww;
+            green.points.getItem(2).x = ww;
+        }
+
+        $(window).resize(function () {
+            resizePage()
+        });
+
+        resizePage()
+        setTimeout(function () {
+            pages.addClass('ready');
+        }, 100)
+
+        $(function () {
+            var loading = false;
+            //文档右侧内容
+            var article = $('.docs-content article');
+            //文档左侧导航
+            var nav = $('.docs-content aside ul');
+
+            // NOTE: Compatibility test
+            nav.delegate('a', 'click', function (e) {
+                if (loading) return;
+                loading = true;
+
+                console.log(">>click");
+
+                article.addClass('loading');
+                var self = $(this);
+
+                var url = self.prop('href');
+                $.get(url, function (docHtml) {
+                    window.history.pushState(null, null, url);
+                    ga("send", "pageview", {page: self.attr("href")})
+                    currentArticle = article.find('.current');
+                    currentArticle.removeClass('current');
+
+                    var articleBody = $($(docHtml).find('.current')).html()
+
+                    nav.find('.active').removeClass('active');
+                    self.parent().addClass('active');
+                    setTimeout(function () {
+                        alternateArticle = article.find('.alternate');
+                        alternateArticle.removeClass('alternate').addClass('current');
+                        alternateArticle.html(articleBody);
+                        article.removeClass('loading');
+
+                        setTimeout(function () {
+                            currentArticle.addClass('alternate').html('');
+                            loading = false;
+                        }, 200)
+                    }, 100);
+                });
+                return false;
+            });
+        });
+    </script>
+
+
+</body>
+</html>

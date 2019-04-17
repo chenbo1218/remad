@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>申请协议</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert.css"/>
+    <style type="text/css">
+        /*65+70+45+30*10+88=568px  70/504=14%*/
+        body {
+            background-color: #ffe100;
+        }
+
+        /*该版面的文字为14和16*/
+        .main {
+            position: relative;
+        }
+        /*背景图*/
+        .main .bg-img {
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+        }
+        .main div.bg-img img {
+            width: 100%;
+            display: block;
+        }
+
+        /*协议内容*/
+        #xieyi {
+            height: 254px;
+            padding:  15% 0 0;
+            text-align: center;
+        }
+        #xieyi h2 {
+            height: 38px;
+            margin: 5% 6.25%;
+            border-bottom: 1px solid grey;
+            font-size: 16px;
+            color: grey;
+            font-weight: normal;
+        }
+        #xieyi .textbox {
+            height: 304px;
+            padding: 0 6.25%;
+            font-size: 14px;
+            line-height: 30.4px;
+            text-decoration: underline;
+            text-align: justify;
+            overflow: auto;
+            color: grey;
+        }
+        #xieyi div#check-input {
+            height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+        }
+        #xieyi #check-input input {
+            vertical-align:middle;
+        }
+
+        #submit{
+            width: 90px;
+            height: 22px;
+            margin: 0 auto;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <!--<span class="comm-back-img"><a href=""><i class="fa fa-chevron-left"></i></a></span>-->
+        <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+
+        <!--背景图-->
+        <div class="bg-img">
+            <img src="../images/wholesale/bg_01.jpg" />
+        </div>
+
+        <!--协议内容-->
+        <div id="xieyi">
+            <h2>试用大当家合作协议</h2>
+            <div class="textbox">
+                <p>大当家的商品销售统一由厂家直接发货。平台直接收款，并提供产品的售后服务，收益由厂家统一发放，发放的。
+                    大当家的商品销售统一由厂家直接发货。平台直接收款，并提供产品的售后服务，收益由厂家统一发放，发放的。
+                    大当家的商品销售统一由厂家直接发货。平台直接收款，并提供产品的售后服务，收益由厂家统一发放，发放的。
+                    大当家的商品销售统一由厂家直接发货。平台直接收款，并提供产品的售后服务，收益由厂家统一发放，发放的。
+                    大当家的商品销售统一由厂家直接发货。平台直接收款，并提供产品的售后服务，收益由厂家统一发放，发放的。
+                    大当家的商品销售统一由厂家直接发货。平台直接收款，并提供产品的售后服务，收益由厂家统一发放，发放的。
+                    大当家的商品销售统一由厂家直接发货。平台直接收款，并提供产品的售后服务，收益由厂家统一发放，发放的。
+                </p>
+            </div>
+
+            <div id="check-input">
+                <input id="isread" type="checkbox" name="checkbox" /><label for="isread">我已阅读并同意《用户合作协议》</label>
+            </div>
+
+            <div id="submit" class="comm-btn-middle" >
+                <button>确认</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/jquery-2.2.1.min.js"></script>
+    <script src="../js/sweetalert.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".comm-ico-back a").back();
+
+            $("#submit").click(function(){
+                if($("#isread").is(":checked")){
+                    window.location.href = "b-file.html";
+                }else{
+                    sweetAlert({title:"",text:"请同意协议内容！"});
+                }
+            });
+        });
+    </script>
+
+
+</body>
+</html>

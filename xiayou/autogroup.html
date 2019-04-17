@@ -1,0 +1,262 @@
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1.0" name="viewport">
+    <title>俱乐部分享中心</title>
+	<link rel="stylesheet" href="share/autogroup/weui.min.css"/>
+	<link rel="stylesheet" href="share/autogroup/jquery-weui.min.css"/>
+    <style type="text/css">
+		.weui-cells{
+			margin-top: 0px;
+		}
+
+		/*列表*/
+		.items{
+			margin-top: 0px;
+		}
+
+		.item1 {
+			height: 60px;
+			padding: 15px 8px;
+		}
+
+		.item1 .qunImg {
+			display: block;
+			width: 60px;
+			height: 60px;
+			border-radius: 30px;
+		}
+		.item1 a {
+			height: 60px;
+			line-height: 60px;
+		}
+
+		.item2 {
+			height: 30px;
+			padding: 10px 8px;
+			line-height: 30px;
+		}
+		.item2 input{
+			text-align: right;
+			font-size: 14px;
+		}
+
+		.btn-chuangjian{
+			margin-top: 30px;
+			width: 70%;
+		}
+
+
+		#hint{
+			width:100%;
+			/*height:100%;*/
+			background:url('share/img/hint.png') no-repeat;
+			background-color: black;
+			opacity: .8;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 1000;
+			background-size:100% auto;
+		}
+    </style>
+	</head>
+
+	<body>
+	<div class="weui-cells items">
+
+		<div class="weui-cell item1">
+			<div class="weui-cell__bd">
+				<label class="weui-label fs14">俱乐部LOGO</label>
+			</div>
+			<div class="weui-cell__ft">
+				<img id="qunImg" class="qunImg" src="" alt=""/>
+			</div>
+		</div>
+		<div class="weui-cell item2">
+			<div class="weui-cell__bd">
+				<label class="weui-label fs14">俱乐部ID</label>
+			</div>
+			<div class="weui-cell__ft">
+				<input id="groupId" class="weui-input" type="text" value="" readonly/>
+			</div>
+		</div>
+		<div class="weui-cell item2">
+			<div class="weui-cell__bd">
+				<label class="weui-label fs14">俱乐部名称</label>
+			</div>
+			<div class="weui-cell__ft">
+				<input id="groupName" class="weui-input" type="text" value="" readonly/>
+			</div>
+		</div>
+		<div class="weui-cell item2">
+			<div class="weui-cell__bd">
+				<label class="weui-label fs14">创建者</label>
+			</div>
+			<div class="weui-cell__ft">
+				<input id="createName" class="weui-input" type="text" value="" readonly/>
+			</div>
+		</div>
+	</div>
+	<a id="btnGoto" class="weui-btn weui-btn_primary btn-chuangjian">加入俱乐部</a>
+	<!--<a id="btnGoto1" href="lydtqp://applink?roomid=196" class="weui-btn weui-btn_primary btn-chuangjian">加入俱乐部1</a>-->
+
+
+	<script type="text/javascript" src="share/autogroup/jquery-2.2.1.min.js"></script>
+	<script type="text/javascript" src="share/autogroup/jquery-weui.min.js"></script>
+	<script type="text/javascript" src="share/js/config.js?"+getTimeStamp()></script>
+	<script>
+		$(document).ready(function(){
+			//页面初始化
+			var groupId = getQueryString("groupId");
+			var qunImg = getQueryString("groupheadImg");
+			var groupName = getQueryString("groupName");
+			var createName = getQueryString("groupcreateBy");
+			$("#qunImg").attr("src",qunImg);
+			$("#groupId").attr("value",groupId);
+			$("#groupName").attr("value",groupName);
+			$("#createName").attr("value",createName);
+
+
+			var platform;
+			var appid;
+			var roomid;
+			var msg;
+			var config;
+
+			/**获取平台信息**/
+			function getPlatform(){
+				var config = {};
+				config.ua = navigator.userAgent.toLowerCase();
+				config.isios = false;
+				config.isweixin = false;
+				config.isqq = false;
+				config.isOs8 = false;
+				config.ischrome = false;
+				config.isUsedIframe = false;
+				if (/iphone|ipad|ipod/.test(config.ua)) {
+					config.isios = true;
+				}
+				if (config.ua.match(/MicroMessenger/i) == "micromessenger") {
+					config.isweixin = true;
+				}
+				if (/qq\//.test(config.ua)) {
+					config.isqq = true;
+				}
+				if (/os 8/.test(config.ua)) {
+					config.isOs8 = true;
+				}
+
+				if (/chrome/.test(config.ua)) {
+					config.ischrome = true;
+				}
+				//华为荣耀
+				if(/h60-l01/.test(config.ua)){
+					config.isUsedIframe = true;
+				}
+				return config;
+			}
+
+			function openUniversalLinks(){
+				//alert(platform.isios);
+				if(platform.isios){
+					window.open(config.universal_Links, "_blank");
+				}else{
+					window.location.href = config.scheme_Adroid;
+				}
+				window.location.href = config.download_IOS;
+			}
+
+			//入口
+			$("#btnGoto").click(function(){
+				roomid = getQueryString("groupId");
+				appid = parseInt(getQueryString("appid"));
+				msg = getQueryString("msg");
+
+				//如果没有分享出俱乐部信息，则报错
+				if(typeof(roomid)=="undefined"||roomid==null){
+					var downloadUrl = appConfig[appid].android_url;
+//					window.location.href = downloadUrl;
+					$.toast("无可用的俱乐部信息",500);
+					return;
+				}
+				config = {
+					universal_Links: appConfig[appid].link_name+"://applink?roomid="+roomid,
+					scheme_IOS: appConfig[appid].link_name+"://applink?roomid="+roomid,
+					scheme_Adroid: appConfig[appid].link_name+"://applink?roomid="+roomid+"&r="+getTimeStamp(),
+					download_IOS: appConfig[appid].ios_url,
+					download_Adroid: appConfig[appid].android_url,
+					autoDownload: true,
+					timeout: 3000,
+				};
+				platform = getPlatform();
+				//检测是否在微信或QQ浏览器中,加入浏览器打开的提示
+				if(platform.isweixin || platform.isqq){
+					console.log($("#hint").length);
+					if($("#hint").length<=0){
+						$(document.body).append("<div id='hint'></div>");
+						$("#hint").height($(document).height());
+					}
+					return;
+				}else{
+					if(platform.isios && !platform.isOs8){ // ios 非ios 8
+						//跳转应用-延时则跳转下载页
+						window.location.href = config.scheme_IOS;//拉起手机应用
+						setTimeout(function(){
+							window.location.href=config.download_IOS;//如果超时就跳转到app下载页
+						},2000);
+					}else{
+						if(platform.ischrome || platform.isios){
+							if(!platform.isUsedIframe){
+								window.location.href = config.scheme_Adroid;
+							}else{
+								var iframe = document.createElement("iframe");
+								iframe.src = config.scheme_Adroid;
+								iframe.style.display = "none";
+								document.body.appendChild(iframe);
+								setTimeout(function(){
+									document.body.removeChild(iframe);
+								},2000);
+							}
+						}else{
+							var iframe = document.createElement("iframe");
+							iframe.src = config.scheme_Adroid;
+							iframe.style.display = "none";
+							document.body.appendChild(iframe);
+							setTimeout(function(){
+								document.body.removeChild(iframe);
+							},2000);
+						}
+					}
+				}
+			});
+		});
+
+		//获取页面附带参数
+		/*function getQueryString(name){
+			var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			var r = window.location.search.substr(1).match(reg);
+			if(r!=null)return  unescape(r[2]); return null;
+		}*/
+
+		function getQueryString(key){
+			var url = window.location.search;
+			var reg = new RegExp("(^|&)"+ key +"=([^&]*)(&|$)");
+			var result = url.substr(1).match(reg);
+			return result ? decodeURIComponent(result[2]) : null;
+		}
+
+		//获取时间戳
+		function getTimeStamp(){
+			var timestamp = Date.parse(new Date());
+			timestamp = timestamp / 1000;
+			return timestamp;
+		}
+
+
+
+
+
+	</script>
+	</body>
+</html>

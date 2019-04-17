@@ -1,0 +1,271 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    font-family: "Microsoft Yahei", "Lantinghei SC", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background: #ffffff;
+}
+
+a, a:after{
+    text-decoration: none;
+    color: #666;
+    transition: color .1s ease;
+}
+a:hover, a.hover {
+    text-decoration: none;
+    color: orange;
+    transition: color .1s ease;
+}
+
+p{
+    margin: 0;
+}
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    box-sizing: border-box;
+}
+@media (min-width: 768px) {
+    .container {
+        width: 768px;
+    }
+}
+/*@media (max-width: 414px) {
+    .container {
+        width: 414px;
+    }
+}
+@media (max-width: 375px) {
+    .container {
+        width: 375px;
+    }
+}
+@media (max-width: 360px) {
+    .container {
+        width: 360px;
+    }
+}
+@media (max-width: 320px) {
+    .container {
+        width: 320px;
+    }
+}*/
+
+
+
+
+.my-top{
+    /*width: 100%;*/
+    height: auto;
+    padding: 0;
+}
+.my-body{
+    /*width: 100%;*/
+    margin: 0 auto;
+	/*margin-top: 20px;*/
+}
+.my-foot{
+    width: 100%;
+    padding: 10px 0px;
+}
+
+
+/*标题栏*/
+.my-topic{
+    width: 100%;
+    height: 100px;
+    background: url("../images/newdownload/title_bg.png") no-repeat;
+}
+.my-topic .my-topic-logo{
+    margin-left: 7%;
+    width: 15%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    overflow: hidden;
+    display: table;
+}
+.my-topic .my-topic-logo img{
+    display: block;
+}
+.my-topic .my-topic-txt{
+    width: 30%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    overflow: hidden;
+    display: table;
+}
+.my-topic .my-topic-txt img{
+    display: block;
+}
+.my-topic span{
+    display:table-cell;
+    vertical-align:middle;
+}
+
+
+/*游戏信息*/
+.my-game{
+    width: 100%;
+    height: auto;
+    padding: 3% 5%;
+}
+
+.game-info{
+    width: 100%;
+    height: auto;
+}
+.my-game-info{
+    width: 100%;
+    height: 100px;
+}
+.my-game-info .my-game-ico{
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+.my-game-info .my-game-txt{
+    font-size: 14px;
+    color: #666666;
+    /*width: 67%;*/
+    height: 100px;
+    line-height: 20px;
+    margin-left: 20px;
+    float: left;
+}
+.my-game-info .my-game-txt p{
+    margin: 0px;
+    width: 100%;
+    /*height: 20px;*/
+}
+.my-game-info .my-game-txt p#game-md5{
+    font-size: 12px;
+    word-wrap: break-word;
+}
+.my-game-info .my-game-txt p:first-child{
+    font-size: 18px;
+    color: #000;
+}
+.my-game-download{
+    width: 100%;
+    height: 70px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.my-game-download a{
+    display: block;
+    float: left;
+    width: 40%;
+}
+.my-game-download a#btn-ios{
+    margin-left: 20px;
+}
+.my-game-download a img{
+    width: 220px;
+    height: auto;
+}
+
+.game-list{
+    width: 100%;
+    height: auto;
+    /*margin-top: 10px;*/
+}
+.my-game-title{
+    font-size: 20px;
+    height: 30px;
+    box-sizing: border-box;
+    line-height: 30px;
+    margin-bottom: 0;
+}
+.line{
+    width: 100%;
+}
+.ggtab{
+    width: 100%;
+    border: none;
+}
+.ggtab tr{
+    width: 100%;
+}
+.ggtab tr td{
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+}
+.gg{
+    padding: 10px 10px;
+}
+.gg .gg-img{
+    display: block;
+    float: left;
+}
+.gg .gg-txt{
+    width: 50%;
+    display: block;
+    float: left;
+    margin-left: 20px;
+}
+.gg .gg-txt h5{
+    word-wrap: break-word;
+    color: #666666;
+}
+
+
+
+
+.game-pictrue{
+    width: 100%;
+}
+
+
+
+/*尾部*/
+.my-foot{
+    width: 100%;
+    /*border-top: 5px solid orange;*/
+    color: #666;
+    margin-top: 30px;
+}
+.my-foot .center{
+    text-align: center;
+    margin: 0;
+}
+
+
+
+
+/**下载提示**/
+.wxtip{
+    background: rgba(0,0,0,0.8);
+    text-align: center;
+    position: fixed;
+    left:0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+    display: none;
+}
+.wxtip-icon{
+    width: 52px;
+    height: 67px;
+    background: url(../images/download/weixin-tip.png) no-repeat;
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.wxtip-txt{
+    margin-top: 107px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+

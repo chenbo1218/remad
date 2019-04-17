@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>收益明细</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style type="text/css" >
+        /*210+170+80+225*2+120+100   105+85+40+110*2+60+50*/
+
+        body {
+            /*background-color: #f2f2f2;*/
+            /*height: 100%;*/
+            font-size: 14px;
+        }
+
+        .main .box2-top {
+            height: 125px;
+            background-color: #969696;
+            color: white;
+        }
+        /*订单栏*/
+        .item{
+            /*border: 1px solid red;*/
+            width: 96%;
+            height: 120px;
+            margin: 0 2%;
+            border-top: 1px solid darkgray;
+        }
+        .item .d{
+            width: 96%;
+            height: 110px;
+            margin: 5px 2%;
+        }
+        .item .d .d1{
+            width: 100%;
+            height: 30px;
+            padding: 10px auto;
+        }
+        .item .d .d1 .status{
+            margin-right: 20px;
+            float: right;
+            color: #8b8b8b;
+        }
+        .item .d .d2{
+            width: 100%;
+            height: 80px;
+            position: relative;
+        }
+        .item .d .d2 .image{
+            width: 72px;
+            height: 72px;
+            float: left;
+        }
+        .item .d .d2 .info{
+            margin-left: 10px;
+            float: left;
+        }
+
+        .info p {
+            line-height: 20px;
+        }
+        .info .order-get {
+            color: #fabe00;
+        }
+        .item .d .d2 .info .check{
+            width: 75px;
+            position: absolute;
+            top: 57%;
+            right: 20px;
+        }
+        .check button {
+            background-color: #fef8e9;
+            border: 1px solid #fabe00;
+            color: #fabe00;
+        }
+        .main .sheet{
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .main-nav ul {
+            width: 100%;
+            height: 30px;
+            margin: 10px 0;
+        }
+        .main-nav ul li {
+            width: 20%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            list-style-type: none;
+            box-sizing: border-box;
+            border-right: 1px solid darkgray;
+        }
+        .main-nav ul li.current a {
+            color: #fabe00;
+        }
+        .main-nav ul li a {
+            text-decoration: none;
+            font-size: 14px;
+        }
+        li#lastli {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<!--banner-->
+<div class="comm-top-title">
+    <span class="comm-ico-back"><a href=""><img src="../images/common/ico_back.png" /></a></span>
+    <h2>收益详情</h2>
+</div>
+
+<div class="main">
+    <div class="main-nav">
+        <ul>
+            <li class="current"><a href="#"><span>全部</span></a></li>
+            <li><a href="#"><span>待审核</span></a></li>
+            <li><a href="#"><span>待打款</span></a></li>
+            <li><a href="#"><span>已打款</span></a></li>
+            <li id="lastli"><a href="#"><span>无效</span></a></li>
+        </ul>
+    </div>
+
+    <div class="item">
+        <div class="d">
+            <div class="d1">
+                <span class="lab">买家：</span><span class="user-name">明朗</span><span> &gt;</span>
+                <span class="lab status">待发货</span>
+            </div>
+            <div class="d2">
+                <img class="image" src="../images/shop/img_user1.jpg" alt=""/>
+                <div class="info">
+                    <p><span>订单号：</span><span class="order-id">12121212</span></p>
+                    <p><span class="order-des">进口猕猴桃*1/海南菠萝*2...</span></p>
+                    <p><span>售价：</span><span class="order-price">￥120</span></p>
+                    <p><span>收入：</span><span class="order-get">￥20</span></p>
+                    <div class="check comm-btn-middle"><button>订单详情</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="d">
+            <div class="d1">
+                <span class="lab">买家：</span><span class="user-name">明朗</span><span> &gt;</span>
+                <span class="lab status">待发货</span>
+            </div>
+            <div class="d2">
+                <img class="image" src="../images/shop/img_user1.jpg" alt=""/>
+                <div class="info">
+                    <p><span>订单号：</span><span class="order-id">12121212</span></p>
+                    <p><span class="order-des">进口猕猴桃*1/海南菠萝*2...</span></p>
+                    <p><span>售价：</span><span class="order-price">￥120</span></p>
+                    <p><span>收入：</span><span class="order-get">￥20</span></p>
+                    <div class="check comm-btn-middle"><button>订单详情</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <p class="sheet">没有更多...</p>
+
+</div>
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-ico-back a").back();
+
+
+//        $("#submit").click(function(e){
+//            e.preventDefault();
+//            window.location.href = "b-protocol.html";
+//        });
+    });
+</script>
+</body>
+</html>

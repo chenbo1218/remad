@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>个人中心</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/fakeLoader.css"/>
+    <style type="text/css" >
+        body {
+            font-size: 12px;
+            overflow: hidden;
+        }
+
+        /*banner*/
+        .banner img{
+            display: block;
+            width: 100%;
+            height: 141px;
+        }
+
+        /*信息栏*/
+        .info{
+            height: 55px;
+            position: relative;
+            padding: 5px 10px 0px 10px;
+        }
+        .info #user-ico {
+            width: 64px;
+            height: 64px;
+            float: left;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+        .info .txt{
+            height: 55px;
+            float: left;
+            margin-left: 80px;
+        }
+        .info .txt #user-name{
+            color: #fabe00;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .info .focus{
+            height: 55px;
+            float: right;
+        }
+        .info .focus p:first-child{
+            color: #fabe00;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /*发货状态栏*/
+        .states{
+            height: 40px;
+            padding: 0px 25px 0px 25px;
+            border-bottom: 1px solid lightgray;
+        }
+        .states .cont{
+            margin: 0 auto;
+        }
+        .states .state{
+            width: 33%;
+            float: left;
+        }
+        .states .state img{
+            width: 25px;
+            height: 20px;
+            display: block;
+            margin: 0 auto;
+        }
+        .states .state p{
+            text-align: center;
+        }
+
+        /*菜单*/
+        .items{
+
+        }
+        .item{
+            height: 40px;
+            padding: 10px 10px;
+            border-bottom: 1px solid lightgray;
+        }
+        .item:active{
+            background-color: lightgray;
+        }
+        .item img{
+            width: 32px;
+            height: 32px;
+            display: inline-block;
+            margin-top: 4px;
+            float: left;
+        }
+        .item div{
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+        }
+        .item div.title{
+            float: left;
+        }
+        .item div.count{
+            text-align: center;
+            width: 25px;
+            height: 20px;
+            line-height: 20px;
+            margin-top: 10px;
+            border-radius: 10px;
+            float: left;
+        }
+        .item div.count.on{
+            color: #fff;
+            background-color: #fabe00;
+        }
+        .item div:last-child{
+            color: darkgray;
+            float: right;
+        }
+
+
+
+
+        /*底部导航*/
+        .nav-bottom {
+            background-color: #f2f2f2;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            z-index: 999;
+        }
+        .nav-bottom ul {
+            height: 60px;
+        }
+        .nav-bottom ul li {
+            width: 25%;
+            height: 60px;
+            list-style-type: none;
+            float: left;
+            /*background-color: blue;*/
+        }
+        .nav-bottom li.on a{
+            color: #fabe00;
+        }
+        .nav-bottom li a:active{
+            color: #fabe00;
+        }
+        .nav-bottom li a {
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+        .nav-bottom ul li a img {
+            width: 30px;
+            height: 30px;
+            padding: 10px 5px 0;
+            margin: 0 auto;
+            display: block;
+        }
+        .nav-bottom ul li a span{
+            display: block;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            margin: 0 auto;
+            font-size: 12px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--banner-->
+    <div class="banner">
+        <img src="../images/shop/seller/a_banner_01.jpg" alt=""/>
+    </div>
+
+    <!--信息栏-->
+    <div class="info">
+        <img id="user-ico" src="../images/shop/ico_user.png" alt=""/>
+        <div class="txt">
+            <p id="user-name">西瓜红的红</p>
+            <p>ID:<span>13888888888</span>     积分：<span>1200</span></p>
+        </div>
+        <div class="focus">
+            <p>5</p>
+            <p>关注的店铺</p>
+        </div>
+    </div>
+
+    <!--状态栏-->
+    <div class="states">
+        <div class="cont">
+            <div class="state">
+                <img src="../images/shop/buyer/b_ico_fahuo_01.png" alt=""/>
+                <p>待付款</p>
+            </div>
+            <div class="state">
+                <img src="../images/shop/buyer/b_ico_fahuo_02.png" alt=""/>
+                <p>待发货</p>
+            </div>
+            <div class="state">
+                <img src="../images/shop/buyer/b_ico_fahuo_03.png" alt=""/>
+                <p>待收货</p>
+            </div>
+        </div>
+    </div>
+
+    <!--菜单列表-->
+    <div class="items">
+        <div class="item" id="dingdan">
+            <img src="../images/shop/buyer/b_ico_menu_01.png" alt=""/>
+            <div class="title">我的订单</div>
+            <div class="count"></div>
+            <div>&gt;</div>
+        </div>
+        <div class="item" id="hongbao">
+            <img src="../images/shop/buyer/b_ico_menu_02.png" alt=""/>
+            <div class="title">我的红包</div>
+            <div class="count"></div>
+            <div>&gt;</div>
+        </div>
+        <div class="item" id="guotuan">
+            <img src="../images/shop/buyer/b_ico_menu_03.png" alt=""/>
+            <div class="title">我的果团</div>
+            <div class="count"></div>
+            <div>&gt;</div>
+        </div>
+        <div class="item" id="liuyan">
+            <img src="../images/shop/buyer/b_ico_menu_04.png" alt=""/>
+            <div class="title">我的留言</div>
+            <div class="count on">1</div>
+            <div>&gt;</div>
+        </div>
+        <div class="item" id="dizhi">
+            <img src="../images/shop/buyer/b_ico_menu_05.png" alt=""/>
+            <div class="title">我的收货地址</div>
+            <div class="count"></div>
+            <div>&gt;</div>
+        </div>
+        <div class="item" id="kefu">
+            <img src="../images/shop/buyer/b_ico_menu_06.png" alt=""/>
+            <div class="title">售后客服</div>
+            <div class="count"></div>
+            <div>&gt;</div>
+        </div>
+    </div>
+
+    <!--底部导航栏-->
+    <div class="nav-bottom">
+        <ul>
+            <li id="home"><a href="b-a-wodeguoyuan.html"><img src="../images/shop/seller/d_wdgy.png"><span>我的果园</span></a></li>
+            <li id="list"><a href="b-b-shuiguofenlei.html"><img src="../images/shop/seller/d_sgfl.png"><span>水果分类</span></a></li>
+            <li id="order"><a href="b-c-gouwuche.html"><img src="../images/shop/seller/d_gwl.png"><span>购物篮</span></a></li>
+            <li id="manage" class="on"><a href=""><img src="../images/shop/seller/d_grzx.png"><span>个人中心</span></a></li>
+        </ul>
+    </div>
+
+    <div class="fakeloader"></div>
+
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/fakeLoader.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".fakeloader").fakeLoader({
+            timeToHide:1200,
+            bgColor:"#fabe00",
+            spinner:"spinner1"
+        });
+
+        $(".nav-bottom li.on").click(function(e){
+            e.preventDefault();
+        });
+
+        //菜单点击
+        var $items = $(".items .item");
+        $items.click(function(e){
+           switch (e.currentTarget.id){
+               case "dingdan":
+                   window.location.href = "b-d-wodedingdan.html";
+                   break;
+               case "hongbao":
+                   window.location.href = "b-d-wodehongbao.html";
+                   break;
+               case "guotuan":
+                   window.location.href = "b-d-wodeguotuan.html";
+                   break;
+               case "liuyan":
+                   window.location.href = "b-d-wodeliuyan.html";
+                   break;
+           }
+
+        });
+
+
+
+
+    });
+</script>
+</body>
+</html>

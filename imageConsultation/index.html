@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="renderer" content="webkit">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+	<title>云切片</title>
+
+	<link rel="stylesheet" href="css/static/bootstrap.min.css" />
+	<link rel="stylesheet" href="icon/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<link rel="stylesheet" href="css/basic.css" />
+	<link rel="stylesheet" href="css/index.css" />
+
+</head>
+
+<body>
+
+	<!-- 标题栏-->
+	<div class="my-navbar navbar navbar-static-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#" id="logo">数字病理智能辅助诊断系统</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- 主体-->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<!-- 导航栏-->
+				<ul id="main-nav" class="my-nav nav nav-tabs nav-stacked">
+					<li class="active">
+						<a id="btnWelcome" href="">
+							<i class="fa fa-university" aria-hidden="true"></i>
+							首页
+						</a>
+					</li>
+					<li>
+						<a id="btnMenu1" href="">
+							<i class="fa fa-picture-o" aria-hidden="true"></i>
+							个人设置
+						</a>
+					</li>
+					<li>
+						<a id="btnMenu2" href="#menu2" class="nav-header collapsed" data-toggle="collapse">
+							<i class="fa fa-anchor" aria-hidden="true"></i>
+							文章管理
+							<span class="label label-warning pull-right">4</span>
+						</a>
+						<ul id="menu2" class="secondmenu nav nav-list collapse" style="height: 0px;">
+							<li><a id="btnMenu2Son1" href="">文章列表</a></li>
+							<li><a id="btnMenu2Son2" href="">分类列表</a></li>
+							<li><a id="btnMenu2Son3" href="">分类展示管理</a></li>
+						</ul>
+					</li>
+					<li>
+						<a id="btnMenu3" href="#menu3" class="nav-header collapsed" data-toggle="collapse">
+							<i class="fa fa-anchor" aria-hidden="true"></i>
+							会员管理
+							<span class="label label-warning pull-right">4</span>
+						</a>
+						<ul id="menu3" class="secondmenu nav nav-list collapse" style="height: 0px;">
+							<li><a id="btnMenu3Son1" href="">会员列表</a></li>
+							<li><a id="btnMenu3Son2" href="">会员等级管理</a></li>
+							<li><a id="btnMenu3Son3" href="">服务记录</a></li>
+							<li><a id="btnMenu3Son4" href="">服务记录</a></li>
+						</ul>
+					</li>
+					<li>
+						<a id="btnMenu4" href="">
+							<i class="fa fa-anchor" aria-hidden="true"></i>
+							菜单4
+						</a>
+					</li>
+					<li>
+						<a id="btnAbout" href="">
+							<i class="fa fa-th-large" aria-hidden="true"></i>
+							关于系统
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-10">
+				<!-- 内容区域-->
+				<div class="content" id="content"></div>
+			</div>
+		</div>
+	</div>
+
+	<!--模态框--先隐藏-->
+	<div class="modal fade" id="alertModal">
+		<div class="modal-dialog">
+			<div class="modal-content message_align">
+				<div class="modal-header">
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<a id="confirm-sure" class="btn btn-success" data-dismiss="modal">确定</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="js/static/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/static/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/static/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/static/vue.js"></script>
+
+	<script type="text/javascript" src="js/path.js"></script>
+	<script type="text/javascript" src="js/tools.js"></script>
+	<script>
+		$(function () {
+			//初始化
+			(function () {
+
+				//初始化菜单
+				/*$.ajax({
+
+				//获取菜单配置
+				const SERVERROOT = "192.168.1.225:3000";
+				var url = SERVERROOT+"/category";
+				var data = {};
+				/*$.post(url,data,function(result){
+					console.log("response:",result);
+					if(result=="error"){
+						 Modal.tip({
+						 title:'提示',
+						 msg: '发生错误'
+						 }, 1000);
+						return;
+					}
+//					sessionStorage.setItem("user",result);
+				});*/
+
+				//菜单切换效果
+				var tabs = $("#main-nav").find("li");
+				tabs.click(function (e) {
+					e.preventDefault();
+					$(this).addClass("active").siblings().removeClass("active");
+				});
+
+				//页面加载
+				$("#content").load(pages["btnWelcome"]);
+				var menus = tabs.find("a");
+				menus.click(function (e) {
+					var page = pages[$(this).attr("id")];
+					console.log(page);
+					if (page != undefined) {
+						$("#content").load(page);
+					}
+				});
+
+			}());
+
+
+			//$.smAlert("春天到了，又到了动物繁殖的季节","警告");
+
+
+
+
+
+
+
+		});
+	</script>
+
+
+
+
+</body>
+
+</html>

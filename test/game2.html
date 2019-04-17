@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>game2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #main{
+            position: relative;
+            width: 500px;
+            height: 700px;
+            margin: 50px auto;
+        }
+
+        /*地图*/
+        #map{
+            overflow: hidden;
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #ccc;
+            /*background-image: url("img/bg_1.jpg");*/
+            /*background-size: 100%;*/
+        }
+
+        #btn{
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            margin-left: -50px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="map"></div>
+        <button id="btn">开始游戏</button>
+    </div>
+
+
+    <script>
+        //主容器
+        var _main = document.getElementById("main");
+        //地图
+        var _map = document.getElementById("map");
+        //开始按钮
+        var _btn = document.getElementById("btn");
+        var _plane;
+
+        //开始搞事
+        main();
+
+        //入口函数
+        function main(){
+            _plane = new Plane(3,3,3,0);
+            _plane.show();
+
+            //点击开始
+            _btn.onclick = function(e){
+                _btn.style.display = "none";
+                //鼠标滑动事件--移动本方飞机
+                _map.addEventListener("mousemove",movePlane,true);
+            }
+
+        }
+
+        function movePlane(e){
+            var ev = e || window.event;
+            var mouseX = ev.x;
+            var mouseY = ev.y;
+            if(_plane){
+                _plane.move(mouseX, mouseY);
+            }
+        }
+
+
+        //构造飞机
+        function Plane(x, y, hp, score){
+            this.size = 10;//单元格宽高度px
+            this.width = 5;//单元格个数为单位的宽度
+            this.height = 4;//单元格个数为单位的高度
+            this.x = x;
+            this.y = y;
+            this.hp = hp;
+            this.score = score;
+            this.speed = 20;
+            this.body = [
+                {x:2,y:0},
+
+                {x:0,y:1},
+                {x:1,y:1},
+                {x:2,y:1},
+                {x:3,y:1},
+                {x:4,y:1},
+
+                {x:2,y:2},
+
+                {x:1,y:3},
+                {x:2,y:3},
+                {x:3,y:3}
+            ]
+
+            //显示
+            this.show = function(){
+                var p = document.createElement("div");
+                for(var i=0; i<this.body.length; i++){
+                    var pp = document.createElement("div");
+                    pp.style.width = this.size + "px";
+                    pp.style.height = this.size + "px";
+                    pp.style.position = "absolute";
+                    pp.style.background = "yellow";
+                    pp.style.left = this.body[i].x * this.size + "px";
+                    pp.style.top = this.body[i].y * this.size + "px";
+                    p.appendChild(pp);
+                }
+                p.style.width = this.width * this.size + "px";
+                p.style.height = this.height * this.size + "px";
+                p.style.position = "absolute";
+                p.style.left = this.x*(this.width*this.size) + "px";
+                p.style.top = this.y*(this.height*this.size) + "px";
+                this.div = p;
+                _map.appendChild(p);
+            }
+
+            //随鼠标移动
+            this.move = function(mouseX, mouseY){
+                console.log(mouseX + " "+mouseY);
+                if(this.div){
+                    this.div.style.left = mouseX-(this.width*this.size/2) + "px";
+                    this.div.style.top = mouseY-(this.height*this.size/2) + "px";
+                }
+
+            }
+
+            //销毁
+            this.destroy = function(){
+                if(this.div != null){
+                    _map.removeChild(this.div);
+                    this.div = null;
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

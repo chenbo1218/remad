@@ -1,0 +1,32 @@
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>分享中心</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1.0" name="viewport">
+    <style type="text/css">
+        #hint{width:100%;height:75vw;background:url('share/img/hint.png') no-repeat center bottom;background-size:100% auto;}
+			figure{margin:0;padding:0;text-align:center;background:url('share/img/icon_shadow.png') no-repeat center 70%;background-size:30% auto;}
+			figure img{width:30%;margin-bottom:5vw;}
+			figcaption{margin:0;padding:0;font-size:10vw;font-weight:bold;text-align:center;}
+			figure.ios{background-position:center 80%;background-size:50% auto;}
+			figure.ios img{width:50%;margin:20vw 0 15vw 0;}
+			figure.ios figcaption{font-size:12vw;}
+			#btn{width:50%;display:block;position:absolute;left:50%;bottom:5vw;margin:0 0 0 -25%;}
+			#btn img{width:100%;}
+			#btn.ios{bottom:20vw;}
+			#mid{height:30vw;}
+    </style>
+    <script type="text/javascript">
+		function getRand(){
+			var timestamp = Date.parse(new Date());
+			timestamp = timestamp / 1000;
+			return timestamp;
+		}
+    </script>
+	</head>
+
+	<body>
+		<script type="text/javascript" src="share/js/config.js?"+getRand()></script>
+		<script type="text/javascript" src="share/js/applinkv1.js?"+getRand()></script>
+	</body>
+</html>

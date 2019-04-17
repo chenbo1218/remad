@@ -1,0 +1,80 @@
+/*
+*基本全局样式
+*可复写bootstrap或其他框架的样式
+*create by chenbo on 2019.03.12
+*/
+
+
+/*==================改写bs样式=======================*/
+.btn{
+    /*background-color: #4A515B;*/
+    /*border-color: #4A515B;*/
+}
+.btn:hover,
+.btn:active{
+    /*background-color: #8c96a0 !important;*/
+
+}
+
+.breadcrumb{
+    background-color: transparent !important;
+    margin-bottom: 0px !important;
+}
+
+
+
+
+
+
+/*===================自定义===========================*/
+*{
+    margin: 0;
+    padding: 0;
+    /*font-size: 16px;*/
+    font-family: Arial, sans-serif;
+    list-style: none;
+    text-decoration: none;
+    /*overflow-x: hidden;*/
+}
+
+a{
+    text-decoration: none;
+}
+
+ul,ol,li,dl,dt,dd{
+    text-decoration: none;
+    list-style: none;
+    /* margin-bottom: 0 !important; */
+}
+
+input{
+    /*border:none;*/
+    outline:none;
+}
+
+img{
+    border:none
+}
+
+.center{
+    text-align: center;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.clear{
+    clear: both;
+}
+
+.ovh{
+    overflow: hidden;
+}
+
+
+

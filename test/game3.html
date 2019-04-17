@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>game2</title>
+
+    <style>
+        #tips{
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #table{
+            margin: 30px auto;
+        }
+        #table td{
+            width: 20px;
+            height: 20px;
+            border: 1px solid red;
+        }
+        #table td.wall{
+            background: red;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <p id="tips">按回车开始游戏</p>
+    <table id="table"></table>
+
+    <script>
+        var rows = 22,cells = 14;
+        var _table = document.getElementById("table");
+        var _tips = document.getElementById("tips");
+
+        //当前控制的方块
+        var _control;
+        //分数
+        var _score = 0;
+        //一次性消除几行（1-4行）分别的得分
+        var _scoreConf = [100,200,300,350];
+
+
+
+
+        init();
+
+
+    </script>
+</body>
+</html>

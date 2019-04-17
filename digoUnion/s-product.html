@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <title>Di盟</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <!--店铺-产品-->
+    <style type="text/css">
+        body{
+            background-color: #03c0b0;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        /*导航*/
+        .nav{
+            width: 100%;
+            height: 50px;
+            box-sizing: border-box;
+            background: #363636;
+            padding: 0px 20px;
+        }
+        .nav a{
+            width: 50%;
+            height: 100%;
+            box-sizing: border-box;
+            display: block;
+            float: left;
+            color: lightgray;
+            text-decoration: none;
+            line-height: 50px;
+            text-align: center;
+        }
+        .nav a.current{
+            color: #fff;
+            border-bottom: 6px solid #03c0b0;
+        }
+
+        /*标签*/
+        .labs{
+            width: 235px;
+            height: 25px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        .labs .lab{
+            width: 50%;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            float: left;
+            color: #03c0b0;
+            background: lightgray;
+        }
+        .labs .lab.on{
+            color: #000;
+            background: #fff;
+        }
+
+        /*产品列表*/
+        .items{
+            margin-top: 15px;
+        }
+        .item{
+            width: 92%;
+            height: 126px;
+            margin: 0 auto;
+            background: #016058;
+            color: #fff;
+            box-sizing: border-box;
+            /*padding: 10px 10px;*/
+            margin-top: 10px;
+        }
+        .item p{
+            margin: 0;
+        }
+        .item .p1{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        .item .p1 p:first-child{
+            float: left;
+        }
+        .item .p1 p:last-child{
+            float: right;
+        }
+        .item .p2{
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            font-size: 12px;
+            color: #09e1ff;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        .item .p2 p:first-child{
+            float: left;
+        }
+        .item .p2 p:last-child{
+            float: right;
+        }
+        .item .p3{
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            font-size: 12px;
+            color: lightgray;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .item .comm-btn-middle{
+            width: 100%;
+            margin-top: 5px;
+        }
+        .item .comm-btn-middle button{
+            border-radius: 0px;
+            background-color: #074741;
+            color: #00dfcc;
+        }
+        .item .comm-btn-middle button:active{
+            background: #0a675e;
+        }
+
+        #xiajia{
+            width: 300px;
+            height: 250px;
+            /*height: 100%;*/
+            /*display: table;*/
+            text-align: center;
+            margin: 0 auto;
+        }
+        #xiajia .modal-dialog{
+            display: table-cell;
+            vertical-align: middle;
+        }
+        #xiajia .modal-header{
+            background: #ffe100;
+        }
+        #xiajia .modal-footer{
+            text-align: center;
+        }
+        #xiajia .modal-footer button{
+            border: none;
+            color: #fff;
+            background: darkgray;
+        }
+        #xiajia #confirm-sure{
+            border: none;
+            color: #000;
+            background: #ffe100;
+        }
+        #xiajia #confirm-sure:active{
+            background: #ffb60b;
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--导航-->
+    <div class="nav">
+        <a href="s-center.html">我</a>
+        <a href="" class="current">产品</a>
+    </div>
+
+    <div class="labs">
+        <div class="lab">
+            正在销售的产品
+        </div>
+        <div class="lab on">
+            已经下架的产品
+        </div>
+    </div>
+
+    <!--菜单-->
+    <div class="items">
+        <div class="item">
+            <div class="p1">
+                <p>100元代金券一张</p>
+                <p>Di盟价：￥80</p>
+            </div>
+            <div class="p2">
+                <p>累计销量：102笔</p>
+                <p>门店价：￥100</p>
+            </div>
+            <div class="p3">产品介绍：80可抵100元，可叠加使用，节假日通用...</div>
+            <div class="push-down comm-btn-middle"><button>申请下架</button></div>
+        </div>
+        <div class="item">
+            <div class="p1">
+                <p>100元代金券一张</p>
+                <p>Di盟价：￥80</p>
+            </div>
+            <div class="p2">
+                <p>累计销量：102笔</p>
+                <p>门店价：￥100</p>
+            </div>
+            <div class="p3">产品介绍：80可抵100元，可叠加使用，节假日通用...</div>
+            <div class="push-down comm-btn-middle"><button>申请下架</button></div>
+        </div>
+        <div class="item">
+            <div class="p1">
+                <p>100元代金券一张</p>
+                <p>Di盟价：￥80</p>
+            </div>
+            <div class="p2">
+                <p>累计销量：102笔</p>
+                <p>门店价：￥100</p>
+            </div>
+            <div class="p3">产品介绍：80可抵100元，可叠加使用，节假日通用...</div>
+            <div class="push-down comm-btn-middle"><button>申请下架</button></div>
+        </div>
+    </div>
+
+    <!-- 下架确认 -->
+    <div class="modal fade" id="xiajia">
+        <div class="modal-dialog">
+            <div class="modal-content message_align">
+                <div class="modal-header">
+                    <h4 class="modal-title">确定要下架该商品吗？</h4>
+                </div>
+                <div class="modal-body">
+                    <p>如有任何疑问，请咨询客服13888888888，Di盟竭诚为您服务。</p>
+                </div>
+                <div class="modal-footer">
+                    <a id="confirm-sure" class="btn btn-success" data-dismiss="modal">确认</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">退出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        //标签切换
+        $(".labs .lab").click(function(){
+           $(this).addClass("on").siblings(".lab").removeClass("on");
+        });
+
+        //下架
+        $(".push-down").click(function(){
+            $("#xiajia").modal();
+            $("#xiajia #confirm-sure").on("click",xxx);
+
+            $("#xiajia").on("hide.bs.modal	hide",function(){
+                $("#yanzhengma #confirm-sure").off("click",xxx);
+            });
+        });
+
+        function xxx(){
+            console.log("下架成功");
+        }
+
+
+
+
+    });
+</script>
+</body>
+</html>

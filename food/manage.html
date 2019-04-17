@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>美女点餐-管理员设置</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            font-family: "Microsoft Yahei", "Lantinghei SC", Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+        body{
+            visibility: hidden;
+        }
+
+        .btn{
+            background-color: lightpink;
+            color: #fff;
+            border: none;
+        }
+        .btn:hover,.btn:active,.btn:after,.btn:focus{
+            background-color: hotpink;
+            color: #fff;
+            border: none;
+        }
+        .container-fluid{
+            width: 50%;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /*顶部信息*/
+        #info{
+            width: 100%;
+            padding: 0 0;
+            background-color: lightpink;
+            color: #fff;
+            padding-right: 10px;
+        }
+        #info span,#info a{
+            color: #fff;
+        }
+        #info a:hover{
+            color: hotpink;
+        }
+        #info #namecont{
+            height: 50px;
+            line-height: 50px;
+        }
+
+        /*左侧标签*/
+        #control ul li{
+            list-style: none;
+            height: 30px;
+            line-height: 30px;
+            text-align: left;
+        }
+        #control ul li a{
+            color: black;
+            display: block;
+            text-decoration: none;
+            text-indent: 2em;
+        }
+        #control ul li.on a{
+            background-color: lightpink;
+            color: #fff;
+        }
+        #control ul li:hover{
+            background-color: #ffcddb;
+        }
+
+        /*右侧内容*/
+        #content a{
+            color: #ff86b1;
+            /*text-decoration: none;*/
+        }
+        #content a:hover{
+            color: #ff58ac;
+        }
+        #content table{
+            width: 100%;
+            margin-top: 20px;
+        }
+        #content table thead{
+            background-color: lightgray;
+        }
+        #content table thead tr th{
+            font-size: 14px;
+        }
+        #content table tbody tr td{
+            line-height:20px;
+        }
+
+        .alert-warning{
+            background: none;
+            border: none;
+            width: 200px;
+            height: 45px;
+            line-height: 45px;
+            color: #c9302c;
+            padding: 0 5px;
+            visibility: hidden;
+        }
+        #modal-shop-warning{
+            height: 30px;
+            float: right;
+            text-align: center;
+        }
+
+        #content #datas p{
+            width: 80%;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!--顶部信息-->
+    <div class="container-fluid">
+        <nav id="info" class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <span class="navbar-brand">女神点餐</span>
+            </div>
+            <div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="namecont">欢迎回来：<span id="username"></span></li>
+                    <li><a id="btn-back" href="#">回到点餐</a></li>
+                    <li><a id="btn-exit" href="#">退出</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!--管理内容-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <!--左侧控制-->
+                <div id="control">
+                    <ul>
+                        <li class="on"><a href="#">用户</a></li>
+                        <li><a href="#">店铺</a></li>
+                        <li><a href="#">数据报表</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <!--右侧内容显示-->
+                <div id="content">
+                    <!--用户列表-->
+                    <div id="users">
+                        <button id="btn-add-user" type="button" class="btn btn-danger" autocomplete="off">增加</button>
+                        <table id="users-tb" class="table">
+                            <thead>
+                            <tr>
+                                <th>用户名</th>
+                                <th>密码</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!--待插入数据-->
+
+                            </tbody>
+                        </table>
+                        <div id="warning" class="alert alert-warning" role="alert"></div>
+                    </div>
+
+                    <!--店铺列表-->
+                    <div id="shops">
+                        <button id="btn-add-shop" type="button" class="btn btn-danger" autocomplete="off">增加</button>
+                        <table id="shops-tb" class="table">
+                            <thead>
+                            <tr>
+                                <th>店铺</th>
+                                <th>电话</th>
+                                <th>菜品</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!--待插入数据-->
+
+                            </tbody>
+                        </table>
+                        <div id="warning1" class="alert alert-warning" role="alert"></div>
+                    </div>
+
+                    <!--数据报表-->
+                    <div id="datas">
+                        <p>功能暂未开放，敬请期待</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 信息删除确认 -->
+    <div class="modal fade" id="confirm">
+        <div class="modal-dialog">
+            <div class="modal-content message_align">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">提示信息</h4>
+                </div>
+                <div class="modal-body">
+                    <p>确认要删除<span id="del-name"></span>吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <a id="confirm-sure" class="btn btn-success" data-dismiss="modal">确定</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--编辑店铺模态框-->
+    <div class="modal fade" id="modal-shop">
+        <div class="modal-dialog">
+            <div class="modal-content message_align">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">编辑店铺</h4>
+                </div>
+                <div class="modal-body" id="">
+                    <div><lable for="shop-name">店铺名:</lable><input id="modal-shop-name" type="text" class="form-control" maxlength="20"></div>
+                    <div><lable for="shop-tel">电话:</lable><input id="modal-shop-tel" type="text" class="form-control" maxlength="20"></div>
+                    <div>
+                        <span for="shop-tel">菜品:  </span><a id="modal-add-food" class="btn btn-success">增加菜品</a>
+                        <span id="modal-shop-warning" class="alert alert-warning" role="alert" hidden></span>
+                        <div id="modal-shop-foods"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a id="modal-add-shop" class="btn btn-success">保存</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var serverRoot = "http://192.168.1.250:8080/food";//http://localhost:8080/food
+
+        //防跨地址访问
+        var _user = sessionStorage.getItem("user");
+        if(_user==null || _user==""){
+            alert("想匿名吃霸王餐？老老实实登录吧，若没有账号请向管理员申请！");
+            window.location.href = "index.html";
+            return;
+        }
+        $("body").css("visibility","visible");
+        $("#username").text(_user);
+
+        //退出
+        $("#btn-exit").click(function(){
+            var url = serverRoot+"/LogoutServlet";
+            $.post(url,{userName:_user},function(result){
+                if($.trim(result)=="ok"){
+                    $("#username").text("");
+                    sessionStorage.clear();
+                    window.location.href = "index.html";
+                }
+            });
+        });
+
+        //回到点餐
+        $("#btn-back").click(function(){
+            window.location.href = "order.html";
+        });
+
+        //切换标签
+        var $labs = $("#control ul li");
+        var $contents = $("#content").children("div");
+        $contents.eq(0).show().siblings().hide();
+        $labs.click(function(){
+            var index = $(this).index();
+            $labs.eq(index).addClass("on").siblings("li").removeClass("on");
+            $contents.eq(index).show().siblings().hide();
+            if(index==0){//用户管理
+                initUsers();
+            }else if(index==1){//店铺管理
+                initShops();
+            }else if(index==2){//数据报表
+
+            }
+        });
+
+        //用户列表
+        initUsers();
+        var $userList = $("#users tbody");
+        var $warning = $("#warning");
+        function initUsers(){
+            $.ajax({
+                url: serverRoot+"/CheckUsersServlet",
+                dataType: "json",
+                async: true,
+                data: null,
+                type: "POST",
+                success: function(result) {
+                    //请求成功时处理
+                    console.log("response:",result);
+                    addUsers(result);
+                },
+                error: function() {
+                    //请求出错处理
+                    $userList.empty();
+                    var txt = "<tr><td colspan='3' style='text-align: center'>(╯□╰) 出错啦！获取用户数据失败</td></tr>";
+                    $userList.append(txt);
+                }
+            });
+        }
+        function addUsers(users){
+            _isAddingUser = false;
+            $userList.empty();
+            if(users==null || users.length<=0)return;
+            for(var i=0;i<users.length;i++){
+                var user = users[i];
+                var txt;
+                if(user.userName=="admin"){//管理员不能被删除
+                    txt = "<tr>"+
+                          "<td>"+user.userName+"</td>"+
+                          "<td>"+user.password+"</td>"+
+                          "<td></td>"+
+                          "</tr>";
+                }else{
+                    txt = "<tr>"+
+                          "<td>"+user.userName+"</td>"+
+                          "<td>"+user.password+"</td>"+
+                          "<td><a class='del-user' href='#'>删除</a></td>"+
+                          "</tr>";
+                }
+                $userList.append(txt);
+            }
+            //删除用户
+            $("#users .del-user").click(function(){
+                var tds = $(this).parent().parent().find("td");
+                var userName = $(tds[0]).text();
+                $("#confirm #del-name").text('"'+userName+'"');
+                $("#confirm").modal();
+                $("#confirm #confirm-sure").on("click",delUser);
+                $("#confirm").on("hide.bs.modal	hide",function(){
+                    $("#confirm #confirm-sure").off("click",delUser);
+                });
+                function delUser(){
+                    $.ajax({
+                        url: serverRoot+"/ManageServlet",
+                        dataType: "json",
+                        async: true,
+                        data: {"type":"delUser","userName":userName},
+                        type: "POST",
+                        success: function(result) {
+                            //请求成功时处理
+                            console.log("response:",result);
+                            addUsers(result);
+                            $warning.stop().css({"visibility":"visible","display":"block"});
+                            $warning.text("删除成功");
+                            $warning.fadeOut(2000);
+                        },
+                        error: function() {
+                            //请求出错处理
+                            $warning.stop().css({"visibility":"visible","display":"block"});
+                            $warning.text("发生错误，删除失败");
+                            $warning.fadeOut(2000);
+                        }
+                    });
+                }
+            });
+        }
+        //新增用户
+        var _isAddingUser = false;
+        $("#btn-add-user").click(function(){
+            if(_isAddingUser)return;
+            var txt = "<tr>"+
+                    "<td><input type='text' name='username' maxlength='18'/></td>"+
+                    "<td><input type='text' name='password' maxlength='18'/></td>"+
+                    "<td><button id='save-user' type='button' class='btn btn-danger' autocomplete='off'>保存</button>" +
+                    "&nbsp;<button id='cancel-user' type='button' class='btn btn-danger' autocomplete='off'>取消</button></td>"+
+                    "</tr>";
+            $userList.append(txt);
+            _isAddingUser = true;
+            $("#users #cancel-user").click(function(){
+               $userList.find("tr:last").remove();
+                _isAddingUser = false;
+            });
+            $("#users #save-user").click(function(){
+                var inputs = $(this).parent().parent().find("input");
+                var userName = $(inputs[0]).val().trim();
+                var password = $(inputs[1]).val().trim();
+                if(userName==""){
+                    $warning.css({"visibility":"visible","display":"block"});
+                    $warning.text("请输入用户名");
+                    $warning.fadeOut(2000);
+                    return;
+                }
+                if(password==""){
+                    $warning.css({"visibility":"visible","display":"block"});
+                    $warning.text("请输入密码");
+                    $warning.fadeOut(2000);
+                    return;
+                }
+                $.ajax({
+                    url: serverRoot+"/ManageServlet",
+                    dataType: "json",
+                    async: true,
+                    data: {"type":"addUser","userName":userName,"password":password},
+                    type: "POST",
+                    success: function(result) {
+                        //请求成功时处理
+                        console.log("response:",result);
+                        addUsers(result);
+                    },
+                    error: function() {
+                        //请求出错处理
+                        $warning.css({"visibility":"visible","display":"block"});
+                        $warning.text("添加失败，请检查用户名是否重复");
+                        $warning.fadeOut(2000);
+                    }
+                });
+            });
+        });
+
+
+
+        //店铺列表
+        var $shopList = $("#shops tbody");
+        var $warning1 = $("#warning1");
+        function initShops(){
+            $.ajax({
+                url: serverRoot+"/CheckShopsServlet",
+                dataType: "json",
+                async: true,
+                data: null,
+                type: "POST",
+                success: function(result) {
+                    //请求成功时处理
+                    console.log("response:",result);
+                    addShops(result);
+                },
+                error: function() {
+                    //请求出错处理
+                    $shopList.empty();
+                    var txt = "<tr><td colspan='4' style='text-align: center'>(╯□╰) 出错啦！获取店铺数据失败</td></tr>";
+                    $shopList.append(txt);
+                }
+            });
+        }
+        function addShops(shops){
+            $shopList.empty();
+            if(shops==null || shops.length<=0)return;
+            for(var i=0;i<shops.length;i++){
+                var shop = shops[i];
+                var isUsing = shop.isUsing ? "<span style='color: #fff;background-color: lightpink'>使用中</span>":"<a class='using-shop' href='#'>使用</a>&nbsp;&nbsp;&nbsp;<a class='del-shop' href='#'>删除</a>";
+                var txt = "<tr>"+
+                        "<td>"+shop.shopName+"</td>"+
+                        "<td>"+shop.tel+"</td>"+
+                        "<td>"+shop.foods[0].foodName+"...</td>"+
+                        "<td>"+isUsing+"</td>"+
+                        "</tr>";
+                $shopList.append(txt);
+            }
+            //删除店铺
+            $("#shops .del-shop").click(function() {
+                var tds = $(this).parent().parent().find("td");
+                var shopName = $(tds[0]).text();
+                $("#confirm #del-name").text('"' + shopName + '"');
+                $("#confirm").modal();
+                $("#confirm #confirm-sure").on("click", delShop);
+                $("#confirm").on("hide.bs.modal	hide", function () {
+                    $("#confirm #confirm-sure").off("click", delShop);
+                });
+                function delShop() {
+                    $.ajax({
+                        url: serverRoot+"/ManageServlet",
+                        dataType: "json",
+                        async: true,
+                        data: {"type": "delShop", "shopName": shopName},
+                        type: "POST",
+                        success: function (result) {
+                            //请求成功时处理
+                            console.log("response:", result);
+                            addShops(result);
+                            $warning1.stop().css({"visibility": "visible", "display": "block"});
+                            $warning1.text("删除成功");
+                            $warning1.fadeOut(2000);
+                        },
+                        error: function () {
+                            //请求出错处理
+                            $warning1.stop().css({"visibility": "visible", "display": "block"});
+                            $warning1.text("发生错误，删除失败");
+                            $warning1.fadeOut(2000);
+                        }
+                    });
+                }
+            });
+            //使用店铺
+            $("#shops .using-shop").click(function() {
+                var tds = $(this).parent().parent().find("td");
+                var shopName = $(tds[0]).text();
+                $.ajax({
+                    url: serverRoot+"/ManageServlet",
+                    dataType: "json",
+                    async: true,
+                    data: {"type": "usingShop", "shopName": shopName},
+                    type: "POST",
+                    success: function (result) {
+                        //请求成功时处理
+                        console.log("response:", result);
+                        addShops(result);
+                        $warning1.stop().css({"visibility": "visible", "display": "block"});
+                        $warning1.text("店铺切换成功");
+                        $warning1.fadeOut(2000);
+                    },
+                    error: function () {
+                        //请求出错处理
+                        $warning1.stop().css({"visibility": "visible", "display": "block"});
+                        $warning1.text("发生错误，切换失败");
+                        $warning1.fadeOut(2000);
+                    }
+                });
+            });
+        }
+
+        //新增店铺
+        var $btnAddShop = $("#btn-add-shop");
+        var $modalShop = $("#modal-shop");
+        var $modalAddShop = $("#modal-shop #modal-add-shop");
+        var $modalAddFood = $("#modal-shop #modal-add-food");
+        var $modalShopName = $("#modal-shop #modal-shop-name");
+        var $modalShopTel = $("#modal-shop #modal-shop-tel");
+        var $modalShopFoods = $("#modal-shop #modal-shop-foods");
+        var $modalShopWarning = $("#modal-shop #modal-shop-warning");
+        var _isAddingShop = false;
+        $btnAddShop.click(function(){
+            if(_isAddingShop)return;
+
+            $modalShop.modal();
+            $modalAddShop.on("click",addShop);
+            $modalAddFood.on("click",addEmptyFood);
+            $modalShop.on("hide.bs.modal hide",function(){
+                //清空
+                $modalShopName.val("");
+                $modalShopTel.val("");
+                $modalShopFoods.empty();
+                $modalAddShop.off("click",addShop);
+                $modalAddFood.off("click",addEmptyFood);
+            });
+
+        });
+        function addEmptyFood(){
+            var txt = "<div>" +
+                    "菜名：<input type='text' name='foodName' maxlength='15'/>" +
+                    " 价格：<input type='number' name='price' maxlength='15'/>" +
+                    "</div>";
+            $modalShopFoods.append(txt);
+        }
+
+        function addShop(){
+            var inputs = $(this).parent().parent().find("input");
+            var shopName = $modalShopName.val().trim();
+            var shopTel = $modalShopTel.val().trim();
+            var $shopFoods = $modalShopFoods.find("div");
+            var shopFoodsArr = [];
+            if(shopName==""){
+                $modalShopWarning.css({"visibility":"visible","display":"block"});
+                $modalShopWarning.text("请输入店铺名");
+                $modalShopWarning.fadeOut(2000);
+                return;
+            }
+            if($shopFoods==null || $shopFoods.length<=0 || $($shopFoods.find("input")[0]).val().trim()=="" || $($shopFoods.find("input")[1]).val().trim()==""){
+                $modalShopWarning.css({"visibility":"visible","display":"block"});
+                $modalShopWarning.text("请确认至少有一种有效菜品");
+                $modalShopWarning.fadeOut(2000);
+                return;
+            }
+            for(var i=0;i<$shopFoods.length;i++){
+                var food = {};
+                var div = $shopFoods.get(i);
+                food.foodName = div.children[0].value.trim();
+                food.price = div.children[1].value.trim();
+                if(food.foodName!=""&&food.price!=""){
+                    shopFoodsArr.push(food);
+                }
+            }
+            console.log("foods:"+shopFoodsArr);
+            $.ajax({
+                url: serverRoot+"/ManageServlet",
+                dataType: "json",
+                async: true,
+                traditional: true,
+                data: {"type":"addShop","shopName":shopName,"tel":shopTel,"isUsing":false,"foods":JSON.stringify(shopFoodsArr)},
+                type: "POST",
+                success: function(result) {
+                    //请求成功时处理
+                    console.log("response:",result);
+                    $modalShop.modal("hide");
+                    addShops(result);
+                },
+                error: function() {
+                    //请求出错处理
+                    $modalShopWarning.css({"visibility":"visible","display":"block"});
+                    $modalShopWarning.text("添加失败，请检查店铺名是否重复");
+                    $modalShopWarning.fadeOut(2000);
+                }
+            });
+        }
+
+
+
+
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>我的果园</title>
+    <link type="text/css" rel="stylesheet" href="../css/sweetalert.css" />
+    <link type="text/css" rel="stylesheet" href="../css/common.css" />
+    <link type="text/css" rel="stylesheet" href="../css/fakeLoader.css" />
+    <style type="text/css">
+        body{
+            background-color: #f2f2f2;
+            font-size: 14px;
+            /*padding-bottom: 60px;*/
+        }
+
+        /*banner*/
+        .banner img{
+            display: block;
+            width: 100%;
+            height: 141px;
+        }
+
+        /*信息栏*/
+        .info{
+            height: 45px;
+            position: relative;
+        }
+        .info #user-ico{
+            width: 64px;
+            height: 64px;
+            float: left;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+        .info #user-name{
+            float: left;
+            margin-top: 10px;
+            margin-left: 80px;
+        }
+        .info .icos{
+            width: 80px;
+            height: 40px;
+            float: right;
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+        .info .icos .comm-ico-updown{
+            float: left;
+        }
+
+        /*推荐水果*/
+        .items{
+            width: 100%;
+            height: auto;
+            padding-bottom: 65px;
+        }
+        .item{
+            width: 100%;
+            /*height: 280px;*/
+            box-sizing: border-box;
+            margin-top: 10px;
+            background-color: #fff;
+            border: 1px solid lightgray;
+            box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+        }
+        .item img{
+            width: 100%;
+            height: auto;
+        }
+        .item .item-des{
+            width: 100%;
+            height: 90px;
+            line-height: 20px;
+            box-sizing: border-box;
+            padding: 10px 10px;
+        }
+        .item .item-des .p1{
+            width: 100%;
+            font-size: 14px;
+            word-wrap: break-word;
+            letter-spacing: 2px;
+        }
+        .item .item-des .p2{
+            width: 100%;
+            font-size: 12px;
+            word-wrap: break-word;
+        }
+        .item .item-des .p3 p{
+            font-size: 14px;
+            color: #fabe00;
+            float: left;
+        }
+        .item .item-des .p3 .check{
+            width: 63px;
+            height: 23px;
+            float: right;
+            margin: 0 auto;
+        }
+        .item .check button{
+            font-size: 12px;
+            border-radius: 3px;
+        }
+
+        /*底部导航*/
+        .nav-bottom {
+            width: 100%;
+            height: 60px;
+            background-color: #f2f2f2;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 999;
+        }
+        .nav-bottom ul {
+            height: 60px;
+        }
+        .nav-bottom ul li {
+            width: 25%;
+            height: 60px;
+            list-style-type: none;
+            float: left;
+            /*background-color: blue;*/
+        }
+        .nav-bottom li.on a{
+            color: #fabe00;
+        }
+        .nav-bottom li a:active{
+            color: #fabe00;
+        }
+        .nav-bottom li a {
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+        .nav-bottom ul li a img {
+            width: 30px;
+            height: 30px;
+            padding: 10px 5px 0;
+            margin: 0 auto;
+            display: block;
+        }
+        .nav-bottom ul li a span{
+            display: block;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            margin: 0 auto;
+            font-size: 12px;
+        }
+
+        .erweima {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index:9999;
+            left: 0;
+            top: 0;
+            background-color: rgba(30, 35, 44, 0.9);
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+            -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+            transition: opacity 0.3s 0s, visibility 0s 0.3s;
+        }
+        .erweima.is-visible {
+            opacity: 1;
+            visibility: visible;
+            -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+            -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+            transition: opacity 0.3s 0s, visibility 0s 0s;
+        }
+        .erweima-cont{
+            width: 100%;
+            height: 100%;
+            position: static;
+        }
+        .erweima-cont .sheet{
+            margin-left: 55%;
+        }
+        .erweima-cont .sheet img{
+            margin-left: 50px;
+        }
+        .erweima-cont .bg{
+            display: block;
+            width: 208px;
+            height: 208px;
+            margin: 0 auto;
+            margin-top: 30%;
+        }
+        .erweima-cont .txt{
+            margin-top: 10px;
+            width: 100%;
+        }
+        .erweima-cont .txt p{
+            width: 100%;
+            text-align: center;
+        }
+        .erweima-cont p{
+            color: #fff;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!--banner-->
+    <div class="banner">
+        <img src="../images/shop/seller/a_banner_01.jpg" alt=""/>
+    </div>
+
+    <!--信息栏-->
+    <div class="info">
+        <img id="user-ico" src="../images/shop/ico_user.png" alt=""/>
+        <span id="user-name">西瓜红的红的果园</span>
+        <div class="icos">
+            <div id="btn-liuyan" class="comm-ico-updown"><img src="../images/common/ico_message_small.png" alt=""/><span>留言</span></div>
+            <div id="btn-erweima" class="comm-ico-updown"><img src="../images/common/ico_erweima_small.png" alt=""/><span>二维码</span></div>
+        </div>
+    </div>
+
+    <!--推荐水果-->
+    <div class="items">
+        <div class="item">
+            <img src="../images/fruits/f1.jpg" alt=""/>
+            <div class="item-des">
+                <p class="p1">一颗害羞的香瓜</p>
+                <p class="p2">每人限购一次</p>
+                <div class="p3">
+                    <p>小店特价：50￥/盒</p>
+                    <div class="check comm-btn-middle"><button>进去看看</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="../images/fruits/f2.jpg" alt=""/>
+            <div class="item-des">
+                <p class="p1">一颗有智慧的蓝莓</p>
+                <p class="p2">每人限购一次</p>
+                <div class="p3">
+                    <p>小店特价：50￥/盒</p>
+                    <div class="check comm-btn-middle"><button>进去看看</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <img src="../images/fruits/f1.jpg" alt=""/>
+            <div class="item-des">
+                <p class="p1">一颗害羞的香瓜</p>
+                <p class="p2">每人限购一次</p>
+                <div class="p3">
+                    <p>小店特价：50￥/盒</p>
+                    <div class="check comm-btn-middle"><button>进去看看</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--隐藏二维码页面-->
+    <div class="erweima">
+        <div class="erweima-cont">
+            <div class="sheet">
+                <img src="../images/shop/buyer/b_ico_plane.png" alt=""/>
+                <p>分享至朋友圈</p>
+                <p>或者发送给你的朋友们</p>
+            </div>
+            <img class="bg" src="../images/shop/buyer/b_erweima_bg.png" alt=""/>
+            <div class="txt">
+                <p>这是小店的二维码</p>
+                <p>叫上你的朋友们一起来吃最好吃的水果吧！</p>
+            </div>
+        </div>
+    </div>
+
+    <!--底部导航栏-->
+    <div class="nav-bottom">
+        <ul>
+            <li id="home" class="on"><a href=""><img src="../images/shop/seller/d_wdgy.png"><span>我的果园</span></a></li>
+            <li id="list"><a href="b-b-shuiguofenlei.html"><img src="../images/shop/seller/d_sgfl.png"><span>水果分类</span></a></li>
+            <li id="order"><a href="b-c-gouwuche.html"><img src="../images/shop/seller/d_gwl.png"><span>购物篮</span></a></li>
+            <li id="manage"><a href="b-d-gerenzhongxin.html"><img src="../images/shop/seller/d_grzx.png"><span>个人中心</span></a></li>
+        </ul>
+    </div>
+
+    <div class="fakeloader"></div>
+
+
+<script src="../js/jquery-2.2.1.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/fakeLoader.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".fakeloader").fakeLoader({
+            timeToHide:1200,
+            bgColor:"#fabe00",
+            spinner:"spinner1"
+        });
+
+        $(".nav-bottom li.on").click(function(e){
+            e.preventDefault();
+        });
+
+        $(".check").click(function(){
+            window.location.href = "b-b-shangpinxiangqing.html";
+        });
+
+        //回复留言
+        $("#btn-liuyan").click(function(){
+            window.location.href = "b-a-xieliuyan.html";
+        });
+
+        //二维码
+        $("#btn-erweima").click(function(){
+            $(".erweima").addClass("is-visible");
+            $(".erweima").click(function(){
+                $(".erweima").removeClass("is-visible");
+            });
+        });
+
+
+    });
+</script>
+</body>
+</html>

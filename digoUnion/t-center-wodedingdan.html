@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="images/logo_small.png">
+    <title>Di盟商城</title>
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <style type="text/css">
+        /*的哥-我的订单*/
+        body{
+            /*background-color: #f2f2f2;*/
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .dropdown{
+            position: relative;
+            width: 80px;
+            height: 35px;
+            margin: 0 auto;
+        }
+        .dropdown .dropdown-default{
+            line-height: 35px;
+            text-indent: 0.5em;
+        }
+        .dropdown .arrow{
+            width: 0;
+            height: 0;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .dropdown .dropdown-arrow{
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            vertical-align: middle;
+            position: absolute;
+            right: 0px;
+            top: 5px;
+        }
+        .dropdown .dropdown-arrow img{
+            display: block;
+            width: 25px;
+            height: 25px;
+        }
+        .dropdown .dropdown-menu{
+            position: absolute;
+            top:100%;
+            width: 100%;
+            left: 0;
+            background: #ffe100;
+            display: none;
+        }
+        .dropdown .dropdown-menu li{
+            height: 37px;
+            line-height: 37px;
+            text-align: center;
+            border-bottom: 1px solid #fff;
+        }
+        .dropdown .dropdown-menu li a{
+            color: #000;
+            text-decoration: none;
+        }
+        .dropdown .dropdown-menu li a:active{
+            color: #fff;
+        }
+
+        .item{
+            width: 100%;
+            height: 120px;
+            box-sizing: border-box;
+            padding: 10px 25px;
+            border-bottom: 1px solid lightgray;
+        }
+        .item:first-child{
+            border-top: 1px solid lightgray;
+        }
+        .item .p1{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+        }
+        .item .p1 span{
+            color: darkgray;
+            float: right;
+        }
+        .item .p2{
+            width: 100%;
+            height: 70px;
+        }
+        .item .p2 .pic{
+            width: 65px;
+            height: 65px;
+            float: left;
+        }
+        .item .p2 .txt{
+            width: 150px;
+            height: 65px;
+            line-height: 16px;
+            float: left;
+            margin-left: 8px;
+        }
+        .item .p2 .comm-btn-middle-yellow{
+            width: 56px;
+            height: 25px;
+            float: right;
+            margin-top: 40px;
+        }
+
+        .sheet{
+            width: 100%;
+            text-align: center;
+            line-height: 40px;
+            color: #6a6a6a;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!--title-->
+    <div class="comm-top-title">
+        <span class="comm-ico-back"><a href=""><img src="images/ico_back.png" /></a></span>
+        <h2>我的订单</h2>
+    </div>
+
+    <div class="dropdown">
+        <div class="dropdown-default">已消费</div>
+        <span class="dropdown-arrow arrow"><img src="images/ico_drop.png" alt=""></span>
+        <ul class="dropdown-menu">
+            <li><a href="#">已消费</a></li>
+            <li><a href="#">已付费</a></li>
+            <li><a href="#">退款单</a></li>
+            <li><a href="#">未付款</a></li>
+            <li><a href="#">已关闭</a></li>
+        </ul>
+    </div>
+
+    <div class="items">
+        <div class="item">
+            <p class="p1">盟友：左文雷<span>已消费</span></p>
+            <div class="p2">
+                <img class="pic" src="images/img_user_01.jpg" alt="">
+                <div class="txt">
+                    <p>消费地点：<span>碧涛阁洗浴</span></p>
+                    <p>消费金额：<span>1200.00元</span></p>
+                    <p>消费时间：<span>2014-04-28</span></p>
+                    <p>提成金额：<span>200元</span></p>
+                </div>
+                <div class="comm-btn-middle-yellow"><button>已审核</button></div>
+            </div>
+        </div>
+        <div class="item">
+            <p class="p1">盟友：左文雷<span>已消费</span></p>
+            <div class="p2">
+                <img class="pic" src="images/img_user_01.jpg" alt="">
+                <div class="txt">
+                    <p>消费地点：<span>碧涛阁洗浴</span></p>
+                    <p>消费金额：<span>1200.00元</span></p>
+                    <p>消费时间：<span>2014-04-28</span></p>
+                    <p>提成金额：<span>200元</span></p>
+                </div>
+                <div class="comm-btn-middle-yellow"><button>待审核</button></div>
+            </div>
+        </div>
+        <div class="item">
+            <p class="p1">盟友：左文雷<span>已消费</span></p>
+            <div class="p2">
+                <img class="pic" src="images/img_user_01.jpg" alt="">
+                <div class="txt">
+                    <p>消费地点：<span>碧涛阁洗浴</span></p>
+                    <p>消费金额：<span>1200.00元</span></p>
+                    <p>消费时间：<span>2014-04-28</span></p>
+                    <p>提成金额：<span>200元</span></p>
+                </div>
+                <div class="comm-btn-middle-yellow"><button>已审核</button></div>
+            </div>
+        </div>
+    </div>
+
+    <p class="sheet">没有更多...</p>
+
+
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".comm-back").back();
+
+        var _isshowing = false;
+        $(".dropdown .dropdown-default,.dropdown .dropdown-arrow").click(function(){
+            if(_isshowing){
+                $(this).siblings(".dropdown-menu").hide();
+            }else{
+                $(this).siblings(".dropdown-menu").show();
+            }
+            _isshowing = !_isshowing;
+        });
+
+
+        $(".dropdown .dropdown-menu li a").click(function(){
+            $(this).parent().parent().siblings(".dropdown-default").html($(this).html());
+            $(this).parent().parent().hide();
+            _isshowing = false;
+        });
+
+
+
+
+    });
+</script>
+</body>
+</html>
