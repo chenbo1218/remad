@@ -31,10 +31,7 @@ function plan(hp,X,Y,sizeX,sizeY,score,dietime,sudu,boomimage,imagesrc){
     this.plandietimes=0;
     this.plandietime=dietime;
     this.plansudu=sudu;
-//行为
-/*
-移动行为
-     */
+    //行为
     this.planmove=function(){
         if(scores<=50000){
             this.imagenode.style.top=this.imagenode.offsetTop+this.plansudu+"px";
@@ -75,10 +72,7 @@ function bullet(X,Y,sizeX,sizeY,imagesrc){
     this.bulletattach=1;
     this.bulletsizeX=sizeX;
     this.bulletsizeY=sizeY;
-//行为
-/*
- 移动行为
- */
+    //行为
     this.bulletmove=function(){
         this.bulletimage.style.top=this.bulletimage.offsetTop-20+"px";
     }

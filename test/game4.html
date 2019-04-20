@@ -2,9 +2,105 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>像素鸟</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #main{
+            border: 1px solid black;
+            width: 600px;
+            height: 512px;
+            background: url("img/game4/bg_day.png") 10px 10px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #bird{
+            width: 37px;
+            height: 27px;
+            background: url("img/game4/bird0_0.png") no-repeat center;
+            position: absolute;
+            left: 20px;
+            top: 200px;
+            display: none;
+        }
+
+        #gameover{
+            width: 204px;
+            height: 54px;
+            background: url("img/game4/text_game_over.png");
+            margin: auto;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            position: absolute;
+            display: none;
+        }
+
+        #title{
+            width: 178px;
+            height: 48px;
+            background: url("img/game4/title.png");
+            margin: auto;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            position: absolute;
+        }
+
+        #bluebird{
+            display: block;
+            margin: 100px auto;
+        }
+
+        #start{
+            display: block;
+            position: absolute;
+            left: 240px;
+            top: 30px;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 <body>
+    <div id="main">
+        <div id="bird" src="img/game4/bird0_0.png"></div>
+        <div id="gameover"></div>
+        <div id="title"></div>
+        <img src="img/game4/vird1_0.png" alt="">
+        <button id="start"><img src="img/game4/btn_play.png" alt=""></button>
+
+    </div>
+
+    <script>
+        var _flyNum = 0;
+        var _bluebird = document.getElementById("#bluebird");
+        var _gamerunning = false;
+
+        //蓝色小鸟翅膀运动
+        var bluebirdFly = setInterval(function(){
+            _flyNum ++;
+            _bluebird.setAttribute("src","img/game4/bird1_"+_flyNum+".png");
+            if(_flyNum>=2){
+                _flyNum = -1;
+            }
+        },100);
+
+        _bluebird.animate({marginTop: 130},500,function(){
+
+        })
+
+
+
+
+    </script>
 
 </body>
 </html>
