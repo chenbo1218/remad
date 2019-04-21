@@ -63,27 +63,58 @@
     var _bullets = [];
     //敌方灰机组
     var _enemys = [];
+
     //====================程序入口========================
     //开始搞事
     main();
+
     //入口函数
     function main(){
         //点击开始
         _btn.onclick = start();
     }
+
     function start(){
         _btn.style.display = "none";
+
         //初始飞机位置
         _plane = new Plane(20,40,3);
         _plane.show();
+
         //鼠标移动事件--移动本方飞机
         // _map.addEventListener("mousemove",movePlane,true);
         _map.onmousemove = function(e){
             var ev = e || window.event;
             _plane.move(ev.clientX, ev.clientY);
         }
+
+        var mark = 0;
+        //计时器连续创建子弹和敌机
+        var timer = setInterval(function(){
+            mark ++;
+            //自动创建子弹
+            var x = _plane.div.offsetLeft + Math.floor(_plane.width/2)*PIX;
+            var y = _plane.div.offsetTop - PIX;
+            var bullet = new Bullet(x, y);
+            _bullets.push(bullet);
+            bullet.show();
+            //子弹自动飞行
+            var timer1 = setInterval(function(){
+                bullet.move();
+                //子弹出界则清除子弹和计时器
+                if(bullet.div.offsetTop<=0){
+                    _map.removeChild(bullet.div);
+                    _bullets.splice(_bullets.indexOf(bullet),1);
+                    clearInterval(timer1);
+                    timer1 = null;
+                }
+            },20);
+
+
+        },100);
+
         //键盘事件--按下空格发射子弹
-        document.onkeydown = function(e){
+        /*document.onkeydown = function(e){
             var ev = e || window.event;
             if(ev.keyCode == 32){
                 var x = _plane.div.offsetLeft + Math.floor(_plane.width/2)*PIX;
@@ -103,8 +134,9 @@
                     }
                 },20);
             }
-        }
+        }*/
     }
+
     //===================函数构造==========================
     //构造飞机
     function Plane(x, y, hp){
@@ -116,16 +148,20 @@
         this.speed = 20;
         this.body = [
             {x:2,y:0},
+
             {x:0,y:1},
             {x:1,y:1},
             {x:2,y:1},
             {x:3,y:1},
             {x:4,y:1},
+
             {x:2,y:2},
+
             {x:1,y:3},
             {x:2,y:3},
             {x:3,y:3}
         ];
+
         //显示
         this.show = function(){
             var p = document.createElement("div");
@@ -147,7 +183,8 @@
             this.div = p;
             _map.appendChild(p);
         }
-        //随鼠标移动
+
+        //移动
         this.move = function(mouseX, mouseY){
             // console.log(mouseX + ","+mouseY);
             // console.log(mouseX - _main.offsetLeft + ">>>" + mouseY - _main.offsetTop);
@@ -156,6 +193,7 @@
                 this.div.style.top = mouseY - _main.offsetTop - this.height*PIX/2 + "px";
             }
         }
+
         //销毁
         this.destroy = function(){
             if(this.div != null){
@@ -164,26 +202,86 @@
             }
         }
     }
+
     //构造子弹
     function Bullet(x, y){
+        this.width = 1;
+        this.height = 1;
+        this.speed = 2;
         this.x = x;
         this.y = y;
+
         //显示
         this.show = function(){
             var b = document.createElement("div");
-            b.style.cssText = "background:#fff;position:absolute;width:"+PIX+"px;height:"+PIX+"px;";
+            b.style.cssText = "background:#fff;position:absolute;width:" + this.width*PIX + "px;height:" + this.height*PIX + "px;";
             b.style.left = this.x + "px";
             b.style.top = this.y + "px";
             this.div = b;
             _map.appendChild(b);
         }
+
+        //移动
         this.move = function(){
-            this.div.style.top = this.div.offsetTop-20+"px";
+            this.div.style.top = this.div.offsetTop - this.speed*PIX + "px";
         }
     }
+
     //构建敌机
-    function Enemy(x, y){
+    function Enemy(x, y, hp){
+        this.width = 5;
+        this.height = 4;
+        this.speed = 0.2;
+        this.x = x;
+        this.y = y;
+        this.hp = hp;
+
+        this.body = [
+            {x:1,y:0},
+            {x:2,y:0},
+            {x:3,y:0},
+
+            {x:2,y:1},
+
+            {x:0,y:2},
+            {x:1,y:2},
+            {x:2,y:2},
+            {x:3,y:2},
+            {x:4,y:2},
+
+            {x:2,y:3},
+        ];
+
+        //显示
+        this.show = function(){
+            var p = document.createElement("div");
+            for(var i=0; i<this.body.length; i++){
+                var pp = document.createElement("div");
+                pp.style.width = PIX + "px";
+                pp.style.height = PIX + "px";
+                pp.style.position = "absolute";
+                pp.style.background = "red";
+                pp.style.left = this.body[i].x * PIX + "px";
+                pp.style.top = this.body[i].y * PIX + "px";
+                p.appendChild(pp);
+            }
+            p.style.width = this.width * PIX + "px";
+            p.style.height = this.height * PIX + "px";
+            p.style.position = "absolute";
+            p.style.left = this.x * PIX - Math.ceil(this.width/2)*PIX + "px";
+            p.style.top = this.y * PIX - this.height/2*PIX + "px";
+            this.div = p;
+            _map.appendChild(p);
+        }
+
+        //移动
+        this.move = function () {
+            this.div.style.top = this.div.offsetTop + this.speed*PIX + "px";
+        }
     }
+
+
+
 </script>
 
 
