@@ -26,6 +26,15 @@
             /*background-image: url("img/bg_1.jpg");*/
             /*background-size: 100%;*/
         }
+        #score{
+            width: auto;
+            height: 30px;
+            line-height: 30px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            color: white;
+        }
         #btn{
             width: 100px;
             height: 30px;
@@ -39,6 +48,7 @@
 <body>
 <div id="main">
     <div id="map"></div>
+    <p id="score">score: <span id="sc">0</span></p>
     <button id="btn">开始游戏</button>
 </div>
 
@@ -47,16 +57,20 @@
     //==================全局变量========================
     //基本方块的px值
     const PIX = 10;
+
     //主容器
     var _main = document.getElementById("main");
     //地图
     var _map = document.getElementById("map");
+    //计分板
+    var _sc = document.getElementById("sc");
     //开始按钮
     var _btn = document.getElementById("btn");
     //地图宽度
     var _mapWidth = Math.floor(_map.offsetWidth/PIX);//40
     //地图高度
     var _mapheight = Math.floor(_map.offsetHeight/PIX);//60
+
     //我方灰机
     var _plane;
     //子弹数组
@@ -64,54 +78,171 @@
     //敌方灰机组
     var _enemys = [];
 
+    //得分
+    var _score = 0;
+
     //====================程序入口========================
     //开始搞事
     main();
 
     //入口函数
     function main(){
+
         //点击开始
-        _btn.onclick = start();
+        _btn.onclick = start;
     }
 
     function start(){
+        console.log("GAME START!");
         _btn.style.display = "none";
+
+        //清空所有子弹和敌机
+        /*for(var i=0; i<_bullets.length; i++){
+            var b = _bullets[i];
+            _map.removeChild(b.div);
+            b = null;
+        }
+        _bullets = [];
+        for(var i=0; i<_enemys.length; i++){
+            var e = _enemys[i];
+            _map.removeChild(e.div);
+            e = null;
+        }
+        _enemys = [];*/
+        //清空战场所有元素
+        /*while(_map.hasChildNodes()){
+            _map.remove
+        }*/
+        _map.innerHTML = "";
+        _score = 0;
+        _sc.innerHTML = _score+"";
+        _plane = null;
+        _bullets = [];
+        _enemys = [];
+
 
         //初始飞机位置
         _plane = new Plane(20,40,3);
         _plane.show();
 
         //鼠标移动事件--移动本方飞机
-        // _map.addEventListener("mousemove",movePlane,true);
-        _map.onmousemove = function(e){
-            var ev = e || window.event;
-            _plane.move(ev.clientX, ev.clientY);
-        }
+        _map.addEventListener("mousemove",mousemove,false);
 
         var mark = 0;
         //计时器连续创建子弹和敌机
         var timer = setInterval(function(){
             mark ++;
-            //自动创建子弹
-            var x = _plane.div.offsetLeft + Math.floor(_plane.width/2)*PIX;
-            var y = _plane.div.offsetTop - PIX;
-            var bullet = new Bullet(x, y);
-            _bullets.push(bullet);
-            bullet.show();
-            //子弹自动飞行
-            var timer1 = setInterval(function(){
-                bullet.move();
-                //子弹出界则清除子弹和计时器
-                if(bullet.div.offsetTop<=0){
-                    _map.removeChild(bullet.div);
-                    _bullets.splice(_bullets.indexOf(bullet),1);
-                    clearInterval(timer1);
-                    timer1 = null;
+
+            //每隔100毫秒创建一颗子弹加入战场
+            if(mark%5 == 0){
+                /*var x = _plane.div.offsetLeft + Math.floor(_plane.width/2)*PIX;
+                var y = _plane.div.offsetTop - PIX;*/
+                var bullet = new Bullet(_plane.x, _plane.y);
+                _bullets.push(bullet);
+                bullet.show();
+            }
+
+            //每隔20毫秒子弹自动飞行
+            for(var i=0; i<_bullets.length; i++){
+                var b = _bullets[i];
+                b.move();
+                //子弹出界则清除子弹
+                if(b.div.offsetTop<=0){
+                    _map.removeChild(b.div);
+                    _bullets.splice(i,1);
+                    b = null;
                 }
-            },20);
+            }
+
+            //每隔800毫秒创建一架敌机加入战场
+            if(mark == 40){
+                var x = Math.floor(Math.random()*_mapWidth);//随机x位置
+                var y = -5;
+                var enemy = new Enemy(x,y,5);
+                _enemys.push(enemy);
+                enemy.show();
+                mark = 0;
+            }
+
+            //每隔40毫秒敌机自动飞行
+            if(mark%2 == 0){
+                for(var i=0; i<_enemys.length; i++){
+                    var e = _enemys[i];
+                    e.move();
+                    //敌机出界则清除敌机
+                    if(e.div.offsetTop>=_mapheight*PIX){
+                        _map.removeChild(e.div);
+                        _enemys.splice(i,1);
+                        e = null;
+                    }
+                }
+            }
+
+            //碰撞检测
+            for(var i=0; i<_enemys.length; i++){
+                var e = _enemys[i];
+                //碰到本方灰机，本方灰机扣1点血量，血量归零则游戏结束
+                //敌机右边距>目标左边距 && 敌机左边距<目标右边距 && 敌机底边距>目标上边距 && 敌机上边距<目标底边距
+                if((e.x+Math.floor(e.width/2) > _plane.x-Math.floor(_plane.width/2)) && (e.x-Math.floor(e.width/2) < _plane.x+Math.floor(_plane.width/2))
+                    &&(e.y+Math.floor(e.height/2) > _plane.y-Math.floor(_plane.height/2)) && (e.y-Math.floor(e.height/2) < _plane.y+Math.floor(_plane.height/2))){
+                    //移除敌机
+                    _map.removeChild(e.div);
+                    _enemys.splice(i,1);
+                    //扣除血量
+                    _plane.hp --;
+                    console.log("lost blood -1");
+                    if(_plane.hp <= 0){
+                        console.log("GAME OVER!");
+                        //清除计时器
+                        clearInterval(timer);
+                        timer = null;
+                        //清除鼠标监听
+                        _map.removeEventListener("mousemove",mousemove,false);
+
+                        alert("GAME OVER!");
+                        _btn.style.display = "block";
+                    }
+                }
+
+                //碰到子弹，敌机扣1点血量，血量归零则加1分
+                //判断子弹是否在敌机内部
+                for(var j=0; j<_bullets.length; j++){
+                    var b = _bullets[j];
+                    if(b.x > (e.x-Math.floor(e.width/2)) && b.x <(e.x+Math.floor(e.width/2))
+                        && b.y > (e.y-Math.floor(e.height/2)) && b.y <(e.y+Math.floor(e.height/2))){
+                        //移除子弹
+                        _map.removeChild(b.div);
+                        _bullets.splice(j,1);
+                        //扣除血量
+                        e.hp --;
+                        if(e.hp <= 0){
+                            //得分
+                            console.log("gain score +1");
+                            _score++;
+                            _sc.innerHTML = _score+"";
+                            //移除敌机
+                            if(e.div.parentNode == _map){
+                                _map.removeChild(e.div);
+                            }
+                            _enemys.splice(i,1);
+                        }
+                    }
+                }
+
+            }
 
 
-        },100);
+        },20);
+
+        //鼠标移动事件
+        function mousemove(e){
+            if(_plane){
+                var ev = e || window.event;
+                var x = Math.floor((ev.clientX - _main.offsetLeft)/PIX);
+                var y = Math.floor((ev.clientY - _main.offsetTop)/PIX);
+                _plane.move(x, y);
+            }
+        }
 
         //键盘事件--按下空格发射子弹
         /*document.onkeydown = function(e){
@@ -171,32 +302,33 @@
                 pp.style.height = PIX + "px";
                 pp.style.position = "absolute";
                 pp.style.background = "yellow";
-                pp.style.left = this.body[i].x * PIX + "px";
-                pp.style.top = this.body[i].y * PIX + "px";
+                pp.style.left = this.body[i].x*PIX + "px";
+                pp.style.top = this.body[i].y*PIX + "px";
                 p.appendChild(pp);
             }
-            p.style.width = this.width * PIX + "px";
-            p.style.height = this.height * PIX + "px";
+            p.style.width = this.width*PIX + "px";
+            p.style.height = this.height*PIX + "px";
             p.style.position = "absolute";
-            p.style.left = this.x*PIX - Math.ceil(this.width/2)*PIX + "px";
-            p.style.top = this.y*PIX - this.height*PIX/2 + "px";
+            p.style.left = (this.x - Math.floor(this.width/2))*PIX + "px";
+            p.style.top = (this.y - this.height/2)*PIX + "px";
             this.div = p;
             _map.appendChild(p);
         }
 
         //移动
-        this.move = function(mouseX, mouseY){
-            // console.log(mouseX + ","+mouseY);
-            // console.log(mouseX - _main.offsetLeft + ">>>" + mouseY - _main.offsetTop);
+        this.move = function(x, y){
+            // console.log(x + ","+y);
             if(this.div){
-                this.div.style.left = mouseX - _main.offsetLeft - Math.ceil(this.width/2)*PIX + "px";
-                this.div.style.top = mouseY - _main.offsetTop - this.height*PIX/2 + "px";
+                this.x = x;
+                this.y = y;
+                this.div.style.left = (this.x - Math.floor(this.width/2))*PIX + "px";
+                this.div.style.top = (this.y - this.height/2)*PIX + "px";
             }
         }
 
         //销毁
         this.destroy = function(){
-            if(this.div != null){
+            if(this.div){
                 _map.removeChild(this.div);
                 this.div = null;
             }
@@ -215,15 +347,18 @@
         this.show = function(){
             var b = document.createElement("div");
             b.style.cssText = "background:#fff;position:absolute;width:" + this.width*PIX + "px;height:" + this.height*PIX + "px;";
-            b.style.left = this.x + "px";
-            b.style.top = this.y + "px";
+            b.style.left = this.x*PIX + "px";
+            b.style.top = this.y*PIX + "px";
             this.div = b;
             _map.appendChild(b);
         }
 
         //移动
         this.move = function(){
-            this.div.style.top = this.div.offsetTop - this.speed*PIX + "px";
+            if(this.div){
+                this.y -= this.speed;
+                this.div.style.top = this.y*PIX + "px";
+            }
         }
     }
 
@@ -260,7 +395,7 @@
                 pp.style.width = PIX + "px";
                 pp.style.height = PIX + "px";
                 pp.style.position = "absolute";
-                pp.style.background = "red";
+                pp.style.background = "white";
                 pp.style.left = this.body[i].x * PIX + "px";
                 pp.style.top = this.body[i].y * PIX + "px";
                 p.appendChild(pp);
@@ -276,7 +411,10 @@
 
         //移动
         this.move = function () {
-            this.div.style.top = this.div.offsetTop + this.speed*PIX + "px";
+            if(this.div){
+                this.y += this.speed;
+                this.div.style.top = this.y*PIX + "px";
+            }
         }
     }
 
