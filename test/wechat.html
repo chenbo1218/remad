@@ -12,7 +12,7 @@
 
         .box{
             width: 400px;
-            height: 610px;
+            height: 600px;
             border: 1px solid darkgray;
             /*border-radius: 5px;*/
             margin: 10px auto;
@@ -35,12 +35,12 @@
             box-sizing: border-box;
             padding: 0px 20px;
             background: #f2f2f2;
+            overflow-y: scroll;
         }
 
         .chat{
             width: 100%;
             height: 38px;
-            /*float: left;*/
             margin: 10px 0px;
         }
         .chat .ava{
@@ -75,7 +75,6 @@
         .mychat{
             width: 100%;
             height: 38px;
-            /*float: left;*/
             margin: 10px 0px;
         }
         .mychat .ava{
@@ -161,14 +160,37 @@
         </div>
 
         <div class="bar">
-            <input type="text" class="ipt" />
-            <input type="button" class="sendBtn" value="发送" />
+            <input type="text" class="ipt" id="ipt" />
+            <input type="button" class="sendBtn" id="sendBtn" value="发送" />
         </div>
 
 
     </div>
 
+
+    <script src="js/static/jquery-3.4.0.js"></script>
     <script>
+
+        // $(document).ready(function(){
+            var $ipt = $("#ipt");
+
+            $("#sendBtn").click(function(){
+                var str = $ipt.val();
+                if(str.trim() != ""){
+                    console.log(str);
+                    var html = "<div class='mychat'>" +
+                        "<img class='ava' src='img/wechat/bo.jpg'/>" +
+                        "<div class='jian'></div>" +
+                        "<div class='txt'>"+str+"</div>" +
+                    "</div>";
+                    $(".cont").append(html);
+                    $ipt.val("");
+                }
+
+            });
+
+
+        // })
 
 
     </script>
