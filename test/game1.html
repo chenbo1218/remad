@@ -1,3 +1,6 @@
+<!--
+    *create by Chenbo on 2019.04.18
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +17,7 @@
             margin: 0 auto;
             border: 1px solid darkgray;
             border-radius: 5px;
+            position: relative;
         }
 
         #main #map{
@@ -23,6 +27,17 @@
             background: #000;
             position: relative;
             overflow: hidden;
+        }
+
+        #main #score{
+            width: auto;
+            height: 20px;
+            line-height: 20px;
+            position: absolute;
+            bottom: 90px;
+            left: 8px;
+            color: #ffaeb5;
+            z-index: 1000;
         }
 
         #main #bar{
@@ -48,22 +63,40 @@
 
     <div id="main">
         <div id="map"></div>
+        <p id="score">score: <span id="sc">0</span></p>
         <div id="bar">
             <button id="btn">开始游戏</button>
         </div>
     </div>
 
     <script>
+        //==================全局变量========================
+        //基本方块的px值
         const PIX = 10;
+        //地图
         var _map = document.getElementById("map");
+        //开始按钮
         var _btn = document.getElementById("btn");
+        //计分板
+        var _sc = document.getElementById("sc");
+        //地图宽度
         var _mapWidth = Math.floor(_map.offsetWidth/PIX);
+        //地图高度
         var _mapHeight = Math.floor(_map.offsetHeight/PIX);
+        //蛇
         var _snake;
+        //食物
         var _food;
+        //计时器
         var _timer;
+        //速度
         var _speed = 200;
+        //得分
+        var _score = 0;
+        //游戏状态：0未开始  1已开始 2已暂停
+        var _status = 0;
 
+        //====================程序入口========================
         //开始搞事
         main();
 
@@ -82,14 +115,38 @@
 
             //点击按钮开始
             _btn.onclick = function(){
-                _timer = setInterval("_snake.run()",_speed);
+                //未开始>进行
+                if(_status == 0){
+                    console.log("游戏开始！！！");
+                    _status = 1;
+                    _score = 0;
+                    _sc.innerHTML = _score+"";
+                    _timer = setInterval("_snake.run()",_speed);
+                    _btn.innerText = "暂停";
+                }
+                //进行>暂停
+                else if(_status == 1){
+                    console.log("游戏暂停！！！");
+                    _status = 2;
+                    clearInterval(_timer);
+                    _btn.innerText = "继续";
+                }
+                //暂停>进行
+                else if(_status == 2){
+                    console.log("游戏继续！！！");
+                    _status = 1;
+                    _timer = setInterval("_snake.run()",_speed);
+                    _btn.innerText = "暂停";
+                }
+
             }
         }
 
+        //===================函数构造==========================
         //构造蛇
         function Snake(){
-            this.headColor = "#FFF334";//头部颜色
-            this.color = "#99ff41";//身体颜色
+            this.headColor = "#3ea3db";//头部颜色
+            this.color = "#51db2b";//身体颜色
             this.direction = "right";//初始运动方向
             //蛇身坐标集合
             this.body = [
@@ -116,6 +173,16 @@
 //                    s.style.border = "1px solid white";
                     s.style.left = this.body[i].x * PIX + "px";
                     s.style.top = this.body[i].y * PIX + "px";
+
+                    s.style.color = "white";
+                    s.style.fontSize = "8px";
+                    s.innerHTML = "<div>刘</div>";
+                    var t = s.getElementsByTagName("div")[0];
+                    t.style.width = "100%";
+                    t.style.height = "100%";
+                    t.style.textAlign = "center";
+                    t.style.lineHeight = "100%";
+                    t.style.transform = "scale(0.8,0.8)";
                     _map.appendChild(s);
                 }
             }
@@ -184,6 +251,10 @@
                     console.log("超过边界！！！");
                     clearInterval(_timer);
                     alert("GAME OVER!");
+                    _btn.innerText = "开始游戏";
+                    _status = 0;
+                    _score = 0;
+                    _sc.innerHTML = _score+"";
                     //删除旧的
                     this.removeAll();
                     //初始化蛇身
@@ -204,6 +275,10 @@
                         console.log("吃到自己！！！")
                         clearInterval(_timer);
                         alert("GAME OVER!");
+                        _btn.innerText = "开始游戏";
+                        _status = 0;
+                        _score = 0;
+                        _sc.innerHTML = _score+"";
                         //删除旧的
                         this.removeAll();
                         //初始化蛇身
@@ -226,6 +301,11 @@
                     console.log("移除食物！！！");
                     _map.removeChild(_food.div);
                     _food.show();
+
+                    //得分
+                    console.log("gain score +1000");
+                    _score+=1000;
+                    _sc.innerHTML = _score+"";
                 }
 
                 //清除老的蛇身
@@ -254,6 +334,16 @@
                 this.y = Math.floor(Math.random()*_mapHeight);
                 f.style.left = this.x*PIX + "px";
                 f.style.top = this.y*PIX + "px";
+
+                f.style.color = "white";
+                f.style.fontSize = "8px";
+                f.innerHTML = "<div>星</div>";
+                var t = f.getElementsByTagName("div")[0];
+                t.style.width = "100%";
+                t.style.height = "100%";
+                t.style.textAlign = "center";
+                t.style.lineHeight = "100%";
+                t.style.transform = "scale(0.8,0.8)";
                 _map.appendChild(f);
             }
         }
