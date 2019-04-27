@@ -8,6 +8,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>贪吃蛇</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
         body{
             background: lightgray;
         }
@@ -35,7 +40,7 @@
             height: 20px;
             line-height: 20px;
             position: absolute;
-            bottom: 90px;
+            bottom: 100px;
             left: 8px;
             color: #ffaeb5;
             z-index: 1000;
@@ -47,13 +52,47 @@
             background: #bbdfdb;
             box-sizing: border-box;
             padding: 30px 0px;
+            position: relative;
         }
         #main #bar #btn{
             width: 100px;
             height: 30px;
             display: block;
-            margin: 0 auto;
+            /*margin: 0 auto;*/
+            position: absolute;
+            left: 50px;
+            top: 30px;
             /*color: #99ff41;*/
+        }
+        #main #bar #opra{
+            width: 120px;
+            height: 80px;
+            position: absolute;
+            right: 30px;
+            top: 10px;
+        }
+        #opra #up,#down,#left,#right{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            text-align: center;
+            line-height: 20px;
+        }
+        #opra #up{
+            left: 50px;
+            top: 0px;
+        }
+        #opra #down{
+            left: 50px;
+            top: 50px;
+        }
+        #opra #left{
+            left: 0px;
+            top: 30px;
+        }
+        #opra #right{
+            left: 100px;
+            top: 30px;
         }
 
 
@@ -67,6 +106,12 @@
         <p id="score">score: <span id="sc">0</span></p>
         <div id="bar">
             <button id="btn">开始游戏</button>
+            <div id="opra">
+                <button id="up"><strong> 上 </strong></button>
+                <button id="down"><strong> 下 </strong></button>
+                <button id="left"><strong> 左 </strong></button>
+                <button id="right"><strong> 右 </strong></button>
+            </div>
         </div>
     </div>
 
@@ -97,6 +142,12 @@
         //游戏状态：0未开始  1已开始 2已暂停
         var _status = 0;
 
+        //轮盘按钮组
+        var _up = document.getElementById("up");
+        var _down = document.getElementById("down");
+        var _left = document.getElementById("left");
+        var _right = document.getElementById("right");
+
         //====================程序入口========================
         //开始搞事
         main();
@@ -112,6 +163,20 @@
             document.onkeydown = function(e){
                 var ev = e || window.event;
                 _snake.setDirection(ev.keyCode);
+            }
+
+            //按下方向轮盘按钮也可以修改蛇方向
+            _up.onclick = function(e){
+                _snake.setDirectionX("up");
+            }
+            _down.onclick = function(e){
+                _snake.setDirectionX("down");
+            }
+            _left.onclick = function(e){
+                _snake.setDirectionX("left");
+            }
+            _right.onclick = function(e){
+                _snake.setDirectionX("right");
             }
 
             //点击按钮开始
@@ -199,6 +264,7 @@
 
             //改变方向
             this.setDirection = function(keycode){
+                console.log("按下了键盘");
                 switch(keycode){
                     case 37:
                         if(this.direction != "right"){
@@ -216,6 +282,33 @@
                         }
                         break;
                     case 40:
+                        if(this.direction != "up"){
+                            this.direction = "down";
+                        }
+                        break;
+                }
+            }
+
+            //另一种改变方向
+            this.setDirectionX = function(direc){
+                console.log("按下了按钮");
+                switch (direc) {
+                    case "left":
+                        if(this.direction != "right"){
+                            this.direction = "left";
+                        }
+                        break;
+                    case "up":
+                        if(this.direction != "down"){
+                            this.direction = "up";
+                        }
+                        break;
+                    case "right":
+                        if(this.direction != "left"){
+                            this.direction = "right";
+                        }
+                        break;
+                    case "down":
                         if(this.direction != "up"){
                             this.direction = "down";
                         }
