@@ -54,14 +54,15 @@
     </div>
 
     <script>
+        const PIX = 10;
         var _map = document.getElementById("map");
         var _btn = document.getElementById("btn");
+        var _mapWidth = Math.floor(_map.offsetWidth/PIX);
+        var _mapHeight = Math.floor(_map.offsetHeight/PIX);
         var _snake;
         var _food;
         var _timer;
         var _speed = 200;
-        var _mapWidth;
-        var _mapHeight;
 
         //开始搞事
         main();
@@ -87,13 +88,9 @@
 
         //构造蛇
         function Snake(){
-            this.width = 10;//节点宽度
-            this.height = 10;//节点高度
             this.headColor = "#FFF334";//头部颜色
             this.color = "#99ff41";//身体颜色
             this.direction = "right";//初始运动方向
-            _mapWidth = Math.floor(_map.offsetWidth/this.width);
-            _mapHeight = Math.floor(_map.offsetHeight/this.height);
             //蛇身坐标集合
             this.body = [
                 {x:2,y:0},
@@ -107,8 +104,8 @@
                 for(var i=0; i<this.body.length; i++){
                     var s = document.createElement("div");
                     this.body[i].div = s;
-                    s.style.width = this.width + "px";
-                    s.style.height= this.height+ "px";
+                    s.style.width = PIX + "px";
+                    s.style.height= PIX + "px";
                     if(i==0){
                         s.style.background = this.headColor;
                     }else{
@@ -117,8 +114,8 @@
                     s.style.position = "absolute";
 //                    s.style.boxSizing = "border-box";
 //                    s.style.border = "1px solid white";
-                    s.style.left = this.body[i].x * this.width + "px";
-                    s.style.top = this.body[i].y * this.height + "px";
+                    s.style.left = this.body[i].x * PIX + "px";
+                    s.style.top = this.body[i].y * PIX + "px";
                     _map.appendChild(s);
                 }
             }
@@ -244,22 +241,19 @@
 
         //构造食物
         function Food(){
-            this.width = 10;
-            this.height = 10;
             this.color = "red";
-
 
             this.show = function(){
                 var f = document.createElement("div");
                 this.div = f;
-                f.style.width = this.width + "px";
-                f.style.height = this.height + "px";
+                f.style.width = PIX + "px";
+                f.style.height = PIX + "px";
                 f.style.background = this.color;
                 f.style.position = "absolute";
                 this.x = Math.floor(Math.random()*_mapWidth);
                 this.y = Math.floor(Math.random()*_mapHeight);
-                f.style.left = this.x*this.width + "px";
-                f.style.top = this.y*this.height + "px";
+                f.style.left = this.x*PIX + "px";
+                f.style.top = this.y*PIX + "px";
                 _map.appendChild(f);
             }
         }

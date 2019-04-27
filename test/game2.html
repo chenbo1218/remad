@@ -186,7 +186,7 @@
                         }
                     }
 
-                    //碰到子弹，敌机扣1点血量，血量归零则加1分
+                    //碰到子弹，敌机扣1点血量，血量归零则加分
                     //判断子弹是否在敌机内部
                     for(var j=0; j<_bullets.length; j++){
                         var b = _bullets[j];
@@ -199,8 +199,8 @@
                             e.hp --;
                             if(e.hp <= 0){
                                 //得分
-                                console.log("gain score +1");
-                                _score++;
+                                console.log("gain score +1000");
+                                _score+=1000;
                                 _sc.innerHTML = _score+"";
                                 //移除敌机
                                 if(e.div.parentNode == _map){

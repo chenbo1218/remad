@@ -11,27 +11,35 @@
         }
 
         .box{
-            width: 400px;
-            height: 600px;
+            width: 450px;
+            height: 630px;
             border: 1px solid darkgray;
-            /*border-radius: 5px;*/
             margin: 10px auto;
-            /*background: ;*/
             background-size: cover;
         }
 
         .top{
             width: 100%;
-            height: 30px;
-            line-height: 30px;
-            background: black;
-            color: white;
-            text-indent: 1em;
+            height: 60px;
+            box-sizing: border-box;
+            padding: 0px 20px;
+            line-height: 60px;
+            background: #f2f2f2;
+            border-bottom: 1px solid #dcdcdc;
+            font-size: 14px;
+        }
+        .top p{
+            float: left;
+        }
+        .top .more{
+            float: right;
+            font-weight: bold;
+            color: #6d6d6d;
         }
 
         .cont{
             width: 100%;
-            height: 520px;
+            height: 400px;
             box-sizing: border-box;
             padding: 0px 20px;
             background: #f2f2f2;
@@ -108,28 +116,34 @@
             clear: both;
         }
 
-
-
         .bar{
             width: 100%;
-            height: 50px;
+            height: 160px;
             padding: 10px 10px;
-            /*background: lightgray;*/
             box-sizing: border-box;
+            padding: 10px 20px;
+            position: relative;
         }
         .bar .ipt{
-            width: 325px;
-            height: 30px;
-            line-height: 30px;
+            width: 410px;
+            height: 120px;
+            line-height: 15px;
             border: none;
-            border-bottom: 1px solid darkgray;
             float: left;
             margin-right: 5px;
         }
+        .bar .btnDiv{
+            width: 410px;
+            position: absolute;
+            bottom: 0px;
+        }
         .bar .sendBtn{
-            width: 50px;
-            height: 30px;
-            float: left;
+            width: 70px;
+            height: 25px;
+            float: right;
+            color: #6d6d6d;
+            border: 1px solid lightgray;
+            background: #f2f2f2;
         }
 
 
@@ -138,8 +152,9 @@
 </head>
 <body>
     <div class="box">
-        <div class="top">
-            幸福冲锋(6)
+        <!--<div class="top">
+            <p>幸福冲锋(6)</p>
+            <div class="more">. . .</div>
         </div>
         <div class="cont">
             <div class="chat">
@@ -157,11 +172,43 @@
                 <div class="jian"></div>
                 <div class="txt">你们两个。。</div>
             </div>
+        </div>-->
+
+
+        <div class="top">
+            <p>刘星</p>
+            <div class="more">. . .</div>
+        </div>
+        <div class="cont">
+            <div class="chat">
+                <img class="ava" src="img/wechat/liuxing.jpg" alt="" />
+                <div class="jian"></div>
+                <div class="txt">梅溪湖这边太挤了</div>
+            </div>
+            <div class="chat">
+                <img class="ava" src="img/wechat/liuxing.jpg" alt="" />
+                <div class="jian"></div>
+                <div class="txt">得买别墅</div>
+            </div>
+            <div class="chat">
+                <img class="ava" src="img/wechat/liuxing.jpg" alt="" />
+                <div class="jian"></div>
+                <div class="txt">我中了100万彩票，等下分你50万</div>
+            </div>
+            <div class="mychat">
+                <img class="ava" src="img/wechat/bo.jpg" alt="" />
+                <div class="jian"></div>
+                <div class="txt">好哥们！！！</div>
+            </div>
         </div>
 
+
+
         <div class="bar">
-            <input type="text" class="ipt" id="ipt" />
-            <input type="button" class="sendBtn" id="sendBtn" value="发送" />
+            <textarea class="ipt" id="ipt" id="" cols="30" rows="10"></textarea>
+            <div class="btnDiv">
+                <input type="button" class="sendBtn" id="sendBtn" value="发送(S)" />
+            </div>
         </div>
 
 
