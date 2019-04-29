@@ -70,37 +70,60 @@
     </style>
 </head>
 <body>
-    <div id="main">
-        <div id="bird" src="img/game4/bird0_0.png"></div>
-        <div id="gameover"></div>
-        <div id="title"></div>
-        <img src="img/game4/vird1_0.png" alt="">
-        <button id="start"><img src="img/game4/btn_play.png" alt=""></button>
+    <div class="main">
 
+        <div class="bird" src="img/bird0_0.png"></div>
+
+        <div class="gameover">
+
+        </div>
+        <div class="title"></div>
+        <img class="bluebird" src="img/bird1_0.png"/>
+        <img class="start" src="img/button_play.png" />
     </div>
 
-    <script>
-        var _flyNum = 0;
-        var _bluebird = document.getElementById("#bluebird");
-        var _gamerunning = false;
+<script>
+    //==================全局变量========================
+    const PIX = 10;
+    var _flyNum = 0;
+    var _bluebird = document.getElementById("#bluebird");
+    var _gamerunning = false;
 
-        //蓝色小鸟翅膀运动
-        var bluebirdFly = setInterval(function(){
-            _flyNum ++;
-            _bluebird.setAttribute("src","img/game4/bird1_"+_flyNum+".png");
-            if(_flyNum>=2){
-                _flyNum = -1;
-            }
-        },100);
-
-        _bluebird.animate({marginTop: 130},500,function(){
-
-        })
+    //背景移动
+    
 
 
+    //==================构造函数========================
+    //背景的柱子
+    function Zhuzi(x, y){
+        this.x = x;
+        this.y = y;
+
+        this.show = function(){
+            var z = document.createElement("div");
+            z.style.width = "30px";
+
+        }
+    }
 
 
-    </script>
+    //蓝色小鸟翅膀运动
+    var bluebirdFly = setInterval(function(){
+        _flyNum ++;
+        _bluebird.setAttribute("src","img/game4/bird1_"+_flyNum+".png");
+        if(_flyNum>=2){
+            _flyNum = -1;
+        }
+    },100);
+
+    _bluebird.animate({marginTop: 130},500,function(){
+
+    })
+
+
+
+
+</script>
 
 </body>
 </html>
