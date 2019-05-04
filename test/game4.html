@@ -10,117 +10,187 @@
         }
 
         #main{
-            border: 1px solid black;
-            width: 600px;
-            height: 512px;
-            background: url("img/game4/bg_day.png") 10px 10px;
-            margin: 20px auto;
-            position: relative;
-            overflow: hidden;
+            width: 400px;
+            height: 550px;
+            border: 2px solid #000;
+            background: #fff;
         }
 
-        #bird{
-            width: 37px;
-            height: 27px;
-            background: url("img/game4/bird0_0.png") no-repeat center;
-            position: absolute;
-            left: 20px;
-            top: 200px;
-            display: none;
-        }
-
-        #gameover{
-            width: 204px;
-            height: 54px;
-            background: url("img/game4/text_game_over.png");
-            margin: auto;
-            left: 0px;
-            right: 0px;
-            top: 0px;
-            bottom: 0px;
-            position: absolute;
-            display: none;
-        }
-
-        #title{
-            width: 178px;
-            height: 48px;
-            background: url("img/game4/title.png");
-            margin: auto;
-            left: 0px;
-            right: 0px;
-            top: 0px;
-            bottom: 0px;
-            position: absolute;
-        }
-
-        #bluebird{
-            display: block;
-            margin: 100px auto;
-        }
-
-        #start{
-            display: block;
-            position: absolute;
-            left: 240px;
-            top: 30px;
-            cursor: pointer;
-        }
 
     </style>
 </head>
 <body>
-    <div class="main">
-
-        <div class="bird" src="img/bird0_0.png"></div>
-
-        <div class="gameover">
-
-        </div>
-        <div class="title"></div>
-        <img class="bluebird" src="img/bird1_0.png"/>
-        <img class="start" src="img/button_play.png" />
-    </div>
+    <canvas id="main"></canvas>
 
 <script>
     //==================全局变量========================
-    const PIX = 10;
-    var _flyNum = 0;
-    var _bluebird = document.getElementById("#bluebird");
-    var _gamerunning = false;
+    var _main = document.getElementById("main");
+    var _ctx = _main.getContext("2d");
 
-    //背景移动
-    
 
 
     //==================构造函数========================
-    //背景的柱子
-    function Zhuzi(x, y){
+    function Bird(x, y, image){
         this.x = x;
         this.y = y;
+        this.image = image;
+        this.width = image.width/2;
+        this.height = image.height;
 
-        this.show = function(){
-            var z = document.createElement("div");
-            z.style.width = "30px";
-
+        this.show = function(context, state){
+            if(state == "up"){
+                _ctx.drawImage(image, 0, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+            }else{
+                _ctx.drawImage(image, this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+            }
         }
     }
 
+    function Obstacle(x, y, h, image){
+        this.x = x;
+        this.y = y;
+        this.width = image.width/2;
+        this.height = h;
 
-    //蓝色小鸟翅膀运动
-    var bluebirdFly = setInterval(function(){
-        _flyNum ++;
-        _bluebird.setAttribute("src","img/game4/bird1_"+_flyNum+".png");
-        if(_flyNum>=2){
-            _flyNum = -1;
+        this.show = function(context, state){
+            if(state == "up"){
+                _ctx.drawImage(image, 0, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+            }else{
+                _ctx.drawImage(image, this.width, image.height-this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+            }
         }
-    },100);
+    }
 
-    _bluebird.animate({marginTop: 130},500,function(){
+    function FlappyBird(){
 
-    })
+    }
+
+    FlappyBird.prototype = {
+        bird: null,
+        bg: null,
+        obs: null,
+        obsList: [],
+
+        mapWidth: 400,
+        mapHeight: 550,
+        startX: 90,
+        startY: 225,
+        obsDistance: 100,
+        obsSpeed: 2,
+        obsInterval: 2000,
+        upSpeed: 8,
+        downSpeed: 3,
+        line: 56,
+        score: 0,
+        touch: false,
+        gameOver: false,
+        createMap: function(){
+            //背景
+            this.bg = new Image();
+            this.bg.src = "img/game4/bg.png";
+            var startBg = new Image();
+            startBg.src = "img/game4/start.jpg";
+            startBg.onload = function(){
+                _ctx.drawImage(startBg,0,0);
+            };
+
+            //小鸟
+            var b = new Image();
+            b.src = "img/game4/bird.png";
+            b.onload = function(){
+                this.bird = new Bird(this.startX, this.startY, b);
+            }.bind(this);
+
+            //障碍物
+            this.obs = new Image();
+            this.obs.src = "img/game4/obs.png";
+            this.obs.onload = function(){
+                var h = 100;
+                var h2 = this.mapHeight - h - this.obsDistance;
+                var obs1 = new Obstacle(this.mapWidth, 0, h, this.obs);
+                var obs2 = new Obstacle(this.mapWidth, this.mapHeight-h2, h2-this.line, this.obs);
+                this.obsList.push(obs1);
+                this.obsList.push(obs2);
+            }.bind(this);
+        },
+
+        //创建障碍物
+        createObs: function(){
+            //随机产生障碍物上管道高度
+            var h = Math.floor(Math.random() * (this,_mapheight, this.obsDistance-this.line));
+            var h2 = this.mapHeight - h -this.obsDistance;
+            var obs1 = new Obstacle(this.mapWidth, 0, h, this.obs);
+            var obs2 = new Obstacle(this.mapWidth, this.mapHeight-h2, h2-this.line, this.obs);
+            this.obsList.push(obs1);
+            this.obsList.push(obs2);
+            //移除越界障碍物
+            if(this.obsList[i].x <- this.objList[0].width){
+                this.obsList.splice(0,2);
+            }
+        },
+
+        //绘制障碍物
+        drawObs: function(){
+            _ctx.fillStyle = "#00ff00";
+            for(var i=0; i<this.obsList.length; i++){
+                this.obsList[i].x -= this.obsSpeed;
+                if(i%2){
+                    this.obsList[i].draw(_ctx, "up");
+                }else{
+                    this.obsList[i].draw(_ctx, "down");
+                }
+            }
+        },
+
+        //计分
+        countScore: function(){
+            if(this.score == 0 && this.obsList[0].x + this.obsList[0].width < this.startX){
+                this.score = 1;
+                return true;
+            }
+            return false;
+        },
+
+        //显示分数
+        showScore: function(){
+            c.strokeStyle = "#000";
+            c.lineWidth = 1;
+            c.fillStyle = "#fff";
+
+            c.fillText(this.score, 10, 50);
+            c.strokeText(this.score, 10, 50);
+        },
+
+        //碰撞检测
+        canMove: function(){
+            if(this.bird.y<0 || this.bird.y>this.mapHeight-this.bird.height-this.line){
+                this.gameOver = true;
+            }else{
+                var boundary = [{
+                    x:this.bird.x,
+                    y:this.bird.y
+                },{
+                    x:this.bird.x + this.bird.width,
+                    y:this.bird.y
+                },{
+                    x:this.bird.x,
+                    y:this.bird.y
+                },{
+                    x:this.bird.x,
+                    y:this.bird.y
+                },{
+                    x:this.bird.x,
+                    y:this.bird.y
+                }
+                ]
+            }
+        }
 
 
+
+
+
+    }
 
 
 </script>

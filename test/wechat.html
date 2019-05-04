@@ -212,32 +212,29 @@
     </div>
 
 
-    <script src="js/static/jquery-3.4.0.js"></script>
-    <script>
+<script src="js/static/jquery-3.4.0.js"></script>
+<script>
+    $(document).ready(function(){
+        var $ipt = $("#ipt");
 
-        // $(document).ready(function(){
-            var $ipt = $("#ipt");
-
-            $("#sendBtn").click(function(){
-                var str = $ipt.val();
-                if(str.trim() != ""){
-                    console.log(str);
-                    var html = "<div class='mychat'>" +
-                        "<img class='ava' src='img/wechat/bo.jpg'/>" +
-                        "<div class='jian'></div>" +
-                        "<div class='txt'>"+str+"</div>" +
-                    "</div>";
-                    $(".cont").append(html);
-                    $ipt.val("");
-                }
-
-            });
+        $("#sendBtn").click(function(){
+            var str = $ipt.val();
+            if(str.trim() != ""){
+                console.log(str);
+                var html = "<div class='mychat'>" +
+                    "<img class='ava' src='img/wechat/bo.jpg'/>" +
+                    "<div class='jian'></div>" +
+                    "<div class='txt'>"+str+"</div>" +
+                "</div>";
+                $(".cont").append(html);
+                $ipt.val("");
+            }
+        });
 
 
-        // })
+    });
 
-
-    </script>
+</script>
 
 
 </body>
