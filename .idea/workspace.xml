@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8a9b78fa-e3c8-4a3f-a6df-2db49143caaf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/bird.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/game4.html" beforeDir="false" afterPath="$PROJECT_DIR$/test/game4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/index.html" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,38 +18,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/game2.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4199">
-              <caret line="247" column="26" selection-start-line="247" selection-start-column="26" selection-end-line="247" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/wechat.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="88" column="24" lean-forward="true" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/game4.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+            <state relative-caret-position="-1921">
+              <caret line="64" column="39" lean-forward="true" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/game3-ori.html">
+        <entry file="file://$PROJECT_DIR$/test/wechat.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="54" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
+            <state relative-caret-position="1100">
+              <caret line="232" selection-start-line="232" selection-end-line="232" />
             </state>
           </provider>
         </entry>
@@ -66,9 +51,16 @@
       <find>bullet</find>
       <find>mark</find>
       <find>bullets</find>
-      <find>setDirection</find>
       <find>console.log</find>
       <find>start</find>
+      <find>this.width</find>
+      <find>_score</find>
+      <find>score</find>
+      <find>setDirection</find>
+      <find>mousemove</find>
+      <find>obsList</find>
+      <find>draw</find>
+      <find>showOver</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -82,11 +74,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test/game4.html" />
         <option value="$PROJECT_DIR$/test/main.js" />
-        <option value="$PROJECT_DIR$/test/game1.html" />
+        <option value="$PROJECT_DIR$/test/game3.html" />
+        <option value="$PROJECT_DIR$/test/game3-ori.html" />
         <option value="$PROJECT_DIR$/test/game2.html" />
+        <option value="$PROJECT_DIR$/test/game1.html" />
         <option value="$PROJECT_DIR$/test/wechat.html" />
+        <option value="$PROJECT_DIR$/test/game4.html" />
       </list>
     </option>
   </component>
@@ -110,7 +104,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -133,6 +126,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -142,7 +136,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test/img/wechat" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -176,7 +170,11 @@
       <workItem from="1555729555582" duration="27568000" />
       <workItem from="1555913373335" duration="2049000" />
       <workItem from="1556099350893" duration="6734000" />
-      <workItem from="1556248806875" duration="5406000" />
+      <workItem from="1556248806875" duration="38167000" />
+      <workItem from="1556521396609" duration="40000" />
+      <workItem from="1556521446278" duration="5168000" />
+      <workItem from="1556605155377" duration="5745000" />
+      <workItem from="1557022089409" duration="7096000" />
     </task>
     <task id="LOCAL-00001" summary="add game4 resource">
       <created>1555643943907</created>
@@ -196,7 +194,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54044000" />
+    <option name="totallyTimeSpent" value="104854000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1015" extended-state="6" />
@@ -238,40 +236,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/index.html" />
     <entry file="file://$PROJECT_DIR$/test/main.js" />
-    <entry file="file://$PROJECT_DIR$/test/game1.html">
+    <entry file="file://$PROJECT_DIR$/test/js/static/vue.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2720">
-          <caret line="178" column="30" lean-forward="true" selection-start-line="178" selection-start-column="30" selection-end-line="178" selection-end-column="30" />
+        <state relative-caret-position="357">
+          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/game2.html">
+    <entry file="file://$PROJECT_DIR$/test/game3.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4199">
-          <caret line="247" column="26" selection-start-line="247" selection-start-column="26" selection-end-line="247" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/game4.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+        <state relative-caret-position="437">
+          <caret line="35" column="52" lean-forward="true" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/game3-ori.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="54" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
+        <state relative-caret-position="4891">
+          <caret line="301" column="21" lean-forward="true" selection-start-line="301" selection-start-column="21" selection-end-line="301" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iiiclub-wechat/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="124" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/game2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="386" column="13" lean-forward="true" selection-start-line="386" selection-start-column="13" selection-end-line="386" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/game1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="119" column="4" selection-start-line="119" selection-start-column="4" selection-end-line="119" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/wechat.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="88" column="24" lean-forward="true" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="24" />
+        <state relative-caret-position="1100">
+          <caret line="232" selection-start-line="232" selection-end-line="232" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#canvas#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/bird.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1375">
+          <caret line="82" column="6" lean-forward="true" selection-start-line="82" selection-start-column="6" selection-end-line="82" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/game4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1921">
+          <caret line="64" column="39" lean-forward="true" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
         </state>
       </provider>
     </entry>

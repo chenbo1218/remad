@@ -20,16 +20,81 @@
     </style>
 </head>
 <body>
-    <canvas id="main"></canvas>
+    <canvas id="main" width="340" height="453" ></canvas>
 
 <script>
     //==================全局变量========================
     var _main = document.getElementById("main");
     var _ctx = _main.getContext("2d");
+    var _game;
+    var _speed = 20;
+    var _isPlay = false;
+    var _gameTime = null;
+    var _btn_start;
 
+
+
+    //====================程序入口======================
+    window.onload = initGame;
+
+    //初始化游戏
+    function initGame(){
+        _ctx.font = "3em 微软雅黑";
+        _game = new FlappyBird();
+        _game.createMap();
+
+        _main.onmousedown = function(){
+            _game.touch = true;
+        }
+        _main.onmouseup = function(){
+            _game.touch = false;
+        }
+        _main.onclick = function(e){
+            if(!_isPlay){
+                _isPlay = true;
+                _gameTime = runGame(_speed);
+            }
+        }
+    }
+
+    //单击屏幕跑起来
+    function runGame(){
+        var updateTimer = setInterval(function(){
+            if(_game.countScore()){
+                var scoreTimer = setInterval(function(){
+                    if(_game.gameOver){
+                        clearInterval(scoreTimer);
+                        return;
+                    }
+                    _game.score ++;
+                },_game.obsInterval);
+            }
+
+            _game.canMove();
+            if(_game.gameOver){
+                _game.showOver();
+                clearInterval(updateTimer);
+                _isPlay = false;
+                return;
+            }
+            _game.clearScreen();
+            _game.drawObs();
+            _game.checkTouch();
+            _game.showScore();
+        },_speed);
+
+        var obsTimer = setInterval(function(){
+            if(_game.gameOver){
+                clearInterval(obsTimer);
+                return;
+            }
+            _game.createObs();
+        }, _game.obsInterval);
+    }
 
 
     //==================构造函数========================
+    //构造鸟
     function Bird(x, y, image){
         this.x = x;
         this.y = y;
@@ -46,6 +111,7 @@
         }
     }
 
+    //构造管道
     function Obstacle(x, y, h, image){
         this.x = x;
         this.y = y;
@@ -61,30 +127,28 @@
         }
     }
 
+    //构造游戏
     function FlappyBird(){
+        this.bird = null;
+        this.bg = null;
+        this.obs = null;
+        this.obsList = [];
+        this.mapWidth = 400;
+        this.mapHeight = 550;
+        this.startX = 90;
+        this.startY = 225;
+        this.obsDistance = 200;
+        this.obsSpeed = 2;
+        this.obsInterval = 2000;
+        this.upSpeed = 8;
+        this.downSpeed = 3;
+        this.line = 56;
+        this.score = 0;
+        this.touch = false;
+        this.gameOver = false;
 
-    }
-
-    FlappyBird.prototype = {
-        bird: null,
-        bg: null,
-        obs: null,
-        obsList: [],
-
-        mapWidth: 400,
-        mapHeight: 550,
-        startX: 90,
-        startY: 225,
-        obsDistance: 100,
-        obsSpeed: 2,
-        obsInterval: 2000,
-        upSpeed: 8,
-        downSpeed: 3,
-        line: 56,
-        score: 0,
-        touch: false,
-        gameOver: false,
-        createMap: function(){
+        //创建地图
+        this.createMap = function(){
             //背景
             this.bg = new Image();
             this.bg.src = "img/game4/bg.png";
@@ -112,57 +176,57 @@
                 this.obsList.push(obs1);
                 this.obsList.push(obs2);
             }.bind(this);
-        },
+        }
 
         //创建障碍物
-        createObs: function(){
+        this.createObs = function(){
             //随机产生障碍物上管道高度
-            var h = Math.floor(Math.random() * (this,_mapheight, this.obsDistance-this.line));
-            var h2 = this.mapHeight - h -this.obsDistance;
-            var obs1 = new Obstacle(this.mapWidth, 0, h, this.obs);
+            var h1 = Math.floor(Math.random() * (this.mapHeight, this.obsDistance-this.line));
+            var h2 = this.mapHeight - h1 -this.obsDistance;
+            var obs1 = new Obstacle(this.mapWidth, 0, h1, this.obs);
             var obs2 = new Obstacle(this.mapWidth, this.mapHeight-h2, h2-this.line, this.obs);
             this.obsList.push(obs1);
             this.obsList.push(obs2);
             //移除越界障碍物
-            if(this.obsList[i].x <- this.objList[0].width){
+            if(this.obsList[0].x <- this.obsList[0].width){
                 this.obsList.splice(0,2);
             }
-        },
+        }
 
         //绘制障碍物
-        drawObs: function(){
+        this.drawObs = function(){
             _ctx.fillStyle = "#00ff00";
             for(var i=0; i<this.obsList.length; i++){
                 this.obsList[i].x -= this.obsSpeed;
                 if(i%2){
-                    this.obsList[i].draw(_ctx, "up");
+                    this.obsList[i].show(_ctx, "up");
                 }else{
-                    this.obsList[i].draw(_ctx, "down");
+                    this.obsList[i].show(_ctx, "down");
                 }
             }
-        },
+        }
 
         //计分
-        countScore: function(){
+        this.countScore = function(){
             if(this.score == 0 && this.obsList[0].x + this.obsList[0].width < this.startX){
                 this.score = 1;
                 return true;
             }
             return false;
-        },
+        }
 
         //显示分数
-        showScore: function(){
-            c.strokeStyle = "#000";
-            c.lineWidth = 1;
-            c.fillStyle = "#fff";
+        this.showScore = function(){
+            _ctx.strokeStyle = "#000";
+            _ctx.lineWidth = 1;
+            _ctx.fillStyle = "#fff";
 
-            c.fillText(this.score, 10, 50);
-            c.strokeText(this.score, 10, 50);
-        },
+            _ctx.fillText(this.score, 10, 50);
+            _ctx.strokeText(this.score, 10, 50);
+        }
 
         //碰撞检测
-        canMove: function(){
+        this.canMove = function(){
             if(this.bird.y<0 || this.bird.y>this.mapHeight-this.bird.height-this.line){
                 this.gameOver = true;
             }else{
@@ -174,23 +238,57 @@
                     y:this.bird.y
                 },{
                     x:this.bird.x,
-                    y:this.bird.y
+                    y:this.bird.y + this.bird.height
                 },{
-                    x:this.bird.x,
-                    y:this.bird.y
-                },{
-                    x:this.bird.x,
-                    y:this.bird.y
+                    x:this.bird.x + this.bird.width,
+                    y:this.bird.y + this.bird.height
+                }];
+                for (var i=0; i<this.obsList.length; i++){
+                    for (var j=0; j<4; j++){
+                        if(boundary[j].x >= this.obsList[i].x && boundary[j].x <= this.obsList[i].x+this.obsList[i].width &&
+                            boundary[j].y >= this.obsList[i].y && boundary[j].y <= this.obsList[i].y+this.obsList[i].height){
+                            this.gameOver = true;
+                            break;
+                        }
+                    }
+                    if(this.gameOver){
+                        break;
+                    }
                 }
-                ]
+
             }
         }
 
+        //检测触摸
+        this.checkTouch = function () {
+            if(this.touch){
+                this.bird.y -= this.upSpeed;
+                this.bird.show(_ctx, "up");
+            }else{
+                this.bird.y += this.downSpeed;
+                this.bird.show(_ctx, "down");
+            }
+        }
 
+        //清屏
+        this.clearScreen = function () {
+            _ctx.drawImage(this.bg, 0, 0);
+        }
 
-
+        //结束画面
+        this.showOver = function () {
+            var overImg = new Image();
+            overImg.src = "img/game4/over.png";
+            overImg.onload = function(){
+                _ctx.drawImage(overImg, (this.mapWidth-overImg.width)/2, (this.mapHeight-overImg.height)/2-50);
+            }.bind(this);
+            return;
+        }
 
     }
+
+
+
 
 
 </script>
