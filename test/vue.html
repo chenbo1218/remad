@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        .green{
+            color: green;
+        }
+    </style>
 </head>
 <body>
+    <h1>VUE基本操作</h1>
 
+    <!--插值-->
     <div id="app">
-        <!--<p>{{message}}</p>
-        <input type="text" v-model="message"/>-->
+        <h3>插值</h3>
+        <p>{{message}}</p>
+    </div>
 
+    <!--指令v-for v-if v-bind v-model v-on v-once-->
+    <div id="app2">
+        <h3>指令：循环</h3>
         <ul>
             <li v-for="todo in todos">
                 {{todo.text}}
@@ -17,19 +28,142 @@
         </ul>
     </div>
 
-    <script src="js/static/vue.js"></script>
-    <script>
-        new Vue({
-            el: "#app",
-            data: {
-                message: "hello vue",
-                todos: [
-                    {text:'something1'},
-                    {text:'something2'},
-                    {text:'something3'}
-                ]
+    <div id="app3">
+        <h3>指令：判断</h3>
+        <p v-if="seen">现在你看到我了</p>
+        <p v-else>看不到可惜了</p>
+    </div>
+
+    <div id="app4">
+        <h3>指令：绑定输入</h3>
+        <p>{{message}}</p>
+        <input type="text" v-model="message">
+    </div>
+
+    <div id="app5">
+        <h3>指令：绑定属性</h3>
+        <p v-bind:class="vst1">this is vue test</p>
+    </div>
+
+    <div id="app6">
+        <h3>指令：绑定事件</h3>
+        <button v-on:click="vfunc1">{{count}}</button>
+    </div>
+
+    <div id="app6p1">
+        <h3>指令：固化</h3>
+        <p>{{msg}}</p>
+        <p v-once>{{msg}}</p>
+        <input v-model="msg" type="text" />
+    </div>
+
+    <div id="app6p2">
+        <h3>指令：解析html</h3>
+        <p v-html="vhtml"></p>
+    </div>
+
+    <!--组件-->
+    <div id="app7">
+        <h3>组件</h3>
+        <v-comp1 title="hello"></v-comp1>
+        <v-comp1 title="hi"></v-comp1>
+    </div>
+
+
+
+
+
+<script src="js/static/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data:{
+            message: "this is vue text"
+        }
+    });
+
+    var app2 = new Vue({
+        el: "#app2",
+        data: {
+            message: "this is app2 text",
+            todos: [
+                {text:'something1'},
+                {text:'something2'},
+                {text:'something3'}
+            ]
+        }
+    });
+
+    var app3 = new Vue({
+        el: "#app3",
+        data:{
+            seen : false
+        }
+    });
+
+    var app4 = new Vue({
+        el: "#app4",
+        data:{
+            message: "hello vue"
+        }
+    });
+
+    var app5 = new Vue({
+        el: "#app5",
+        data:{
+            vst1: "green"
+        }
+    });
+
+    var app6 = new Vue({
+        el: "#app6",
+        data:{
+            count:1
+        },
+        methods:{
+            vfunc1:function(){
+                this.count++;
             }
-        })
-    </script>
+
+        }
+
+    });
+
+    var app6p1 = new Vue({
+        el:"#app6p1",
+        data:{
+            msg: "guess me will change or no"
+        }
+    });
+
+    var app6p2 = new Vue({
+        el:"#app6p2",
+        data:{
+            vhtml: "<p>You can see me as <span style='color:red'>html text</span> now</p>"
+        }
+    });
+
+
+    Vue.component('v-comp1',{
+        props: ['title'],
+        data: function(){
+            return {
+                count: 0
+            }
+        },
+        template: '<div><strong>{{title}}</strong><button v-on:click="count++">You clicked me {{count}} times.</button>'
+    });
+    var app7 = new Vue({
+        el: "#app7",
+        data:{
+
+        }
+    })
+
+
+
+
+
+</script>
 </body>
 </html>
