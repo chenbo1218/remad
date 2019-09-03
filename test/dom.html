@@ -161,6 +161,44 @@
         var b = a.filter(function(x){
             return x!="小明"
         });
+
+
+        var arr = [1,2,3,4,5,6];
+        //末尾追加
+        arr.push(0);
+        console.log("push:"+arr);
+
+        //末尾删除
+        arr = [1,2,3,4,5,6];
+        arr.pop();
+        console.log("pop:"+arr);
+
+        //首位追加
+        arr = [1,2,3,4,5,6];
+        arr.unshift(0);
+        console.log("unshift:"+arr);
+
+        //首位删除
+        arr = [1,2,3,4,5,6];
+        arr.shift();
+        console.log("shift:"+arr);
+
+        //改变原数组，从第几位开始，截取多少长度，顺便在切口处添加新的数据
+        arr = [1,2,3,4,5,6];
+        arr.splice(0,3,"x");
+        console.log("splice:"+arr);
+
+        //不改变原数组，返回一个新的数组，包含从 start 到 end （不包括该元素）的元素
+        arr = [1,2,3,4,5,6];
+        var arr1 = arr.slice(0,3);
+        console.log("slice:"+arr+"<<>>"+arr1);
+
+        //不改变原数据，切分字符串为数组
+        var str = "123456";
+        var arrStr = str.split("");
+        console.log("split:"+str+"<<>>"+arrStr);
+
+
     </script>
 
 </body>

@@ -180,7 +180,7 @@
             <p>刘星</p>
             <div class="more">. . .</div>
         </div>
-        <div class="cont">
+        <div class="cont" id="cont">
             <div class="chat">
                 <img class="ava" src="img/wechat/liuxing.jpg" alt="" />
                 <div class="jian"></div>
@@ -219,19 +219,34 @@
     $(document).ready(function(){
         var $ipt = $("#ipt");
 
+        document.onkeydown = function(e){
+            var ev = e || window.event;
+            if(ev.keyCode==13){
+                console.log("press enter!");
+                sendMsg();
+            }
+        }
         $("#sendBtn").click(function(){
+            sendMsg();
+        });
+
+        function sendMsg(){
             var str = $ipt.val();
             if(str.trim() != ""){
-                console.log(str);
+                console.log("send message:"+str);
                 var html = "<div class='mychat'>" +
                     "<img class='ava' src='img/wechat/bo.jpg'/>" +
                     "<div class='jian'></div>" +
                     "<div class='txt'>"+str+"</div>" +
-                "</div>";
+                    "</div>";
                 $(".cont").append(html);
+                var cont = document.getElementById('cont');
+                cont.scrollTop = cont.scrollHeight;
                 $ipt.val("");
+                // var ipt = document.getElementById("ipt");
+                $ipt.selectionStart = 0;
             }
-        });
+        }
 
 
     });

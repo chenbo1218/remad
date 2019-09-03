@@ -63,14 +63,20 @@
     </div>
 
     <!--组件-->
-    <div id="app7">
+    <div id="comp">
         <h3>组件</h3>
         <v-comp1 title="hello"></v-comp1>
         <v-comp1 title="hi"></v-comp1>
+        <v-comp2></v-comp2>
     </div>
 
+<!--    <audio id="au" src="" preload="auto"></audio>-->
+    <!--<audio controls="controls">
+        <source src="main.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>-->
 
-
+    <audio src="main.mp3" loop id="au" style="display:none"></audio>
 
 
 <script src="js/static/vue.js"></script>
@@ -87,9 +93,9 @@
         data: {
             message: "this is app2 text",
             todos: [
-                {text:'something1'},
-                {text:'something2'},
-                {text:'something3'}
+                {text:'do something1'},
+                {text:'do something2'},
+                {text:'do something3'}
             ]
         }
     });
@@ -143,7 +149,7 @@
         }
     });
 
-
+    //组件
     Vue.component('v-comp1',{
         props: ['title'],
         data: function(){
@@ -151,14 +157,25 @@
                 count: 0
             }
         },
-        template: '<div><strong>{{title}}</strong><button v-on:click="count++">You clicked me {{count}} times.</button>'
+        template: '<div><strong>{{title}}</strong><button v-on:click="count++">You clicked me {{count}} times.</button></div>'
     });
-    var app7 = new Vue({
-        el: "#app7",
+
+    Vue.component("v-comp2",{
+        template: '<strong>尼玛德</strong>'
+    });
+
+    var comp = new Vue({
+        el: "#comp",
         data:{
 
         }
-    })
+    });
+
+    var au = document.getElementById("au");
+    // au.setAttribute("src","main.mp3");
+    au.play();
+
+
 
 
 
