@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a9b78fa-e3c8-4a3f-a6df-2db49143caaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ytongzhuang/img/banner.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Ytongzhuang/img/banner.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Ytongzhuang/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Ytongzhuang/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ytongzhuang/lib/swiper-3.4.2.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ytongzhuang/lib/swiper.min.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Ytongzhuang/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+            <state relative-caret-position="369">
+              <caret line="118" column="30" lean-forward="true" selection-start-line="118" selection-start-column="30" selection-end-line="118" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -47,7 +45,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>chufa</find>
       <find>bullet</find>
       <find>mark</find>
       <find>bullets</find>
@@ -77,6 +74,7 @@
       <find>kefu</find>
       <find>var au = document.getElementById(&quot;au&quot;);</find>
       <find>home-bottom</find>
+      <find>bold</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -116,7 +114,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="y" value="1" />
     <option name="width" value="1036" />
@@ -219,7 +217,7 @@
       <workItem from="1570421437011" duration="8924000" />
       <workItem from="1571024360624" duration="4364000" />
       <workItem from="1573464021352" duration="1923000" />
-      <workItem from="1573549122827" duration="12937000" />
+      <workItem from="1573549122827" duration="14667000" />
     </task>
     <task id="LOCAL-00001" summary="add game4 resource">
       <created>1555643943907</created>
@@ -239,7 +237,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263626000" />
+    <option name="totallyTimeSpent" value="265356000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1015" extended-state="6" />
@@ -456,8 +454,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Ytongzhuang/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+        <state relative-caret-position="369">
+          <caret line="118" column="30" lean-forward="true" selection-start-line="118" selection-start-column="30" selection-end-line="118" selection-end-column="30" />
         </state>
       </provider>
     </entry>
