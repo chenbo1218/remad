@@ -494,23 +494,23 @@
                             </div>
                             <div class="page-category js-categoryInner">
                                 <h1>木木</h1>
-                                <img src="./img/erweima01.jpg" alt="">
+                                <img class="lazy" data-original="./img/erweima01.jpg" alt="">
                                 <p>主营中大童，中小童，幼儿童鞋 ）闺蜜团队新款➖5、秒杀特价包邮 微销通（mu13566259134）运费新疆、西藏16块、其它地区6块。合作快递 中通</p>
                                 <br>
                                 <strong>比趣童鞋</strong>
-                                <img src="./img/erweima02.jpg" alt="">
+                                <img class="lazy" data-original="./img/erweima02.jpg" alt="">
                                 <p>主营中大童、中小童童鞋（12-37码）支持（7）天无理由退换货 闺蜜团队（-3）微销通（v202822）运费 （普通地区包邮） 合作快递 （圆通/韵达）</p>
                                 <br>
                                 <strong>小脚丫</strong>
-                                <img src="./img/erweima03.jpg" alt="">
+                                <img class="lazy" data-original="./img/erweima03.jpg" alt="">
                                 <p>主营中大童，中小童，童鞋，闺蜜团队减5元，微销通（xiaojiaoya1922）运费江浙沪5元，大部分地区7元，新疆西藏15元， 合作快递 （四通一达，随机发货）</p>
                                 <br>
                                 <strong>新刻度童鞋</strong>
-                                <img src="./img/erweima04.jpg" alt="">
+                                <img class="lazy" data-original="./img/erweima04.jpg" alt="">
                                 <p>微销通：v53929704  招收代理 工厂直供，一件代发，支持7天无理由退换货(个别特价款除外更新时会有说明) 注意：鞋子一经穿过，磨损，一律不退不换。代理加盟，退换货细则请咨询客服。</p>
                                 <br>
                                 <strong>缇蜜欧</strong>
-                                <img src="./img/erweima05.jpg" alt="">
+                                <img class="lazy" data-original="./img/erweima05.jpg" alt="">
                                 <p>每单减2元。好评返现3元。
                                     好评要求:在闺蜜团队群晒买家秀并且带缇蜜欧三字好评，或分享本名片。
                                     申请成为缇蜜欧宣传大使，终身包邮，并且完成任务有提成。
@@ -607,6 +607,13 @@
             });
         // });
 
+        $("#btn3").click(function(){
+            $("#cont3 img.lazy").lazyload({
+                placeholder : "./img/caiyuanbao/404.jpg",
+                container: $("#tab3"),
+                effect: "fadeIn"
+            });
+        });
 
     });
 

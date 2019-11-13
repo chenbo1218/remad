@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Ytongzhuang/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="607" column="11" lean-forward="true" selection-start-line="600" selection-start-column="8" selection-end-line="607" selection-end-column="11" />
+            <state relative-caret-position="627">
+              <caret line="613" column="32" lean-forward="true" selection-start-line="613" selection-start-column="32" selection-end-line="613" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -223,7 +223,7 @@
       <workItem from="1570421437011" duration="8924000" />
       <workItem from="1571024360624" duration="4364000" />
       <workItem from="1573464021352" duration="1923000" />
-      <workItem from="1573549122827" duration="26633000" />
+      <workItem from="1573549122827" duration="26960000" />
     </task>
     <task id="LOCAL-00001" summary="add game4 resource">
       <created>1555643943907</created>
@@ -243,7 +243,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="277322000" />
+    <option name="totallyTimeSpent" value="277649000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1015" extended-state="6" />
@@ -467,8 +467,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Ytongzhuang/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="607" column="11" lean-forward="true" selection-start-line="600" selection-start-column="8" selection-end-line="607" selection-end-column="11" />
+        <state relative-caret-position="627">
+          <caret line="613" column="32" lean-forward="true" selection-start-line="613" selection-start-column="32" selection-end-line="613" selection-end-column="32" />
         </state>
       </provider>
     </entry>
