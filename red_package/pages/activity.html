@@ -1,0 +1,164 @@
+<!--
+* 活动奖励界面
+*
+* create by Sam on 2019/10/30
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link rel="stylesheet" href="../css/common.css">
+    <style type="text/css">
+        /*内容*/
+        .comm-fix-content{
+            top: 70px;
+            margin-bottom: 53px;
+        }
+
+        /*列表*/
+        .my-activity-cell{
+            width: 100%;
+            height: auto;
+            padding: 10px 10px;
+            box-sizing: border-box;
+        }
+        .my-activity-cell a{
+            width: 100%;
+            height: auto;
+        }
+        .my-activity-cell a img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body ontouchstart>
+    <!-- 底部导航栏 -->
+    <div class="weui-tabbar my-nav-tabbar fix-bottom">
+        <a href="message.html" class="weui-tabbar__item" id="message">
+            <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+            <div class="weui-tabbar__icon">
+                <img src="../assets/img/nav1-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">消息</p>
+        </a>
+        <a href="group.html" class="weui-tabbar__item" id="group">
+            <div class="weui-tabbar__icon">
+                <img src="../assets/img/nav2-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">群组</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on" id="activity">
+            <div class="my-nav-icon">
+                <img src="../assets/img/nav3-1.png" alt="">
+            </div>
+        </a>
+        <a href="contact.html" class="weui-tabbar__item" id="contact">
+            <div class="weui-tabbar__icon">
+                <img src="../assets/img/nav4-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">通讯录</p>
+        </a>
+        <a href="mine.html" class="weui-tabbar__item" id="mine">
+            <div class="weui-tabbar__icon">
+                <img src="../assets/img/nav5-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+
+    <!-- 顶部元素   -->
+    <div class="fix-top">
+        <!--标题头-->
+        <div class="comm-title-red-adv">
+            <p class="comm-title-red-adv__title">活动奖励</p>
+            <div class="comm-title-red-adv__tools">
+                <!--快捷功能-->
+    <!--            <a id="btn-fast-func"><img src="../assets/img/icon-more.png"></a>-->
+                <!--搜索栏-->
+    <!--            <a id="btn-search"><img src="../assets/img/icon-find.png"></a>-->
+            </div>
+        </div>
+    </div>
+
+    <!--内容容器-->
+    <div class="comm-fix-content">
+        <!--列表-->
+        <div class="my-activity-cont">
+            <ul class="my-activity-cells">
+                <li class="my-activity-cell">
+                    <a href="act-dljl.html">
+                        <img src="../assets/img/activity/act7.png" alt="">
+                    </a>
+                </li>
+                <li class="my-activity-cell">
+                    <a href="act-czjl.html">
+                        <img src="../assets/img/activity/act1.png" alt="">
+                    </a>
+                </li>
+                <li class="my-activity-cell">
+                    <a href="act-fbmejl.html">
+                        <img src="../assets/img/activity/act2.png" alt="">
+                    </a>
+                </li>
+                <li class="my-activity-cell">
+                    <a href="act-qbmejl.html">
+                        <img src="../assets/img/activity/act3.png" alt="">
+                    </a>
+                </li>
+                <li class="my-activity-cell">
+                    <a href="act-ztlsyj.html">
+                        <img src="../assets/img/activity/act4.png" alt="">
+                    </a>
+                </li>
+                <!--<li class="my-activity-cell">
+                    <a href="javascript:;">
+                        <img src="../assets/img/activity/act5.png" alt="">
+                    </a>
+                </li>-->
+                <li class="my-activity-cell">
+                    <a href="act-yqhyjl.html">
+                        <img src="../assets/img/activity/act6.png" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<!--<script src="../lib/swiper.min.js"></script>-->
+<script>
+    $(function() {
+        //code here
+
+
+
+
+
+    });
+
+</script>
+</body>
+</html>

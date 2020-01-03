@@ -1,0 +1,667 @@
+<!--
+* 群聊窗口
+*
+* create by Sam on 2019/10/30
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .comm-title-red p{
+            float: left;
+            margin-left: 15%;
+        }
+        .my-title-right-btn{
+            width: 35px;
+            height: 35px;
+            float: right;
+            margin-top: 3px;
+            margin-right: 5px;
+        }
+        .my-title-right-btn img{
+            width: 35px;
+            height: 35px;
+        }
+
+        /*聊天框*/
+        .box{
+            width: 100%;
+            height: auto;
+            background-size: cover;
+            box-sizing: border-box;
+        }
+
+        .cont{
+            width: 100%;
+            height: auto;
+            /*margin-bottom: 60px;*/
+            box-sizing: border-box;
+            padding: 0px 20px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            position: fixed;
+            top: 120px;
+            bottom: 60px;
+        }
+
+        /*聊天块*/
+        .chat{
+            width: 100%;
+            height: auto;
+            margin: 10px 0px;
+        }
+        .chat:after, .mychat:after{
+            display:block;
+            content:' ';
+            clear:both;
+        }
+        .chat .ava{
+            width: 38px;
+            height: 38px;
+            display: block;
+            float: left;
+        }
+        .chat .cot{
+            float: left;
+        }
+
+        .cot .name{
+            width: 90%;
+            margin-left: 5%;
+            overflow: hidden;
+        }
+        .cot .txt{
+
+        }
+        .cot .hb{
+            height: auto;
+        }
+
+        .txt .txt-jian{
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-width: 5px;
+            border-color:  transparent #fff transparent transparent;
+            float: left;
+            margin-top: 10px;
+        }
+        .txt .txt-cont{
+            width: auto;
+            max-width: 250px;
+            /*max-width: 70%;*/
+            height: auto;
+            line-height: 20px;
+            background: white;
+            float: left;
+            border-radius: 3px;
+            padding: 10px 5px;
+        }
+
+        .hb .hb-jian{
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-width: 5px;
+            border-color:  transparent #ffae42 transparent transparent;
+            float: left;
+            margin-top: 10px;
+        }
+        .hb .hb-cont{
+            float: left;
+            width: 250px;
+            height: 90px;
+            position: relative;
+        }
+        .hb .hb-cont img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .hb .hb-cont p{
+            line-height: 20px;
+        }
+        .hb .hb-cont .p1{
+            margin-left: 25%;
+            margin-top: 6%;
+            color: #fff;
+            font-size: 16px;
+        }
+        .hb .hb-cont .p2{
+            margin-left: 25%;
+            color: #fff;
+        }
+        .hb .hb-cont .p3{
+            margin-top: 6%;
+            margin-left: 2%;
+        }
+
+
+
+        .mychat .ava{
+            float: right;
+        }
+        .mychat .cot{
+            float: right;
+        }
+        .mychat .cot .name{
+            text-align: right;
+        }
+        .mychat .cot .txt .txt-jian{
+            border-color:  transparent transparent transparent #9eea6a;
+            float: right;
+        }
+        .mychat .cot .txt .txt-cont{
+            background-color: #9eea6a;
+            float: right;
+        }
+        .mychat .cot .hb .hb-jian{
+            border-color:  transparent transparent transparent #ffae42;
+            float: right;
+        }
+        .mychat .cot .hb .hb-cont{
+            float: right;
+        }
+
+        /*操作栏*/
+        .bar{
+            width: 100%;
+            height: auto;
+            /*height: 60px;*/
+            /*line-height: 60px;*/
+            padding: 10px 10px;
+            box-sizing: border-box;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+        }
+        .bar .opts{
+            width: 100%;
+            height: 40px;
+        }
+
+        .bar .ipt{
+            width: 70%;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 10px;
+            border: none;
+            float: left;
+            box-sizing: border-box;
+            background-color: #e8e8e8;
+            border-radius: 10px;
+        }
+        .bar .btns{
+            width: 30%;
+            height: 40px;
+            line-height: 40px;
+            float: left;
+            position: relative;
+        }
+        .btns .btn{
+            display: block;
+            width: 50%;
+            height: 100%;
+            line-height: 100%;
+            text-align: center;
+            position: absolute;
+        }
+        .btns .btn img{
+            height: 40px;
+            width: 40px;
+        }
+        .btn-emoji{
+            left: 0;
+            top: 0;
+        }
+        .btn-more, .btn-send{
+            left: 50%;
+            top: 0;
+        }
+        .btn-send{
+            height: 34px !important;
+            line-height: 34px !important;
+            margin-top: 3px;
+            color: #fff;
+            background: #fe4c55;
+            border-radius: 12px;
+        }
+
+        .bar .menus{
+            width: 100%;
+            height: 160px;
+        }
+        .weui-grid{
+            width: 25%;
+            height: 80px;
+            padding: 0 0;
+        }
+        .weui-grids:after, .weui-grids:before{
+            border: none;
+        }
+        .weui-grid:after, .weui-grid:before{
+            border: none;
+        }
+        .weui-grid__icon{
+            width: 50px;
+            height: 50px;
+            margin-bottom: -10px;
+        }
+        .weui-grid__label{
+            height: 30px;
+            line-height: 30px;
+            margin-top: 0 !important;
+        }
+
+        /*红包模态框*/
+        .modal-hongbao{
+            width: 315px;
+            height: 420px;
+            /*top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;*/
+            color: #ffd49d;
+            background-color: transparent;
+        }
+        .modal-hongbao .bg{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .modal-hongbao .ava{
+            width: 150px;
+            margin: 0 auto;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 50px;
+        }
+        .ava img{
+            float: left;
+            display: block;
+            width: 30px;
+            height: 30px;
+            border-radius: 3px;
+        }
+        .ava p{
+            float: left;
+            width: 115px;
+            height: 30px;
+            margin-left: 5px;
+            overflow: hidden;
+            text-align: left;
+        }
+        .modal-hongbao .title{
+            margin-top: 8px;
+            letter-spacing: 2px;
+        }
+        .modal-hongbao .kai{
+            display: block;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            margin-top: 140px;
+        }
+        .modal-hongbao .kai img{
+            width: 100%;
+            height: 100%;
+        }
+        .modal-hongbao .check{
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 40px;
+            color: #ffd49d;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png" alt=""></a>
+        <p>7-100元可发可抢(7包1.6倍)(24小时娱乐)</p>
+        <a href="group-info.html" class="my-title-right-btn"><img src="../assets/img/chat/icon-group-info.png" alt=""></a>
+    </div>
+
+    <!--内容-->
+    <div class="box">
+        <!--聊天窗口-->
+        <div class="cont" id="cont">
+            <!--下拉刷新-->
+            <div class="weui-pull-to-refresh__layer" style="display: none">
+                <div class='weui-pull-to-refresh__arrow'></div>
+                <div class='weui-pull-to-refresh__preloader'></div>
+                <div class="down">下拉刷新</div>
+                <div class="up">释放刷新</div>
+                <div class="refresh">正在刷新</div>
+            </div>
+
+            <div class="chat">
+                <img class="ava" src="../assets/img/liuxing.jpg">
+                <div class="cot">
+                    <div class="name gray">刘星</div>
+                    <!--<div class="txt">
+                        <div class="txt-jian"></div>
+                        <div class="txt-cont">给你发个红包吧</div>
+                    </div>-->
+                    <div class="hb">
+                        <div class="hb-jian"></div>
+                        <div class="hb-cont">
+                            <img src="../assets/img/chat/hongbao-saolei.png">
+                            <p class="p1 bold">20-7</p>
+                            <p class="p2">查看红包</p>
+                            <p class="p3 gray">扫雷红包</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat mychat">
+                <img class="ava" src="../assets/img/bo.jpg">
+                <div class="cot">
+                    <div class="name gray">我</div>
+                    <!--<div class="txt">
+                        <div class="txt-jian"></div>
+                        <div class="txt-cont">给你发个红包吧</div>
+                    </div>-->
+                    <div class="hb">
+                        <div class="hb-jian"></div>
+                        <div class="hb-cont">
+                            <img src="../assets/img/chat/hongbao-saolei.png">
+                            <p class="p1 bold">20-7</p>
+                            <p class="p2">查看红包</p>
+                            <p class="p3 gray">扫雷红包</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat">
+                <img class="ava" src="../assets/img/liuxing.jpg">
+                <div class="cot">
+                    <div class="name gray">刘星</div>
+                    <!--<div class="txt">
+                        <div class="txt-jian"></div>
+                        <div class="txt-cont">给你发个红包吧</div>
+                    </div>-->
+                    <div class="hb">
+                        <div class="hb-jian"></div>
+                        <div class="hb-cont">
+                            <img src="../assets/img/chat/hongbao-douniu.png">
+                            <p class="p1 bold">20-7</p>
+                            <p class="p2">查看红包</p>
+                            <p class="p3 gray">牛牛红包</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat">
+                <img class="ava" src="../assets/img/liuxing.jpg">
+                <div class="cot">
+                    <div class="name gray">刘星</div>
+                    <!--<div class="txt">
+                        <div class="txt-jian"></div>
+                        <div class="txt-cont">给你发个红包吧</div>
+                    </div>-->
+                    <div class="hb">
+                        <div class="hb-jian"></div>
+                        <div class="hb-cont">
+                            <img src="../assets/img/chat/hongbao-fuli.png">
+                            <p class="p1 bold">20-7</p>
+                            <p class="p2">查看红包</p>
+                            <p class="p3 gray">福利红包</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--操作栏-->
+        <div class="bar">
+            <div class="opts">
+                <input class="weui-input ipt" id="ipt" placeholder="已禁止聊天" />
+                <div class="btns">
+                    <a class="btn btn-emoji" id="btn-emoji"><img src="../assets/img/chat/icon-emoji.png"></a>
+                    <a class="btn btn-more" id="btn-more"><img src="../assets/img/chat/icon-more.png"></a>
+                    <a class="btn btn-send" id="btn-send" hidden>发送</a>
+                </div>
+            </div>
+            <div class="menus" id="menus" hidden>
+                <div class="weui-grids">
+                    <a href="chat-group-hbsend.html" class="weui-grid js_grid">
+                        <div class="weui-grid__icon">
+                            <img src="../assets/img/chat/icon-fuli.png">
+                        </div>
+                        <p class="weui-grid__label gray">
+                            福利
+                        </p>
+                    </a>
+                    <a href="mine-rules.html" class="weui-grid js_grid">
+                        <div class="weui-grid__icon">
+                            <img src="../assets/img/chat/icon-qungui.png">
+                        </div>
+                        <p class="weui-grid__label gray">
+                            群规
+                        </p>
+                    </a>
+                    <a href="chat-group-hbsend.html" class="weui-grid js_grid">
+                        <div class="weui-grid__icon">
+                            <img src="../assets/img/chat/icon-hongbao.png">
+                        </div>
+                        <p class="weui-grid__label gray">
+                            红包
+                        </p>
+                    </a>
+                    <a href="mine-recharge.html" class="weui-grid js_grid">
+                        <div class="weui-grid__icon">
+                            <img src="../assets/img/chat/icon-chongzhi.png">
+                        </div>
+                        <p class="weui-grid__label gray">
+                            充值
+                        </p>
+                    </a>
+
+
+                    <a href="mine-rules.html" class="weui-grid js_grid">
+                        <div class="weui-grid__icon">
+                            <img src="../assets/img/chat/icon-wanfa.png">
+                        </div>
+                        <p class="weui-grid__label gray">
+                            玩法
+                        </p>
+                    </a>
+                    <a href="mine-faq.html" class="weui-grid js_grid">
+                        <div class="weui-grid__icon">
+                            <img src="../assets/img/chat/icon-bangzhu.png">
+                        </div>
+                        <p class="weui-grid__label gray">
+                            帮助
+                        </p>
+                    </a>
+                    <a href="mine-proxy-main.html" class="weui-grid js_grid">
+                        <div class="weui-grid__icon">
+                            <img src="../assets/img/chat/icon-jiameng.png">
+                        </div>
+                        <p class="weui-grid__label gray">
+                            加盟
+                        </p>
+                    </a>
+                    <a class="weui-grid js_grid">
+                        <div class="weui-grid__icon">
+                            <img src="../assets/img/chat/icon-kefu.png">
+                        </div>
+                        <p class="weui-grid__label gray">
+                            客服
+                        </p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!--模态框-->
+    <div class="weui-mask"></div>
+    <div class="weui-dialog modal-hongbao">
+        <img class="bg" src="../assets/img/chat/bg-kaihongbao.png" >
+        <div class="ava clear">
+            <img src="../assets/img/liuxing.jpg" >
+            <p>刘星的红包</p>
+        </div>
+        <p class="title fs20">恭喜发财，大吉大利</p>
+        <a class="kai" id="btn-kai"><img src="../assets/img/chat/icon-kai.png"></a>
+        <a href="chat-group-hbdetail.html" class="check" id="check">查看领取详情>></a>
+    </div>
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        //下拉刷新
+        $(".cont").pullToRefresh(function() {
+            $(".weui-pull-to-refresh__layer").show();
+
+            //在这里请求后台..
+            //模拟请求完成
+            setTimeout(function() {
+                $(".weui-pull-to-refresh__layer").hide();
+                $(".cont").pullToRefreshDone();
+            }, 2000);
+
+        });
+
+        //发送消息
+        var $cont = $("#cont");
+        var $ipt = $("#ipt");
+        var $btnSend = $("#btn-send");
+        var $btnMore = $("#btn-more");
+        var $menus = $("#menus");
+        var _isMenusShow = false;
+
+        //禁言效果
+        $ipt.attr("readonly","readonly");
+
+        //默认滚屏到最下
+        scrollToBottom();
+
+        //输入框变化
+        $btnSend.hide();
+        $ipt.bind("input propertychange",function(event){
+            var str = $(this).val();
+            if(str.length>0){
+                $btnSend.show();
+                $btnMore.hide();
+            }else{
+                $btnSend.hide();
+                $btnMore.show();
+            }
+        });
+
+        //发送文本
+        $btnSend.click(function(){
+            sendMsg();
+            $btnSend.hide();
+            $btnMore.show();
+        });
+        function sendMsg(){
+            var str = $ipt.val();
+            if(str.trim() != ""){
+                console.log("send message:"+str);
+                var html = "<div class='mychat'>" +
+                    "<img class='ava' src='../assets/img/bo.jpg'/>" +
+                    "<div class='jian'></div>" +
+                    "<div class='txt'>"+str+"</div>" +
+                    "</div>";
+                $cont.append(html);
+
+                var scrollHeight = $cont.prop("scrollHeight");
+                $cont.animate({scrollTop:scrollHeight}, 400);
+                // $cont.scrollTop(scrollHeight);
+
+                $ipt.val("");
+                $ipt.focus();
+                // setTimeout("$ipt.focus()",1);
+            }
+        }
+
+        //展开功能
+        $btnMore.click(function(){
+            _isMenusShow = !_isMenusShow;
+            if(_isMenusShow){
+                $menus.show();
+                $cont.css("bottom","220px");
+                scrollToBottom();
+            }else{
+                $menus.hide();
+                $cont.css("bottom","60px");
+            }
+        });
+
+        //输入框获得焦点时，面板隐藏
+        $ipt.focus(function(){
+            $menus.hide();
+            $cont.css("bottom","60px");
+            _isMenusShow = false;
+        });
+
+        //内容面板滑动时，面板隐藏
+        /*$cont.scroll(function(){
+            $menus.hide();
+            $cont.css("bottom","60px");
+            _isMenusShow = false;
+        });*/
+
+
+
+        function scrollToBottom(){
+            var scrollHeight = $cont.prop("scrollHeight");
+            $cont.animate({scrollTop:scrollHeight}, 400);
+        }
+
+        //红包打开
+        $(".hb").click(function(){
+            $(".weui-mask").addClass("weui-mask--visible");
+            $(".weui-dialog").addClass("weui-dialog--visible");
+        });
+        $(".weui-mask").click(function(){
+            $(".weui-mask").removeClass("weui-mask--visible");
+            $(".weui-dialog").removeClass("weui-dialog--visible");
+        });
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

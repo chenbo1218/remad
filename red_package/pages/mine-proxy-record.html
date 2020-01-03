@@ -1,0 +1,331 @@
+<!--
+* 我的报表
+*
+* create by Sam on 2019/11/04
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+    <style>
+        .weui-grids{
+            width: 100%;
+            /*height: 180px;*/
+            box-sizing: border-box;
+            background-color: white;
+            overflow: hidden;
+            background: #fff;
+        }
+        .weui-grid{
+            width: 50%;
+            height: 117px;
+            padding: 20px 20px;
+            box-sizing: border-box;
+        }
+        .weui-grid .weui-grid__icon{
+            width: 50px;
+            height: 50px;
+        }
+
+        .my-re-grid{
+            height: 115px;
+        }
+        .my-re-grid .weui-grid__icon{
+            width: 25px;
+            height: 25px;
+        }
+
+        .my-re-title{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-indent: 10px;
+            color: darkgray;
+            background-color: #fff;
+            margin-top: 10px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png"></a>
+        <p>我的报表</p>
+    </div>
+
+    <!--内容-->
+    <div class="comm-fix-content">
+        <!--时间选取器-->
+        <div class="weui-grids">
+            <a class="weui-grid js_grid date-picker" id="date-picker1">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/common/icon-start.png">
+                </div>
+                <p class="weui-grid__label gray">
+                    开始时间：<span></span>
+                </p>
+            </a>
+            <a class="weui-grid js_grid date-picker" id="date-picker2">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/common/icon-end.png">
+                </div>
+                <p class="weui-grid__label gray">
+                    结束时间：<span></span>
+                </p>
+            </a>
+        </div>
+
+        <!--APP活跃度统计-->
+        <p class="my-re-title">APP活跃度</p>
+        <div class="weui-grids">
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-new.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    10
+                </p>
+                <p class="weui-grid__label gray">
+                    新注册人数
+                </p>
+            </div>
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-all.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    100
+                </p>
+                <p class="weui-grid__label gray">
+                    总注册人数
+                </p>
+            </div>
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-1st.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    1288.00/10
+                </p>
+                <p class="weui-grid__label gray">
+                    首充金额/笔数
+                </p>
+            </div>
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-2rd.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    12506.00/176
+                </p>
+                <p class="weui-grid__label gray">
+                    二充金额/笔数
+                </p>
+            </div>
+        </div>
+
+        <!--充值提现统计-->
+        <p class="my-re-title">充值与提现</p>
+        <div class="weui-grids">
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-recharge-all.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    156820.00
+                </p>
+                <p class="weui-grid__label gray">
+                    充值总额
+                </p>
+            </div>
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-withdraw-all.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    78490.00
+                </p>
+                <p class="weui-grid__label gray">
+                    提现总额
+                </p>
+            </div>
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-recharge-all.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    0.00
+                </p>
+                <p class="weui-grid__label gray">
+                    起始余额
+                </p>
+            </div>
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-recharge-all.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    89566.00
+                </p>
+                <p class="weui-grid__label gray">
+                    截止余额
+                </p>
+            </div>
+        </div>
+
+        <!--发包抢包统计-->
+        <p class="my-re-title">发包与抢包</p>
+        <div class="weui-grids">
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-fabao.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    156820.00/1612
+                </p>
+                <p class="weui-grid__label gray">
+                    发包金额/个数
+                </p>
+            </div>
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-qiangbao.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    156820.00/9827
+                </p>
+                <p class="weui-grid__label gray">
+                    抢包金额/个数
+                </p>
+            </div>
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-fabao-num.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    728
+                </p>
+                <p class="weui-grid__label gray">
+                    发包人数
+                </p>
+            </div>
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-qiangbao-num.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    1532
+                </p>
+                <p class="weui-grid__label gray">
+                    抢包人数
+                </p>
+            </div>
+        </div>
+
+        <!--奖金佣金统计-->
+        <p class="my-re-title">奖金与佣金</p>
+        <div class="weui-grids">
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-yongjin.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    26820.00
+                </p>
+                <p class="weui-grid__label gray">
+                    流水佣金分成
+                </p>
+            </div>
+            <div class="weui-grid js_grid my-re-grid">
+                <!--空缺-->
+                <p class="weui-grid__label gray">
+                    敬请期待
+                </p>
+            </div>
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-jiangjin.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    7548.00
+                </p>
+                <p class="weui-grid__label gray">
+                    首充用户奖金
+                </p>
+            </div>
+            <div class="weui-grid js_grid my-re-grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-re-jiangjin.png">
+                </div>
+                <p class="weui-grid__label bold">
+                    12043.00
+                </p>
+                <p class="weui-grid__label gray">
+                    二充用户奖金
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        var d = new Date();
+        $(".date-picker").find("p>span").text(d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate());
+
+        //时间选择器
+        $("#date-picker1").datetimePicker({
+            title: '请选择开始时间',
+            times: function () {
+                return [];
+            },
+            onClose: function (e) {
+                console.log("已选取日期，请求刷新...");
+                $("#date-picker1 > p > span").text(e.value.join("-"));
+            }
+        });
+
+        $("#date-picker2").datetimePicker({
+            title: '请选择结束时间',
+            times: function () {
+                return [];
+            },
+            onClose: function (e) {
+                console.log("已选取日期，请求刷新...");
+                $("#date-picker2 > p > span").text(e.value.join("-"));
+            }
+        });
+
+
+
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

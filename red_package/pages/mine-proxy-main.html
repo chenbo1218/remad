@@ -1,0 +1,156 @@
+<!--
+* 代理中心
+*
+* create by Sam on 2019/11/01
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+    <style>
+        /*代理中心*/
+        .weui-grids{
+            width: 100%;
+            height: auto;
+            box-sizing: border-box;
+            background-color: white;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .weui-grid{
+            height: auto;
+            padding: 20px 20px;
+        }
+        .weui-grid .weui-grid__icon{
+            width: 50px;
+            height: 50px;
+        }
+        .weui-grids:before, .weui-grids:after{
+            border: none;
+        }
+        .weui-grid:before, .weui-grid:after{
+            border: none;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png"></a>
+        <p>代理中心</p>
+    </div>
+
+    <!--内容-->
+    <div class="comm-fix-content">
+        <!--海报-->
+        <div class="comm-top-haibao">
+            <img src="../assets/img/proxy/top-haibao.png" alt="">
+        </div>
+
+        <!--列表-->
+        <div class="weui-grids">
+            <a href="javascript:showInfo();" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-apply.png">
+                </div>
+                <p class="weui-grid__label">
+                    申请代理
+                </p>
+            </a>
+            <a href="static/static008.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-rule.png">
+                </div>
+                <p class="weui-grid__label">
+                    代理规则
+                </p>
+            </a>
+            <a href="mine-proxy-course.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-popular.png">
+                </div>
+                <p class="weui-grid__label">
+                    推广教程
+                </p>
+            </a>
+
+            <a href="mine-proxy-lower.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-lower.png">
+                </div>
+                <p class="weui-grid__label">
+                    下级玩家
+                </p>
+            </a>
+            <a href="mine-proxy-record.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-list.png">
+                </div>
+                <p class="weui-grid__label">
+                    我的报表
+                </p>
+            </a>
+            <a href="mine-share-main.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-share.png">
+                </div>
+                <p class="weui-grid__label">
+                    分享赚钱
+                </p>
+            </a>
+
+            <a href="http://www.hongbao118.com/index.html?incode=583006" target="_blank" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/proxy/icon-website.png">
+                </div>
+                <p class="weui-grid__label">
+                    保存下载官网
+                </p>
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+
+
+
+
+        //code here
+
+
+
+
+
+    });
+
+    function showInfo(){
+        var info = "您的直推玩家：0，直推代理：0，直推流水：0元。未达到代理申请条件。"
+        $.alert(info);
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!--
+* 个人信息编辑
+*
+* create by Sam on 2019/10/31
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .weui-cell img{
+            width: 40px;
+            height: 40px;
+        }
+        .weui-cell .weui-cell__bd{
+            text-align: right;
+        }
+        .weui-cell .weui-cell__bd input, .weui-cell .weui-cell__bd p{
+            text-align: right;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png"></a>
+        <p>个人信息</p>
+    </div>
+
+    <!--内容-->
+    <div class="comm-fix-content">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">头像</label>
+                </div>
+                <div class="weui-cell__bd">
+    <!--                <img class="my-cell-icon" src="../assets/img/liuxing.jpg">-->
+                    <div class="weui-uploader">
+                        <div class="weui-uploader__bd">
+                            <ul class="weui-uploader__files" id="uploaderFiles">
+
+                            </ul>
+                            <div class="weui-uploader__input-box">
+                                <input id="uploaderInput" class="weui-uploader__input zjxfjs_file" type="file" accept="image/*" multiple="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">昵称</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" value="我要吃肉" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">性别</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" value="男" id="picker-sex" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">手机号码</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>15616454552</p>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">二维码名片</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <a href="mine-erweima.html"><img class="my-cell-icon" src="../assets/img/erweima.jpg"></a>
+                </div>
+            </div>
+
+        </div>
+
+        <br/>
+        <a href="mine.html" class="comm-btn-big comm-btn-big-red">保存</a>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        $("#picker-sex").picker({
+            title: "请选择性别",
+            cols: [
+                {
+                    textAlign: 'center',
+                    values: ['男', '女']
+                }
+            ]
+        });
+
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

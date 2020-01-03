@@ -1,0 +1,394 @@
+<!--
+* 我的界面
+*
+* create by Sam on 2019/10/30
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link rel="stylesheet" href="../css/common.css">
+    <style type="text/css">
+        /*内容*/
+        .my-content{
+            margin-bottom: 53px;
+            margin-top: 0px;
+            overflow-x: hidden;
+        }
+
+        /*头部*/
+        .my-mine-topbar{
+            width: 100%;
+            height: 120px;
+            padding: 15px 15px;
+            box-sizing: border-box;
+            background: url("../assets/img/mine-title-bg.png");
+            background-size: cover;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .my-mine-topbar__ani{
+            position: absolute;
+            right: 15px;
+            top: 0px;
+            width: 120px;
+            height: auto;
+        }
+        .my-mine-topbar__p1, .my-mine-topbar__p2{
+            width: 50%;
+            height: 50px;
+            overflow: hidden;
+            float: left;
+            margin-top: 40px;
+        }
+        .my-mine-topbar__ava{
+            display: block;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            float: left;
+        }
+        .my-mine-topbar__account{
+            margin-left: 5px;
+            float: left;
+        }
+        .my-mine-topbar__account p{
+            height: 25px;
+            line-height: 25px;
+        }
+        .my-mine-topbar__account p img{
+            width: 18px;
+            height: 18px;
+        }
+        .my-mine-topbar__p2{
+            margin-top: 65px;
+            height: 25px;
+        }
+        .my-mine-topbar__p2 p{
+            float: right;
+            height: 25px;
+            line-height: 25px;
+        }
+
+        /*代理中心*/
+        .my-mine-proxy{
+            width: 100%;
+            height: 80px;
+            padding: 15px 0px;
+            box-sizing: border-box;
+            background-color: white;
+            overflow: hidden;
+        }
+        .weui-grids:before, .weui-grids:after{
+            border: none;
+        }
+        .weui-grid{
+            width: 50%;
+            height: 50px;
+            padding: 0;
+        }
+        .weui-grid:after{
+            border: none;
+        }
+        .weui-grid:last-child:before{
+            border: none;
+        }
+
+        /*列表*/
+        .my-mine-cells{
+            margin-top: 10px;
+
+        }
+        .my-mine-cell{
+            width: 100%;
+            height: 40px;
+            padding: 10px 10px;
+            box-sizing: border-box;
+            background-color: white;
+        }
+        .my-mine-cell .weui-cell__hd img{
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+        }
+        .my-mine-cell .weui-cell__bd.my-mine-cell__link{
+            width: 50%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .my-mine-cell .weui-cell__ft img{
+            display: block;
+            width: 50px;
+            height: 20px;
+        }
+
+
+    </style>
+</head>
+
+<body ontouchstart>
+    <!-- 底部导航栏 -->
+    <div class="weui-tabbar my-nav-tabbar fix-bottom">
+        <a href="message.html" class="weui-tabbar__item" id="message">
+            <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+            <div class="weui-tabbar__icon">
+                <img src="../assets/img/nav1-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">消息</p>
+        </a>
+        <a href="group.html" class="weui-tabbar__item" id="group">
+            <div class="weui-tabbar__icon">
+                <img src="../assets/img/nav2-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">群组</p>
+        </a>
+        <a href="activity.html" class="weui-tabbar__item" id="activity">
+            <div class="my-nav-icon">
+                <img src="../assets/img/nav3-1.png" alt="">
+            </div>
+        </a>
+        <a href="contact.html" class="weui-tabbar__item" id="contact">
+            <div class="weui-tabbar__icon">
+                <img src="../assets/img/nav4-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">通讯录</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on" id="mine">
+            <div class="weui-tabbar__icon">
+                <img src="../assets/img/nav5-2.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+
+    <!--内容容器-->
+    <div class="my-content">
+        <!--下拉刷新-->
+        <div class="weui-pull-to-refresh__layer" style="display: none">
+            <div class='weui-pull-to-refresh__arrow'></div>
+            <div class='weui-pull-to-refresh__preloader'></div>
+            <div class="down">下拉刷新</div>
+            <div class="up">释放刷新</div>
+            <div class="refresh">正在刷新</div>
+        </div>
+
+        <!--头部-->
+        <div class="my-mine-topbar">
+            <img class="my-mine-topbar__ani" src="../assets/img/coin.png" alt="" />
+            <ul class="clear">
+                <li class="my-mine-topbar__p1" onclick="javascript:window.location.href='mine-info.html'">
+                    <img class="my-mine-topbar__ava" src="../assets/img/liuxing.jpg" />
+                    <div class="my-mine-topbar__account">
+                        <p>名称五个字 <span><img src="../assets/img/common/icon-female.png"></span></p>
+                        <p>账号：<span id="user-id">750258</span></p>
+                    </div>
+                </li>
+                <li class="my-mine-topbar__p2">
+                    <p>金额:<span>750258</span>元</p>
+                </li>
+            </ul>
+        </div>
+
+        <!--代理中心-->
+        <div class="weui-grids my-mine-proxy">
+            <a href="mine-proxy-main.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/common/icon-proxy.png">
+                </div>
+                <p class="weui-grid__label">
+                    代理中心
+                </p>
+            </a>
+            <a href="mine-share-main.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/common/icon-share.png">
+                </div>
+                <p class="weui-grid__label">
+                    分享赚钱
+                </p>
+            </a>
+        </div>
+
+        <!--列表-->
+        <div class="my-message-cont">
+            <div class="weui-cells my-mine-cells">
+                <div class="weui-cell my-mine-cell" href="javascript:;">
+                    <div class="weui-cell__hd">
+                        <img src="../assets/img/common/icon-mcode.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>邀请码</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <p id="user-icode">935282</p>
+                    </div>
+                </div>
+                <div class="weui-cell my-mine-cell" href="javascript:;">
+                    <div class="weui-cell__hd">
+                        <img src="../assets/img/common/icon-link.png">
+                    </div>
+                    <div class="weui-cell__bd my-mine-cell__link">
+                        <p>邀请链接 <span class="gray ov" id="user-link">http://www.gosun118.com/index.html?incode=750283</span></p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <a id="btn-copy" data-clipboard-target="#user-link"><img src="../assets/img/common/btn-copy.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-cells my-mine-cells">
+                <a class="weui-cell weui-cell_access my-mine-cell" href="mine-recharge.html">
+                    <div class="weui-cell__hd">
+                        <img src="../assets/img/common/icon-charge.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>充值中心</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access my-mine-cell" href="mine-withdraw.html">
+                    <div class="weui-cell__hd">
+                        <img src="../assets/img/common/icon-withdraw.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>提现中心</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+            </div>
+
+            <div class="weui-cells my-mine-cells">
+                <a class="weui-cell weui-cell_access my-mine-cell" href="mine-bill-main.html">
+                    <div class="weui-cell__hd">
+                        <img src="../assets/img/common/icon-bill.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>账单记录</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access my-mine-cell" href="mine-faq.html">
+                    <div class="weui-cell__hd">
+                        <img src="../assets/img/common/icon-help.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>帮助中心</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+            </div>
+
+            <div class="weui-cells my-mine-cells">
+                <div class="weui-cell my-mine-cell">
+                    <div class="weui-cell__hd">
+                        <img src="../assets/img/common/icon-version.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>版本</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <p>1.01</p>
+                    </div>
+                </div>
+                <a class="weui-cell weui-cell_access my-mine-cell" href="mine-settings.html">
+                    <div class="weui-cell__hd">
+                        <img src="../assets/img/common/icon-settings.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>设置</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access my-mine-cell" id="btn-exit" href="javascript:;">
+                    <div class="weui-cell__hd">
+                        <img src="../assets/img/common/icon-logout.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>退出</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script src="../lib/clipboard.min.js"></script>
+<script>
+    $(function() {
+        //下拉刷新
+        $(".my-content").pullToRefresh(function() {
+            $(".weui-pull-to-refresh__layer").show();
+
+            //在这里请求后台..
+            //模拟
+            setTimeout(function() {
+                $(".weui-pull-to-refresh__layer").hide();
+                $(".my-content").pullToRefreshDone();
+            }, 2000);
+
+        });
+
+        //复制链接
+        var clipboard = new ClipboardJS("#btn-copy", {
+            text: function() {
+                return $('#user-link').text();
+            }
+        });
+        clipboard.on('success', function(e) {
+            //复制成功之后的回调
+            // console.log(e);
+            //提示：这里是个坑,需要手动销毁当前的clipboard,否则会触发两次事件
+            clipboard.destroy();
+            $.toast("复制成功~",1000);
+        });
+
+        //退出登录
+        $("#btn-exit").click(function(){
+            $.confirm({
+                title: '是否确认退出？',
+                text: '',
+                onOK: function () {
+                    //退出账号操作
+                    //模拟
+                    window.location.href = "login-main.html";
+                },
+                onCancel: function () {
+
+                }
+            });
+        })
+
+
+
+
+
+
+
+    });
+
+</script>
+</body>
+</html>

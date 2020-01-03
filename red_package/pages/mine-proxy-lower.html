@@ -1,0 +1,329 @@
+<!--
+* 我的下级
+*
+* create by Sam on 2019/11/04
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+    <style>
+
+        /*预览*/
+        .my-low-preview{
+            width: 100%;
+            height: 60px;
+            line-height: 30px;
+            color: #fff;
+            background: -webkit-linear-gradient(left, #fe3763 , #ff703e);
+            background: -o-linear-gradient(right, #fe3763 , #ff703e);
+            background: -moz-linear-gradient(right, #fe3763 , #ff703e);
+            background: linear-gradient(to right, #fe3763 , #ff703e);
+        }
+        .my-low-preview__item{
+            width: 50%;
+            float: left;
+            text-align: center;
+        }
+
+        /*搜索栏*/
+        .my-low-search{
+            width: 100%;
+            height: 90px;
+            color: #fff;
+            padding: 15px 15px;
+            box-sizing: border-box;
+            background: -webkit-linear-gradient(left, #fe3763 , #ff703e);
+            background: -o-linear-gradient(right, #fe3763 , #ff703e);
+            background: -moz-linear-gradient(right, #fe3763 , #ff703e);
+            background: linear-gradient(to right, #fe3763 , #ff703e);
+        }
+        .my-low-search__item{
+            width: 44%;
+            height: 60px;
+            line-height: 30px;
+            float: left;
+        }
+        .my-low-search__item input{
+            width: 82%;
+            height: 30px;
+            padding: 0 8px;
+            line-height: 30px;
+            color: #000;
+            background-color: #fff;
+            border-radius: 3px;
+        }
+        .my-low-search__btn{
+            height: 30px;
+            line-height: 30px;
+            padding-top: 30px;
+            text-align: center;
+            width: 12%;
+            float: left;
+        }
+        .my-low-search__btn img{
+            width: 30px;
+            height: 30px;
+        }
+
+        .comm-fix-content{
+            top: 220px;
+        }
+        .my-low-result{
+            padding: 10px 15px;
+        }
+        .my-low-result__item{
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            border-radius: 3px;
+            background-color: #fff;
+            width: 100%;
+            height: 120px;
+            padding: 10px 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .p1, .p2{
+            width: 100%;
+            height: 50px;
+        }
+        .p1 li, .p2 li{
+            float: left;
+            overflow: hidden;
+        }
+        .p1-ava{
+            width: 20%;
+            height: 100%;
+        }
+        .p1-ava img{
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+        }
+        .p1-acc{
+            width: 60%;
+            height: 100%;
+            line-height: 25px;
+        }
+        .p1-acc img{
+            width: 20px;
+            height: 20px;
+        }
+        .p1-btn{
+            width: 20%;
+            height: 100%;
+        }
+        .p1-btn a{
+            display: block;
+            width: 90%;
+            height: 25px;
+            margin-top: 8px;
+            line-height: 25px;
+            border-radius: 15px;
+            color: #fff;
+            text-align: center;
+            background-color: #fe3763;
+            font-size: 12px;
+        }
+
+        .p2 li{
+            width: 33.3%;
+            height: 50px;
+            line-height: 25px;
+            text-align: center;
+        }
+
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="fix-top">
+        <div class="comm-title-red">
+            <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png"></a>
+            <p>下级玩家</p>
+        </div>
+
+        <!--数据概览-->
+        <div class="my-low-preview clear">
+            <div class="my-low-preview__item">
+                <p class="fs18">2</p>
+                <p>团队成员：代理<span>500</span> 玩家<span>300</span></p>
+            </div>
+            <div class="my-low-preview__item">
+                <p class="fs18">2</p>
+                <p>直推成员：代理<span>259</span> 玩家<span>122</span></p>
+            </div>
+        </div>
+
+        <!--搜索栏-->
+        <div class="my-low-search clear">
+            <div class="my-low-search__item">
+                <p>用户账号</p>
+                <input class="weui-input" type="text" placeholder="点击输入">
+            </div>
+            <div class="my-low-search__item">
+                <p>用户级别</p>
+                <input class="weui-input" id="pick-level" type="text" value="全部">
+            </div>
+            <a class="my-low-search__btn" id="btn-search">
+                <img src="../assets/img/common/icon-find.png" alt="">
+            </a>
+        </div>
+    </div>
+
+
+    <!--搜索结果列表-->
+    <div class="comm-fix-content">
+        <div class="my-low-result" id="result-list" hidden>
+            <div class="my-low-result__item">
+                <ul class="p1 clear">
+                    <li class="p1-ava">
+                        <img src="../assets/img/liuxing.jpg" />
+                    </li>
+                    <li class="p1-acc">
+                        <p>刘星<span><img src="../assets/img/common/icon-female.png"></span></p>
+                        <p class="gray">ID：<span class="user-id">750258</span></p>
+                    </li>
+                    <li class="p1-btn">
+                        <a class="p1-check">查看详情</a>
+                    </li>
+                </ul>
+                <ul class="p2 clear">
+                    <li>
+                        <p class="bold">0</p>
+                        <p class="gray">代理数</p>
+                    </li>
+                    <li>
+                        <p class="bold">0</p>
+                        <p class="gray">玩家数</p>
+                    </li>
+                    <li>
+                        <p class="bold">0.00</p>
+                        <p class="gray">流水佣金</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="my-low-result__item">
+                <ul class="p1 clear">
+                    <li class="p1-ava">
+                        <img src="../assets/img/liuxing.jpg" />
+                    </li>
+                    <li class="p1-acc">
+                        <p>苏小轼、<span><img src="../assets/img/common/icon-female.png"></span></p>
+                        <p class="gray">ID：<span class="user-id">750258</span></p>
+                    </li>
+                    <li class="p1-btn">
+                        <a class="p1-check">查看详情</a>
+                    </li>
+                </ul>
+                <ul class="p2 clear">
+                    <li>
+                        <p class="bold">0</p>
+                        <p class="gray">代理数</p>
+                    </li>
+                    <li>
+                        <p class="bold">0</p>
+                        <p class="gray">玩家数</p>
+                    </li>
+                    <li>
+                        <p class="bold">0.00</p>
+                        <p class="gray">流水佣金</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="my-low-result__item">
+                <ul class="p1 clear">
+                    <li class="p1-ava">
+                        <img src="../assets/img/liuxing.jpg" />
+                    </li>
+                    <li class="p1-acc">
+                        <p>拿爱浇灌身体<span><img src="../assets/img/common/icon-female.png"></span></p>
+                        <p class="gray">ID：<span id="user-id">750258</span></p>
+                    </li>
+                    <li class="p1-btn">
+                        <a class="p1-check">查看详情</a>
+                    </li>
+                </ul>
+                <ul class="p2 clear">
+                    <li>
+                        <p class="bold">0</p>
+                        <p class="gray">代理数</p>
+                    </li>
+                    <li>
+                        <p class="bold">0</p>
+                        <p class="gray">玩家数</p>
+                    </li>
+                    <li>
+                        <p class="bold">0.00</p>
+                        <p class="gray">流水佣金</p>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        //选择级别
+        $("#pick-level").picker({
+            title: "选择用户级别",
+            cols: [
+                {
+                    textAlign: 'center',
+                    values: [
+                        '全部',
+                        '会员用户',
+                        '代理用户'
+                    ]
+                }
+            ]
+        });
+
+        //点击搜索--模拟效果
+        $("#btn-search").click(function(){
+            $.showLoading("数据加载中...");
+
+            setTimeout(function() {
+                $.hideLoading();
+                $("#result-list").show();
+            }, 3000)
+
+        });
+
+
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>
