@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/Ytongzhuang" />
       <excludeFolder url="file://$MODULE_DIR$/digoUnion" />
       <excludeFolder url="file://$MODULE_DIR$/fir" />
       <excludeFolder url="file://$MODULE_DIR$/food" />
