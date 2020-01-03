@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a9b78fa-e3c8-4a3f-a6df-2db49143caaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/remad.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/remad.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/red_package/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/red_package/css/common.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/red_package/pages/chat-group.html" beforeDir="false" afterPath="$PROJECT_DIR$/red_package/pages/chat-group.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/red_package/pages/message.html" beforeDir="false" afterPath="$PROJECT_DIR$/red_package/pages/message.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -45,20 +42,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/red_package/css/common.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="221" column="18" selection-start-line="221" selection-start-column="18" selection-end-line="221" selection-end-column="18" />
+            <state relative-caret-position="454">
+              <caret line="212" column="17" lean-forward="true" selection-start-line="212" selection-start-column="17" selection-end-line="212" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/red_package/pages/message.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-119">
-              <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+            <state relative-caret-position="612">
+              <caret line="237" column="75" selection-start-line="237" selection-start-column="75" selection-end-line="237" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -146,6 +143,7 @@
         <option value="$PROJECT_DIR$/Ytongzhuang/wxhy.html" />
         <option value="$PROJECT_DIR$/red_package/pages/chat-group.html" />
         <option value="$PROJECT_DIR$/red_package/css/common.css" />
+        <option value="$PROJECT_DIR$/red_package/pages/message.html" />
       </list>
     </option>
   </component>
@@ -187,6 +185,13 @@
               <item name="remad" type="462c0819:PsiDirectoryNode" />
               <item name="red_package" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="remad" type="b2602c69:ProjectViewProjectNode" />
+              <item name="remad" type="462c0819:PsiDirectoryNode" />
+              <item name="red_package" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -264,7 +269,7 @@
       <workItem from="1573712409270" duration="788000" />
       <workItem from="1576823207450" duration="5979000" />
       <workItem from="1578034112146" duration="72000" />
-      <workItem from="1578034379648" duration="946000" />
+      <workItem from="1578034379648" duration="1425000" />
     </task>
     <task id="LOCAL-00001" summary="add game4 resource">
       <created>1555643943907</created>
@@ -284,7 +289,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="291590000" />
+    <option name="totallyTimeSpent" value="292069000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1015" extended-state="6" />
@@ -561,13 +566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/red_package/pages/message.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/red_package/pages/group.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -577,8 +575,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/red_package/css/common.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="221" column="18" selection-start-line="221" selection-start-column="18" selection-end-line="221" selection-end-column="18" />
+        <state relative-caret-position="454">
+          <caret line="212" column="17" lean-forward="true" selection-start-line="212" selection-start-column="17" selection-end-line="212" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/red_package/pages/message.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="237" column="75" selection-start-line="237" selection-start-column="75" selection-end-line="237" selection-end-column="75" />
         </state>
       </provider>
     </entry>
