@@ -1,0 +1,277 @@
+<!--
+* 首页
+* xx
+* create by Sam on xxxx/xx/xx
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>起点成人网</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        /**/
+        .my-title{
+            height: 50px;
+            line-height: 50px;
+        }
+        .my-title h1{
+            font-size: 20px;
+            font-weight: bold;
+            font-family: '宋体';
+        }
+        .my-title .my-user, .my-title .my-rank{
+            display: inline-block;
+            width: 30px;
+            text-align: center;
+        }
+        .my-title i{
+            color: #fe4c55;
+            transform: scale(1.3);
+        }
+
+        /**/
+        .my-swiper{
+            /*margin: 20px auto;*/
+            /*width: 95%;*/
+            height: auto;
+            box-sizing: border-box;
+        }
+        .swiper-container{
+            width: 100%;
+            height: auto;
+        }
+        .swiper-slide{
+            width: 100%;
+            height: auto;
+        }
+        .swiper-slide img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .swiper-pagination-bullets{
+            bottom: 0px !important;
+            /*background-color: rgba(0,0,0,0.2);*/
+        }
+        .swiper-pagination-bullet{
+            background: #fff;
+            opacity: 1;
+        }
+        .swiper-pagination-bullet-active{
+            background: #fe4c55;
+        }
+
+        /**/
+        .my-nav{
+            height: 100px;
+            background-color: #fff;
+        }
+        .my-nav ul{
+            height: 100%;
+        }
+        .my-nav ul li{
+            width: 20%;
+            height: 100%;
+            float: left;
+            text-align: center;
+        }
+        .my-nav ul li a{
+            margin: 0 auto;
+            display: block;
+            width: 70%;
+            height: 50%;
+            margin-top: 30%;
+        }
+
+
+        .icon {
+            position: absolute;
+            right: 0;
+            /*bottom: 1.625rem;*/
+            left: 0;
+            margin: auto;
+        }
+        .icon-sort {
+            background-image: url(assets/img/sprite.b2b30.png);
+            background-size: 87px 87px !important;
+            background-position: -63px -28px !important;
+            width: 24px;
+            height: 24px;
+        }
+        .icon-rank {
+            background-image: url(assets/img/sprite.b2b30.png);
+            background-size: 87px 87px !important;
+            background-position: 0 0 !important;
+            width: 27px;
+            height: 26px;
+        }
+        .icon-free {
+            background-image: url(assets/img/sprite.b2b30.png);
+            background-size: 87px 87px !important;
+            background-position: 0 -30px !important;
+            width: 26px;
+            height: 26px;
+        }
+        .icon-end {
+            background-image: url(assets/img/sprite.b2b30.png);
+            background-size: 87px 87px !important;
+            background-position: 0 -60px !important;
+            width: 20px;
+            height: 27px;
+        }
+        .icon-god {
+            background-image: url(assets/img/sprite.b2b30.png);
+            background-size: 87px 87px !important;
+            background-position: -30px -30px !important;
+            width: 26px;
+            height: 26px;
+        }
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="comm-container">
+        <!--标题头-->
+        <div class="my-title clear">
+            <div class="fl">
+                <h1>起点成人网</h1>
+            </div>
+            <div class="fr">
+                <a class="my-user" href="javascript:;">
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                </a>
+                <a class="my-rank" href="javascript:;">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <!--图片轮循器-->
+        <div class="my-swiper">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="assets/img/banner001.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="assets/img/banner002.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="assets/img/banner003.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="assets/img/banner004.jpg" alt=""></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <!--搜索栏-->
+        <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form">
+                <div class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                </div>
+                <label class="weui-search-bar__label" id="searchText">
+                    <i class="weui-icon-search"></i>
+                    <span>亏成首富从游戏开始</span>
+                </label>
+            </form>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        </div>
+
+    </div>
+
+    <div class="my-nav">
+        <ul class="clear">
+            <li>
+                <a href="javascript:;">
+                    <i class="icon icon-sort"></i>
+                    <h4>分类</h4>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="icon icon-rank"></i>
+                    <h4>排行榜</h4>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="icon icon-free"></i>
+                    <h4>免费</h4>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="icon icon-end"></i>
+                    <h4>完本</h4>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="icon icon-god"></i>
+                    <h4>大神</h4>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--热门小说-->
+    <div class="module">
+        <!--模块标题-->
+        <div class="module-header clear">
+            <h3 class="module-title">热门小说</h3>
+            <span class="module-title-desc">起点编辑推荐</span>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+<script src="lib/jquery-3.4.1.min.js"></script>
+<!--<script src="lib/fastclick.js"></script>-->
+<script src="lib/jquery-weui.min.js"></script>
+<!--<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>-->
+
+<script src="lib/jquery-weui.min.js"></script>
+<script src="lib/swiper.min.js"></script>
+<script>
+    $(function() {
+        //初始化轮播图
+        $(".swiper-container").swiper({
+            loop: true,
+            autoplay: 2500,
+            disableOnInteraction: false
+        });
+
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>
