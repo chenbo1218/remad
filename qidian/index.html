@@ -93,50 +93,104 @@
             margin-top: 30%;
         }
 
+        /*模块*/
+        .module {
+            margin: .75rem 0;
+            background-color: #fff;
+        }
+        .module-header {
+            position: relative;
+            height: 1.75rem;
+            padding: 0 1rem;
+            border-top: 1rem solid transparent;
+        }
+        .module-title {
+            font-size: .8rem;
+            font-family: FZZCYSK;
+            font-weight: bold;
+            display: inline;
+            color: #33373d;
+        }
+        .module-title::before {
+            display: inline-block;
+            box-sizing: border-box;
+            width: .625rem;
+            height: 1em;
+            content: '';
+            vertical-align: -.22ex;
+            color: transparent;
+            border-left: 2px solid #ed424b;
+        }
+        .module-title-desc {
+            font-size: .65rem;
+            margin-left: .5rem;
+            color: #969ba3;
+        }
+        .module-header-btn {
+            font-size: .70rem;
+            line-height: 1.5rem;
+            /*position: absolute;
+            top: -.5rem;
+            right: -.75rem;
+            padding: .5rem .5rem .5rem .75rem;*/
+            white-space: nowrap;
+            color: #969ba3;
+        }
 
-        .icon {
+
+        .module-slide{
+            /*height: 200px;*/
+        }
+        .module-slide-ol {
+            position: relative;
+            display: none;
+            overflow-x: auto;
+            overflow-y: hidden;
+            min-height: 10.75rem;
+            padding-left: .5rem;
+            white-space: nowrap;
+        }
+        .module-slide-ol:only-child, .module-slide>.active {
+            display: block;
+        }
+        .module-slide-ol::-webkit-scrollbar {
+            display: none;
+        }
+        .module-slide-li {
+            display: inline-block;
+            vertical-align: top;
+            white-space: normal;
+        }
+        .module-slide-a {
+            display: block;
+            width: 4.125rem;
+            padding: .75rem .5rem .5rem;
+        }
+        .module-slide-img {
+            display: block;
+            width: inherit;
+            height: 5.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,.3);
+        }
+        .module-slide-caption {
+            font-size: .65rem;
+            line-height: 1.25;
+            overflow: hidden;
+            max-height: 2.125rem;
+            margin: .5rem 0 .125rem;
+        }
+        .module-slide-author {
+            font-size: .65rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: #969ba3;
+        }
+        aria {
+            font-size: 0;
             position: absolute;
-            right: 0;
-            /*bottom: 1.625rem;*/
-            left: 0;
-            margin: auto;
+            clip: rect(0 0 0 0);
         }
-        .icon-sort {
-            background-image: url(assets/img/sprite.b2b30.png);
-            background-size: 87px 87px !important;
-            background-position: -63px -28px !important;
-            width: 24px;
-            height: 24px;
-        }
-        .icon-rank {
-            background-image: url(assets/img/sprite.b2b30.png);
-            background-size: 87px 87px !important;
-            background-position: 0 0 !important;
-            width: 27px;
-            height: 26px;
-        }
-        .icon-free {
-            background-image: url(assets/img/sprite.b2b30.png);
-            background-size: 87px 87px !important;
-            background-position: 0 -30px !important;
-            width: 26px;
-            height: 26px;
-        }
-        .icon-end {
-            background-image: url(assets/img/sprite.b2b30.png);
-            background-size: 87px 87px !important;
-            background-position: 0 -60px !important;
-            width: 20px;
-            height: 27px;
-        }
-        .icon-god {
-            background-image: url(assets/img/sprite.b2b30.png);
-            background-size: 87px 87px !important;
-            background-position: -30px -30px !important;
-            width: 26px;
-            height: 26px;
-        }
-
 
 
 
@@ -232,13 +286,181 @@
     <div class="module">
         <!--模块标题-->
         <div class="module-header clear">
-            <h3 class="module-title">热门小说</h3>
-            <span class="module-title-desc">起点编辑推荐</span>
+            <div class="fl">
+                <h3 class="module-title">热门小说</h3>
+                <span class="module-title-desc">起点编辑推荐</span>
+            </div>
+            <div class="fr">
+                <a class="module-header-btn" href="allbook-hot.html">更多></a>
+            </div>
+        </div>
+
+        <!--侧滑-->
+        <div class="module-slide">
+            <ol class="module-slide-ol" role="listbox" title="">
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00001.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">生活系游戏</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">吨吨吨吨吨</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00002.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">我不想当妖皇的日子</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">剪水II</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00003.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">低维革命</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">肥瓜</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00004.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">我是幕后大佬</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">一刀斩斩斩</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00005.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">绿湾奇迹</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">磨砚少年</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00006.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">封神问道行</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">莫问初心</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00007.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">从此刻开始让世界感受痛苦</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">天际白</span>
+                        </p>
+                    </a>
+                </li>
+            </ol>
         </div>
     </div>
 
+    <!--免费小说-->
+    <div class="module">
+        <!--模块标题-->
+        <div class="module-header clear">
+            <div class="fl">
+                <h3 class="module-title">免费小说</h3>
+                <span class="module-title-desc">限时免费</span>
+            </div>
+            <div class="fr">
+                <a class="module-header-btn" href="allbook-free.html">更多></a>
+            </div>
+        </div>
 
-
+        <!--侧滑-->
+        <div class="module-slide">
+            <ol class="module-slide-ol" role="listbox" title="">
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00001.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">生活系游戏</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">吨吨吨吨吨</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00002.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">我不想当妖皇的日子</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">剪水II</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00003.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">低维革命</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">肥瓜</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00004.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">我是幕后大佬</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">一刀斩斩斩</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00005.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">绿湾奇迹</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">磨砚少年</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00006.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">封神问道行</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">莫问初心</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="module-slide-li">
+                    <a class="module-slide-a" href="/book/10000001">
+                        <img src="assets/img/book/00007.jpg" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">从此刻开始让世界感受痛苦</figcaption>
+                        <p class="module-slide-author" role="option">
+                            <aria>作者：</aria>
+                            <span class="gray">天际白</span>
+                        </p>
+                    </a>
+                </li>
+            </ol>
+        </div>
+    </div>
 
 
 

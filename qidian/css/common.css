@@ -24,6 +24,7 @@ ul,ol,li,dl,dt,dd{
 }
 
 a{
+    text-decoration: none;
     color: inherit;
 }
 
@@ -31,6 +32,56 @@ a{
     /*width: 100%;*/
     padding: 0px 15px;
     box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, input, select, textarea {
+    font-size: 100%;
+}
+
+
+
+/*===================icon========================*/
+.icon {
+    position: absolute;
+    right: 0;
+    /*bottom: 1.625rem;*/
+    left: 0;
+    margin: auto;
+}
+.icon-sort {
+    background-image: url(../assets/img/sprite.b2b30.png);
+    background-size: 87px 87px !important;
+    background-position: -63px -28px !important;
+    width: 24px;
+    height: 24px;
+}
+.icon-rank {
+    background-image: url(../assets/img/sprite.b2b30.png);
+    background-size: 87px 87px !important;
+    background-position: 0 0 !important;
+    width: 27px;
+    height: 26px;
+}
+.icon-free {
+    background-image: url(../assets/img/sprite.b2b30.png);
+    background-size: 87px 87px !important;
+    background-position: 0 -30px !important;
+    width: 26px;
+    height: 26px;
+}
+.icon-end {
+    background-image: url(../assets/img/sprite.b2b30.png);
+    background-size: 87px 87px !important;
+    background-position: 0 -60px !important;
+    width: 20px;
+    height: 27px;
+}
+.icon-god {
+    background-image: url(../assets/img/sprite.b2b30.png);
+    background-size: 87px 87px !important;
+    background-position: -30px -30px !important;
+    width: 26px;
+    height: 26px;
 }
 
 
