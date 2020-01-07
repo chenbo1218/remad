@@ -1,0 +1,375 @@
+<!--
+* 书列表
+*
+* create by Sam on xxxx/xx/xx
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>起点成人网</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <style>
+        .content {
+            padding-bottom: .1px;
+            background-color: #f6f7f9;
+            overflow-x: hidden;
+        }
+
+        .header-back {
+            width: 1em;
+            height: 1em;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding: .625rem .8125rem .625rem .875rem;
+        }
+        .header-back+.header-back-title {
+            font-size: .75rem;
+            font-weight: 400;
+            line-height: 1.375rem;
+            position: absolute;
+            left: 2.6875rem;
+            overflow: hidden;
+            max-width: 60%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .header-operate {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            padding: .25rem .375rem;
+        }
+        .header-operate-a, .header-operate>.icon {
+            float: left;
+            overflow: hidden;
+            width: 2.25rem;
+            height: 2.25rem;
+        }
+
+        .guide {
+            position: fixed;
+            z-index: 3;
+            top: 2.5rem;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            visibility: hidden;
+            overflow: hidden;
+            transition: visibility .25s;
+            -wekit-transition: visibility .25s;
+        }
+        .active.guide {
+            visibility: visible;
+            transition: none;
+            -wekit-transition: none;
+        }
+        .aside, .aside-overlay, .footer-backtop-circle svg, .full, .guide-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        .guide-content {
+            position: relative;
+            overflow: hidden;
+            padding: 0 1rem;
+            -webkit-transition: -webkit-transform .15s;
+            transition: transform .15s;
+            -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+            background-color: #fff;
+        }
+        .guide-nav-a {
+            font-size: .75rem;
+            position: relative;
+            display: inline-block;
+            width: 3.5rem;
+            height: 3.625rem;
+            text-align: center;
+        }
+        .guide-nav-a>.icon {
+            position: absolute;
+            right: 0;
+            bottom: 1.625rem;
+            left: 0;
+            margin: auto;
+        }
+        .guide-nav-h {
+            position: absolute;
+            right: 0;
+            bottom: .1875rem;
+            left: 0;
+        }
+
+
+        .book-li::after {
+            display: block;
+            margin-top: -1px;
+            margin-left: 1rem;
+            content: '';
+            -webkit-transition: margin-left .15s;
+            transition: margin-left .15s;
+            border-bottom: 1px solid #f0f1f2;
+        }
+        .book-layout {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            padding: 1rem;
+            -webkit-transition: padding-left .15s;
+            transition: padding-left .15s;
+        }
+        .book-cover {
+            font-size: 0;
+            float: left;
+            width: 4.125rem;
+            height: 5.5rem;
+            margin-right: .5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,.3);
+        }
+
+        .book-title {
+            line-height: 1.4;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .book-desc {
+            font-size: .65rem;
+            line-height: 1.125rem;
+            overflow: hidden;
+            margin: .375rem 0;
+            color: #969ba3;
+        }
+        .book-meta {
+            font-size: .65rem;
+            overflow: hidden;
+        }
+        .book-author {
+            font-size: .65rem;
+            display: block;
+            overflow: hidden;
+            max-width: 10em;
+            max-width: calc(100vw - 2rem - (176rem / 16));
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: #969ba3;
+        }
+        .book-meta-r .tag-small-group {
+            position: absolute;
+            top: -.375rem;
+            right: 0;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="content">
+        <!--导航条-->
+        <header class="header">
+            <a href="javascript:history.go(-1)" class="header-back jsBack"><</a>
+            <h1 class="header-back-title">热门小说</h1>
+            <div class="header-operate">
+                <a href="javascript:" class="icon icon-search"><img src="assets/img/icon-find.png" alt=""></a>
+                <a href="javascript:" class="icon icon-more"><img src="assets/img/icon-menu.png" alt=""></a>
+            </div>
+        </header>
+
+        <!--弹出式菜单栏-->
+        <div class="guide">
+            <i class="guide-overlay" role="button" title="点击收起"></i>
+            <div class="guide-content">
+                <nav class="guide-nav">
+                    <a href="index.html" class="guide-nav-a">
+                        <i class="icon icon-home"></i>
+                        <h4 class="guide-nav-h">首页</h4>
+                    </a>
+                    <a href="index.html" class="guide-nav-a">
+                        <i class="icon icon-home"></i>
+                        <h4 class="guide-nav-h">分类</h4>
+                    </a>
+                    <a href="index.html" class="guide-nav-a">
+                        <i class="icon icon-home"></i>
+                        <h4 class="guide-nav-h">排行榜</h4>
+                    </a>
+                    <a href="index.html" class="guide-nav-a">
+                        <i class="icon icon-home"></i>
+                        <h4 class="guide-nav-h">免费</h4>
+                    </a>
+                    <a href="index.html" class="guide-nav-a">
+                        <i class="icon icon-home"></i>
+                        <h4 class="guide-nav-h">完本</h4>
+                    </a>
+                    <a href="index.html" class="guide-nav-a">
+                        <i class="icon icon-home"></i>
+                        <h4 class="guide-nav-h">账户</h4>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!--列表-->
+        <div class="" id="recommendWrapper" data-recommend-name="hot">
+            <div class="module module-merge">
+                <ol id="books" class="book-ol book-ol-mormal">
+                    <li class="book-li">
+                        <a href="/book/1000001" class="book-layout">
+                            <img class="book-cover" src="assets/img/book/00001.jpg" alt="">
+                            <div class="book-cell">
+                                <h4 class="book-title">北颂</h4>
+                                <p class="book-desc">
+                                    寇季魂穿北宋，成为了千古名相寇准的从孙，作为一个标准的官三代，他本该走马架鹰，过着最嚣张的纨绔生活。然而，当他拿着便宜父亲邀他入汴京享福的信入京以后，才发现……祖父寇准，貌似要凉！
+                                </p>
+                                <div class="book-meta">
+                                    <div class="fl">
+                                        <span class="book-author">圣诞稻草人</span>
+                                    </div>
+                                    <div class="fr">
+                                    <span class="tag-small-group origin-right">
+                                        <em class="tag-small gray">历史</em>
+                                        <em class="tag-small red">连载</em>
+                                        <em class="tag-small blue">77.71万字</em>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="book-li">
+                        <a href="/book/1000001" class="book-layout">
+                            <img class="book-cover" src="assets/img/book/00001.jpg" alt="">
+                            <div class="book-cell">
+                                <h4 class="book-title">北颂</h4>
+                                <p class="book-desc">
+                                    寇季魂穿北宋，成为了千古名相寇准的从孙，作为一个标准的官三代，他本该走马架鹰，过着最嚣张的纨绔生活。然而，当他拿着便宜父亲邀他入汴京享福的信入京以后，才发现……祖父寇准，貌似要凉！
+                                </p>
+                                <div class="book-meta">
+                                    <div class="fl">
+                                        <span class="book-author">圣诞稻草人</span>
+                                    </div>
+                                    <div class="fr">
+                                    <span class="tag-small-group origin-right">
+                                        <em class="tag-small gray">历史</em>
+                                        <em class="tag-small red">连载</em>
+                                        <em class="tag-small blue">77.71万字</em>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="book-li">
+                        <a href="/book/1000001" class="book-layout">
+                            <img class="book-cover" src="assets/img/book/00001.jpg" alt="">
+                            <div class="book-cell">
+                                <h4 class="book-title">北颂</h4>
+                                <p class="book-desc">
+                                    寇季魂穿北宋，成为了千古名相寇准的从孙，作为一个标准的官三代，他本该走马架鹰，过着最嚣张的纨绔生活。然而，当他拿着便宜父亲邀他入汴京享福的信入京以后，才发现……祖父寇准，貌似要凉！
+                                </p>
+                                <div class="book-meta">
+                                    <div class="fl">
+                                        <span class="book-author">圣诞稻草人</span>
+                                    </div>
+                                    <div class="fr">
+                                    <span class="tag-small-group origin-right">
+                                        <em class="tag-small gray">历史</em>
+                                        <em class="tag-small red">连载</em>
+                                        <em class="tag-small blue">77.71万字</em>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="book-li">
+                        <a href="/book/1000001" class="book-layout">
+                            <img class="book-cover" src="assets/img/book/00001.jpg" alt="">
+                            <div class="book-cell">
+                                <h4 class="book-title">北颂</h4>
+                                <p class="book-desc">
+                                    寇季魂穿北宋，成为了千古名相寇准的从孙，作为一个标准的官三代，他本该走马架鹰，过着最嚣张的纨绔生活。然而，当他拿着便宜父亲邀他入汴京享福的信入京以后，才发现……祖父寇准，貌似要凉！
+                                </p>
+                                <div class="book-meta">
+                                    <div class="fl">
+                                        <span class="book-author">圣诞稻草人</span>
+                                    </div>
+                                    <div class="fr">
+                                    <span class="tag-small-group origin-right">
+                                        <em class="tag-small gray">历史</em>
+                                        <em class="tag-small red">连载</em>
+                                        <em class="tag-small blue">77.71万字</em>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="book-li">
+                        <a href="/book/1000001" class="book-layout">
+                            <img class="book-cover" src="assets/img/book/00001.jpg" alt="">
+                            <div class="book-cell">
+                                <h4 class="book-title">北颂</h4>
+                                <p class="book-desc">
+                                    寇季魂穿北宋，成为了千古名相寇准的从孙，作为一个标准的官三代，他本该走马架鹰，过着最嚣张的纨绔生活。然而，当他拿着便宜父亲邀他入汴京享福的信入京以后，才发现……祖父寇准，貌似要凉！
+                                </p>
+                                <div class="book-meta">
+                                    <div class="fl">
+                                        <span class="book-author">圣诞稻草人</span>
+                                    </div>
+                                    <div class="fr">
+                                    <span class="tag-small-group origin-right">
+                                        <em class="tag-small gray">历史</em>
+                                        <em class="tag-small red">连载</em>
+                                        <em class="tag-small blue">77.71万字</em>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<script src="lib/jquery-3.4.1.min.js"></script>
+<!--<script src="lib/fastclick.js"></script>-->
+<script src="lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

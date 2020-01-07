@@ -34,9 +34,70 @@ a{
     box-sizing: border-box;
 }
 
+.header {
+    position: relative;
+    box-sizing: border-box;
+    height: 2.75rem;
+    padding-top: .6875rem;
+    padding-bottom: .625rem;
+    border-bottom: 1px solid #f0f1f2;
+    background-color: #fff;
+}
+
 h1, h2, h3, h4, h5, h6, input, select, textarea {
     font-size: 100%;
 }
+
+
+/*模块*/
+.module {
+    margin: .75rem 0;
+    background-color: #fff;
+}
+.module-merge{
+    margin: 0;
+}
+.module-header {
+    position: relative;
+    height: 1.75rem;
+    padding: 0 1rem;
+    border-top: 1rem solid transparent;
+}
+.module-title {
+    font-size: .8rem;
+    font-family: FZZCYSK;
+    font-weight: bold;
+    display: inline;
+    color: #33373d;
+}
+.module-title::before {
+    display: inline-block;
+    box-sizing: border-box;
+    width: .625rem;
+    height: 1em;
+    content: '';
+    vertical-align: -.22ex;
+    color: transparent;
+    border-left: 2px solid #ed424b;
+}
+.module-title-desc {
+    font-size: .65rem;
+    margin-left: .5rem;
+    color: #969ba3;
+}
+.module-header-btn {
+    font-size: .70rem;
+    line-height: 1.5rem;
+    /*position: absolute;
+    top: -.5rem;
+    right: -.75rem;
+    padding: .5rem .5rem .5rem .75rem;*/
+    white-space: nowrap;
+    color: #969ba3;
+}
+
+
+
 
 
 
