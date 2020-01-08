@@ -1,5 +1,5 @@
 <!--
-* 书列表
+* 图书列表
 *
 * create by Sam on xxxx/xx/xx
 -->
@@ -11,7 +11,7 @@
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-    <title>起点成人网</title>
+    <title>露点中文网</title>
 
     <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
     <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
@@ -274,7 +274,10 @@
         </div>
     </div>
 
-
+    <div class="weui-loadmore">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips">正在加载</span>
+    </div>
 
 
 
@@ -285,7 +288,41 @@
 <script>
     $(function() {
         //code here
+        var loading = false;  //状态标记
+        $(document.body).infinite().on("infinite", function() {
+            if(loading) return;
+            loading = true;
+            setTimeout(function() {
+                //一次加载10本书
+                for(var i=0;i<10;i++){
+                    $("#books").append("<li class=\"book-li\">\n" +
+                        "                        <a href=\"book.html\" class=\"book-layout\">\n" +
+                        "                            <img class=\"book-cover\" src=\"assets/img/book/00001.jpg\" alt=\"\">\n" +
+                        "                            <div class=\"book-cell\">\n" +
+                        "                                <h4 class=\"book-title\">北颂</h4>\n" +
+                        "                                <p class=\"book-desc\">\n" +
+                        "                                    寇季魂穿北宋，成为了千古名相寇准的从孙，作为一个标准的官三代，他本该走马架鹰，过着最嚣张的纨绔生活。然而，当他拿着便宜父亲邀他入汴京享福的信入京以后，才发现……祖父寇准，貌似要凉！【书友群：一九五九九二九八一】\n" +
+                        "                                </p>\n" +
+                        "                                <div class=\"book-meta\">\n" +
+                        "                                    <div class=\"fl\">\n" +
+                        "                                        <span class=\"book-author\">圣诞稻草人</span>\n" +
+                        "                                    </div>\n" +
+                        "                                    <div class=\"fr\">\n" +
+                        "                                    <span class=\"tag-small-group origin-right\">\n" +
+                        "                                        <em class=\"tag-small gray\">历史</em>\n" +
+                        "                                        <em class=\"tag-small red\">连载</em>\n" +
+                        "                                        <em class=\"tag-small blue\">77.71万字</em>\n" +
+                        "                                    </span>\n" +
+                        "                                    </div>\n" +
+                        "                                </div>\n" +
+                        "                            </div>\n" +
+                        "                        </a>\n" +
+                        "                    </li>");
+                }
 
+                loading = false;
+            }, 500);   //模拟延迟
+        });
 
     });
 
