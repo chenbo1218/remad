@@ -10,97 +10,286 @@
         }
 
         #main{
-            border: 1px solid black;
-            width: 600px;
-            height: 512px;
-            background: url("img/game4/bg_day.png") 10px 10px;
-            margin: 20px auto;
-            position: relative;
-            overflow: hidden;
+            width: 400px;
+            height: 550px;
+            border: 2px solid #000;
+            background: #fff;
         }
 
-        #bird{
-            width: 37px;
-            height: 27px;
-            background: url("img/game4/bird0_0.png") no-repeat center;
-            position: absolute;
-            left: 20px;
-            top: 200px;
-            display: none;
-        }
-
-        #gameover{
-            width: 204px;
-            height: 54px;
-            background: url("img/game4/text_game_over.png");
-            margin: auto;
-            left: 0px;
-            right: 0px;
-            top: 0px;
-            bottom: 0px;
-            position: absolute;
-            display: none;
-        }
-
-        #title{
-            width: 178px;
-            height: 48px;
-            background: url("img/game4/title.png");
-            margin: auto;
-            left: 0px;
-            right: 0px;
-            top: 0px;
-            bottom: 0px;
-            position: absolute;
-        }
-
-        #bluebird{
-            display: block;
-            margin: 100px auto;
-        }
-
-        #start{
-            display: block;
-            position: absolute;
-            left: 240px;
-            top: 30px;
-            cursor: pointer;
-        }
 
     </style>
 </head>
 <body>
-    <div id="main">
-        <div id="bird" src="img/game4/bird0_0.png"></div>
-        <div id="gameover"></div>
-        <div id="title"></div>
-        <img src="img/game4/vird1_0.png" alt="">
-        <button id="start"><img src="img/game4/btn_play.png" alt=""></button>
+    <canvas id="main" width="340" height="453" ></canvas>
 
-    </div>
+<script>
+    //==================全局变量========================
+    var _main = document.getElementById("main");
+    var _ctx = _main.getContext("2d");
+    var _game;
+    var _speed = 20;
+    var _isPlay = false;
+    var _gameTime = null;
+    var _btn_start;
 
-    <script>
-        var _flyNum = 0;
-        var _bluebird = document.getElementById("#bluebird");
-        var _gamerunning = false;
+    //====================程序入口======================
+    window.onload = initGame;
 
-        //蓝色小鸟翅膀运动
-        var bluebirdFly = setInterval(function(){
-            _flyNum ++;
-            _bluebird.setAttribute("src","img/game4/bird1_"+_flyNum+".png");
-            if(_flyNum>=2){
-                _flyNum = -1;
+    //初始化游戏
+    function initGame(){
+        _ctx.font = "3em 微软雅黑";
+        _game = new FlappyBird();
+        _game.createMap();
+
+        _main.onmousedown = function(){
+            _game.touch = true;
+        }
+        _main.onmouseup = function(){
+            _game.touch = false;
+        }
+        _main.onclick = function(e){
+            if(!_isPlay){
+                _isPlay = true;
+                _gameTime = runGame(_speed);
             }
-        },100);
+        }
+    }
 
-        _bluebird.animate({marginTop: 130},500,function(){
+    //单击屏幕跑起来
+    function runGame(){
+        var updateTimer = setInterval(function(){
+            if(_game.countScore()){
+                var scoreTimer = setInterval(function(){
+                    if(_game.gameOver){
+                        clearInterval(scoreTimer);
+                        return;
+                    }
+                    _game.score ++;
+                },_game.obsInterval);
+            }
 
-        })
+            _game.canMove();
+            if(_game.gameOver){
+                _game.showOver();
+                clearInterval(updateTimer);
+                _isPlay = false;
+                return;
+            }
+            _game.clearScreen();
+            _game.drawObs();
+            _game.checkTouch();
+            _game.showScore();
+        },_speed);
+
+        var obsTimer = setInterval(function(){
+            if(_game.gameOver){
+                clearInterval(obsTimer);
+                return;
+            }
+            _game.createObs();
+        }, _game.obsInterval);
+    }
+
+
+    //==================构造函数========================
+    //构造鸟
+    function Bird(x, y, image){
+        this.x = x;
+        this.y = y;
+        this.image = image;
+        this.width = image.width/2;
+        this.height = image.height;
+
+        this.show = function(context, state){
+            if(state == "up"){
+                _ctx.drawImage(image, 0, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+            }else{
+                _ctx.drawImage(image, this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+            }
+        }
+    }
+
+    //构造管道
+    function Obstacle(x, y, h, image){
+        this.x = x;
+        this.y = y;
+        this.width = image.width/2;
+        this.height = h;
+
+        this.show = function(context, state){
+            if(state == "up"){
+                _ctx.drawImage(image, 0, 0, this.width, this.height, this.x, this.y, this.width, this.height);
+            }else{
+                _ctx.drawImage(image, this.width, image.height-this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+            }
+        }
+    }
+
+    //构造游戏
+    function FlappyBird(){
+        this.bird = null;
+        this.bg = null;
+        this.obs = null;
+        this.obsList = [];
+        this.mapWidth = 400;
+        this.mapHeight = 550;
+        this.startX = 90;
+        this.startY = 225;
+        this.obsDistance = 200;
+        this.obsSpeed = 2;
+        this.obsInterval = 2000;
+        this.upSpeed = 8;
+        this.downSpeed = 3;
+        this.line = 56;
+        this.score = 0;
+        this.touch = false;
+        this.gameOver = false;
+
+        //创建地图
+        this.createMap = function(){
+            //背景
+            this.bg = new Image();
+            this.bg.src = "img/game4/bg.png";
+            var startBg = new Image();
+            startBg.src = "img/game4/start.jpg";
+            startBg.onload = function(){
+                _ctx.drawImage(startBg,0,0);
+            };
+
+            //小鸟
+            var b = new Image();
+            b.src = "img/game4/bird.png";
+            b.onload = function(){
+                this.bird = new Bird(this.startX, this.startY, b);
+            }.bind(this);
+
+            //障碍物
+            this.obs = new Image();
+            this.obs.src = "img/game4/obs.png";
+            this.obs.onload = function(){
+                var h = 100;
+                var h2 = this.mapHeight - h - this.obsDistance;
+                var obs1 = new Obstacle(this.mapWidth, 0, h, this.obs);
+                var obs2 = new Obstacle(this.mapWidth, this.mapHeight-h2, h2-this.line, this.obs);
+                this.obsList.push(obs1);
+                this.obsList.push(obs2);
+            }.bind(this);
+        }
+
+        //创建障碍物
+        this.createObs = function(){
+            //随机产生障碍物上管道高度
+            var h1 = Math.floor(Math.random() * (this.mapHeight, this.obsDistance-this.line));
+            var h2 = this.mapHeight - h1 -this.obsDistance;
+            var obs1 = new Obstacle(this.mapWidth, 0, h1, this.obs);
+            var obs2 = new Obstacle(this.mapWidth, this.mapHeight-h2, h2-this.line, this.obs);
+            this.obsList.push(obs1);
+            this.obsList.push(obs2);
+            //移除越界障碍物
+            if(this.obsList[0].x <- this.obsList[0].width){
+                this.obsList.splice(0,2);
+            }
+        }
+
+        //绘制障碍物
+        this.drawObs = function(){
+            _ctx.fillStyle = "#00ff00";
+            for(var i=0; i<this.obsList.length; i++){
+                this.obsList[i].x -= this.obsSpeed;
+                if(i%2){
+                    this.obsList[i].show(_ctx, "up");
+                }else{
+                    this.obsList[i].show(_ctx, "down");
+                }
+            }
+        }
+
+        //计分
+        this.countScore = function(){
+            if(this.score == 0 && this.obsList[0].x + this.obsList[0].width < this.startX){
+                this.score = 1;
+                return true;
+            }
+            return false;
+        }
+
+        //显示分数
+        this.showScore = function(){
+            _ctx.strokeStyle = "#000";
+            _ctx.lineWidth = 1;
+            _ctx.fillStyle = "#fff";
+
+            _ctx.fillText(this.score, 10, 50);
+            _ctx.strokeText(this.score, 10, 50);
+        }
+
+        //碰撞检测
+        this.canMove = function(){
+            if(this.bird.y<0 || this.bird.y>this.mapHeight-this.bird.height-this.line){
+                this.gameOver = true;
+            }else{
+                var boundary = [{
+                    x:this.bird.x,
+                    y:this.bird.y
+                },{
+                    x:this.bird.x + this.bird.width,
+                    y:this.bird.y
+                },{
+                    x:this.bird.x,
+                    y:this.bird.y + this.bird.height
+                },{
+                    x:this.bird.x + this.bird.width,
+                    y:this.bird.y + this.bird.height
+                }];
+                for (var i=0; i<this.obsList.length; i++){
+                    for (var j=0; j<4; j++){
+                        if(boundary[j].x >= this.obsList[i].x && boundary[j].x <= this.obsList[i].x+this.obsList[i].width &&
+                            boundary[j].y >= this.obsList[i].y && boundary[j].y <= this.obsList[i].y+this.obsList[i].height){
+                            this.gameOver = true;
+                            break;
+                        }
+                    }
+                    if(this.gameOver){
+                        break;
+                    }
+                }
+
+            }
+        }
+
+        //检测触摸
+        this.checkTouch = function () {
+            if(this.touch){
+                this.bird.y -= this.upSpeed;
+                this.bird.show(_ctx, "up");
+            }else{
+                this.bird.y += this.downSpeed;
+                this.bird.show(_ctx, "down");
+            }
+        }
+
+        //清屏
+        this.clearScreen = function () {
+            _ctx.drawImage(this.bg, 0, 0);
+        }
+
+        //结束画面
+        this.showOver = function () {
+            var overImg = new Image();
+            overImg.src = "img/game4/over.png";
+            overImg.onload = function(){
+                _ctx.drawImage(overImg, (this.mapWidth-overImg.width)/2, (this.mapHeight-overImg.height)/2-50);
+            }.bind(this);
+            return;
+        }
+
+    }
 
 
 
 
-    </script>
+
+</script>
 
 </body>
 </html>

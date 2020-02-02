@@ -1,0 +1,125 @@
+<!--
+* 登录选择页面
+*
+* create by Sam on 2019/10/29
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .my-swiper{
+            margin: 20px auto;
+            width: 90%;
+            height: auto;
+            box-sizing: border-box;
+            padding: 10px 10px;
+            border-radius: 3px;
+            background-color: #fff;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+        .swiper-container{
+            width: 100%;
+            /*height: 190px;*/
+            height: auto;
+        }
+        .swiper-slide{
+            width: 100%;
+            height: auto;
+        }
+        .swiper-slide img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .swiper-pagination-bullets{
+            bottom: 0px !important;
+            background-color: rgba(0,0,0,0.2);
+        }
+        .swiper-pagination-bullet{
+            background: #f9f9f9;
+        }
+        .swiper-pagination-bullet-active{
+            background: #fff;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <p>登录注册</p>
+    </div>
+
+    <!--内容-->
+    <div class="comm-fix-content">
+        <!--图片轮循器-->
+        <div class="my-swiper">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="../assets/img/haibao/haibao-b1.png" alt=""></div>
+                    <div class="swiper-slide"><img src="../assets/img/haibao/haibao-b2.png" alt=""></div>
+                    <div class="swiper-slide"><img src="../assets/img/haibao/haibao-b3.png" alt=""></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <br/>
+        <!--按钮-->
+        <a href="login-execute.html" class="comm-btn-big comm-btn-big-red">登录</a>
+        <br/>
+        <a href="login-regist.html" class="comm-btn-big comm-btn-big-white">注册</a>
+
+
+    </div>
+
+
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<script src="../lib/fastclick.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+
+<script src="../lib/jquery-weui.min.js"></script>
+<script src="../lib/swiper.min.js"></script>
+<script>
+    $(function() {
+        //初始化轮播图
+        $(".swiper-container").swiper({
+            loop: true,
+            autoplay: 2500,
+            disableOnInteraction: false
+        });
+
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

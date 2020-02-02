@@ -1,0 +1,145 @@
+<!--
+* 注册页面
+*
+* create by Sam on 2019/10/29
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .weui-cells{
+            margin: 10px 0px;
+        }
+        .weui-cell{
+            height: 40px;
+        }
+
+        .my-cell-icon{
+            width: 20px;
+            height: auto;
+        }
+        .weui-vcode-btn{
+            background-color: #fe3863;
+            color: #fff;
+            height: 34px;
+            line-height: 34px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .weui-cells__tips{
+            /*width: 100%;*/
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png" alt=""></a>
+        <p>注册</p>
+    </div>
+
+    <!--内容-->
+    <div class="comm-fix-content">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <img class="my-cell-icon" src="../assets/img/login/icon-phone.png">
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="tel" pattern="[0-9]*" maxlength="11" placeholder="请输入手机号码">
+                </div>
+                <div class="weui-cell__ft">
+                    <a class="weui-vcode-btn">获取验证码</a>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <img class="my-cell-icon" src="../assets/img/login/icon-vcode.png">
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" maxlength="6" placeholder="请输入验证码">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <img class="my-cell-icon" src="../assets/img/login/icon-password.png">
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="password" placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <img class="my-cell-icon" src="../assets/img/login/icon-password.png">
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="password" placeholder="请确认密码">
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <img class="my-cell-icon" src="../assets/img/login/icon-icode.png">
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" maxlength="6" placeholder="请输入邀请码">
+                </div>
+            </div>
+        </div>
+
+        <br/>
+        <a href="javascript:;" class="comm-btn-big comm-btn-big-red">注册</a>
+        <br/>
+        <div class="weui-cells__tips">有问题找客服</div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<script src="../lib/fastclick.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+/** create by Administrator on 2019/10/28 **/
+
+/*=======================强制样式===========================*/
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+body{
+    background-color: #fff;
+}
+ul,ol,li,dl,dt,dd{
+    text-decoration: none;
+    list-style: none;
+}
+
+/*===================公共样式==========================*/
+/*清除浮动*/
+.clear:after{
+    display:block;
+    content:' ';
+    clear:both;
+}
+/*上方固定*/
+.fix-top{
+    width: 100%;
+    position: fixed !important;
+    top: 0px;
+    z-index: 1000;
+}
+/*下方固定*/
+.fix-bottom{
+    position: fixed !important;
+    bottom: 0px;
+    z-index: 1000;
+}
+/*左方固定*/
+.fix-left{
+    position: fixed !important;
+    left: 0px;
+    z-index: 1000;
+}
+/*右方固定*/
+.fix-right{
+    position: fixed !important;
+    right: 0px;
+    z-index: 1000;
+}
+.red{
+    color: #fe4c55;
+}
+.blue{
+    color: #006bd2;
+}
+.gray{
+    color: #A9A9A9;
+}
+.left{
+    text-align: left;
+}
+.center{
+    text-align: center;
+}
+.right{
+    text-align: right;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.ov{
+    overflow: hidden;
+}
+.fs16{
+    font-size: 16px;
+}
+.fs18{
+    font-size: 18px;
+}
+.fs20{
+    font-size: 20px;
+}
+.bold{
+    font-weight: bold;
+}
+
+/*===============================================*/
+/*页面标题：红色简约*/
+.comm-fix-title{
+    width: 100%;
+    height: 100px;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    background: url("../img/banner.jpg");
+    background-size: cover;
+    color: #fff;
+    top: 0px;
+    z-index: 100;
+    position: fixed;
+}
+.comm-fix-title .p1,.comm-fix-title .p2{
+    float: left;
+}
+.comm-fix-title .p1{
+    width: 60px;
+    height: 60px;
+}
+.comm-fix-title .p1 img{
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+.comm-fix-title .p2{
+    height: 60px;
+    margin-left: 10px;
+}
+.comm-fix-title .p2 p{
+    height: 30px;
+    line-height: 30px;
+}
+.comm-fix-title .p2 p:first-child{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/*导航*/
+.weui-navbar{
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    position: fixed;
+    top: 100px;
+    border-bottom: 10px solid #f6f6f6;
+}
+.weui-navbar:after{
+    border: none;
+}
+.weui-navbar__item{
+    padding: 0px 5px;
+    height: 50px;
+    line-height: 50px;
+    box-sizing: border-box;
+}
+.weui-navbar__item p{
+    width: 100%;
+    height: 100%;
+    color: #000;
+    overflow: hidden;
+}
+.weui-navbar__item:after{
+    border: none;
+}
+.weui-bar__item--on{
+    background-color: transparent !important;
+}
+.weui-bar__item--on p{
+    border-bottom: 2px solid dodgerblue;
+    color: dodgerblue;
+}
+
+
+/*固定可滚动容器*/
+.comm-fix-content{
+    width: 100%;
+    position: fixed;
+    top: 160px;
+    bottom: 0;
+    left: 0;
+    margin-top: 0px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+

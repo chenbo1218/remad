@@ -1,0 +1,125 @@
+<!--
+* 通讯录搜索页
+*
+* create by Sam on 2019/11/07
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+    <style>
+        .comm-title-red input{
+            width: 60%;
+            height: 100%;
+            line-height: 100%;
+            text-align: left;
+            margin: 0 auto;
+        }
+        .comm-title-red input::-webkit-input-placeholder{
+            color: #fff;
+        }
+
+        .comm-title-red .my-search-btn{
+            width: 20px;
+            height: 20px;
+            padding: 10px 10px;
+            line-height: 40px;
+            display: block;
+            position: absolute;
+            right: 10px;
+            top: 30px;
+        }
+        .comm-title-red .my-search-btn img{
+            width: 20px;
+            height: 20px;
+            display: block;
+            margin: 0 auto;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png"></a>
+        <input class="weui-input" type="text" placeholder="请输入搜索内容" >
+        <a class="my-search-btn" id="btn-search"><img src="../assets/img/common/icon-find.png"></a>
+    </div>
+
+    <!--内容-->
+    <div class="comm-fix-content">
+        <div class="weui-cells" id="result-list" hidden>
+            <a class="weui-cell weui-cell_access" href="chat-single.html">
+                <div class="weui-cell__hd">
+                    <img src="../assets/img/liuxing.jpg">
+                </div>
+                <div class="weui-cell__bd">
+                    <p>刘星</p>
+                </div>
+            </a>
+
+            <a class="weui-cell weui-cell_access" href="chat-single.html">
+                <div class="weui-cell__hd">
+                    <img src="../assets/img/liuxing.jpg">
+                </div>
+                <div class="weui-cell__bd">
+                    <p>刘洋</p>
+                </div>
+            </a>
+
+            <a class="weui-cell weui-cell_access" href="chat-single.html">
+                <div class="weui-cell__hd">
+                    <img src="../assets/img/liuxing.jpg">
+                </div>
+                <div class="weui-cell__bd">
+                    <p>刘强东</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+
+        //点击搜索--模拟效果
+        $("#btn-search").click(function(){
+            $.showLoading("数据加载中...");
+
+            setTimeout(function() {
+                $.hideLoading();
+                $("#result-list").show();
+            }, 3000)
+
+        });
+
+
+
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

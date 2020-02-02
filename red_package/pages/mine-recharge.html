@@ -1,0 +1,274 @@
+<!--
+* 充值中心
+*
+* create by Sam on 2019/11/01
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .weui-tab{
+            width: 100%;
+            height: auto;
+            box-sizing: border-box;
+        }
+
+        /*导航*/
+        .weui-navbar{
+            position: relative;
+            background-color: #fff;
+            margin-bottom: 10px;
+        }
+        .weui-navbar:after{
+            border: none;
+        }
+        .weui-navbar__item{
+            height: 60px;
+        }
+        .weui-navbar__item:after{
+            border: none;
+        }
+        .weui-navbar__item img{
+            width: 60px;
+            height: 60px;
+        }
+        .weui-bar__item--on{
+            border-bottom: 2px solid #ff703e;
+            background-color: transparent !important;
+        }
+
+        /*内容*/
+        .weui-tab__bd{
+            background-color: #fff;
+            /*margin-top: 100px;*/
+            padding: 0px 0px !important;
+            height: 300px;
+        }
+        .my-recharge-box{
+            width: 100%;
+            height: 300px;
+            box-sizing: border-box;
+        }
+        .my-recharge-box__p1{
+            height: 40px;
+            line-height: 40px;
+            padding: 0px 20px;
+            border-bottom: 1px solid #e7e7e7;
+        }
+        .my-recharge-box__p2{
+            width: 100%;
+            height: auto;
+            padding: 0px 10px;
+            box-sizing: border-box;
+        }
+        .my-recharge-box__p2 .weui-flex__item{
+            width: 30%;
+            height: 50px;
+            padding: 10px 10px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .my-recharge-box__p2 .weui-flex__item p{
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+            background-color: #b0bbc4;
+            border-radius: 5px;
+        }
+        .my-recharge-box__p2 .weui-flex__item-on p{
+            background-color: #fe4c55;
+        }
+        .my-recharge-box__p3{
+            height: 40px;
+            line-height: 40px;
+            padding: 0px 20px;
+            border-bottom: 1px solid #e7e7e7;
+        }
+        .my-recharge-box__p4{
+            padding: 0px 20px;
+            height: 40px;
+            line-height: 40px;
+        }
+        .comm-btn-big-red{
+            margin-top: 10px;
+        }
+
+        /*真香警告*/
+        .my-tips{
+            width: 100%;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            color: #A9A9A9;
+        }
+        .my-tips-title{
+            color: #000;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png"></a>
+        <p>充值中心</p>
+    </div>
+
+    <!--内容-->
+    <div class="comm-fix-content">
+        <!--导航-->
+        <div class="weui-tab">
+            <div class="weui-navbar">
+                <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
+                    <img src="../assets/img/recharge/icon-alipay.png" />
+                </a>
+                <a class="weui-navbar__item" href="#tab2">
+                    <img src="../assets/img/recharge/icon-wechat.png" />
+                </a>
+                <a class="weui-navbar__item" href="#tab3">
+                    <img src="../assets/img/recharge/icon-unionpay.png" />
+                </a>
+                <a class="weui-navbar__item" href="#tab4">
+                    <img src="../assets/img/recharge/icon-online.png" />
+                </a>
+            </div>
+            <div class="weui-tab__bd">
+                <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+                    <!--支付宝-->
+                    <div class="my-recharge-box">
+                        <div class="my-recharge-box__p1 gray">
+                            <p>APP支付：支付宝充值99-599</p>
+                        </div>
+                        <div class="my-recharge-box__p2">
+                            <div class="weui-flex my-recharge-item">
+                                <div class="weui-flex__item weui-flex__item-on"><p>99</p></div>
+                                <div class="weui-flex__item"><p>199</p></div>
+                                <div class="weui-flex__item"><p>299</p></div>
+                                <div class="weui-flex__item"><p>399</p></div>
+                                <div class="weui-flex__item"><p>499</p></div>
+                                <div class="weui-flex__item"><p>599</p></div>
+                            </div>
+                        </div>
+                        <div class="my-recharge-box__p3">
+                            <p>选择金额 <span class="fr"><span class="target-money blue" id="target-money1">99</span>元</span></p>
+                        </div>
+                        <div class="my-recharge-box__p4 gray">
+                            <p>单笔存款限额（元）：99~599</p>
+                        </div>
+                        <a href="javascript:;" class="comm-btn-big comm-btn-big-red">支付</a>
+                    </div>
+                </div>
+
+                <div id="tab2" class="weui-tab__bd-item">
+                    <!--微信-->
+                    <div class="my-recharge-box">
+                        <div class="my-recharge-box__p1 gray">
+                            <p>APP支付：微信充值99-599</p>
+                        </div>
+                        <div class="my-recharge-box__p2">
+                            <div class="weui-flex my-recharge-item">
+                                <div class="weui-flex__item weui-flex__item-on"><p>99</p></div>
+                                <div class="weui-flex__item"><p>199</p></div>
+                                <div class="weui-flex__item"><p>299</p></div>
+                                <div class="weui-flex__item"><p>399</p></div>
+                                <div class="weui-flex__item"><p>499</p></div>
+                                <div class="weui-flex__item"><p>599</p></div>
+                            </div>
+                        </div>
+                        <div class="my-recharge-box__p3">
+                            <p>选择金额 <span class="fr"><span class="target-money blue" id="target-money2">99</span>元</span></p>
+                        </div>
+                        <div class="my-recharge-box__p4 gray">
+                            <p>单笔存款限额（元）：99~599</p>
+                        </div>
+                        <a href="javascript:;" class="comm-btn-big comm-btn-big-red">支付</a>
+                    </div>
+                </div>
+
+                <div id="tab3" class="weui-tab__bd-item">
+                    <!--银联-->
+                    <div class="my-recharge-box">
+                        <div class="my-recharge-box__p1 gray">
+                            <p>快捷支付：银联快捷充值100-1000</p>
+                        </div>
+                        <div class="my-recharge-box__p2">
+                            <div class="weui-flex my-recharge-item">
+                                <div class="weui-flex__item weui-flex__item-on"><p>100</p></div>
+                                <div class="weui-flex__item"><p>200</p></div>
+                                <div class="weui-flex__item"><p>300</p></div>
+                                <div class="weui-flex__item"><p>500</p></div>
+                                <div class="weui-flex__item"><p>800</p></div>
+                                <div class="weui-flex__item"><p>1000</p></div>
+                            </div>
+                        </div>
+                        <div class="my-recharge-box__p3">
+                            <p>选择金额 <span class="fr"><span class="target-money blue" id="target-money3">99</span>元</span></p>
+                        </div>
+                        <div class="my-recharge-box__p4 gray">
+                            <p>单笔存款限额（元）：99~599</p>
+                        </div>
+                        <a href="javascript:;" class="comm-btn-big comm-btn-big-red">支付</a>
+                    </div>
+                </div>
+
+                <div id="tab4" class="weui-tab__bd-item">
+                    <!--线上转账-->
+                    <p class="gray">暂未开放</p>
+                </div>
+            </div>
+
+            <!--真香警告-->
+            <div class="my-tips">
+                <p class="my-tips-title">温馨提示：</p>
+                <p>为确保您的款项及时到账，请您留意以下内容：</p>
+                <p>1.若在存款中提示二维码已过期或者存入金额已满，请返回重新发起支付。</p>
+                <p>2.站点每日都会产生大量存款订单，为确保每一位玩家的存款能够及时到账，请填写实际存款金额，以便于平台快速处理您的业务。</p>
+                <p>3.支付时，请务必按照页面显示的金额进行支付，否则可能将导致订单延误或掉单。</p>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        $(".my-recharge-box__p2").find(".weui-flex__item").click(function(){
+            $(this).addClass("weui-flex__item-on").siblings().removeClass("weui-flex__item-on");
+            $(this).parent().parent().parent().find(".target-money").text($(this).text());
+        })
+
+
+
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

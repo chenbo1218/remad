@@ -1,0 +1,102 @@
+<!--
+* 绑定新的银行卡
+*
+* create by Sam on 2019/11/01
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .weui-cell img{
+            width: 40px;
+            height: 40px;
+        }
+        .weui-cell .weui-cell__bd{
+            text-align: right;
+        }
+        .weui-cell .weui-cell__bd input, .weui-cell .weui-cell__bd p{
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png"></a>
+        <p>添加银行卡</p>
+    </div>
+
+    <!--内容-->
+    <div class="comm-fix-content">
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">持卡人</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" placeholder="请输入持卡人" />
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">卡号</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" maxlength="30" placeholder="请输入银行卡号">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">开户行</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" placeholder="请输入开户银行">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">开户地址</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" placeholder="请确认开户地址">
+                </div>
+            </div>
+        </div>
+
+        <br/>
+        <a href="" class="comm-btn-big comm-btn-big-red">下一步</a>
+
+    </div>
+
+
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

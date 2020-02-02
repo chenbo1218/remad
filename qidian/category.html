@@ -1,0 +1,138 @@
+<!--
+* 图书分类
+* xxx
+* create by Sam on xxxx/xx/xx
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>露点中文网</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <style>
+        .sort-li-detail {
+            font-size: .75rem;
+            line-height: 0;
+            padding: 0 1rem 1rem;
+            text-align: justify;
+        }
+
+        .sort-li-detail .btn-line-gray {
+            margin-top: .75rem;
+        }
+        .btn-line-gray, .btn-line-gray~i:empty, .btn-tag {
+            color: #969ba3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <!-- 公用头部 S -->
+        <header id="header" class="header" data-l1="41">
+            <a href="javascript:history.go(-1)" class="header-back jsBack"  data-eid="mqd_G14">
+            <!-- <svg class="icon icon-arrow-l"><title>返回</title><use xlink:href="#icon-arrow-l"></use></svg>-->
+                <
+            </a>
+            <h1 class="header-back-title">分类</h1>
+            <div class="header-operate">
+                <a id="openSearchPopup" href="javascript:" class="icon icon-search" title="搜索" role="button" data-l2="2" data-eid="mqd_O2">
+                    <svg><use xlink:href="#icon-search"></use></svg>
+                </a>
+                <a id="openGuide" href="javascript:" class="icon icon-more" title="更多" data-rel="guide" data-l2="3" data-eid="mqd_O3"></a>
+            </div>
+        </header>
+
+        <!-- 更多内容的导航 S -->
+        <div id="guide" class="guide">
+            <i id="guideOverlay" class="guide-overlay"></i>
+            <div class="guide-content">
+                <nav class="guide-nav">
+                    <a href="/male" class="guide-nav-a">
+                        <i class="icon icon-home"></i>
+                        <h4 class="guide-nav-h">首页</h4>
+                    </a>
+                    <a href="/category/male" class="guide-nav-a">
+                        <i class="icon icon-sort"></i>
+                        <h4 class="guide-nav-h">分类</h4>
+                    </a>
+                    <a href="/rank/male" class="guide-nav-a">
+                        <i class="icon icon-rank"></i>
+                        <h4 class="guide-nav-h">排行榜</h4>
+                    </a>
+                    <a href="/free/male" class="guide-nav-a">
+                        <i class="icon icon-free"></i>
+                        <h4 class="guide-nav-h">免费</h4>
+                    </a>
+                    <a href="/finish/male" class="guide-nav-a">
+                        <i class="icon icon-end"></i>
+                        <h4 class="guide-nav-h">完本</h4>
+                    </a>
+                    <a href="/user" class="guide-nav-a jsLogin">
+                        <i class="icon icon-account"></i>
+                        <h4 class="guide-nav-h">账户</h4>
+                    </a>
+                </nav>
+                <div class="guide-footer">
+                    <a href="/bookshelf/my" class="btn-primary" data-size="14">我的书架</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="module module-merge">
+            <ul class="sort-ul" data-l1="2">
+                <li class="sort-li" data-l2="1">
+                    <div class="sort-li-detail">
+                        <a href="list.html" class="btn-line-gray" data-eid="mqd_B2" data-rid=1 data-tid="制服诱惑" >制服诱惑</a>
+                        <a href="list.html" class="btn-line-gray" data-eid="mqd_B2" data-rid=2 data-tid="清纯可爱" >清纯可爱</a>
+                        <a href="list.html" class="btn-line-gray" data-eid="mqd_B2" data-rid=3 data-tid="御姐欺凌" >御姐欺凌</a>
+                        <a href="list.html" class="btn-line-gray" data-eid="mqd_B2" data-rid=4 data-tid="土豪系列" >土豪系列</a>
+                        <a href="list.html" class="btn-line-gray" data-eid="mqd_B2" data-rid=5 data-tid="萝莉小妹" >萝莉小妹</a>
+                        <a href="list.html" class="btn-line-gray" data-eid="mqd_B2" data-rid=6 data-tid="秦先生系列" >秦先生系列</a>
+                        <a href="list.html" class="btn-line-gray" data-eid="mqd_B2" data-rid=7 data-tid="91系列" >91系列</a>
+                        <a href="list.html" class="btn-line-gray" data-eid="mqd_B2" data-rid=8 data-tid="丝袜诱惑" >丝袜诱惑</a>
+                        <a href="list.html" class="btn-line-gray" data-eid="mqd_B2" data-rid=9 data-tid="SM专场" >SM专场</a>
+                        <a href="list.html" class="btn-line-gray" data-eid="mqd_B2" data-rid=10 data-tid="重口味系列" >重口味系列</a>
+                        <!-- 这里4个空i两端职能对齐效果实现必须，注意空格需要保留 -->
+                        <i></i> <i></i> <i></i> <i></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+<script src="lib/jquery-3.4.1.min.js"></script>
+<!--<script src="lib/fastclick.js"></script>-->
+<script src="lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

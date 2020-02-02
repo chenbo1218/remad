@@ -1,0 +1,184 @@
+<!--
+* 账单记录主页
+*
+* create by Sam on 2019/11/01
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        .weui-grids{
+            width: 100%;
+            height: auto;
+            box-sizing: border-box;
+            background-color: white;
+            overflow: hidden;
+        }
+        /*.weui-grids:before, .weui-grids:after{
+            border: none;
+        }*/
+        .weui-grid{
+            width: 50%;
+            height: 100px;
+            padding: 0;
+        }
+        .weui-grid__icon{
+            width: 50px;
+            height: 50px;
+            margin: 20px auto 0px auto;
+        }
+        .weui-grid__label{
+            height: 30px;
+            line-height: 30px;
+            margin: 0 auto !important;
+        }
+        .weui-grid:after{
+            border: none;
+        }
+        .weui-grid:last-child:before{
+            border: none;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png"></a>
+        <p>账单记录</p>
+    </div>
+
+    <!--内容-->
+    <div class="comm-fix-content">
+        <!--列表-->
+        <div class="weui-grids">
+            <a href="mine-bill-record.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/bill/icon-all.png">
+                </div>
+                <p class="weui-grid__label">
+                    全部记录
+                </p>
+            </a>
+            <a href="mine-bill-record.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/bill/icon-gift.png">
+                </div>
+                <p class="weui-grid__label">
+                    奖励记录
+                </p>
+            </a>
+        </div>
+
+        <div class="weui-grids">
+            <a href="mine-bill-record.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/bill/icon-recharge.png">
+                </div>
+                <p class="weui-grid__label">
+                    充值记录
+                </p>
+            </a>
+            <a href="mine-bill-record.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/bill/icon-withdraw.png">
+                </div>
+                <p class="weui-grid__label">
+                    提现记录
+                </p>
+            </a>
+        </div>
+
+        <div class="weui-grids">
+            <a href="mine-bill-record.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/bill/icon-sendbao.png">
+                </div>
+                <p class="weui-grid__label">
+                    发包记录
+                </p>
+            </a>
+            <a href="mine-bill-record.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/bill/icon-robbao.png">
+                </div>
+                <p class="weui-grid__label">
+                    抢包记录
+                </p>
+            </a>
+        </div>
+
+        <div class="weui-grids">
+            <a href="mine-bill-record.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/bill/icon-winlose.png">
+                </div>
+                <p class="weui-grid__label">
+                    盈亏记录
+                </p>
+            </a>
+            <a href="mine-bill-record.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/bill/icon-income.png">
+                </div>
+                <p class="weui-grid__label">
+                    佣金收入
+                </p>
+            </a>
+        </div>
+
+        <div class="weui-grids">
+            <a href="mine-bill-record.html" class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/bill/icon-fruit.png">
+                </div>
+                <p class="weui-grid__label">
+                    水果机记录
+                </p>
+            </a>
+            <a class="weui-grid js_grid">
+                <div class="weui-grid__icon">
+                    <img src="../assets/img/bill/icon-more.png">
+                </div>
+                <p class="weui-grid__label">
+                    敬请期待
+                </p>
+            </a>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

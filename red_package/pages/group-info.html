@@ -1,0 +1,209 @@
+<!--
+* 群详情
+*
+* create by Sam on 2019/10/30
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link rel="stylesheet" href="../css/common.css">
+    <style type="text/css">
+        .top-cont{
+            background-color: #fff;
+            padding: 10px;
+            padding-top: 20px;
+            margin-bottom: 10px;
+        }
+        .icons{
+
+        }
+        .icon{
+            float: left;
+            width: 20%;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .icon img{
+            border-radius: 3px;
+            width: 40px;
+            height: 40px;
+        }
+        .icon p{
+            height: 20px;
+            line-height: 20px;
+            margin-top: -5px;
+        }
+
+        .check-all{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .check-all a{
+            color: #0d2894;
+        }
+
+        .weui-cell{
+            height: 35px;
+            line-height: 35px;
+        }
+        .weui-cell .weui-cell__bd{
+            text-align: right;
+        }
+        .weui-cell .weui-cell__bd input, .weui-cell .weui-cell__bd p{
+            text-align: right;
+        }
+
+        .weui-switch{
+            margin-top: 7px;
+        }
+        .weui-switch, .weui-switch-cp__box{
+            width: 40px;
+            height: 20px;
+        }
+        .weui-switch-cp__box:after, .weui-switch:before{
+            width: 40px;
+            height: 20px;
+        }
+        .weui-switch-cp__box:after, .weui-switch:after{
+            width: 20px;
+            height: 20px;
+        }
+        .weui-switch-cp__input:checked~.weui-switch-cp__box, .weui-switch:checked{
+            border-color: #fe4c55;
+            background-color: #fe4c55;
+        }
+
+
+
+    </style>
+</head>
+
+<body ontouchstart>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png"></a>
+        <p>群信息</p>
+    </div>
+
+    <!--内容-->
+    <div class="comm-fix-content">
+        <div class="top-cont">
+            <div class="icons clear">
+                <div class="icon">
+                    <img src="../assets/img/liuxing.jpg" alt="">
+                    <p>刘星</p>
+                </div>
+                <div class="icon">
+                    <img src="../assets/img/liuxing.jpg" alt="">
+                    <p>令狐冲</p>
+                </div>
+                <div class="icon">
+                    <img src="../assets/img/liuxing.jpg" alt="">
+                    <p>雪山飞狐</p>
+                </div>
+                <div class="icon">
+                    <img src="../assets/img/liuxing.jpg" alt="">
+                    <p>丁春秋</p>
+                </div>
+                <div class="icon">
+                    <img src="../assets/img/liuxing.jpg" alt="">
+                    <p>梁山伯</p>
+                </div>
+                <div class="icon">
+                    <img src="../assets/img/liuxing.jpg" alt="">
+                    <p>揍英台</p>
+                </div>
+                <div class="icon">
+                    <img src="../assets/img/liuxing.jpg" alt="">
+                    <p>泷泽萝拉</p>
+                </div>
+            </div>
+
+            <div class="check-all">
+                <a href="group-members.html">全部群成员(30)></a>
+            </div>
+        </div>
+
+        <div class="weui-cells" style="margin-bottom: 10px">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">群名称</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>我要吃肉</p>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">群公告</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>我要吃肉我要吃肉我要吃肉...</p>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">须知</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>我要吃肉</p>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">群规</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>我要吃肉我要吃肉我要吃肉...</p>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">玩法</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <p>我要吃肉我要吃肉我要...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">新消息提示音</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-switch" type="checkbox" id="checkbox">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script src="../lib/swiper.min.js"></script>
+<script>
+    $(function() {
+
+
+
+    });
+
+</script>
+</body>
+</html>

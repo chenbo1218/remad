@@ -1,0 +1,309 @@
+<!--
+* 消息界面
+*
+* create by Sam on 2019/10/30
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link rel="stylesheet" href="../css/common.css">
+    <style type="text/css">
+        /*内容*/
+        .comm-fix-content{
+            top: 210px;
+            margin-bottom: 53px;
+        }
+
+        /*列表*/
+        .weui-cell{
+            height: 60px;
+        }
+        .weui-cell .weui-cell__hd img{
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+        }
+        .weui-cell .weui-cell__bd p{
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            overflow: hidden;
+        }
+
+        /*动画*/
+        .ani{
+            width: 60px;
+            height: 60px;
+            margin-right: 5px;
+            border-radius: 5px;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            -webkit-animation: run steps(12) 1.2s infinite;
+            -moz-animation: run steps(12) 1.2s infinite;
+            animation: run steps(1,start) 1.2s infinite;
+        }
+        @-webkit-keyframes run {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 -1159px;
+            }
+        }
+        @-moz-keyframes run {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 -1159px;
+            }
+        }
+        @keyframes run {
+            5%   {background-position:   0 0;}
+            10%  {background-position:   0 -60px;}
+            15%  {background-position:   0 -120px;}
+            20%  {background-position:   0 -180px;}
+            25%  {background-position:   0 -240px;}
+            30%  {background-position:   0 -300px;}
+            35%  {background-position:   0 -360px;}
+            40%  {background-position:   0 -420px;}
+            45%  {background-position:   0 -480px;}
+            50%  {background-position:   0 -540px;}
+            55%  {background-position:   0 -600px;}
+            60%  {background-position:   0 -660px;}
+            65%  {background-position:   0 -720px;}
+            70%  {background-position:   0 -780px;}
+            75%  {background-position:   0 -840px;}
+            80%  {background-position:   0 -900px;}
+            85%  {background-position:   0 -960px;}
+            90%  {background-position:   0 -1020px;}
+            95%  {background-position:   0 -1080px;}
+            100% {background-position:   0 -1140px;}
+        }
+
+        .ani001{
+            background: url("../assets/img/animate/ani-lei1.png");
+        }
+        .ani002{
+            background: url("../assets/img/animate/ani-lei2.png");
+        }
+        .ani003{
+            background: url("../assets/img/animate/ani-jinqiang.png");
+        }
+        .ani004{
+            background: url("../assets/img/animate/ani-niu1.png");
+        }
+        .ani005{
+            background: url("../assets/img/animate/ani-niu2.png");
+        }
+        .ani006{
+            background: url("../assets/img/animate/ani-fuli.png");
+        }
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <!-- 底部导航栏 -->
+    <div class="weui-tabbar my-nav-tabbar fix-bottom">
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on" id="message">
+            <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+            <div class="weui-tabbar__icon">
+                <img src="../assets/img/nav1-2.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">消息</p>
+        </a>
+        <a href="group.html" class="weui-tabbar__item" id="group">
+            <div class="weui-tabbar__icon">
+                <img src="../assets/img/nav2-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">群组</p>
+        </a>
+        <a href="activity.html" class="weui-tabbar__item" id="activity">
+            <div class="my-nav-icon">
+                <img src="../assets/img/nav3-1.png" alt="">
+            </div>
+        </a>
+        <a href="contact.html" class="weui-tabbar__item" id="contact">
+            <div class="weui-tabbar__icon">
+                <img src="../assets/img/nav4-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">通讯录</p>
+        </a>
+        <a href="mine.html" class="weui-tabbar__item" id="mine">
+            <div class="weui-tabbar__icon">
+                <img src="../assets/img/nav5-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+
+    <!-- 顶部元素   -->
+    <div class="fix-top">
+        <!--标题头-->
+        <div class="comm-title-red-adv">
+            <p class="comm-title-red-adv__title">消息</p>
+            <div class="comm-title-red-adv__tools">
+                <!--快捷功能-->
+                <a id="btn-fast-func"><img src="../assets/img/common/icon-more.png"></a>
+                <!--搜索栏-->
+                <!--                <a id="btn-search"><img src="../assets/img/icon-find.png"></a>-->
+            </div>
+        </div>
+
+        <!--轮播海报-->
+        <div class="swiper-container comm-top-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="../assets/img/haibao/haibao-s1.png" alt=""></div>
+                <div class="swiper-slide"><img src="../assets/img/haibao/haibao-s2.png" alt=""></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <!--跑马灯-->
+        <div class="comm-top-marquee">
+            <div class="comm-top-marquee__icon">
+                <img src="../assets/img/common/icon-laba.png"/>
+            </div>
+            <div class="comm-top-marquee__content">
+                <p>这是一段测试广播，请无视内容，关注特效。<!--<span style="width: 2em;"></span>--></p>
+            </div>
+        </div>
+    </div>
+
+    <!--内容容器-->
+    <div class="comm-fix-content">
+        <!--下拉刷新-->
+        <div class="weui-pull-to-refresh__layer" style="display: none">
+            <div class='weui-pull-to-refresh__arrow'></div>
+            <div class='weui-pull-to-refresh__preloader'></div>
+            <div class="down">下拉刷新</div>
+            <div class="up">释放刷新</div>
+            <div class="refresh">正在刷新</div>
+        </div>
+
+        <!--列表-->
+        <div class="my-message-cont">
+            <div class="weui-cells">
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__hd">
+                        <img src="../assets/img/common/icon-kefu1.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p class="fs16">在线客服</p>
+                        <p class="gray">有问题，找客服</p>
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__hd">
+                        <img src="../assets/img/common/icon-kefu2.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p class="fs16">我的好友</p>
+                        <p class="gray">暂无未读消息</p>
+                    </div>
+                </a>
+
+                <a class="weui-cell weui-cell_access" href="chat-group.html">
+                    <div class="weui-cell__hd">
+                        <div class="ani ani001"></div>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p class="fs16">7-100元可发可抢(7包1.6倍)(24小时娱乐)</p>
+                        <p class="gray">[99+条未读消息]</p>
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access" href="chat-group.html">
+                    <div class="weui-cell__hd">
+                        <div class="ani ani002"></div>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p class="fs16">30-1500可发可抢(24小时娱乐)</p>
+                        <p class="gray">[99+条未读消息]</p>
+                    </div>
+                </a>
+                <a class="weui-cell weui-cell_access" href="chat-group.html">
+                    <div class="weui-cell__hd">
+                        <div class="ani ani003"></div>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p class="fs16">7-1500禁抢玩法(独雷连环雷)(正式开放)</p>
+                        <p class="gray">[99+条未读消息]</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!--模态框-->
+    <div class="weui-mask"></div>
+    <div class="weui-dialog comm-modal-fast">
+        <a href="mine-recharge.html" class="comm-modal-fast__item">快速充值</a>
+        <a href="mine-proxy-main.html" class="comm-modal-fast__item">代理中心</a>
+        <a href="mine-faq.html" class="comm-modal-fast__item">帮助中心</a>
+        <a href="mine-rules.html" class="comm-modal-fast__item">玩法规则</a>
+    </div>
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script src="../lib/swiper.min.js"></script>
+<script>
+    $(function() {
+        //初始化轮播图
+        $(".swiper-container").swiper({
+            loop: true,
+            autoplay: 2500,
+            disableOnInteraction: false
+        });
+
+        //下拉刷新
+        $(".comm-fix-content").pullToRefresh(function() {
+            $(".weui-pull-to-refresh__layer").show();
+
+            //在这里请求后台..
+            //模拟
+            setTimeout(function() {
+                $(".weui-pull-to-refresh__layer").hide();
+                $(".comm-fix-content").pullToRefreshDone();
+            }, 2000);
+
+        });
+
+        //快捷入口
+        $("#btn-fast-func").click(function(){
+            $(".weui-mask").addClass("weui-mask--visible");
+            $(".weui-dialog").addClass("weui-dialog--visible");
+        });
+        $(".weui-mask").click(function(){
+            $(".weui-mask").removeClass("weui-mask--visible");
+            $(".weui-dialog").removeClass("weui-dialog--visible");
+        });
+
+
+
+
+
+
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!--
+* 发红包页面
+*
+* create by Sam on 2019/11/12
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+    <style>
+        .target, .target p{
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-align: center;
+        }
+        .target p span{
+            font-size: 1em;
+        }
+
+        .weui-cell{
+            height: 20px;
+            line-height: 20px;
+        }
+        .weui-cell .fr input{
+            text-align: right;
+        }
+
+        .tips{
+            text-indent: 1em;
+            height: 30px;
+            line-height: 30px;
+
+        }
+        .tipss{
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .comm-btn-big-red{
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png" alt=""></a>
+        <p>发红包</p>
+    </div>
+
+    <!--内容-->
+    <div class="comm-fix-content">
+        <div class="target">
+            <p>￥<span id="target-money">0</span></p>
+        </div>
+
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">总金额</label>
+                </div>
+                <div class="weui-cell__bd fr">
+                    <input class="weui-input" id="t-money" type="number" pattern="[0-9]*" placeholder="7.00-100.00" oninput="if(value.length>5)value=value.slice(0,5)">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">红包个数</label>
+                </div>
+                <div class="weui-cell__bd fr">
+                    <input class="weui-input" id="t-count" type="number" pattern="[0-9]*" placeholder="7" oninput="if(value.length>2)value=value.slice(0,2)">
+                </div>
+            </div>
+        </div>
+        <p class="tips gray">红包发包范围：7.00-100.00元</p>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">雷数</label>
+                </div>
+                <div class="weui-cell__bd fr">
+                    <input class="weui-input" id="t-bomb" type="number" pattern="[0-9]*" placeholder="请输入雷数" oninput="if(value.length>1)value=value.slice(0,1)">
+                </div>
+            </div>
+        </div>
+        <p class="tips gray">雷数范围：0-9</p>
+
+
+        <a class="comm-btn-big comm-btn-big-red" id="btn-send">塞入进红包</a>
+
+        <p class="tips tipss gray">未领取的红包，将于5分钟后发起退款</p>
+
+    </div>
+
+
+
+
+
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        var $tmoney = $("#t-money");
+        var $tcount = $("#t-count");
+        var $tbomb = $("#t-bomb");
+        var $btnSend = $("#btn-send");
+
+        $tmoney.bind("input propertychange",function(event){
+            var str = $(this).val();
+            $("#target-money").text(str);
+        });
+
+        $btnSend.click(function(){
+            console.log("塞入进红包");
+
+            //code here
+            //...
+
+
+
+        });
+
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

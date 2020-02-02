@@ -1,0 +1,226 @@
+<!--
+* 活动--发包满额奖励
+*
+* create by Sam on 2019/11/12
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+    <style>
+        body{
+            background-color: #ffda83;
+            overflow-x: hidden;
+        }
+        .bg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 0;
+        }
+
+        .cont{
+            position: relative;
+            top: 180px;
+            z-index: 100;
+            margin: 2.5%;
+            padding: 10px;
+            background-color: #00b598;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .coont{
+            padding: 10px;
+            background-color: #fff6e5;
+            border-radius: 5px;
+        }
+
+        .cont1{
+            height: 180px;
+        }
+        .cont1 .p1{
+            width: 100%;
+            box-sizing: border-box;
+            height: 120px;
+            background-color: #f1e8d7;
+            padding: 10px;
+            color: #ff6533;
+        }
+        .cont1 .p1 p{
+            font-size: 10px;
+        }
+        .cont1 .p2{
+            text-align: center;
+        }
+        .cont1 .p2 p{
+            width: 140px;
+            height: 30px;
+            line-height: 30px;
+            background-color: #ffda83;
+            border-radius: 15px;
+            margin: 5px auto;
+            color: #ff6533;
+        }
+
+        .item{
+            height: 120px;
+        }
+        .item .p1{
+            /*padding: 10px;*/
+            height: 20px;
+            background-color: #00b598;
+        }
+        .item .p1 p{
+            text-align: right;
+        }
+        .item .p1 p span.finish{
+            color: green;
+        }
+        .item .p1 p span.nofinish{
+            color: red;
+        }
+        .item .p2{
+            height: 80px;
+            padding: 10px;
+            background-color: #fff6e5;
+            border-radius: 5px;
+        }
+        .item .p2 .fl{
+            width: 33.33%;
+            text-align: center;
+        }
+        .item .p2 .fl img{
+            width: 50px;
+            height: 50px;
+        }
+        .item .p2 .fl.get p{
+            height: 25px;
+            line-height: 25px;
+            width: 70px;
+            color: #fff;
+            border-radius: 13px;
+            text-align: center;
+            margin: 27px auto;
+        }
+        .item .p2 .finish{
+            background-color: #00b598;
+        }
+        .item .p2 .nofinish{
+            background-color: #A9A9A9;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="bg" src="../assets/img/activity/banner002.png" />
+
+    <!--标题头-->
+    <div class="comm-title-red" style="background: transparent;position: absolute">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png"></a>
+    </div>
+
+    <!--内容-->
+    <div class="cont cont1">
+        <div class="coont">
+            <div class="p1">
+                <p style="font-size: 14px; color: #00b598">活动详情<span style="font-size: 10px">(本活动最终解释权归平台所有)</span></p>
+                <p>1.活动时间：长期有效(每日零点清零)。</p>
+                <p>2.活动内容：当日累计发包达目标金额系统即发放满额奖励到账号。</p>
+                <p>3.转盘抽奖次数满额平台自动发放，不限发放次数。</p>
+            </div>
+
+            <div class="p2">
+                <p>奖励￥8.88已发放</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="cont item">
+        <div class="p1">
+            <p><span class="finish">102</span>/100</p>
+        </div>
+        <div class="p2 clear">
+            <div class="fl">
+                <img src="../assets/img/activity/icon-gold.png" alt="">
+                <p>2.88奖金</p>
+            </div>
+            <div class="fl">
+                <img src="../assets/img/activity/icon-lottery.png" alt="">
+                <p>1次抽奖</p>
+            </div>
+            <div class="fl get">
+                <p class="finish">已发放</p>
+<!--                <p class="nofinish">未完成</p>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="cont item">
+        <div class="p1">
+            <p><span class="nofinish">102</span>/300</p>
+        </div>
+        <div class="p2 clear">
+            <div class="fl">
+                <img src="../assets/img/activity/icon-gold.png" alt="">
+                <p>6.88奖金</p>
+            </div>
+            <div class="fl">
+                <img src="../assets/img/activity/icon-lottery.png" alt="">
+                <p>3次抽奖</p>
+            </div>
+            <div class="fl get">
+<!--                <p class="finish">已发放</p>-->
+                <p class="nofinish">未完成</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cont item">
+        <div class="p1">
+            <p><span class="nofinish">102</span>/500</p>
+        </div>
+        <div class="p2 clear">
+            <div class="fl">
+                <img src="../assets/img/activity/icon-gold.png" alt="">
+                <p>12.88奖金</p>
+            </div>
+            <div class="fl">
+                <img src="../assets/img/activity/icon-lottery.png" alt="">
+                <p>5次抽奖</p>
+            </div>
+            <div class="fl get">
+<!--                <p class="finish">已发放</p>-->
+                <p class="nofinish">未完成</p>
+            </div>
+        </div>
+    </div>
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

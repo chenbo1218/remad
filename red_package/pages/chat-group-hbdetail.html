@@ -1,0 +1,210 @@
+<!--
+* 红包领取详情页面
+*
+* create by Sam on 2019/11/12
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <title>发红包啦</title>
+    <link type="text/css" rel="stylesheet" href="../lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="../lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="../css/common.css">
+    <style>
+        .send-info{
+            width: 100%;
+            position: relative;
+        }
+        .send-info .bg{
+            width: 100%;
+            height: auto;
+            position: absolute;
+            z-index: -1;
+        }
+        .send-info .cont{
+            text-align: center;
+        }
+        .cont img{
+            margin-top: 35px;
+            border-radius: 4px;
+        }
+        .cont p{
+            height: 25px;
+            line-height: 25px;
+            font-size: 16px;
+            /*font-weight: bold;*/
+        }
+
+        /**列表**/
+        .weui-cells:before{
+            border: none;
+        }
+        .weui-cell{
+            width: 100%;
+            height: 60px;
+            padding: 10px 10px;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+        .weui-cell .p1 img{
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+        .weui-cell .p3{
+            text-align: center;
+        }
+        .weui-cell .p3 img{
+            height: 40px;
+            width: auto;
+        }
+        .weui-cell .p4{
+            text-align: right;
+        }
+        .weui-cell .p4 p:last-child{
+            color: #ffb11c;
+        }
+
+        .my-cells-title{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!--标题头-->
+    <div class="comm-title-red fix-top">
+        <a href="javascript:history.back(-1);" class="comm-title-red__back"><img src="../assets/img/common/icon-back.png" alt=""></a>
+        <p>红包详情</p>
+    </div>
+
+    <div class="comm-fix-content">
+        <!--发包人信息-->
+        <div class="send-info">
+            <img class="bg" src="../assets/img/chat/banner-hb-detai.png" >
+            <div class="cont">
+                <img src="../assets/img/liuxing.jpg" >
+                <p>刘星</p>
+                <p>20-7</p>
+            </div>
+        </div>
+
+        <!--列表-->
+        <p class="my-cells-title gray">已领取7/7个，共13.00/13.00元</p>
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__hd p1">
+                    <img src="../assets/img/liuxing.jpg">
+                </div>
+                <div class="weui-cell__bd p2">
+                    <p>青衣剑客</p>
+                    <p class="fs12 gray">10:13:36</p>
+                </div>
+                <div class="weui-cell__bd p3">
+                    <img src="../assets/img/chat/lei.png" alt="">
+                </div>
+                <div class="weui-cell__bd p4">
+                    <p class="bold">0.21</p>
+                    <p class="fs12"></p>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd p1">
+                    <img src="../assets/img/liuxing.jpg">
+                </div>
+                <div class="weui-cell__bd p2">
+                    <p>陈沐夕。</p>
+                    <p class="fs12 gray">10:13:36</p>
+                </div>
+                <div class="weui-cell__bd p3">
+<!--                    <img src="../assets/img/chat/lei.png" alt="">-->
+                </div>
+                <div class="weui-cell__bd p4">
+                    <p class="bold">0.27</p>
+                    <p class="fs12"></p>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd p1">
+                    <img src="../assets/img/liuxing.jpg">
+                </div>
+                <div class="weui-cell__bd p2">
+                    <p>醉酒成梦</p>
+                    <p class="fs12 gray">10:13:36</p>
+                </div>
+                <div class="weui-cell__bd p3">
+                    <img src="../assets/img/chat/lei.png" alt="">
+                </div>
+                <div class="weui-cell__bd p4">
+                    <p class="bold">0.92</p>
+                    <p class="fs12"></p>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd p1">
+                    <img src="../assets/img/liuxing.jpg">
+                </div>
+                <div class="weui-cell__bd p2">
+                    <p>别为难</p>
+                    <p class="fs12 gray">10:13:36</p>
+                </div>
+                <div class="weui-cell__bd p3">
+                    <img src="../assets/img/chat/lei.png" alt="">
+                </div>
+                <div class="weui-cell__bd p4">
+                    <p class="bold">1.41</p>
+                    <p class="fs12"></p>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd p1">
+                    <img src="../assets/img/liuxing.jpg">
+                </div>
+                <div class="weui-cell__bd p2">
+                    <p>林书豪</p>
+                    <p class="fs12 gray">10:13:36</p>
+                </div>
+                <div class="weui-cell__bd p3">
+<!--                    <img src="../assets/img/chat/lei.png" alt="">-->
+                </div>
+                <div class="weui-cell__bd p4">
+                    <p class="bold">6.71</p>
+                    <p class="fs12">手气最佳</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+<script src="../lib/jquery-3.4.1.min.js"></script>
+<!--<script src="../../lib/fastclick.js"></script>-->
+<script src="../lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

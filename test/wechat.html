@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+        }
+
+        .box{
+            width: 450px;
+            height: 630px;
+            border: 1px solid darkgray;
+            margin: 10px auto;
+            background-size: cover;
+        }
+
+        .top{
+            width: 100%;
+            height: 60px;
+            box-sizing: border-box;
+            padding: 0px 20px;
+            line-height: 60px;
+            background: #f2f2f2;
+            border-bottom: 1px solid #dcdcdc;
+            font-size: 14px;
+        }
+        .top p{
+            float: left;
+        }
+        .top .more{
+            float: right;
+            font-weight: bold;
+            color: #6d6d6d;
+        }
+
+        .cont{
+            width: 100%;
+            height: 400px;
+            box-sizing: border-box;
+            padding: 0px 20px;
+            background: #f2f2f2;
+            overflow-y: scroll;
+        }
+
+        .chat{
+            width: 100%;
+            height: 38px;
+            margin: 10px 0px;
+        }
+        .chat .ava{
+            width: 38px;
+            height: 38px;
+            display: block;
+            float: left;
+        }
+        .chat .jian{
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-width: 5px;
+            border-color:  transparent #fff transparent transparent;
+            float: left;
+            margin-top: 10px;
+        }
+        .chat .txt{
+            width: auto;
+            max-width: 335px;
+            height: auto;
+            line-height: 30px;
+            background: white;
+            float: left;
+            border-radius: 3px;
+            padding: 5px 5px;
+        }
+        .chat:after{
+            content: "";
+            clear: both;
+        }
+
+        .mychat{
+            width: 100%;
+            height: 38px;
+            margin: 10px 0px;
+        }
+        .mychat .ava{
+            width: 38px;
+            height: 38px;
+            display: block;
+            float: right;
+        }
+        .mychat .jian{
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-width: 5px;
+            border-color:  transparent transparent transparent #9eea6a;
+            float: right;
+            margin-top: 10px;
+        }
+        .mychat .txt{
+            width: auto;
+            max-width: 335px;
+            height: auto;
+            line-height: 30px;
+            background: #9eea6a;
+            float: right;
+            border-radius: 3px;
+            padding: 5px 5px;
+        }
+
+        .chat:after{
+            content: "";
+            clear: both;
+        }
+
+        .bar{
+            width: 100%;
+            height: 160px;
+            padding: 10px 10px;
+            box-sizing: border-box;
+            padding: 10px 20px;
+            position: relative;
+        }
+        .bar .ipt{
+            width: 410px;
+            height: 120px;
+            line-height: 15px;
+            border: none;
+            float: left;
+            margin-right: 5px;
+        }
+        .bar .btnDiv{
+            width: 410px;
+            position: absolute;
+            bottom: 0px;
+        }
+        .bar .sendBtn{
+            width: 70px;
+            height: 25px;
+            float: right;
+            color: #6d6d6d;
+            border: 1px solid lightgray;
+            background: #f2f2f2;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        <!--<div class="top">
+            <p>幸福冲锋(6)</p>
+            <div class="more">. . .</div>
+        </div>
+        <div class="cont">
+            <div class="chat">
+                <img class="ava" src="img/wechat/tingha.jpg" alt="" />
+                <div class="jian"></div>
+                <div class="txt">@小胡 今天回来吗？给我做好吃的</div>
+            </div>
+            <div class="chat">
+                <img class="ava" src="img/wechat/ying.jpg" alt="" />
+                <div class="jian"></div>
+                <div class="txt">@倒影年华 我给你做了好吃的，快回来</div>
+            </div>
+            <div class="mychat">
+                <img class="ava" src="img/wechat/bo.jpg" alt="" />
+                <div class="jian"></div>
+                <div class="txt">你们两个。。</div>
+            </div>
+        </div>-->
+
+
+        <div class="top">
+            <p>刘星</p>
+            <div class="more">. . .</div>
+        </div>
+        <div class="cont" id="cont">
+            <div class="chat">
+                <img class="ava" src="img/wechat/liuxing.jpg" alt="" />
+                <div class="jian"></div>
+                <div class="txt">梅溪湖这边太挤了</div>
+            </div>
+            <div class="chat">
+                <img class="ava" src="img/wechat/liuxing.jpg" alt="" />
+                <div class="jian"></div>
+                <div class="txt">得买别墅</div>
+            </div>
+            <div class="chat">
+                <img class="ava" src="img/wechat/liuxing.jpg" alt="" />
+                <div class="jian"></div>
+                <div class="txt">我中了100万彩票，等下分你50万</div>
+            </div>
+            <div class="mychat">
+                <img class="ava" src="img/wechat/bo.jpg" alt="" />
+                <div class="jian"></div>
+                <div class="txt">好哥们！！！</div>
+            </div>
+        </div>
+
+        <div class="bar">
+            <textarea class="ipt" id="ipt" id="" cols="30" rows="10"></textarea>
+            <div class="btnDiv">
+                <input type="button" class="sendBtn" id="sendBtn" value="发送(S)" />
+            </div>
+        </div>
+
+
+    </div>
+
+
+<script src="js/static/jquery-3.4.0.js"></script>
+<script>
+    $(document).ready(function(){
+        var $ipt = $("#ipt");
+
+        document.onkeydown = function(e){
+            var ev = e || window.event;
+            if(ev.keyCode==13){
+                console.log("press enter!");
+                sendMsg();
+            }
+        }
+        $("#sendBtn").click(function(){
+            sendMsg();
+        });
+
+        function sendMsg(){
+            var str = $ipt.val();
+            if(str.trim() != ""){
+                console.log("send message:"+str);
+                var html = "<div class='mychat'>" +
+                    "<img class='ava' src='img/wechat/bo.jpg'/>" +
+                    "<div class='jian'></div>" +
+                    "<div class='txt'>"+str+"</div>" +
+                    "</div>";
+                $(".cont").append(html);
+                var cont = document.getElementById('cont');
+                cont.scrollTop = cont.scrollHeight;
+                $ipt.val("");
+                // var ipt = document.getElementById("ipt");
+                $ipt.selectionStart = 0;
+            }
+        }
+
+
+
+
+    });
+
+</script>
+
+
+</body>
+</html>

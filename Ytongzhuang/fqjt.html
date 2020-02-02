@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>童装加盟手册</title>
+    <link type="text/css" rel="stylesheet" href="./lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="./lib/weuix.css" />
+    <link type="text/css" rel="stylesheet" href="./lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="./css/common.css">
+    <style>
+
+        .cont img{
+            width: 100%;
+            height: auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="fix-top">
+        <!--标题头-->
+        <div class="comm-fix-title clear">
+            <div class="p1">
+                <img src="./img/ava.jpg" alt="">
+            </div>
+            <div class="p2">
+                <p>童装加盟手册</p>
+                <p>今日新增内容0 | 当前访问人数<span id="visitor"></span></p>
+                <!--<p>欢迎新加盟新成员，祝大家童装大卖</p>-->
+            </div>
+        </div>
+
+        <!--导航-->
+        <div class="weui-navbar">
+            <a href="index.html" class="weui-navbar__item" id="btn1">
+                <p>加盟培训</p>
+            </a>
+            <a href="cyb.html" class="weui-navbar__item" id="btn2">
+                <p>采源宝</p>
+            </a>
+            <a href="wxhy.html" class="weui-navbar__item" id="btn3">
+                <p>微信货源</p>
+            </a>
+            <a class="weui-navbar__item weui-bar__item--on" id="btn4">
+                <p>发圈精图</p>
+            </a>
+            <a href="fqwa.html" class="weui-navbar__item" id="btn5">
+                <p>发圈文案</p>
+            </a>
+        </div>
+    </div>
+
+    <!--内容-->
+    <div class="comm-fix-content">
+        <!--发圈宣传图-->
+        <div class="cont" id="cont">
+            建设中...
+
+
+
+        </div>
+    </div>
+
+
+
+
+<script src="./lib/jquery-3.4.1.min.js"></script>
+<script src="./lib/jquery-weui.min.js"></script>
+<script src="./lib/jquery.lazyload.min.js"></script>
+<script>
+    $(function() {
+        //访问人数
+        var rand = Math.round(Math.random()*100) +9;
+        $("#visitor").text(rand);
+
+        //图片懒加载
+        $("#cont img.lazy").lazyload({
+            placeholder : "./img/caiyuanbao/404.jpg",
+            container: $(".comm-fix-content"),
+            effect: "fadeIn"
+        });
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

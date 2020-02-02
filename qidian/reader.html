@@ -1,0 +1,161 @@
+<!--
+* 开始阅读--文字load在这儿
+* xxx
+* create by Sam on xxxx/xx/xx
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>露点中文网</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <style>
+        .skin-default .page-read {
+            background: url(assets/img/skin-default.jpg) no-repeat center top,url(assets/img/skin-default-b.jpg) no-repeat center bottom,url(assets/img/skin-default-m.jpg) repeat-y center 119px;
+            background-size: 100%;
+        }
+
+        .page-read:not(.H) {
+            padding-top: 2.75rem;
+        }
+
+        .skin-default .page-read-top {
+            background: url(assets/img/skin-default-t.jpg) no-repeat center top;
+            background-size: 100%;
+        }
+        .page-read-top {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 44px;
+            background: inherit;
+        }
+        .read-book-name {
+            font-size: .75rem;
+            font-weight: 400;
+            position: absolute;
+            top: 15px;
+            left: 1rem;
+            color: rgba(0,0,0,.4);
+        }
+        .read-bookmark {
+            font-size: 0;
+            position: absolute;
+            top: 0;
+            right: 1rem;
+            width: 16px;
+            height: 15px;
+            opacity: .95;
+            color: transparent;
+            background-color: #ed424b;
+        }
+        .read-page-mark {
+            font-size: 0;
+            position: absolute;
+            left: 0;
+            overflow: hidden;
+            width: 0;
+            height: 0;
+            -webkit-transition: opacity .25s;
+            transition: opacity .25s;
+            opacity: 0;
+            border: 4px solid transparent;
+            border-left-color: #ed424b;
+            background: 0 0;
+        }
+        .read-page-num {
+            font-size: 10px;
+            position: absolute;
+            bottom: 0;
+            left: 1rem;
+            display: none;
+            color: rgba(0,0,0,.4);
+        }
+
+        .read-article {
+            font-size: 1rem;
+            line-height: 1.8;
+            overflow: hidden;
+            min-height: calc(100vh - 44px);
+            margin: 0 16px;
+            text-align: justify;
+        }
+        .read-section {
+            overflow: hidden;
+            min-height: inherit;
+        }
+        .read-article p {
+            font-size: 1em;
+            margin: .1em 0;
+        }
+
+    </style>
+</head>
+
+<body class=" skin-default unlogin">
+    <!-- 章节内容 S -->
+    <div id="pageRead" class="page-read ">
+        <content id="readContent" class="page-read-content" data-l1="4">
+            <!-- 下拉加载上一章 S -->
+            <div id="readLoadPrev" class="read-load-prev">
+                <a class="read-load-icon btn-any loading"></a>
+                <p class="read-load-p">下拉阅读上一章</p>
+            </div>
+            <!-- 下拉加载上一章 E -->
+            <article id="chapterContent" class="read-article" style="font-size: 1.125rem" data-eids="mqd_R34|mqd_R35">
+                <section class="read-section jsChapterWrapper" data-chapter-id="421067537" >
+                    <h3>第一章 游戏载入中</h3>
+                    <p>　　【一张制作精良的假币】<p>　　江枫没有接钱，对着面前这位身材魁梧，顶着个光头满脸不耐烦的大汉略有歉意地笑了笑：“这位客人不好意思，现在没有零钱了，一百找不开。”<p>　　“找不开？”客人把钱抽回来，不情不愿地递给江枫一张二十元纸币，在接到找钱后还止不住骂骂咧咧了几句才离开小店。<p>　　“小枫，盒子里不是有零钱吗？”听到店里有动静，江枫的妈妈王秀莲同志从后厨探出头来询问。<p>　　“他给的是假钱。”江枫熟练地把桌子收拾干净，椅子摆放好，准备打烊。<p>　　“假钱？”王秀莲同志瞬间收起了脸上的笑容，就连原本的三下巴都因为脸部紧绷变成了双下巴，“哪儿来的小瘪三敢糊弄我儿子，他下次再敢来妈替你教训他！”<p>　　也是，以王秀莲同志的身形刚刚那种程度壮汉想必也不是她的对手。<p>　　“我们儿子可是大学生，怎么可能会被这种人糊弄到。”江枫的亲爹江建康同志顶着个增光的头顶，一只手一盘菜笑眯眯地从后厨走出来，“来来来，儿子，你最喜欢的宫保鸡丁。”<p>　　【一盘汗油混合的宫保鸡丁】<p>　　“我减肥。”江枫面无表情地拒绝，开始思考该怎么劝说自家亲爹在厨房里装个空调这个重要任务。<p>　　以江建康同志240斤的吨位，在这个季节天天呆在不足十平米的小厨房里也是苦了他了。<p>　　“好端端的学别人家小姑娘减什么肥，我儿子再长一百斤都不胖！”江建康这辈子最自豪的就是自己生了个又高又瘦改良他们江家基因的儿子，他爹生了五个儿子，有4个孙子2个孙女，除了小弟家那两个上初中的双胞胎女儿，就他儿子在二百斤以下。<p>　　江枫突然想到每年去爷爷家过年的时候一张大圆桌都坐不下七个人，女眷孙子辈的单独开一桌都坐不下的场景，决定保持沉默。<p>　　“来来来，吃肉！”江建康往江枫碗里夹了一大块肉。<p>　　“对，听你爸的，我儿子还需要减肥？”王秀莲同志应和道。<p>　　算了，为了父爱。<p>　　江枫认命地拿起了筷子。<p>　　“爸。”<p>　　“哎！”<p>　　“这天太热了，你在厨房里装个空调吧。”<p>　　……<p>　　吃完饭，江家一家三口接着收拾店铺，清理后厨，王秀莲同志和江建康留在店里清点食材，把江枫赶回家休息。<p>　　临走前，江枫还不忘看了眼自家的招牌。<p>　　【一块年久失修的招牌】<p>　　在一转身，江枫就看不到任何像备注一样的提示字了。<p>　　果然，得在自家店里才能看到是吗？<p>　　经过了两天的测试，江枫终于确定了这些奇怪的备注出现的范围。<p>　　“叮，恭喜玩家江枫激活游戏，游戏载入中，请稍等。”<p>　　一声清脆的女声，把江枫吓得一个激灵。<p>　　大约过了两分钟，清脆的女声再度响起：“载入成功，请玩家查询面板，自主探索，努力完成任务。”<p>　　江枫注意到右上角出现了一个小小的感叹号，鬼使神差地伸手一点，居然真的出现了一个属性面板。<p>　　玩家姓名：江枫<p>　　等级：0（0/100）<p>　　剩余经验值:0<p>　　技能：鉴定（初级）：你只能获得一些基础信息<p>　　主线任务：？？？（请玩家自行探索）<p>　　支线任务：无（在选择主线任务后激活）<p>　　成就：无<p>　　称号：无<p>　　道具：无<p>　　评价：一个初出茅庐的新手<p>　　游戏说明：<p>　　1.本游戏自由度极高，请玩家自行探索。<p>　　2.本游戏不会干预玩家的任何选择，请玩家努力解锁成就。<p>　　3.一切解释归游戏所有。<p>　　游戏？<p>　　这个属性面板看着，还真的挺像一个游戏的。<p>　　江枫伸手再点一下右上角的感叹号，面板就消失了。<p>　　看起来，还挺有趣的。<p>　　自行探索的话……<p>　　江枫就这么站在自家门口原地思考了起来。<p>　　还没理出个头绪，江枫就被王秀莲同志的大嗓门拉回了现实。<p>　　“小枫，你在门口傻站这干嘛？”王秀莲站在楼梯口问道，她和江建康同志两人一前一后站在这小小的楼梯的拐角，给人营造出一种把这个楼道堵的水泄不通之感。<p>　　“忘了带钥匙。”胡话随口就来。<p>　　“你这孩子，也不晓得打电话，等了多久了？”王秀莲同志上前开门，江枫连忙让开。<p>　　“对了，爸，我刚刚和你说在厨房装空调的事你是怎么想的。”江枫让江建康老同志先进，一边关门一边问道。<p>　　“没必要，这么多年都这样要啥空调。你二伯诊所那片地拆迁，他借了我们家七十万，我在你们学校边上买了个店铺，等你开学了我和你妈也一起过去了。”江建康不在意地说道，开始畅想未来生活，“你看看，我和你妈把店开过去多好，你还不用吃食堂了。我听你大堂哥说现在大学食堂可难吃了，什么西红柿炒月饼，那是人吃的吗？我和你妈……”<p>　　江枫甚至来不及思考江建康老同志才借二伯七十万就能买下学校边上寸土寸金的店铺，自家到底是多有钱这个决定自己能不能大学毕业闲在家里当肥宅这个关乎未来命运的事情，就听见熟悉的女声。<p>　　“叮，发现一条可选主线任务：【进击的小店】让健康炒菜馆在A大的知名度达到100。”<p>　　自己家现在小店的名字叫健康小吃。<p>　　“爸，你新店的名字准备叫什么？”江枫问道。<p>　　“名字？”江建康愣了愣，笑呵呵地说道：“健康炒菜馆，怎么样，不错吧！你妈还嫌弃这个名字土，咱们这种炒菜店就是要取这种通俗易懂的名字，取那些文绉绉的名客人都不愿意来。”<p>　　“这个店铺还是你大伯帮我们物色的，上下两层足足180平，本来钱不够我和你妈又不愿意贷款还想再看看，谁知你二伯诊所的拆迁款正好到了，借我们家七十万，正正好，你说巧不巧？”<p>　　巧，简直是太巧了。<p>　　江枫甚至都要怀疑是这个游戏计划好了的。<p>　　“你二伯也在我们家饭馆旁买了个店铺，这下好了，我们兄弟五个又在同一个城市了。新店的事情你不用担心，装修什么的你大伯都帮我们看着呢！”<p>　　江枫的几个叔伯原本都是在这个小城工作的，包括江枫在内江家的四个孙子辈的都是同一所小学，初中，高中毕业的。小时候除了江枫是正常人的体型，他的三个堂兄都是又高又壮，四兄弟在一起周边的小混混从来不敢招惹。<p>　　往上追溯，江枫的爷爷江卫国在退休之前是国营饭店的厨子，哪怕是在那个物资紧缺的年代也是一众瘦子中最显眼的那个胖子，连带着把江枫的奶奶和他爹还有四个叔伯也喂成了远近闻名的胖子，就连江枫小叔的两个女儿也隐隐能看出江家人的风范。<p>　　江家五兄弟，除了排行老三的江建康同志接了江卫国的班，后来因为国营饭店倒闭自己开了个小饭馆。老大江建国是个裁缝，因为在这个小城生意不景气，前几年借了一笔钱把裁缝铺开去了A市，现在也算是风生水起。老二江建党开了家小诊所，老四江建业和老五江建设在A市合伙开了家宠物店。<p>　　江枫想想以后几个叔伯婶婶还有三位堂兄和两个堂妹会经常来自家饭馆聚聚，就体会到了江建康同志要买一间面积大的铺子的良苦用心。<p>　　在客厅听江建康同志已经畅想到了未来孙子接手健康炒菜馆把饭馆发扬光大，王秀莲同志已经洗漱完毕来到客厅一脸嫌弃地打断他：“还不快去洗澡睡觉，都欠了二哥一屁股债了还在这和儿子吹牛！”<p>　　瞧瞧，王秀莲同志多么有上进心。<p>　　回到房间，江枫点开属性面板，面板已经变成了——<p>　　玩家姓名：江枫<p>　　等级：0（0/100）<p>　　剩余经验值:0<p>　　技能：鉴定（初级）：你只能获得一些基础信息<p>　　主线任务：1.（可选）【进击的小店】让健康炒菜馆在A大的知名度达到100【选择：是/否】<p>　　2.？？？（请玩家自行探索）<p>　　支线任务：无（在选择主线任务后激活）<p>　　成就：无<p>　　称号：无<p>　　道具：无<p>　　评价：一个初出茅庐的新手<p>　　江枫点击了是，主线任务就变成了：<p>　　1.【进击的小店】让健康炒菜馆在A大的知名度达到100，任务进度（0/100）。<p>　　任务提示：口碑是发展一家新店的关键，知名度的获得仅限于A大在校师生。<p>　　任务奖励：未知<p>　　在校师生啊……<p>　　对江建康同志的手艺江枫还是深有体会的，毕竟是干过国营饭店大厨的人，还有一个月A大就会开学，这条主线任务在江枫看来还是很好完成的。<p>　　至于请玩家自行探索，他还有一个月的时间好好探索。
+                </section>
+            </article>
+            <!-- 上拉加载下一章 S -->
+            <div id="readLoadNext" class="read-load-next">
+                <a id="btnLoadNextChapter" href="javascript:" class="btn-normal red" data-size="14"  role="button">加载下一章</a>
+                <a id="aGotoBookEnd" href="/book/1012710206/end" class="btn-blank blue" style="display:none" data-eid="mqd_R37">进入书末页 »</a>
+                <!-- <p class="read-load-p">正在加载下一章</p>
+                <a class="read-load-icon btn-any loading"></a> -->
+            </div>
+            <!-- 上拉加载下一章 E -->
+        </content>
+
+        <div class="page-read-top">
+            <h1 id="chapterTitle" class="read-book-name">第一章 游戏载入中</h1>
+            <i id="readBookmark" class="read-bookmark" hidden>已加入书签</i>
+        </div>
+        <mark id="readPageMark" class="read-page-mark">你刚刚阅读到这里</mark>
+        <!-- 左右滑动页码 S -->
+        <p id="pageNum" class="read-page-num">-/-</p>
+        <!-- 左右滑动页码 E -->
+    </div>
+
+
+
+
+
+
+
+<script src="lib/jquery-3.4.1.min.js"></script>
+<!--<script src="lib/fastclick.js"></script>-->
+<script src="lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

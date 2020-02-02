@@ -1,0 +1,323 @@
+<!--
+* 图书详情
+* xxx
+* create by Sam on xxxx/xx/xx
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>露点中文网</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <style>
+        .header {
+            z-index: 1;
+            border-bottom: 0;
+            background: 0 0;
+        }
+        .book-detail-x {
+            position: relative;
+            overflow: hidden;
+            margin-top: -2.75rem;
+        }
+        .book-cover-blur {
+            position: absolute;
+            top: -13.2rem;
+            top: calc(50% - 87.5vw);
+            width: 100%;
+            height: 175vw;
+            opacity: .02;
+            opacity: calc(.1 + .05);
+            -webkit-filter: blur(calc(17px + 1px));
+            filter: blur(calc(17px + 1px));
+        }
+        .book-detail-info {
+            position: relative;
+            padding-top: 2.75rem;
+            background: #fff;
+            background: -webkit-linear-gradient(bottom,#fff,rgba(255,255,255,0) 108px) no-repeat center bottom;
+            background: linear-gradient(to top,#fff,rgba(255,255,255,0) 8rem) no-repeat center bottom;
+        }
+        .book-layout {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            padding: 1rem;
+            -webkit-transition: padding-left .15s;
+            transition: padding-left .15s;
+        }
+        .book-detail-x .book-cover {
+            width: 5.25rem;
+            height: 7rem;
+            border-radius: 2px;
+            box-shadow: none;
+        }
+        .book-cover {
+            font-size: 0;
+            float: left;
+            width: 4.125rem;
+            height: 5.5rem;
+            margin-right: .5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,.3);
+        }
+        .book-detail-info .book-cell {
+            line-height: 1.4rem;
+        }
+        .book-cell {
+            overflow: hidden;
+        }
+        .book-title {
+            font-size: .85rem;
+            line-height: 1.4;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .book-rand-a {
+            font-size: .75rem;
+        }
+        .book-score {
+            font-size: .65rem;
+        }
+        .book-meta {
+            font-size: .65rem;
+            overflow: hidden;
+        }
+
+        .book-detail-btn {
+            padding: 0 1rem 1rem;
+        }
+
+
+        .book-summary {
+            font-size: .875rem;
+            line-height: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            max-height: 5.92rem;
+            margin-left: 1rem;
+            padding-right: 1rem;
+            text-align: justify;
+            border-top: 1rem solid transparent;
+            border-bottom: 1rem solid transparent;
+            box-shadow: 0 1px #f0f1f2, 0 -1px #f0f1f2;
+        }
+        .enabled>.book-summary-more {
+            visibility: visible;
+        }
+        .book-summary-more {
+            position: absolute;
+            right: 1rem;
+            bottom: 0;
+            visibility: hidden;
+            width: 2rem;
+            height: 1.5rem;
+            text-align: right;
+            background: -webkit-linear-gradient(left,rgba(255,255,255,0),#fff 1rem);
+            background: linear-gradient(to right,rgba(255,255,255,0),#fff 1rem);
+        }
+
+        .book-status {
+            line-height: 2.75rem;
+            display: block;
+            padding: 0 1rem;
+        }
+        .book-meta-l {
+            float: left;
+        }
+        .book-meta-r {
+            position: relative;
+            float: right;
+        }
+        .book-status .book-meta-r {
+            position: relative;
+            /*max-width: 60%;*/
+            /*max-width: calc(100% - (120rem / 16));*/
+            padding-right: .75rem;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <!-- 公用头部 S -->
+        <header id="header" class="header" data-l1="41">
+            <a href="javascript:history.go(-1)" class="header-back jsBack"  data-eid="mqd_G14">
+<!--                <svg class="icon icon-arrow-l"><title>返回</title><use xlink:href="#icon-arrow-l"></use></svg>-->
+                <
+            </a>
+            <h1 class="header-back-title">低维革命</h1>
+            <div class="header-operate">
+                <a id="openSearchPopup" href="javascript:" class="icon icon-search" title="搜索" role="button" data-l2="2" data-eid="mqd_O2">
+                    <svg><use xlink:href="#icon-search"></use></svg>
+                </a>
+                <a id="openGuide" href="javascript:" class="icon icon-more" title="更多" data-rel="guide" data-l2="3" data-eid="mqd_O3"></a>
+            </div>
+        </header>
+
+        <!-- 更多内容的导航 S -->
+        <div id="guide" class="guide">
+            <i id="guideOverlay" class="guide-overlay"></i>
+            <div class="guide-content">
+                <nav class="guide-nav">
+                    <a href="/male" class="guide-nav-a">
+                        <i class="icon icon-home"></i>
+                        <h4 class="guide-nav-h">首页</h4>
+                    </a>
+                    <a href="/category/male" class="guide-nav-a">
+                        <i class="icon icon-sort"></i>
+                        <h4 class="guide-nav-h">分类</h4>
+                    </a>
+                    <a href="/rank/male" class="guide-nav-a">
+                        <i class="icon icon-rank"></i>
+                        <h4 class="guide-nav-h">排行榜</h4>
+                    </a>
+                    <a href="/free/male" class="guide-nav-a">
+                        <i class="icon icon-free"></i>
+                        <h4 class="guide-nav-h">免费</h4>
+                    </a>
+                    <a href="/finish/male" class="guide-nav-a">
+                        <i class="icon icon-end"></i>
+                        <h4 class="guide-nav-h">完本</h4>
+                    </a>
+                    <a href="/user" class="guide-nav-a jsLogin">
+                        <i class="icon icon-account"></i>
+                        <h4 class="guide-nav-h">账户</h4>
+                    </a>
+                </nav>
+                <div class="guide-footer">
+                    <a href="/bookshelf/my" class="btn-primary" data-size="14">我的书架</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 正常详情页显示 start -->
+        <!-- 书大致介绍 -->
+        <div id="bookDetailWrapper" class="module module-merge book-detail-x " data-book-id="1017348376" data-chan-id="10" data-author-id="401349714" data-user-level="" data-book-type="1" data-login-status="false" data-book-publish="0" data-sale-modes="1">
+            <img src="//bookcover.yuewen.com/qdbimg/349573/1017348376/300" class="book-cover-blur" alt="低维革命" aria-hidden="true">
+            <div class="book-detail-info">
+                <div class="book-layout">
+                    <!-- 限免，更新之类的角标 -->
+                    <img src="assets/img/book/00003.jpg" class="book-cover" alt="低维革命" aria-labelledby="ariaBook ariaTime">
+                    <div class="book-cell">
+                        <h2 class="book-title">低维革命</h2>
+                        <div class="book-rand-a" role="link">
+                            <!-- 出版书 -->
+                            <a href="/author/401349714" role="option">
+                                <aria>作者：</aria>肥瓜
+                                <aria>级别：</aria><span class="tag-solid orange">Lv.5</span>
+                            </a>
+                        </div>
+                        <div class="book-score" role="option">
+                            <span class="gray">暂无评分/0人评过</span>
+                        </div>
+                        <p class="book-meta" role="option">悬疑/侦探推理</p>
+                        <p class="book-meta" role="option">7.8万字<span class="char-pipe">|</span>连载</p>
+                    </div>
+                </div>
+                <div class="book-detail-btn" data-read-status="0" data-bookshelf-status="0" data-l1="2">
+                    <ul class="btn-group">
+                        <li class="btn-group-cell">
+                            <a href="reader.html" class="btn-normal btn-red" id="btnReadBook" data-eid="mqd_G02">免费试读</a>
+                        </li>
+                        <li class="btn-group-cell">
+                            <a href="javascript:" class="btn-normal btn-white" id="btnAddToBookshelf" data-bookshelf-status="" data-eid="mqd_G03" role="button">加入书架</a>
+                        </li>
+                        <!-- 如果订阅过整本，不能继续订阅 -->
+
+                        <!-- 整本订阅文案变化 -->
+
+                    </ul>
+                </div>
+                <!--<div class="book-detail-btn"  data-l1="2">
+                    <ul class="btn-group">
+                        <li class="btn-group-cell"><a data-clipboard-text="qdd.gg/9UwBQnIH" data-eid="mqd_G21"  href="//qidian.gtimg.com/QDReader/app/showBook?query=%7B%22bookId%22%3A1017348376%7D&amp;redirect=https%3A%2F%2Fitunes.apple.com%2Fcn%2Fapp%2Fqi-dian-du-shu-li-xian-ban%2Fid534174796%3Fmt%3D8"  style="margin-left: 0;margin-right: 0; width:100%;" class="btn-normal white">
+                            下载起点读书App 新用户免费读
+                        </a></li>
+                    </ul>
+                </div>-->
+            </div>
+        </div>
+
+
+        <div class="module module-merge">
+            <!-- 出版书 -->
+
+            <!-- 书籍摘要 -->
+            <section id="bookSummary" class="book-summary enabled" role="option">
+                <aria>书籍摘要：</aria>
+                <textarea hidden>　　“我知道，有一双眼睛，正在以我理解不了的方式观察着我们。
+我知道，有一双手，正在以超越想象的方式操控着我们。
+我们的思想被改写。
+我们的身躯被禁锢。
+我知道，你们是来自更高维度的生命。
+我知道，你们自称为————玩家。
+而今天，我，陆远，承载着身后数以万计被视为无用数据的游戏生命。
+正式向更高维度的你们
+宣战！”
+......
+......
+陆远结束了这次慷慨激昂的演讲，缓步走下高台。望着正被绑在电椅上的副本boss，语重心长的说道。
+“老乡，坚持住，这都是为了你好啊。”</textarea>
+                <content>“我知道，有一双眼睛，正在以我理解不了的方式观察着我们。我知道，有一双手，正在以超越想象的方式操控着我们。我们的思想被改写。我们的身躯被禁锢。我知道，你们是来自更高维度的生命。我知道，你们自称为————玩家。而今天，我，陆远，承载着身后数以万计被视为无用数据的游戏生命。正式向更高维度的你们宣战！”............陆远结束了这次慷慨激昂的演讲，缓步走下高台。望着正被绑在电椅上的副本boss，语重心长的说道。“老乡，坚持住，这都是为了你好啊。”</content>
+                <span class="book-summary-more">
+<!--                    <svg class="icon icon-arrow-r" aria-hidden="true"><use xlink:href="#icon-arrow-r"></use></svg>-->
+                    V
+                </span>
+            </section>
+
+            <a href="catalog.html" class="book-meta book-status">
+                <div role="option">
+                    <div class="book-meta-l">
+                        <aria>点击访问</aria><strong class="book-spt">目录</strong>
+                    </div>
+                    <div class="book-meta-r">
+                        <aria>：更新状态：</aria>
+                        <p class="gray ell" id="ariaMuLu" role="option">4小时前<span class="char-dot">·</span>连载至第三十三章 无头怪谈（十五）</p><svg class="icon icon-arrow-r" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-r"></use></svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+<script src="lib/jquery-3.4.1.min.js"></script>
+<!--<script src="lib/fastclick.js"></script>-->
+<script src="lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>
