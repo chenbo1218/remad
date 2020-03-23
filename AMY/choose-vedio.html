@@ -1,0 +1,394 @@
+<!--
+* 选择在线视频
+* xxx
+* create by Sam on xxxx/xx/xx
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>艾萌芽</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
+<!--    <link type="text/css" rel="stylesheet" href="lib/chosen.min.css" />-->
+    <link type="text/css" rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <style>
+        .edu-vedio-list{
+            overflow: hidden;
+        }
+        .edu-vedio-item{
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .edu-vedio-item .ava{
+            float: left;
+            width: 40%;
+            height: 100%;
+            background-color: #e1e1e1;
+            text-align: center;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+        .edu-vedio-item .ava img{
+            height: 100%;
+            width: 100%;
+        }
+        .edu-vedio-item .info{
+            float: left;
+            width: 57%;
+            margin-left: 3%;
+            height: 100px;
+        }
+        .edu-vedio-item .info .info-name{
+            font-size: 15px;
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            font-weight: bold;
+        }
+        .edu-vedio-item .info .info-detail{
+            width: 100%;
+            height: 50px !important;
+            font-size: 12px;
+            height: 25px;
+            line-height: 25px;
+        }
+        .edu-vedio-item .info .info-link{
+            display: block;
+            width: 60px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            background-color: #78b0d7;
+            color: #fff;
+            border-radius: 3px;
+        }
+
+        /* ===== 下拉列表 ===== */
+        .retrie {
+            position: relative;
+            z-index: 102;
+            height: 50px;
+            background-color: #fff;
+            /*border-bottom: 1px solid #e8e8e8;*/
+        }
+        .retrie dt { overflow: hidden }
+        .retrie dt a {
+            /* position: relative; */
+            float: left;
+            width: 25%;
+            height: 49px;
+            line-height: 50px;
+            color: #333;
+            font-size: 14px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .retrie dt a i {
+            margin-left: 5px
+        }
+        .retrie dt .up {
+            color: #ffaf45;
+            /*border-bottom: 2px solid #007ccf;*/
+        }
+        .retrie dt a:last-child:before {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            display: block;
+            width: 1px;
+            height: 30px;
+            background-color: #ebebeb;
+            content: ' ';
+        }
+        .retrie dd { position: relative; }
+        /* ===== slide-area ===== */
+        .slide {
+            position: absolute;
+            top: 0px;
+            left: 0;
+            z-index: 104;
+            display: none;
+            width: 100%;
+            /*overflow-y: auto;*/
+            background-color: #fff;
+        }
+        .slide ul{
+            overflow-y: auto;
+        }
+        .slide li {
+            display: block;
+            height: 40px;
+            border-bottom: 1px solid #eee;
+        }
+        .slide li a {
+            display: block;
+            padding: 0 30px;
+            height: 40px;
+            line-height: 40px;
+            background-color: transparent;
+        }
+        .slide li a:hover,
+        .slide li a.selected {
+            color: #ffaf45;
+        }
+        .slide li a.select {
+            background-color: #fff;
+        }
+
+        .menu{
+            height: 40px;
+            line-height: 40px;
+            position: relative;
+            bottom: 0;
+            left: 0;
+        }
+        .menu a{
+            float: left;
+            width: 50%;
+            text-align: center;
+            display: inline-block;
+        }
+        .menu .btn-cancel{
+            color: #000;
+        }
+        .menu .btn-ok{
+            color: #fff;
+            background-color: #ffaf45;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="comm-container">
+        <!--标题头-->
+        <div class="comm-back-banner">
+            <a href="javascript:window.history.back();"><img src="assets/img/leftarrowicon.png" alt=""></a>
+            <p>在线视频</p>
+        </div>
+
+        <!--搜索栏-->
+        <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form"  onkeydown="if(event.keyCode==13) return false;">
+                <div class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                </div>
+                <label class="weui-search-bar__label" id="searchText">
+                    <i class="weui-icon-search"></i>
+                    <span>请输入搜索内容</span>
+                </label>
+            </form>
+            <a href="javascript:doSearch()" class="weui-search-bar__cancel-btn" id="searchOk" style="display: none">搜索</a>
+            <a href="javascript:onCancel();" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        </div>
+
+        <section class="job-module">
+            <dl class="retrie">
+                <dt>
+                    <a class="Typeshow" id="s1" href="javascript:;"><span>全部分类</span> <i class="fa fa-caret-down"></i> </a>
+                    <a class="Typeshow" id="s2" href="javascript:;"><span>全部时间</span> <i class="fa fa-caret-down"></i> </a>
+                    <a class="Typeshow" id="s3" href="javascript:;"><span>全部费用</span> <i class="fa fa-caret-down"></i> </a>
+                    <a class="Typeshow" id="s4" href="javascript:;"><span>综合筛选</span> <i class="fa fa-caret-down"></i> </a>
+                </dt>
+                <dd class="s1">
+                    <div class="slide downlist">
+                        <ul>
+                            <li data-id="01" data-name="全部分类" onclick="UpDataList(this)"><a href="#">全部分类</a></li>
+                            <li data-id="02" data-name="非遗类" onclick="UpDataList(this)"><a href="#">非遗类</a></li>
+                            <li data-id="03" data-name="艺体类" onclick="UpDataList(this)"><a href="#">艺体类</a></li>
+                            <li data-id="04" data-name="科技类" onclick="UpDataList(this)"><a href="#">科技类</a></li>
+                        </ul>
+                        <div class="menu clear">
+                            <a href="javascript:onCancel();" class="btn-cancel">取消</a>
+                            <a href="javascript:onCommit();" class="btn-ok">确定</a>
+                        </div>
+                    </div>
+                </dd>
+                <dd class="s2">
+                    <div class="slide downlist">
+                        <ul>
+                            <li data-id="01" data-name="全部时间" onclick="UpDataList(this)"><a href="#">全部时间</a></li>
+                            <li data-id="02" data-name="过去7天" onclick="UpDataList(this)"><a href="#">过去7天</a></li>
+                            <li data-id="03" data-name="过去1月" onclick="UpDataList(this)"><a href="#">过去1月</a></li>
+                            <li data-id="04" data-name="过去1年" onclick="UpDataList(this)"><a href="#">过去1年</a></li>
+                        </ul>
+                        <div class="menu clear">
+                            <a href="javascript:onCancel();" class="btn-cancel">取消</a>
+                            <a href="javascript:onCommit();" class="btn-ok">确定</a>
+                        </div>
+                    </div>
+                </dd>
+                <dd class="s3">
+                    <div class="slide downlist">
+                        <ul>
+                            <li data-id="01" data-name="全部费用" onclick="UpDataList(this)"><a href="#">全部费用</a></li>
+                            <li data-id="02" data-name="免费" onclick="UpDataList(this)"><a href="#">免费</a></li>
+                            <li data-id="02" data-name="1-299" onclick="UpDataList(this)"><a href="#">1-299</a></li>
+                            <li data-id="03" data-name="300-599" onclick="UpDataList(this)"><a href="#">300-599</a></li>
+                            <li data-id="03" data-name="600-899" onclick="UpDataList(this)"><a href="#">600-899</a></li>
+                            <li data-id="03" data-name="900及以上" onclick="UpDataList(this)"><a href="#">900及以上</a></li>
+                        </ul>
+                        <div class="menu clear">
+                            <a href="javascript:onCancel();" class="btn-cancel">取消</a>
+                            <a href="javascript:onCommit();" class="btn-ok">确定</a>
+                        </div>
+                    </div>
+                </dd>
+                <dd class="s4">
+                    <div class="slide downlist">
+                        <ul>
+                            <li data-id="01" data-name="综合筛选" onclick="UpDataList(this)"><a href="#">综合筛选</a></li>
+                            <li data-id="02" data-name="人气排行" onclick="UpDataList(this)"><a href="#">人气排行</a></li>
+                            <li data-id="02" data-name="优惠排行" onclick="UpDataList(this)"><a href="#">优惠排行</a></li>
+                            <li data-id="03" data-name="点评排行" onclick="UpDataList(this)"><a href="#">点评排行</a></li>
+                        </ul>
+                        <div class="menu clear">
+                            <a href="javascript:onCancel();" class="btn-cancel">取消</a>
+                            <a href="javascript:onCommit();" class="btn-ok">确定</a>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+        </section>
+
+        <!--课程列表-->
+        <div class="edu-vedio-list">
+            <div class="edu-vedio-item clear">
+                <div class="ava">
+                    <img src="assets/img/sw3.jpg" alt="">
+                </div>
+                <div class="info">
+                    <p class="info-name">英语口语速成</p>
+                    <div class="info-detail clear">
+                        <p class="gray fl">20个课时</p>
+                        <p class="fr yellow">免费</p>
+                    </div>
+                    <a class="info-link" href="javascript:;">立即报名</a>
+                </div>
+            </div>
+            <div class="edu-vedio-item clear">
+                <div class="ava">
+                    <img src="assets/img/sw3.jpg" alt="">
+                </div>
+                <div class="info">
+                    <p class="info-name">英语口语速成</p>
+                    <div class="info-detail clear">
+                        <p class="gray fl">20个课时</p>
+                        <p class="yellow fr">￥320.00</p>
+                    </div>
+                    <a class="info-link" href="javascript:;">立即报名</a>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+<script src="lib/jquery-3.4.1.min.js"></script>
+<!--<script src="lib/fastclick.js"></script>-->
+<script src="lib/jquery-weui.min.js"></script>
+<!--<script src="lib/chosen.jquery.js"></script>-->
+<script>
+    $(function() {
+        //code here
+        $('.Typeshow').click(function () {
+            var $t = $(this);
+            if ($t.find("i").hasClass('fa-caret-up')) {
+                console.log("hide selector...");
+                $('.downlist').hide();
+                $t.find("i").removeClass("fa-caret-up").addClass('fa-caret-down');
+            } else {
+                console.log("show selector...");
+                $(".Typeshow").removeClass('up');
+                $('.downlist').hide();
+                $t.addClass('up');
+                /*添加按钮*/
+                var $curBox = $('.downlist').eq($(".Typeshow").index($(this)[0]));
+                $curBox.show();
+                $(".fa").removeClass("fa-caret-up").addClass('fa-caret-down')
+                $t.find("i").removeClass("fa-caret-down").addClass('fa-caret-up');
+
+                //清除下拉选项中所有的选中class并重新添加
+                $(".s1 ul li a").removeClass('selected');
+                $(".s2 ul li a").removeClass('selected');
+                $(".s3 ul li a").removeClass('selected');
+                $(".s4 ul li a").removeClass('selected');
+                $(".s1 ul li a:contains('"+$('#s1 span').text()+"')").addClass('selected');
+                $(".s2 ul li a:contains('"+$('#s2 span').text()+"')").addClass('selected');
+                $(".s3 ul li a:contains('"+$('#s3 span').text()+"')").addClass('selected');
+                $(".s4 ul li a:contains('"+$('#s4 span').text()+"')").addClass('selected');
+
+                //下拉个数多的情况
+                var Listlength=$(".downlist ul");
+                for (let i = 0; i < Listlength.length; i++) {
+                    if ($(Listlength[i]).children().length>5) {
+                        $(Listlength[i]).css("height","240px")
+                    }
+
+                }
+            }
+        });
+
+
+    });
+
+    function UpDataList(thisVal) {
+        UpClassCss(thisVal);
+        //获取当前元素本身this
+        var $t = $(thisVal);
+        //获取自定义id和name的值
+        var id = $t.attr("data-id");
+        var name = $t.attr("data-name");
+        //alert(id+"|"+name);
+    }
+
+    function UpClassCss(thisVal) {
+        var $t = $(thisVal);
+        var name = $t.attr("data-name");
+        //所有的下拉隐藏
+        // $('.downlist').hide();
+        //获取上级元素的class
+        var tabId = $t.parent().parent().attr("class");
+        //下拉框文字改变
+        $("#" + tabId + " span").text(name);
+        $(".fa").removeClass("fa-caret-up").addClass('fa-caret-down');
+    }
+
+    function onCancel(){
+        //所有的下拉隐藏
+        $('.downlist').hide();
+        //箭头改变
+        $(".fa").removeClass("fa-caret-up").addClass('fa-caret-down');
+    }
+
+    function onCommit(){
+
+    }
+
+
+
+</script>
+
+</body>
+</html>

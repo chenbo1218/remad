@@ -1,0 +1,586 @@
+<!--
+* xxx
+* xxx
+* create by Sam on xxxx/xx/xx
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>艾萌芽</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/swiper.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <style>
+        .edu-part{
+            margin: 20px 0;
+        }
+        .edu-title{
+            font-size: 15px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        /*侧滑*/
+        .module-slide-ol {
+            position: relative;
+            display: none;
+            overflow-x: auto;
+            overflow-y: hidden;
+            /*min-height: 10.75rem;*/
+            white-space: nowrap;
+            padding: 5px 5px;
+        }
+        .module-slide-ol:only-child, .module-slide>.active {
+            display: block;
+        }
+        .module-slide-ol::-webkit-scrollbar {
+            display: none;
+        }
+        .module-slide-li {
+            display: inline-block;
+            vertical-align: top;
+            white-space: normal;
+            width: 40%;
+            /*height: 200px;*/
+            box-shadow: 0 1px 3px rgba(0,0,0,.3);
+            margin-right: 5%;
+            box-sizing: border-box;
+        }
+        .module-slide-img {
+            display: block;
+            width: 100%;
+            height: 5.5rem;
+            background-color: #e8e8e8;
+        }
+        .module-slide-caption {
+            /*font-size: .65rem;*/
+            line-height: 1.25;
+            overflow: hidden;
+            max-height: 2.125rem;
+            padding: 5px 5px;
+        }
+        .module-slide-author {
+            font-size: .65rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: #969ba3;
+            padding: 0px 5px 5px 5px;
+        }
+        .module-slide-author p{
+            /*height: 30px;
+            line-height: 15px;*/
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .module-slide-check{
+
+        }
+
+        /*学生列表*/
+        .edu-student-items{
+            padding: 5px 5px;
+            height: 210px;
+        }
+        .edu-student-item{
+            width: 75%;
+            /*height: 200px;*/
+            margin-right: 3%;
+            padding: 10px 10px;
+        }
+        .edu-student-item .p1{
+            height: 90px;
+            padding: 20px 0;
+            line-height: 50px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #f4f4f4;
+        }
+        .edu-student-item .p1 .p1-ava{
+            width: 50px;
+            height: 50px;
+            margin-right: 5px;
+        }
+        .edu-student-item .p1 .p1-name{
+            margin-right: 5px;
+        }
+        .edu-student-item .p1 .p1-sex{
+            width: 16px;
+            height: 16px;
+            margin: 18px 0;
+        }
+        .edu-student-item .p2{
+            height: 90px;
+            padding: 20px 0;
+            line-height: 25px;
+            box-sizing: border-box;
+        }
+        .edu-student-item .p2 li{
+            width: 33%;
+            height: 50px;
+            float: left;
+            text-align: center;
+        }
+        .edu-student-item .p2 li .p2-icon{
+            display: block;
+            width: 25px;
+            height: 25px;
+            margin: 0 auto;
+        }
+
+        /*课程列表*/
+        .edu-class-none{
+            background-color: #f8f8f8;
+            text-align: center;
+            height: 120px;
+            line-height: 120px;
+            margin: 10px 0;
+        }
+        .edu-class-list{
+            margin: 10px 0;
+        }
+        .edu-class-item{
+            color: #fff;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 20px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            margin-bottom: 6px;
+        }
+        .edu-class-item-c1{
+            background-color: #f285e1;
+        }
+        .edu-class-item-c2{
+            background-color: #859ef2;
+        }
+        .edu-class-item p:first-child{
+            float: left;
+        }
+        .edu-class-item p:last-child{
+            float: right;
+        }
+        .edu-choose-list{
+            margin-top: 20px;
+            height: 80px;
+            /*list-style: none;*/
+        }
+        .edu-choose-list li{
+            width: 22%;
+            height: 80px;
+            background-color: #f8f8f8;
+            margin-right: 4%;
+            float: left;
+            text-align: center;
+        }
+        .edu-choose-list li:last-child{
+            margin-right: 0;
+        }
+        .edu-choose-list li img{
+            width: 100%;
+            height: auto;
+        }
+
+        /*轮播*/
+        .swiper-container {
+            width: 100%;
+            height: 280px;
+        }
+        .swiper-wrapper{
+            height: 100%;
+        }
+        .swiper-slide {
+            /*text-align: center;*/
+            font-size: 14px;
+            background: #fff;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        .swiper-pagination-bullet-active{
+            background-color: #ffaf45;
+            border-radius: 100%;
+        }
+        .edu-act-item{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .edu-act-item .edu-act-item-pic{
+            width: 100%;
+            height: 150px;
+            display: block;
+            border-radius: 3px;
+        }
+        .edu-act-item .edu-act-item-title{
+            display: inline-block;
+            text-align: left;
+            height: 25px;
+            line-height: 25px;
+            padding: 0 5px;
+            margin-top: 5px;
+            background-color: #42dc92;
+            color: #fff;
+            border-radius: 3px;
+        }
+        .edu-act-item .edu-act-item-tag{
+            text-align: left;
+            margin-top: 5px;
+        }
+        .edu-act-item .edu-act-item-tag span{
+            border: 1px solid darkgray;
+            border-radius: 6px;
+            padding: 0 3px;
+        }
+        .edu-act-item .edu-act-item-link{
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            color: #ffaa31;
+            border: 1px solid #ffaa31;
+            border-radius: 6px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- 底部导航栏 -->
+    <div class="weui-tabbar comm-nav-tabbar fix-bottom">
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on" id="group">
+            <div class="weui-tabbar__icon">
+                <img src="assets/img/nav1-2.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a href="message.html" class="weui-tabbar__item" id="message">
+<!--            <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>-->
+            <div class="weui-tabbar__icon">
+                <img src="assets/img/nav2-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">通知</p>
+        </a>
+        <a href="mine.html" class="weui-tabbar__item" id="mine">
+            <div class="weui-tabbar__icon">
+                <img src="assets/img/nav3-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+
+    <!--内容容器-->
+    <div class="comm-content comm-container">
+        <!--搜索栏-->
+        <div class="edu-part">
+<!--            <h1>首页</h1>-->
+            <div class="weui-search-bar" id="searchBar">
+                <form class="weui-search-bar__form"  onkeydown="if(event.keyCode==13) return false;">
+                    <div class="weui-search-bar__box">
+                        <i class="weui-icon-search"></i>
+                        <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                        <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                    </div>
+                    <label class="weui-search-bar__label" id="searchText">
+                        <i class="weui-icon-search"></i>
+                        <span>请输入搜索内容</span>
+                    </label>
+                </form>
+                <a href="javascript:doSearch()" class="weui-search-bar__cancel-btn" id="searchOk" style="display: none">搜索</a>
+                <a href="javascript:onCancel();" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+            </div>
+        </div>
+
+        <!--学生列表-->
+        <div class="module-slide">
+            <ol class="module-slide-ol edu-student-items" role="listbox" title="">
+                <li class="module-slide-li edu-student-item">
+                    <div class="p1 clear">
+                        <img class="fl p1-ava" src="assets/img/sex1.png" alt="">
+                        <p class="fl p1-name">张三</p>
+                        <img class="fl p1-sex" src="assets/img/icon-sex1.png" alt="">
+                    </div>
+                    <div class="p2 clear">
+                        <ul>
+                            <li>
+                                <img class="p2-icon" src="assets/img/icon-course.png" alt="">
+                                <p>课程</p>
+                            </li>
+                            <li>
+                                <img class="p2-icon" src="assets/img/icon-score.png" alt="">
+                                <p>得分</p>
+                            </li>
+                            <li>
+                                <img class="p2-icon" src="assets/img/icon-message.png" alt="">
+                                <p>消息</p>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="module-slide-li edu-student-item">
+                    <div class="p1 clear">
+                        <img class="fl p1-ava" src="assets/img/sex2.png" alt="">
+                        <p class="fl p1-name">李四</p>
+                        <img class="fl p1-sex" src="assets/img/icon-sex2.png" alt="">
+                    </div>
+                    <div class="p2 clear">
+                        <ul>
+                            <li>
+                                <img class="p2-icon" src="assets/img/icon-course.png" alt="">
+                                <p>课程</p>
+                            </li>
+                            <li>
+                                <img class="p2-icon" src="assets/img/icon-score.png" alt="">
+                                <p>得分</p>
+                            </li>
+                            <li>
+                                <img class="p2-icon" src="assets/img/icon-message.png" alt="">
+                                <p>消息</p>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="module-slide-li edu-student-item">
+                    <div class="p1 clear">
+                        <img class="fl p1-ava" src="assets/img/sex1.png" alt="">
+                        <p class="fl p1-name">王五</p>
+                        <img class="fl p1-sex" src="assets/img/icon-sex1.png" alt="">
+                    </div>
+                    <div class="p2 clear">
+                        <ul>
+                            <li>
+                                <img class="p2-icon" src="assets/img/icon-course.png" alt="">
+                                <p>课程</p>
+                            </li>
+                            <li>
+                                <img class="p2-icon" src="assets/img/icon-score.png" alt="">
+                                <p>得分</p>
+                            </li>
+                            <li>
+                                <img class="p2-icon" src="assets/img/icon-message.png" alt="">
+                                <p>消息</p>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <!--课程列表-->
+        <div class="edu-part">
+            <h1 class="edu-title">课程表</h1>
+            <!--<div class="edu-class-none gray">小孩暂时没有课程~</div>-->
+            <!--课时列表-->
+            <div class="edu-class-list">
+                <div class="edu-class-item edu-class-item-c1 clear">
+                    <p>面塑<span class="fs12">-第6课时</span></p>
+                    <p>03月22日 14:50</p>
+                </div>
+                <div class="edu-class-item edu-class-item-c2 clear">
+                    <p>科普<span class="fs12">-第2课时</span></p>
+                    <p>03月22日 15:50</p>
+                </div>
+                <div class="edu-class-item edu-class-item-c1 clear">
+                    <p>面塑<span class="fs12">-第7课时</span></p>
+                    <p>03月22日 16:50</p>
+                </div>
+            </div>
+            <ul class="edu-choose-list gray">
+                <li>
+                    <a href="choose-class.html">
+                        <img src="assets/img/kecheng.png">
+                        <p>课程选择</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="choose-activity.html">
+                        <img src="assets/img/huodong.png">
+                        <p>活动选择</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="choose-teacher.html">
+                        <img src="assets/img/laoshi.png">
+                        <p>名师选择</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="choose-vedio.html">
+                        <img src="assets/img/mpvicon.png">
+                        <p>在线课程</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!--精彩课程推荐-->
+        <div class="edu-part">
+            <h1 class="edu-title">精彩课程推荐</h1>
+            <!--侧滑-->
+            <div class="module-slide">
+                <ol class="module-slide-ol" role="listbox" title="">
+                    <li class="module-slide-li">
+                        <img src="" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">一起玩泥巴</figcaption>
+                        <div class="module-slide-author" role="option">
+                            <p class="gray">这是本课程的内容概要这是本课程的内容概要这是本课程的内容概要这是本课程的内容概要这是本课程的内容概要</p>
+                            <a class="gray" href="">查看详情</a>
+                        </div>
+                    </li>
+                    <li class="module-slide-li">
+                        <img src="" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">指尖上的艺术</figcaption>
+                        <div class="module-slide-author" role="option">
+                            <p class="gray">这是本课程的内容概要这是本课程的内容概要这是本课程的内容概要这是本课程的内容概要这是本课程的内容概要</p>
+                            <a class="gray" href="">查看详情</a>
+                        </div>
+                    </li>
+                    <li class="module-slide-li">
+                        <img src="" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">一起玩泥巴</figcaption>
+                        <div class="module-slide-author" role="option">
+                            <p class="gray">这是本课程的内容概要这是本课程的内容概要这是本课程的内容概要这是本课程的内容概要这是本课程的内容概要</p>
+                            <a class="gray" href="">查看详情</a>
+                        </div>
+                    </li>
+                    <li class="module-slide-li">
+                        <img src="" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">指尖上的艺术</figcaption>
+                        <div class="module-slide-author" role="option">
+                            <p class="gray">这是本课程的内容概要这是本课程的内容概要这是本课程的内容概要这是本课程的内容概要这是本课程的内容概要</p>
+                            <a class="gray" href="">查看详情</a>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <!--精彩活动推荐-->
+        <div class="edu-part">
+            <h1 class="edu-title">精彩活动推荐</h1>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="edu-act-item">
+                            <img class="edu-act-item-pic" src="assets/img/sw1.jpg" alt="">
+                            <p class="edu-act-item-title">中国教育部宣布全国学校推迟1周开学</p>
+                            <p class="edu-act-item-tag">已报名 <span>0/43</span></p>
+                            <a class="edu-act-item-link" href="">立即参加</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="edu-act-item">
+                            <img class="edu-act-item-pic" src="assets/img/sw1.jpg" alt="">
+                            <p class="edu-act-item-title">中国教育部宣布全国学校推迟1周开学</p>
+                            <p class="edu-act-item-tag">已报名 <span>0/43</span></p>
+                            <a class="edu-act-item-link" href="">立即参加</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <!--名师推荐-->
+        <div class="edu-part">
+            <h1 class="edu-title">名师推荐</h1>
+            <div class="edu-namecard-box">
+                <div class="edu-namecard">
+
+                </div>
+            </div>
+            <div class="module-slide">
+                <ol class="module-slide-ol" role="listbox" title="">
+                    <li class="module-slide-li">
+                        <img src="" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">高思</figcaption>
+                        <div class="module-slide-author" role="option">
+                            <p class="gray fs12">你好，我是数学老师高思</p>
+                            <a class="gray" href="">查看详情</a>
+                        </div>
+                    </li>
+                    <li class="module-slide-li">
+                        <img src="" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">郭莫弱</figcaption>
+                        <div class="module-slide-author" role="option">
+                            <p class="gray fs12">你好，我是语文老师郭莫弱</p>
+                            <a class="gray" href="">查看详情</a>
+                        </div>
+                    </li>
+                    <li class="module-slide-li">
+                        <img src="" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">蓝朗</figcaption>
+                        <div class="module-slide-author" role="option">
+                            <p class="gray fs12">你好，我是音乐老师蓝朗</p>
+                            <a class="gray" href="">查看详情</a>
+                        </div>
+                    </li>
+                    <li class="module-slide-li">
+                        <img src="" class="module-slide-img" alt="">
+                        <figcaption class="module-slide-caption">柳强冬</figcaption>
+                        <div class="module-slide-author" role="option">
+                            <p class="gray fs12">你好，我是商业老师柳强冬</p>
+                            <a class="gray" href="">查看详情</a>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<script src="lib/jquery-3.4.1.min.js"></script>
+<!--<script src="lib/fastclick.js"></script>-->
+<script src="lib/jquery-weui.min.js"></script>
+<script src="lib/swiper.min.js"></script>
+<script>
+    $(function() {
+        var swiper = new Swiper('.swiper-container', {
+            spaceBetween: 30,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        /*搜索栏*/
+        $(".weui-search-bar__input").focus(function(){
+            window.location.href='search.html';
+        })
+
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

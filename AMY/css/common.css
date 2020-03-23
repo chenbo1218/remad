@@ -1,0 +1,285 @@
+/** create by Sam on 2019/10/28 **/
+
+/*=======================强制样式===========================*/
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "微软雅黑",Arial, sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+html{
+    /*background-color: #f6f7f9;*/
+}
+body, html {
+    height: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+body{
+    /*font-size: 14px;*/
+}
+
+ul,ol,li,dl,dt,dd{
+    text-decoration: none;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    outline: 0;
+}
+
+h1, h2, h3, h4, h5, h6, input, select, textarea {
+    font-size: 100%;
+}
+
+
+/*=======================公共样式-大=========================*/
+
+.comm-container{
+    /*width: 100%;*/
+    padding: 0px 15px;
+    box-sizing: border-box;
+}
+.comm-content{
+    margin-bottom: 53px;
+    margin-top: 0px;
+    overflow-x: hidden;
+}
+
+.content {
+    padding-bottom: .1px;
+    background-color: #f6f7f9;
+    overflow-x: hidden;
+}
+input, select, textarea {
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+/*底部导航栏*/
+.comm-nav-tabbar{
+    height: 53px;
+    background-color: white;
+}
+.comm-nav-icon{
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 auto;
+    text-align: center;
+    margin-top: 5px;
+}
+.comm-nav-icon img{
+    display: block;
+    width: 70px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/*页面标题：渐变*/
+.comm-title-jianbian{
+    width: 100%;
+    height: 100px;
+    padding: 0 20px;
+    padding-top: 80px;
+    line-height: 50px;
+    background: -webkit-linear-gradient(left, #ffc965 , #ffaa31);
+    background: -o-linear-gradient(right, #ffc965 , #ffaa31);
+    background: -moz-linear-gradient(right, #ffc965 , #ffaa31);
+    background: linear-gradient(to right, #ffc965 , #ffaa31);
+    color: white;
+    position: relative;
+    top: 0px;
+    text-align: center;
+}
+
+/*宽大按钮*/
+.comm-btn-big{
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/*宽大按钮-黄*/
+.comm-btn-big-yellow{
+    color: #fff;
+    background-color: #ffaf45;
+}
+
+/*宽大白按钮*/
+.comm-btn-big-white{
+    color: #000;
+    background: #fff;
+}
+
+/*通用返回栏*/
+.comm-back-banner{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+}
+.comm-back-banner img{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    top: 20px;
+}
+.comm-back-banner p{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+/*===================公共样式-小==========================*/
+/*清除浮动*/
+.clear:after{
+    display:block;
+    content:' ';
+    clear:both;
+}
+
+/*上方固定*/
+.fix-top{
+    width: 100%;
+    position: fixed !important;
+    top: 0px;
+    z-index: 1000;
+}
+/*下方固定*/
+.fix-bottom{
+    position: fixed !important;
+    bottom: 0px;
+    z-index: 1000;
+}
+/*左方固定*/
+.fix-left{
+    position: fixed !important;
+    left: 0px;
+    z-index: 1000;
+}
+/*右方固定*/
+.fix-right{
+    position: fixed !important;
+    right: 0px;
+    z-index: 1000;
+}
+.btn-normal {
+    font-size: .65rem;
+    line-height: 1.875rem;
+    display: inline-block;
+    padding: 0 1rem;
+    text-align: center;
+    border-radius: .125rem;
+    /*background-color: currentColor;*/
+}
+.btn-red{
+    color: #fff;
+    background-color: #ed424b;
+}
+.btn-white{
+    color: #000;
+    background-color: #fff;
+}
+.hidden{
+    display: none;
+}
+[hidden] {
+    display: none;
+}
+.red{
+    color: #ed424b;
+}
+.yellow{
+    color: #ffaf45;
+}
+.white{
+    color: #fff;
+}
+.blue{
+    color: #006bd2;
+}
+.gray{
+    color: #A9A9A9;
+}
+.dark {
+    color: #33373d;
+}
+.left{
+    text-align: left;
+}
+.center{
+    text-align: center;
+}
+.right{
+    text-align: right;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.ov{
+    overflow: hidden;
+}
+.fs12{
+    font-size: 12px;
+}
+.fs14{
+    font-size: 14px;
+}
+.fs16{
+    font-size: 16px;
+}
+.fs18{
+    font-size: 18px;
+}
+.fs20{
+    font-size: 20px;
+}
+.bold{
+    font-weight: bold;
+}
+
+
+/*===================插件定制========================*/
+.weui-search-bar{
+    padding: 10px 0px;
+    background-color: transparent;
+}
+.weui-search-bar:before{
+    border: none;
+}
+.weui-search-bar:after{
+    border: none;
+}
+.weui-search-bar__form{
+    height: 32px;
+    line-height: 30px;
+}
+.weui-search-bar__cancel-btn{
+    line-height: 32px;
+    color: #000;
+}
+
+.weui-tabbar__item.weui-bar__item--on .weui-tabbar__label {
+    color: #999;
+}
+.weui-cells{
+    margin-top: 0;
+    overflow: scroll;
+}
+

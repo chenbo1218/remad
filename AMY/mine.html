@@ -1,0 +1,183 @@
+<!--
+* xxx
+* xxx
+* create by Sam on xxxx/xx/xx
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>艾萌芽</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <style>
+        /*头部*/
+        .comm-title-jianbian{
+            /*padding: 80px 10px;*/
+        }
+        .edu-mine-topbar__ava{
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            float: left;
+        }
+        .edu-mine-topbar__account{
+            margin-left: 10px;
+            float: left;
+            font-weight: bold;
+        }
+
+        /*菜单列表*/
+        .weui-cell{
+            height: 30px;
+            line-height: 30px;
+            padding: 10px 10px;
+        }
+        .edu-mine-menu-icon{
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <!-- 底部导航栏 -->
+    <div class="weui-tabbar comm-nav-tabbar fix-bottom">
+        <a href="index.html" class="weui-tabbar__item" id="group">
+            <div class="weui-tabbar__icon">
+                <img src="assets/img/nav1-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a href="message.html" class="weui-tabbar__item" id="message">
+<!--            <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>-->
+            <div class="weui-tabbar__icon">
+                <img src="assets/img/nav2-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">通知</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on" id="mine">
+            <div class="weui-tabbar__icon">
+                <img src="assets/img/nav3-2.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+
+    <!--内容容器-->
+    <div class="comm-content">
+        <!--下拉刷新-->
+        <div class="weui-pull-to-refresh__layer" style="display: none">
+            <div class='weui-pull-to-refresh__arrow'></div>
+            <div class='weui-pull-to-refresh__preloader'></div>
+            <div class="down">下拉刷新</div>
+            <div class="up">释放刷新</div>
+            <div class="refresh">正在刷新</div>
+        </div>
+
+        <!--头部-->
+        <div class="comm-title-jianbian">
+            <div class="clear">
+                <img class="edu-mine-topbar__ava" src="assets/img/ava.jpg" alt="" />
+                <div class="edu-mine-topbar__account">
+                    <p>雷杰</p>
+                    <!--<p>账号：<span id="user-id">750258</span></p>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <div class="weui-cells">
+                <a class="weui-cell weui-cell_access" href="mine-kids.html">
+                    <div class="weui-cell__hd">
+                        <img class="edu-mine-menu-icon" src="assets/img/mine/menu1.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>我的孩子</p>
+                    </div>
+                    <!--<div class="weui-cell__ft">
+                    </div>-->
+                </a>
+                <a class="weui-cell weui-cell_access" href="mine-collect.html">
+                    <div class="weui-cell__hd">
+                        <img class="edu-mine-menu-icon" src="assets/img/mine/menu2.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>我的收藏</p>
+                    </div>
+                    <!--<div class="weui-cell__ft">
+                    </div>-->
+                </a>
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__hd">
+                        <img class="edu-mine-menu-icon" src="assets/img/mine/menu3.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>已参加过的活动</p>
+                    </div>
+                    <!--<div class="weui-cell__ft">
+                    </div>-->
+                </a>
+                <a class="weui-cell weui-cell_access" href="javascript:;">
+                    <div class="weui-cell__hd">
+                        <img class="edu-mine-menu-icon" src="assets/img/mine/menu4.png">
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>已购买视频</p>
+                    </div>
+                    <!--<div class="weui-cell__ft">
+                    </div>-->
+                </a>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+<script src="lib/jquery-3.4.1.min.js"></script>
+<!--<script src="lib/fastclick.js"></script>-->
+<script src="lib/jquery-weui.min.js"></script>
+<script src="lib/swiper.min.js"></script>
+<script>
+    $(function() {
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            centeredSlides: true,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: false,
+            },
+           /* autoplay: {
+                disableOnInteraction: false, //手动滑动之后不打断播放
+                delay: 2000
+            },*/
+        });
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

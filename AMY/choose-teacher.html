@@ -1,0 +1,263 @@
+<!--
+* xxx
+* xxx
+* create by Sam on xxxx/xx/xx
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>艾萌芽</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
+<!--    <link type="text/css" rel="stylesheet" href="lib/chosen.min.css" />-->
+
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <style>
+        .edu-teacher-list{
+            overflow: hidden;
+        }
+        .edu-teacher-item{
+            width: 100%;
+            height: 130px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .edu-teacher-item .ava{
+            float: left;
+            width: 40%;
+            height: 100%;
+            background-color: #e1e1e1;
+            text-align: center;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+        .edu-teacher-item .ava img{
+            height: 100%;
+            width: 100%;
+        }
+        .edu-teacher-item .info{
+            float: left;
+            margin-left: 3%;
+            width: 57%;
+        }
+        .edu-teacher-item .info .info-name{
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            font-weight: bold;
+        }
+        .edu-teacher-item .info .info-tags{
+            width: 100%;
+            height: 105px;
+            overflow: hidden;
+        }
+        .edu-teacher-item .info .info-tags ul{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+        .edu-teacher-item .info .info-tags ul li{
+            border: 1px solid;
+            width: auto;
+            padding: 5px 5px;
+            border-radius: 5px;
+            background-color: #ffaf45; /*#687a86;*/
+            color: #fff;
+            text-align: center;
+            margin-top: 1px;
+            /*margin-bottom: 5px;*/
+            /*flex:auto;*/
+        }
+
+        /* ===== 下拉列表 ===== */
+        .retrie {
+            position: relative;
+            z-index: 102;
+            height: 50px;
+            background-color: #fff;
+            /*border-bottom: 1px solid #e8e8e8;*/
+        }
+        .retrie dt { overflow: hidden }
+        .retrie dt a {
+            /* position: relative; */
+            float: left;
+            width: 33%;
+            height: 49px;
+            line-height: 50px;
+            color: #333;
+            font-size: 14px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .retrie dt a i {
+            margin-left: 5px
+        }
+        .retrie dt .up {
+            color: #ffaf45;
+            /*border-bottom: 2px solid #007ccf;*/
+        }
+        .retrie dt a:last-child:before {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            display: block;
+            width: 1px;
+            height: 30px;
+            background-color: #ebebeb;
+            content: ' ';
+        }
+        .retrie dd { position: relative; }
+        /* ===== slide-area ===== */
+        .slide {
+            position: absolute;
+            top: 0px;
+            left: 0;
+            z-index: 104;
+            display: none;
+            width: 100%;
+            /*overflow-y: auto;*/
+            background-color: #fff;
+        }
+        .slide ul{
+            overflow-y: auto;
+        }
+        .slide li {
+            display: block;
+            height: 40px;
+            border-bottom: 1px solid #eee;
+        }
+        .slide li a {
+            display: block;
+            padding: 0 30px;
+            height: 40px;
+            line-height: 40px;
+            background-color: transparent;
+        }
+        .slide li a:hover,
+        .slide li a.selected {
+            color: #ffaf45;
+        }
+        .slide li a.select {
+            background-color: #fff;
+        }
+
+        .menu{
+            height: 40px;
+            line-height: 40px;
+            position: relative;
+            bottom: 0;
+            left: 0;
+        }
+        .menu a{
+            float: left;
+            width: 50%;
+            text-align: center;
+            display: inline-block;
+        }
+        .menu .btn-cancel{
+            color: #000;
+        }
+        .menu .btn-ok{
+            color: #fff;
+            background-color: #ffaf45;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="comm-container">
+        <!--标题头-->
+        <div class="comm-back-banner">
+            <a href="javascript:window.history.back();"><img src="assets/img/leftarrowicon.png" alt=""></a>
+            <p>名师列表</p>
+        </div>
+
+        <!--搜索栏-->
+        <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form"  onkeydown="if(event.keyCode==13) return false;">
+                <div class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                </div>
+                <label class="weui-search-bar__label" id="searchText">
+                    <i class="weui-icon-search"></i>
+                    <span>请输入搜索内容</span>
+                </label>
+            </form>
+            <a href="javascript:doSearch()" class="weui-search-bar__cancel-btn" id="searchOk" style="display: none">搜索</a>
+            <a href="javascript:onCancel();" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        </div>
+
+        <!--名师列表-->
+        <div class="edu-teacher-list">
+            <div class="edu-teacher-item clear">
+                <div class="ava">
+                    <img src="assets/img/sw1.jpg" alt="">
+                </div>
+                <div class="info">
+                    <p class="info-name fs14">君君</p>
+                    <div class="info-tags fs12">
+                        <ul>
+                            <li>很好</li>
+                            <li>电子信息</li>
+                            <li>亲和力强</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="edu-teacher-item clear">
+                <img class="ava" src="assets/img/sw2.jpg" alt="">
+                <div class="info">
+                    <p class="info-name fs14">张少强</p>
+                    <div class="info-tags fs12">
+                        <ul>
+                            <li>语文课</li>
+                            <li>数学课</li>
+                            <li>思想品德</li>
+                            <li>语文课</li>
+                            <li>数学课</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+<script src="lib/jquery-3.4.1.min.js"></script>
+<!--<script src="lib/fastclick.js"></script>-->
+<script src="lib/jquery-weui.min.js"></script>
+<!--<script src="lib/chosen.jquery.js"></script>-->
+<script>
+    $(function() {
+        //code here
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>
