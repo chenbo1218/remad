@@ -1,0 +1,346 @@
+<!--
+* xxx
+* xxx
+* create by Sam on xxxx/xx/xx
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>艾萌芽-教师端</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/weuix.css" />
+    <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <style>
+        .weui-tab{
+            /*margin-top: 70px;*/
+            position: relative;
+            overflow-x: hidden;
+            height: auto !important;
+        }
+
+        .weui-navbar:after{
+            border: none;
+        }
+        .weui-navbar__item:after{
+            border: none;
+        }
+        .switch-navbar{
+            width: 100%;
+            padding: 0 40%;
+            box-sizing: border-box;
+            background-color: white;
+            border-bottom: 1px solid #f8f8f8;
+        }
+        .switch-item--on{
+            border-bottom: 2px solid #ffaa31;
+            color: #ffaa31 !important;
+            background-color: transparent !important;
+        }
+
+        .weui-tab__bd{
+            height: auto !important;
+        }
+        .weui-tab__bd-item{
+            height: auto !important;
+        }
+
+        /*折叠菜单*/
+        .collapse{
+            width: 100%;
+            padding: 10px 10px;
+            box-sizing: border-box;
+        }
+        .collapse li{
+            margin: 0;
+            border-bottom: 1px solid lightgray;
+        }
+        .collapse li .weui-flex{
+            padding: 10px 0px;
+        }
+        .collapse li .page-category{
+            color: darkgray;
+        }
+        .collapse li .page-category p{
+            font-size: 12px;
+        }
+        .collapse li.js-show .weui-flex{
+            opacity: 1;
+        }
+        .collapse li .weui-flex{
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- 底部导航栏 -->
+    <div class="weui-tabbar comm-nav-tabbar fix-bottom">
+        <a href="index.html" class="weui-tabbar__item" id="group">
+            <div class="weui-tabbar__icon">
+                <img src="assets/img/nav1-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on" id="message">
+            <!--            <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>-->
+            <div class="weui-tabbar__icon">
+                <img src="assets/img/nav2-2.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">通知</p>
+        </a>
+        <a href="mine.html" class="weui-tabbar__item" id="mine">
+            <div class="weui-tabbar__icon">
+                <img src="assets/img/nav3-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+
+    <div class="comm-content">
+        <div class="weui-tab">
+            <div class="weui-navbar switch-navbar">
+                <a class="weui-navbar__item weui-bar__item--on switch-item switch-item--on" href="#tab1">
+                    作业
+                </a>
+                <a class="weui-navbar__item switch-item" href="#tab2">
+                    通知
+                </a>
+            </div>
+            <div class="weui-tab__bd">
+                <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+                    <!--常见问题-->
+                    <ul class="collapse" id="loadList">
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">数学练习册23页</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>请选做应用题</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">语文古诗1首背诵</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>无</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">数学练习册23页</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>请选做应用题</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">语文古诗1首背诵</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>无</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">数学练习册23页</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>请选做应用题</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">语文古诗1首背诵</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>无</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">数学练习册23页</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>请选做应用题</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">语文古诗1首背诵</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>无</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">数学练习册23页</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>请选做应用题</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">语文古诗1首背诵</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>无</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">数学练习册23页</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>请选做应用题</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">语文古诗1首背诵</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>无</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">数学练习册23页</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>请选做应用题</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">语文古诗1首背诵</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>无</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">数学练习册23页</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>请选做应用题</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">语文古诗1首背诵</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>无</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <!--滚动加载-->
+                    <div class="weui-loadmore" style="padding-bottom:30px;height:20px">
+                        <i class="weui-loading"></i>
+                        <span class="weui-loadmore__tips">正在加载</span>
+                    </div>
+                </div>
+
+                <div id="tab2" class="weui-tab__bd-item">
+                    <!--存款问题-->
+                    <ul class="collapse">
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">学校延迟1周上课的通知</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>通知内容...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">学校延迟1周上课的通知</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>通知内容...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="weui-flex js-category">
+                                <div class="weui-flex__item">学校延迟1周上课的通知</div>
+                            </div>
+                            <div class="page-category js-categoryInner">
+                                <p>通知内容...</p>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+<script src="lib/jquery-3.4.1.min.js"></script>
+<!--<script src="lib/fastclick.js"></script>-->
+<script src="lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        $('.collapse .js-category').click(function(){
+            $parent = $(this).parent('li');
+            if($parent.hasClass('js-show')){
+                $parent.removeClass('js-show');
+            }else{
+                $parent.siblings().removeClass('js-show');
+                $parent.addClass('js-show');
+            }
+        });
+
+        /*标签切换*/
+        $(".switch-item").click(function(){
+            $(this).addClass("switch-item--on").siblings().removeClass("switch-item--on");
+        })
+
+        /*滚动加载*/
+        var loading = false;  //状态标记
+        $("#tab1").infinite().on("infinite", function() {
+            if(loading) return;
+            loading = true;
+            setTimeout(function() {
+                $("#loadList").append("<p> 我是新加载的内容 </p>");
+                loading = false;
+            }, 1500);   //模拟延迟
+        });
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

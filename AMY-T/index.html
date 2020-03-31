@@ -1,0 +1,368 @@
+<!--
+* xxx
+* xxx
+* create by Sam on xxxx/xx/xx
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>艾萌芽-教师端</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
+    <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <style>
+        .edu-part{
+            margin: 20px 0;
+        }
+        .edu-title{
+            font-size: 15px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .edu-op-list{
+            height: 30px;
+            padding: 15px 15px;
+        }
+        .edu-op-list li{
+            width: 50%;
+            height: 100%;
+            float: left;
+            text-align: center;
+            line-height: 30px;
+            box-sizing: border-box;
+            border-right: 1px solid rgba(0,0,0,.1);
+        }
+        .edu-op-list li a{
+            display: block;
+            width: 100px;
+            height: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .edu-op-list li:last-child{
+            border: none;
+        }
+        .edu-op-list li a img{
+            width: 30px;
+            height: 30px;
+        }
+
+        .edu-class-item{
+            display: block;
+            width: 100%;
+            height: 80px;
+            padding: 15px 10px;
+            line-height: 25px;
+            box-sizing: border-box;
+            background-color: #ffaf45;
+            color: #fff;
+            margin-bottom: 15px;
+            border-radius: 3px;
+        }
+        .edu-class-item .p2{
+            line-height: 50px;
+        }
+
+        /*模态框*/
+        .weui-dialog{
+            width: 100%;
+            height: 400px;
+            /*top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;*/
+            background-color: #fff;
+        }
+        .modal-title{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        .modal-title .modal-close{
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .modal-content{
+            height: 350px;
+            padding: 10px 15px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .txtar{
+            width: 100%;
+            height: 270px;
+            resize:none;
+            border-radius: 3px;
+            border: 1px solid rgba(0,0,0,.1);
+        }
+
+        .modal-class-list{
+            height: 270px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        .modal-class-list::before, .modal-class-list::after{
+            border: none;
+        }
+        .modal-menu{
+            width: 100%;
+            position: relative;
+            bottom: 0;
+            overflow-x: hidden;
+        }
+        .modal-menu a{
+            width: 49%;
+            float: left;
+            box-sizing: border-box;
+            margin-right: 2%;
+        }
+        .modal-menu a:last-child{
+            margin-right: 0;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!-- 底部导航栏 -->
+    <div class="weui-tabbar comm-nav-tabbar fix-bottom">
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item--on" id="group">
+            <div class="weui-tabbar__icon">
+                <img src="assets/img/nav1-2.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a href="message.html" class="weui-tabbar__item" id="message">
+<!--            <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>-->
+            <div class="weui-tabbar__icon">
+                <img src="assets/img/nav2-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">通知</p>
+        </a>
+        <a href="mine.html" class="weui-tabbar__item" id="mine">
+            <div class="weui-tabbar__icon">
+                <img src="assets/img/nav3-1.png" alt="">
+            </div>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+
+    <!--内容容器-->
+    <div class="comm-content comm-container">
+        <!--下拉刷新-->
+        <div class="weui-pull-to-refresh__layer">
+            <div class='weui-pull-to-refresh__arrow'></div>
+            <div class='weui-pull-to-refresh__preloader'></div>
+            <div class="down">下拉刷新</div>
+            <div class="up">释放刷新</div>
+            <div class="refresh">正在刷新</div>
+        </div>
+
+        <!--当前时间-->
+        <div class="edu-part">
+            <h1 class="fs18">Hello，<span id="teacher-name" class="fs18 bold">君君</span>老师</h1>
+            <p class="dark" id="now-time">今天是3月24日，星期2</p>
+            <!--操作菜单-->
+            <ul class="edu-op-list">
+                <li>
+                    <a class="dark clear" id="btn-homework">
+                        <img class="fl" src="assets/img/icon-course.png">
+                        <p class="fl">布置作业</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="dark clear" id="btn-message">
+                        <img class="fl" src="assets/img/icon-message.png">
+                        <p class="fl">发送通知</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!--班级列表-->
+        <div class="edu-part">
+            <h1 class="edu-title">我的班级</h1>
+            <div class="edu-class-list">
+                <a class="edu-class-item clear">
+                    <div class="fl p1">
+                        <p class="">艾萌芽测试学校 - 泥巴兴趣班</p>
+                        <p class="fs12 lightgray">50人</p>
+                    </div>
+                    <div class="fr p2">
+                        >
+                    </div>
+                </a>
+                <a class="edu-class-item clear">
+                    <div class="fl p1">
+                        <p class="">艾萌芽测试学校 - 泥巴兴趣班</p>
+                        <p class="fs12 lightgray">50人</p>
+                    </div>
+                    <div class="fr p2">
+                        >
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--模态框-->
+    <div class="weui-mask"></div>
+
+    <!--布置作业1-->
+    <div class="weui-dialog" id="modal-step1">
+        <div class="modal-title">
+            <h1 class="fs16 modal-title-txt"></h1>
+            <a class="modal-close">X</a>
+        </div>
+        <div class="modal-content">
+            <textarea placeholder="内容写在这里" class="txtar" name="tar" cols="30" rows="10"></textarea>
+            <a class="comm-btn-big comm-btn-big-yellow" id="btn-next">下一步</a>
+        </div>
+    </div>
+    <!--布置作业2-->
+    <div class="weui-dialog" id="modal-step2">
+        <div class="modal-title">
+            <h1 class="fs16 modal-title-txt"></h1>
+            <a class="modal-close">X</a>
+        </div>
+        <div class="modal-content">
+            <div class="weui-cells weui-cells_checkbox modal-class-list">
+                <label class="weui-cell weui-check__label modal-class-item" for="c1">
+                    <div class="weui-cell__hd">
+                        <!-- 注意checked属性，可以获取checked属性的值判断是否被选择 -->
+                        <input type="checkbox" class="weui-check" name="checkbox1" id="c1" checked="checked"/>
+                        <i class="weui-icon-checked"></i>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>泥巴兴趣班</p>
+                    </div>
+                </label>
+                <label class="weui-cell weui-check__label modal-class-item" for="c2">
+                    <div class="weui-cell__hd">
+                        <input type="checkbox" name="checkbox1" class="weui-check" id="c2"/>
+                        <i class="weui-icon-checked"></i>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <p>王者荣耀班</p>
+                    </div>
+                </label>
+            </div>
+            <div class="modal-menu clear">
+                <a class="comm-btn-big comm-btn-big-white fl" id="btn-prev">上一步</a>
+                <a class="comm-btn-big comm-btn-big-yellow fl" id="btn-commit">发送</a>
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="lib/jquery-3.4.1.min.js"></script>
+<script src="lib/fastclick.js"></script>
+<script src="lib/jquery-weui.min.js"></script>
+<script src="lib/vue.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+<script>
+    $(function() {
+        //下拉刷新
+        $(".comm-content").pullToRefresh().on("pull-to-refresh", function () {
+            // $(".weui-pull-to-refresh__layer").show();
+
+            //在这里请求后台..
+            //模拟
+            setTimeout(function() {
+                // $(".weui-pull-to-refresh__layer").hide();
+                $(".comm-content").pullToRefreshDone();
+            }, 2000);
+        });
+
+
+
+        /*当前时间*/
+        var date = new Date();
+        var m = date.getMonth()+1,
+            d = date.getDate(),
+            w = date.getDay();
+        var weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+        $("#now-time").text("今天是"+m+"月"+d+"日，"+weekday[w]);
+
+        /*显示模态框*/
+        $("#btn-homework").click(function(){
+            console.log("show modal...");
+            //改变title
+            $(".modal-title-txt").text("布置作业");
+            //情况输入框
+            $(".txtar").val("");
+            $(".weui-mask").addClass("weui-mask--visible");
+            $("#modal-step1").addClass("weui-dialog--visible");
+        });
+        $("#btn-message").click(function(){
+            console.log("show modal...");
+            //改变title
+            $(".modal-title-txt").text("发送通知");
+            //情况输入框
+            $(".txtar").val("");
+            $(".weui-mask").addClass("weui-mask--visible");
+            $("#modal-step1").addClass("weui-dialog--visible");
+        });
+
+        /*点击遮罩隐藏模态框*/
+        /*$(".weui-mask").click(function(){
+            console.log("hide modal...");
+            $(".weui-mask").removeClass("weui-mask--visible");
+            $(".weui-dialog").removeClass("weui-dialog--visible");
+        });*/
+        /*点击关闭按钮隐藏模态框*/
+        $(".modal-close").click(function(){
+            console.log("hide modal...");
+            $(".weui-mask").removeClass("weui-mask--visible");
+            $(".weui-dialog").removeClass("weui-dialog--visible");
+        });
+
+        /*切换模态框*/
+        $("#btn-next").click(function(){
+            console.log("next modal...");
+            $("#modal-step1").removeClass("weui-dialog--visible");
+            $("#modal-step2").addClass("weui-dialog--visible");
+        });
+        $("#btn-prev").click(function(){
+            console.log("prev modal...");
+            $("#modal-step1").addClass("weui-dialog--visible");
+            $("#modal-step2").removeClass("weui-dialog--visible");
+        });
+        $("#btn-commit").click(function(){
+            console.log("commiting...hide modal...");
+            $(".weui-mask").removeClass("weui-mask--visible");
+            $(".weui-dialog").removeClass("weui-dialog--visible");
+        });
+
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

@@ -308,7 +308,7 @@
                         <span>请输入搜索内容</span>
                     </label>
                 </form>
-                <a href="javascript:doSearch()" class="weui-search-bar__cancel-btn" id="searchOk" style="display: none">搜索</a>
+                <a href="javascript:doSearch();" class="weui-search-bar__ok-btn" id="searchOk" style="">搜索</a>
                 <a href="javascript:onCancel();" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
             </div>
         </div>
@@ -571,12 +571,16 @@
 
         /*搜索栏*/
         $(".weui-search-bar__input").focus(function(){
-            window.location.href='search.html';
+            $(".weui-search-bar__ok-btn").css("display","inline-block");
         })
 
 
-
     });
+
+    function doSearch(){
+        var str = $(".weui-search-bar__input").val();
+        console.log(str);
+    }
 
 
 

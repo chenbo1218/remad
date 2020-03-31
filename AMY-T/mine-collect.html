@@ -1,0 +1,136 @@
+<!--
+* xxx
+* xxx
+* create by Sam on xxxx/xx/xx
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>艾萌芽</title>
+
+    <link type="text/css" rel="stylesheet" href="lib/weui.min.css" />
+<!--    <link type="text/css" rel="stylesheet" href="lib/weuix.css" />-->
+    <link type="text/css" rel="stylesheet" href="lib/jquery-weui.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <style>
+        .weui-tab{
+            /*margin-top: 70px;*/
+            position: relative;
+            overflow-x: hidden;
+            height: auto !important;
+        }
+
+        .weui-navbar:after{
+            border: none;
+        }
+        .weui-navbar__item:after{
+            border: none;
+        }
+        .switch-navbar{
+            width: 100%;
+            padding: 0 30%;
+            box-sizing: border-box;
+            background-color: white;
+            border-bottom: 1px solid #f8f8f8;
+        }
+        .switch-item--on{
+            border-bottom: 2px solid #ffaa31;
+            color: #ffaa31 !important;
+            background-color: transparent !important;
+        }
+
+        .weui-tab__bd{
+            height: auto !important;
+        }
+        .weui-tab__bd-item{
+            height: auto !important;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="comm-container">
+        <!--标题头-->
+        <div class="comm-back-banner">
+            <a href="javascript:window.history.back();"><img src="assets/img/leftarrowicon.png" alt=""></a>
+            <p>我的收藏</p>
+        </div>
+
+        <div class="weui-tab">
+            <div class="weui-navbar switch-navbar">
+                <a class="weui-navbar__item weui-bar__item--on switch-item switch-item--on" href="#tab1">
+                    课程
+                </a>
+                <a class="weui-navbar__item switch-item" href="#tab2">
+                    活动
+                </a>
+                <a class="weui-navbar__item switch-item" href="#tab3">
+                    视频
+                </a>
+            </div>
+            <div class="weui-tab__bd">
+                <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+                    <!--课程-->
+                    <p class="gray">暂无内容1</p>
+                </div>
+
+                <div id="tab2" class="weui-tab__bd-item">
+                    <!--活动-->
+                    <p class="gray">暂无内容2</p>
+                </div>
+
+                <div id="tab3" class="weui-tab__bd-item">
+                    <!--视频-->
+                    <p class="gray">暂无内容3</p>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+<script src="lib/jquery-3.4.1.min.js"></script>
+<!--<script src="lib/fastclick.js"></script>-->
+<script src="lib/jquery-weui.min.js"></script>
+<script>
+    $(function() {
+        $('.collapse .js-category').click(function(){
+            $parent = $(this).parent('li');
+            if($parent.hasClass('js-show')){
+                $parent.removeClass('js-show');
+            }else{
+                $parent.siblings().removeClass('js-show');
+                $parent.addClass('js-show');
+            }
+        });
+
+        /*标签切换*/
+        $(".switch-item").click(function(){
+            $(this).addClass("switch-item--on").siblings().removeClass("switch-item--on");
+        })
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>
