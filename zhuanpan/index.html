@@ -179,26 +179,6 @@
 			});
 		};
 
-		//旋转转盘 item:奖品位置; txt：提示语;
-		var rotateFn = function (item, txt){
-			var angles = item * (360 / turnplate.restaraunts.length) - (360 / (turnplate.restaraunts.length*2));
-			if(angles<270){
-				angles = 270 - angles;
-			}else{
-				angles = 360 - angles + 270;
-			}
-			$('#wheelcanvas').stopRotate();
-			$('#wheelcanvas').rotate({
-				angle:0,
-				animateTo:angles+1800,
-				duration:8000,
-				callback:function (){
-					alert(txt);
-					turnplate.bRotate = !turnplate.bRotate;
-				}
-			});
-		};
-
 		$('.pointer').click(function (){
 			//正在转
 			if(turnplate.bRotate)return;
@@ -214,50 +194,108 @@
 			}
 			turnplate.bRotate = !turnplate.bRotate;
 
-			//获取随机数(奖品个数范围内)
-			var item = getRandom(1,turnplate.restaraunts.length);
-			//奖品数量等于10,指针落在对应奖品区域的中心角度[252, 216, 180, 144, 108, 72, 36, 360, 324, 288]
-			rotateFn(item, turnplate.restaraunts[item-1]);
-			/* switch (item) {
-			 case 1:
-			 rotateFn(252, turnplate.restaraunts[0]);
-			 break;
-			 case 2:
-			 rotateFn(216, turnplate.restaraunts[1]);
-			 break;
-			 case 3:
-			 rotateFn(180, turnplate.restaraunts[2]);
-			 break;
-			 case 4:
-			 rotateFn(144, turnplate.restaraunts[3]);
-			 break;
-			 case 5:
-			 rotateFn(108, turnplate.restaraunts[4]);
-			 break;
-			 case 6:
-			 rotateFn(72, turnplate.restaraunts[5]);
-			 break;
-			 case 7:
-			 rotateFn(36, turnplate.restaraunts[6]);
-			 break;
-			 case 8:
-			 rotateFn(360, turnplate.restaraunts[7]);
-			 break;
-			 case 9:
-			 rotateFn(324, turnplate.restaraunts[8]);
-			 break;
-			 case 10:
-			 rotateFn(288, turnplate.restaraunts[9]);
-			 break;
-			 } */
-			console.log(item);
+			//模拟请求后台
+			setTimeout(function () {
+			    //开始转动
+				startRotate();
+            },1000);
+
+
 		});
 	});
 
+	//开始转动
+	function startRotate(){
+        //获取随机奖品序列(奖品个数范围内)
+        var index = getRandom(1,turnplate.restaraunts.length);
+        //奖品数量等于10,指针落在对应奖品区域的中心角度[252, 216, 180, 144, 108, 72, 36, 360, 324, 288]
+        console.log("奖品序列位置："+index);
+        rotateFn(index, turnplate.restaraunts[index-1]);
+        /* switch (index) {
+         case 1:
+         rotateFn(252, turnplate.restaraunts[0]);
+         break;
+         case 2:
+         rotateFn(216, turnplate.restaraunts[1]);
+         break;
+         case 3:
+         rotateFn(180, turnplate.restaraunts[2]);
+         break;
+         case 4:
+         rotateFn(144, turnplate.restaraunts[3]);
+         break;
+         case 5:
+         rotateFn(108, turnplate.restaraunts[4]);
+         break;
+         case 6:
+         rotateFn(72, turnplate.restaraunts[5]);
+         break;
+         case 7:
+         rotateFn(36, turnplate.restaraunts[6]);
+         break;
+         case 8:
+         rotateFn(360, turnplate.restaraunts[7]);
+         break;
+         case 9:
+         rotateFn(324, turnplate.restaraunts[8]);
+         break;
+         case 10:
+         rotateFn(288, turnplate.restaraunts[9]);
+         break;
+         } */
+
+	}
+
+	//请求后台
+	function getData(){
+        var url = "http://192.168.1.250:8080/food/getLottery";
+        var param = {"userId":"a35268"};
+        var resNum = 0;
+        $.post(url,param,function(res){
+            console.log("response:",res);
+            switch (res.msg){
+				case 1:
+				    console.log("请求成功，data："+res.data);
+				  	resNum = res.data;
+				    break;
+				case 2:
+                    console.log("次数已用完");
+                    resNum = -1;
+                    break;
+				default:
+				    console.log("发生错误");
+                    resNum = -2;
+				    break;
+			}
+            // sessionStorage.setItem("data",res.data);
+        });
+        return resNum;
+	}
+
+    //旋转转盘方法 index:奖品位置; txt：提示语;
+    function rotateFn(index, txt){
+        var angles = index * (360 / turnplate.restaraunts.length) - (360 / (turnplate.restaraunts.length*2));
+        if(angles<270){
+            angles = 270 - angles;
+        }else{
+            angles = 360 - angles + 270;
+        }
+        $('#wheelcanvas').stopRotate();
+        $('#wheelcanvas').rotate({
+            angle:0,
+            animateTo:angles+1800,
+            duration:8000,
+            callback:function (){
+                alert(txt);
+                turnplate.bRotate = !turnplate.bRotate;
+            }
+        });
+    };
+
+	//获取范围内的随机数   n生成的个数   m数字范围
 	function getRandom(n, m){
 		var random = Math.floor(Math.random()*(m-n+1)+n);
 		return random;
-
 	}
 
 	//页面所有元素加载完毕后执行drawRouletteWheel()方法对转盘进行渲染

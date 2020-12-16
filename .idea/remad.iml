@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/AMY" />
+      <excludeFolder url="file://$MODULE_DIR$/AMY-T" />
       <excludeFolder url="file://$MODULE_DIR$/Ytongzhuang" />
       <excludeFolder url="file://$MODULE_DIR$/digoUnion" />
       <excludeFolder url="file://$MODULE_DIR$/fir" />
@@ -19,7 +20,6 @@
       <excludeFolder url="file://$MODULE_DIR$/test" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/xiayou" />
-      <excludeFolder url="file://$MODULE_DIR$/zhuanpan" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
