@@ -4,13 +4,78 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 , maximum-scale=1.0, user-scalable=0" />
-	<title>虾游大转盘</title>
-	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<title>娱乐大转盘</title>
 	<style>
+		/*基础样式*/
+		body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{
+			margin:0;
+			padding:0;
+			border:0;
+		}
+		body{
+			color:#333;
+			font-size:12px;
+			font-family:"Microsoft YaHei"
+		}
+		ul,ol{
+			list-style-type:none;
+		}
+		select,input,img,select{
+			vertical-align:middle;
+		}
+		input{
+			font-size:12px;
+		}
+		a{
+			text-decoration:none; color:#000;
+		}
+		a:hover{
+			color:#c00; text-decoration:none;
+		}
+		.clear{
+			clear:both;
+		}
+
+		/*页面整体布局*/
 		body{
 			background:#e62d2d;
-			overflow-x:hidden;
+			height: 100vh;
+			max-height: 100vh;
+			overflow-x: hidden;
+			overflow-y: hidden;
 		}
+		.cont{
+			margin-top: 20px;
+		}
+
+
+		/* 大转盘样式 */
+		.banner{
+			display:block;
+			width:95%;
+			margin-left:auto;
+			margin-right:auto;
+			margin-bottom: 20px;
+		}
+		.banner .turnplate{
+			display:block;
+			width:100%;
+			position:relative;
+		}
+		.banner .turnplate canvas.item{
+			width:100%;
+		}
+		.banner .turnplate img.pointer{
+			position:absolute;
+			width:31.5%;
+			height:auto;
+			/*height:42.5%;*/
+			left:34.3%;
+			/*left:34.6%;*/
+			top:29.3%;
+			/*top:23%;*/
+		}
+
 		#shan-img{
 			display:none;
 		}
@@ -38,15 +103,13 @@
 			background: #fff;
 			border-radius: 5px;
 		}
-		#shuoming,#score{
+		#shuoming{
 			width: 100%;
 			height: 75px;
 			line-height: 75px;
 			color: #000;
 			text-align: center;
-			font-size: 30px;
-		}
-		#shuoming{
+			/*font-size: 30px;*/
 			font-size: 20px;
 		}
 
@@ -54,28 +117,31 @@
 </head>
 
 <body>
-	<audio src="sound/music.mp3" autoplay loop>
-	</audio>
+	<!--背景音乐-->
+	<!--<audio src="assets/bg.mp3" autoplay loop>
+	</audio>-->
 
-	<h1 class="title">虾游大转盘</h1>
-	<br/>
+	<!--<h1 class="title">娱乐大转盘</h1>-->
+	<!--<br/>-->
+	<div class="cont">
+		<img src="assets/1.png" id="shan-img" />
+		<img src="assets/2.png" id="sorry-img" />
+		<div class="banner">
+			<div class="turnplate" style="background-image:url(assets/turnplate-bg.png);background-size:100% 100%;">
+				<canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+				<img class="pointer" src="assets/turnplate-pointer1.png"/>
+			</div>
+		</div>
 
-	<img src="images/1.png" id="shan-img" />
-	<img src="images/2.png" id="sorry-img" />
-	<div class="banner">
-		<div class="turnplate" style="background-image:url(images/turnplate-bg.png);background-size:100% 100%;">
-			<canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
-			<img class="pointer" src="images/turnplate-pointer.png"/>
+		<div class="my-info">
+			<h2>我的积分：<span id="score">0</span></h2>
+			<div class="my-info-box">
+				<div id="shuoming">10积分抽一次</div>
+			</div>
 		</div>
 	</div>
 
-	<div class="my-info">
-		<h2>我的积分</h2>
-		<div class="my-info-box">
-			<div id="shuoming">小帅哥快来玩吧，10积分一次哦！</div>
-			<div id="score"></div>
-		</div>
-	</div>
+
 
 
 <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
@@ -89,7 +155,7 @@
 		insideRadius:68,			//大转盘内圆的半径
 		startAngle:0,				//开始角度
 
-		bRotate:false				//false:停止;ture:旋转
+		bRotate:false				//转动状态 false:停止;ture:旋转
 	};
 
 	$(document).ready(function(){
@@ -97,7 +163,8 @@
 		var myScore = 52;
 
 		//动态添加大转盘的奖品与奖品区域背景颜色
-		turnplate.restaraunts = ["iPhone7手机", "50金币", "谢谢参与", "100金币", "欧洲十日游", "新开铺一日游", "30金币 ", "海尔55寸电视机", "西门子对开门冰箱", "200金币"];
+		// turnplate.restaraunts = ["iPhone12", "汰渍洗衣粉", "谢谢参与", "海尔洗衣机", "喜德盛山地车RX2", "谢谢参与", "华为Mate40 Pro ", "海尔55寸电视机", "谢谢参与", "周杰伦演唱会门票"];
+		turnplate.restaraunts = ["iPhone12", "汰渍洗衣粉", "谢谢参与", "海尔洗衣机", "喜德盛山地车RX2", "谢谢参与", "华为Mate40 pro ", "海尔55寸电视机", "谢谢参与", "周杰伦演唱会门票"];
 		turnplate.colors = ["#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF","#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF","#FFF4D6", "#FFFFFF"];
 		$("#score").text(myScore);
 
@@ -138,7 +205,7 @@
 
 			//扣取积分
 			if(myScore-10<0){
-				alert("积分不够了(╯□╰)");
+				alert("您的积分不够！(╯□╰)");
 				return;
 			}else{
 				myScore-=10;
@@ -148,7 +215,7 @@
 			turnplate.bRotate = !turnplate.bRotate;
 
 			//获取随机数(奖品个数范围内)
-			var item = rnd(1,turnplate.restaraunts.length);
+			var item = getRandom(1,turnplate.restaraunts.length);
 			//奖品数量等于10,指针落在对应奖品区域的中心角度[252, 216, 180, 144, 108, 72, 36, 360, 324, 288]
 			rotateFn(item, turnplate.restaraunts[item-1]);
 			/* switch (item) {
@@ -187,17 +254,17 @@
 		});
 	});
 
-	function rnd(n, m){
+	function getRandom(n, m){
 		var random = Math.floor(Math.random()*(m-n+1)+n);
 		return random;
 
 	}
 
-
 	//页面所有元素加载完毕后执行drawRouletteWheel()方法对转盘进行渲染
 	window.onload=function(){
 		drawRouletteWheel();
 	};
+
 	//渲染转盘
 	function drawRouletteWheel() {
 		var canvas = document.getElementById("wheelcanvas");
@@ -234,7 +301,7 @@
 				ctx.rotate(angle + arc / 2 + Math.PI / 2);
 
 				/** 下面代码根据奖品类型、奖品名称长度渲染不同效果，如字体、颜色、图片效果。(具体根据实际情况改变) **/
-				if(text.indexOf("M")>0){//流量包
+				/*if(text.indexOf("M")>0){//流量包
 					var texts = text.split("M");
 					for(var j = 0; j<texts.length; j++){
 						ctx.font = j == 0?'bold 20px Microsoft YaHei':'16px Microsoft YaHei';
@@ -244,7 +311,8 @@
 							ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
 						}
 					}
-				}else if(text.indexOf("M") == -1 && text.length>6){//奖品名称长度超过一定范围
+				}else if(text.indexOf("M") == -1 && text.length>6){//奖品名称长度超过一定范围 */
+				if(text.length>6){//奖品名称长度超过一定范围
 					text = text.substring(0,6)+"||"+text.substring(6);
 					var texts = text.split("||");
 					for(var j = 0; j<texts.length; j++){
